@@ -1,20 +1,20 @@
-move:
-  summary: |-
-    "move" moves the agent in its local frame by a distance in one of four directions.
-  class_name: |-
-    Move
-  usage: |-
-    [1] API call: Move(direction: str, distance: float)
-    [2] Args:
-      - direction: 'One of "forward", "backward", "left", "right"'
-      - distance: 'Movement distance in world units (must be > 0)'
-    [3] Example:
-      - Move(direction="forward", distance=100.0)
-      - Move(direction="left", distance=50.0)
-    [4] Constraints:
-      - Position is clamped to world bounds (OfflineEnvConfig.world_min/world_max).
-    [5] Return:
-      - StepResult(success: bool, message: str) via env.step(...).
+# move:
+#   summary: |-
+#     "move" moves the agent in its local frame by a distance in one of four directions.
+#   class_name: |-
+#     Move
+#   usage: |-
+#     [1] API call: Move(direction: str, distance: float)
+#     [2] Args:
+#       - direction: 'One of "forward", "backward", "left", "right"'
+#       - distance: 'Movement distance in world units (must be > 0)'
+#     [3] Example:
+#       - Move(direction="forward", distance=100.0)
+#       - Move(direction="left", distance=50.0)
+#     [4] Constraints:
+#       - Position is clamped to world bounds (OfflineEnvConfig.world_min/world_max).
+#     [5] Return:
+#       - StepResult(success: bool, message: str) via env.step(...).
 
 move2:
   summary: |-
