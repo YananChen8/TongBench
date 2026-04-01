@@ -1,0 +1,162 @@
+move:
+  summary: |-
+    "move" moves the agent in its local frame by a distance in one of four directions.
+  class_name: |-
+    Move
+  usage: |-
+    [1] API call: Move(direction: str, distance: float)
+    [2] Args:
+      - direction: 'One of "forward", "backward", "left", "right"'
+      - distance: 'Movement distance in world units (must be > 0)'
+    [3] Example:
+      - Move(direction="forward", distance=100.0)
+      - Move(direction="left", distance=50.0)
+    [4] Constraints:
+      - Position is clamped to world bounds (OfflineEnvConfig.world_min/world_max).
+    [5] Return:
+      - StepResult(success: bool, message: str) via env.step(...).
+
+move2:
+  summary: |-
+    "move2" moves the agent to a target object (by object id).
+  class_name: |-
+    MoveToObject
+  usage: |-
+    [1] API call: MoveToObject(target: str)
+    [2] Args:
+      - target: 'Target object id to move to'
+    [3] Example:
+      - MoveToObject(target="vase")
+    [4] Constraints:
+      - Target object must exist in env.objects.
+      - Current implementation teleports agent XY to the object.
+    [5] Return:
+      - StepResult(success: bool, message: str) via env.step(...).
+
+rotation:
+  summary: |-
+    "rotation" rotates the agent view (yaw) by yaw_deg repeated times (default 120*3).
+  class_name: |-
+    Rotate
+  usage: |-
+    [1] API call: Rotate(yaw_deg: float = 120.0, times: int = 3)
+    [2] Args:
+      - yaw_deg: 'Yaw rotation in degrees per step'
+      - times: 'How many times to apply yaw_deg (must be > 0)'
+    [3] Example:
+      - Rotate(yaw_deg=120.0, times=3)  # full 360 scan
+      - Rotate(yaw_deg=45.0, times=1)
+    [4] Constraints:
+      - Agent yaw wraps to [0, 360).
+    [5] Return:
+      - StepResult(success: bool, message: str) via env.step(...).
+
+pick_up:
+  summary: |-
+    "pick_up" picks up a target object and adds it to the agent inventory.
+  class_name: |-
+    PickUp
+  usage: |-
+    [1] API call: PickUp(target: str)
+    [2] Args:
+      - target: 'Target object id to pick up'
+    [3] Example:
+      - PickUp(target="vase")
+    [4] Constraints:
+      - Target must exist.
+      - Target must be in view (FOV + view_range) and within interact_range.
+      - Target must be pickable=True and not already held.
+    [5] Return:
+      - StepResult(success: bool, message: str) via env.step(...).
+
+put_down:
+  summary: |-
+    "put_down" drops a held object from inventory to a point in front of the agent.
+  class_name: |-
+    PutDown
+  usage: |-
+    [1] API call: PutDown(object_id: str = "")
+    [2] Args:
+      - object_id: 'Which inventory object to drop; empty means drop the last carried item'
+    [3] Example:
+      - PutDown(object_id="vase")
+      - PutDown()  # drop last carried
+    [4] Constraints:
+      - Inventory must be non-empty.
+      - Object must be currently held by the agent.
+      - On success, the object is removed from agent.inventory_ids.
+    [5] Return:
+      - StepResult(success: bool, message: str) via env.step(...).
+
+open:
+  summary: |-
+    "open" opens an openable target object (e.g., door/drawer).
+  class_name: |-
+    Open
+  usage: |-
+    [1] API call: Open(target: str)
+    [2] Args:
+      - target: 'Target object id to open'
+    [3] Example:
+      - Open(target="door")
+    [4] Constraints:
+      - Target must exist.
+      - Must be in view and within interact_range.
+      - Target must be openable=True.
+    [5] Return:
+      - StepResult(success: bool, message: str) via env.step(...).
+
+close:
+  summary: |-
+    "close" closes an openable target object (e.g., door/drawer).
+  class_name: |-
+    Close
+  usage: |-
+    [1] API call: Close(target: str)
+    [2] Args:
+      - target: 'Target object id to close'
+    [3] Example:
+      - Close(target="door")
+    [4] Constraints:
+      - Target must exist.
+      - Must be in view and within interact_range.
+      - Target must be openable=True.
+    [5] Return:
+      - StepResult(success: bool, message: str) via env.step(...).
+
+turn_on:
+  summary: |-
+    "turn_on" turns on a powerable target object (e.g., lamp/TV).
+  class_name: |-
+    TurnOn
+  usage: |-
+    [1] API call: TurnOn(target: str)
+    [2] Args:
+      - target: 'Target object id to power on'
+    [3] Example:
+      - TurnOn(target="lamp")
+    [4] Constraints:
+      - Target must exist.
+      - Must be in view and within interact_range.
+      - Target must be powerable=True.
+    [5] Return:
+      - StepResult(success: bool, message: str) via env.step(...).
+
+turn_off:
+  summary: |-
+    "turn_off" turns off a powerable target object (e.g., lamp/TV).
+  class_name: |-
+    TurnOff
+  usage: |-
+    [1] API call: TurnOff(target: str)
+    [2] Args:
+      - target: 'Target object id to power off'
+    [3] Example:
+      - TurnOff(target="lamp")
+    [4] Constraints:
+      - Target must exist.
+      - Must be in view and within interact_range.
+      - Target must be powerable=True.
+    [5] Return:
+      - StepResult(success: bool, message: str) via env.step(...).
+

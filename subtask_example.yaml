@@ -1,0 +1,76 @@
+Subtask Definition
+{
+  "subtask_id": "subtask_pick_object", // Unique identifier for the subtask template
+
+  "instruction_template": "Find the '{object}' and pick it up.", // Parameterized natural language instruction
+
+  "task_intent": "Acquire a target object in a daily simulation scene.", // High-level goal of the subtask
+
+  "scene": "living_room", // Environment or room where the subtask takes place
+
+  "available_parameters": {
+    "object": ["ball", "book", "cup"] // Candidate values used to instantiate the template
+  },
+
+  "input_resources": [
+    "{object}_exists" // Preconditions required before this subtask can be executed
+  ],
+
+  "output_resources": [
+    "{object}_visible", // The object has been observed by the agent
+    "agent_at_{object}", // The agent has reached the target object
+    "{object}_in_hand" // The object has been successfully picked up
+  ],
+
+  "action_space": [
+    "move_to_object", // High-level navigation action that directly moves the agent to the object
+    "pick_up" // High-level interaction action for grasping the object
+  ]
+}
+
+Trajectory
+{
+  "trajectory_id": "traj_001", // Unique identifier for one execution trajectory
+
+  "subtask_id": "subtask_pick_object", // Reference to the corresponding subtask template
+
+  "instruction": "Find the ball and pick it up.", // Instantiated instruction for this specific trajectory
+
+  "observations": [
+    "obs1.png", // Observation at step 1
+    "obs2.png"  // Observation at step 2
+  ],
+
+  "actions": [
+    {
+      "step_id": 1, // Step index in the trajectory
+
+      "function": "move_to_object", // Executed high-level action
+
+      "args": {
+        "object": "ball" // Target object of the action
+      },
+
+      "thought": "I need to go to the ball first.", // Optional reasoning for the current action
+
+      "state_after": {
+        "agent_at_ball": true // Whether the agent has reached the object after this step
+      }
+    },
+    {
+      "step_id": 2, // Step index in the trajectory
+
+      "function": "pick_up", // Executed high-level interaction action
+
+      "args": {
+        "object": "ball" // Target object to pick up
+      },
+
+      "thought": "Now I can pick it up.", // Optional reasoning for the current action
+
+      "state_after": {
+        "ball_in_hand": true // Whether the object is in hand after this step
+      }
+    }
+  ]
+}

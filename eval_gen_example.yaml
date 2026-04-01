@@ -1,0 +1,48 @@
+Evaluation Output Format
+evaluation_result = {
+    "success": True,               # Whether the subtask is fully completed
+    "score": 1.0,                  # Fine-grained normalized score in [0, 1]
+    "completed_checkpoints": {     # Completion status of each checkpoint
+        "visible": True,
+        "at_object": True,
+        "picked": True
+    },
+    "failure_reason": None         # Explanation when the task is not fully completed
+}
+
+Evaluation Function Example
+def evaluate_pick_object(object_name):
+    checkpoints = {
+        "visible": 0.2,    # The agent has observed the target object
+        "at_object": 0.3,  # The agent has moved to the target object
+        "picked": 0.5      # The agent has picked up the target object
+    }
+
+    completed = {
+        "visible": check_visible(object_name),
+        "at_object": check_agent_at(object_name),
+        "picked": check_in_hand(object_name)
+    }
+
+    score = 0.0
+    for key, weight in checkpoints.items():
+        if completed[key]:
+            score += weight
+
+    success = all(completed.values())
+
+    failure_reason = None
+    if not success:
+        if not completed["visible"]:
+            failure_reason = f"The agent never observed the target object '{object_name}'."
+        elif not completed["at_object"]:
+            failure_reason = f"The agent did not reach the target object '{object_name}'."
+        elif not completed["picked"]:
+            failure_reason = f"The agent did not pick up the target object '{object_name}'."
+
+    return {
+        "success": success,
+        "score": round(score, 3),
+        "completed_checkpoints": completed,
+        "failure_reason": failure_reason
+    }
