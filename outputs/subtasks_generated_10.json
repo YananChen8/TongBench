@@ -1,0 +1,272 @@
+{
+  "subtasks": [
+    {
+      "subtask_id": "subtask_locate_object_01",
+      "task_type": "locate_object",
+      "instruction_template": "找到一个{object}。",
+      "task_intent": "定位目标物体",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "frame"
+        ]
+      },
+      "input_resources": [
+        "{object}_exists"
+      ],
+      "output_resources": [
+        "{object}_visible"
+      ],
+      "action_space": [
+        "rotation"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 1.0
+      }
+    },
+    {
+      "subtask_id": "subtask_move_to_object_02",
+      "task_type": "move_to_object",
+      "instruction_template": "移动到{object}旁边。",
+      "task_intent": "到达目标物体附近",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "decoration"
+        ]
+      },
+      "input_resources": [
+        "{object}_exists"
+      ],
+      "output_resources": [
+        "agent_at_{object}"
+      ],
+      "action_space": [
+        "move2"
+      ],
+      "evaluation_checkpoints": {
+        "at_object": 1.0
+      }
+    },
+    {
+      "subtask_id": "subtask_inspect_then_move_03",
+      "task_type": "inspect_then_move",
+      "instruction_template": "先观察到{object}，再移动到它旁边。",
+      "task_intent": "先感知再导航",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "curtains"
+        ]
+      },
+      "input_resources": [
+        "{object}_exists"
+      ],
+      "output_resources": [
+        "{object}_visible",
+        "agent_at_{object}"
+      ],
+      "action_space": [
+        "rotation",
+        "move2"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.4,
+        "at_object": 0.6
+      }
+    },
+    {
+      "subtask_id": "subtask_pick_object_04",
+      "task_type": "pick_object",
+      "instruction_template": "找到{object}并将其拿起。",
+      "task_intent": "拾取目标物体",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "rod"
+        ]
+      },
+      "input_resources": [
+        "{object}_exists"
+      ],
+      "output_resources": [
+        "{object}_visible",
+        "agent_at_{object}",
+        "{object}_in_hand"
+      ],
+      "action_space": [
+        "move2",
+        "pick_up"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "picked": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_pick_and_drop_05",
+      "task_type": "pick_and_drop",
+      "instruction_template": "拿起{object}后立刻放下。",
+      "task_intent": "完成一次抓取-放置闭环",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "painting"
+        ]
+      },
+      "input_resources": [
+        "{object}_exists"
+      ],
+      "output_resources": [
+        "{object}_in_hand",
+        "{object}_released"
+      ],
+      "action_space": [
+        "move2",
+        "pick_up",
+        "put_down"
+      ],
+      "evaluation_checkpoints": {
+        "picked": 0.5,
+        "dropped": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_approach_two_objects_06",
+      "task_type": "approach_two_objects",
+      "instruction_template": "先到{object_a}，再到{object_b}。",
+      "task_intent": "完成双目标导航",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object_a": [
+          "toy"
+        ],
+        "object_b": [
+          "plate"
+        ]
+      },
+      "input_resources": [
+        "{object_a}_exists",
+        "{object_b}_exists"
+      ],
+      "output_resources": [
+        "agent_at_{object_a}",
+        "agent_at_{object_b}"
+      ],
+      "action_space": [
+        "move2"
+      ],
+      "evaluation_checkpoints": {
+        "at_a": 0.5,
+        "at_b": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_scan_for_category_07",
+      "task_type": "scan_for_category",
+      "instruction_template": "旋转视角，找到任意一个{object}。",
+      "task_intent": "主动扫描场景",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "decorationLamp"
+        ]
+      },
+      "input_resources": [
+        "{object}_exists"
+      ],
+      "output_resources": [
+        "{object}_visible"
+      ],
+      "action_space": [
+        "rotation"
+      ],
+      "evaluation_checkpoints": {
+        "scan_completed": 0.4,
+        "visible": 0.6
+      }
+    },
+    {
+      "subtask_id": "subtask_move_laterally_then_locate_08",
+      "task_type": "move_laterally_then_locate",
+      "instruction_template": "先侧向移动，再找到{object}。",
+      "task_intent": "通过位姿变化提升感知",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "book"
+        ]
+      },
+      "input_resources": [
+        "{object}_exists"
+      ],
+      "output_resources": [
+        "agent_repositioned",
+        "{object}_visible"
+      ],
+      "action_space": [
+        "move",
+        "rotation"
+      ],
+      "evaluation_checkpoints": {
+        "repositioned": 0.4,
+        "visible": 0.6
+      }
+    },
+    {
+      "subtask_id": "subtask_move_then_pick_09",
+      "task_type": "move_then_pick",
+      "instruction_template": "移动到{object}并拿起它。",
+      "task_intent": "导航后交互",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "plate"
+        ]
+      },
+      "input_resources": [
+        "{object}_exists"
+      ],
+      "output_resources": [
+        "agent_at_{object}",
+        "{object}_in_hand"
+      ],
+      "action_space": [
+        "move2",
+        "pick_up"
+      ],
+      "evaluation_checkpoints": {
+        "at_object": 0.4,
+        "picked": 0.6
+      }
+    },
+    {
+      "subtask_id": "subtask_reacquire_after_rotate_10",
+      "task_type": "reacquire_after_rotate",
+      "instruction_template": "到达{object}后旋转一圈并重新看到它。",
+      "task_intent": "测试目标再识别",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "window"
+        ]
+      },
+      "input_resources": [
+        "{object}_exists"
+      ],
+      "output_resources": [
+        "agent_at_{object}",
+        "{object}_visible_again"
+      ],
+      "action_space": [
+        "move2",
+        "rotation"
+      ],
+      "evaluation_checkpoints": {
+        "at_object": 0.5,
+        "reacquired": 0.5
+      }
+    }
+  ]
+}
