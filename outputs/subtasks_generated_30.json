@@ -557,6 +557,274 @@
         "closed": 0.5,
         "turned_off": 0.5
       }
+    },
+    {
+      "subtask_id": "subtask_locate_object_21",
+      "task_type": "locate_object",
+      "instruction_template": "找到一个{object}。",
+      "task_intent": "定位目标",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "bedside"
+        ]
+      },
+      "input_resources": [
+        "{object}_exists"
+      ],
+      "output_resources": [
+        "{object}_visible"
+      ],
+      "action_space": [
+        "rotation"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 1.0
+      }
+    },
+    {
+      "subtask_id": "subtask_move_to_object_22",
+      "task_type": "move_to_object",
+      "instruction_template": "移动到{object}旁边。",
+      "task_intent": "到达目标",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "tablelamp"
+        ]
+      },
+      "input_resources": [
+        "{object}_exists"
+      ],
+      "output_resources": [
+        "agent_at_{object}"
+      ],
+      "action_space": [
+        "move2"
+      ],
+      "evaluation_checkpoints": {
+        "at_object": 1.0
+      }
+    },
+    {
+      "subtask_id": "subtask_observe_and_align_23",
+      "task_type": "observe_and_align",
+      "instruction_template": "先旋转观察，再对准{object}。",
+      "task_intent": "旋转后对准目标",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "bottle"
+        ]
+      },
+      "input_resources": [
+        "{object}_exists"
+      ],
+      "output_resources": [
+        "{object}_visible",
+        "agent_aligned_to_{object}"
+      ],
+      "action_space": [
+        "rotation"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.5,
+        "aligned": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_inspect_then_move_24",
+      "task_type": "inspect_then_move",
+      "instruction_template": "先观察到{object}，再移动到它旁边。",
+      "task_intent": "感知后导航",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "doughnut"
+        ]
+      },
+      "input_resources": [
+        "{object}_exists"
+      ],
+      "output_resources": [
+        "{object}_visible",
+        "agent_at_{object}"
+      ],
+      "action_space": [
+        "rotation",
+        "move2"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.4,
+        "at_object": 0.6
+      }
+    },
+    {
+      "subtask_id": "subtask_pick_object_25",
+      "task_type": "pick_object",
+      "instruction_template": "找到{object}并将其拿起。",
+      "task_intent": "拾取目标",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "tray"
+        ]
+      },
+      "input_resources": [
+        "{object}_exists"
+      ],
+      "output_resources": [
+        "agent_at_{object}",
+        "{object}_in_hand"
+      ],
+      "action_space": [
+        "move2",
+        "pick_up"
+      ],
+      "evaluation_checkpoints": {
+        "at_object": 0.4,
+        "picked": 0.6
+      }
+    },
+    {
+      "subtask_id": "subtask_pick_and_drop_26",
+      "task_type": "pick_and_drop",
+      "instruction_template": "拿起{object}后立刻放下。",
+      "task_intent": "抓取放置",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "plug"
+        ]
+      },
+      "input_resources": [
+        "{object}_exists"
+      ],
+      "output_resources": [
+        "{object}_in_hand",
+        "{object}_released"
+      ],
+      "action_space": [
+        "move2",
+        "pick_up",
+        "put_down"
+      ],
+      "evaluation_checkpoints": {
+        "picked": 0.5,
+        "dropped": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_approach_two_objects_27",
+      "task_type": "approach_two_objects",
+      "instruction_template": "先到{object_a}，再到{object_b}。",
+      "task_intent": "双目标导航",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object_a": [
+          "adapter"
+        ],
+        "object_b": [
+          "floorBoard"
+        ]
+      },
+      "input_resources": [
+        "{object_a}_exists",
+        "{object_b}_exists"
+      ],
+      "output_resources": [
+        "agent_at_{object_a}",
+        "agent_at_{object_b}"
+      ],
+      "action_space": [
+        "move2"
+      ],
+      "evaluation_checkpoints": {
+        "at_a": 0.5,
+        "at_b": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_open_object_28",
+      "task_type": "open_object",
+      "instruction_template": "移动到{object}并打开它。",
+      "task_intent": "开启可开合物",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "wall"
+        ]
+      },
+      "input_resources": [
+        "{object}_exists"
+      ],
+      "output_resources": [
+        "agent_at_{object}",
+        "{object}_opened"
+      ],
+      "action_space": [
+        "move2",
+        "open"
+      ],
+      "evaluation_checkpoints": {
+        "at_object": 0.4,
+        "opened": 0.6
+      }
+    },
+    {
+      "subtask_id": "subtask_close_object_29",
+      "task_type": "close_object",
+      "instruction_template": "移动到{object}并关闭它。",
+      "task_intent": "关闭可开合物",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "coffeetable"
+        ]
+      },
+      "input_resources": [
+        "{object}_exists"
+      ],
+      "output_resources": [
+        "agent_at_{object}",
+        "{object}_closed"
+      ],
+      "action_space": [
+        "move2",
+        "close"
+      ],
+      "evaluation_checkpoints": {
+        "at_object": 0.4,
+        "closed": 0.6
+      }
+    },
+    {
+      "subtask_id": "subtask_open_then_close_30",
+      "task_type": "open_then_close",
+      "instruction_template": "先打开{object}再将其关闭。",
+      "task_intent": "开合完整流程",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "floorBoard"
+        ]
+      },
+      "input_resources": [
+        "{object}_exists"
+      ],
+      "output_resources": [
+        "{object}_opened",
+        "{object}_closed"
+      ],
+      "action_space": [
+        "move2",
+        "open",
+        "close"
+      ],
+      "evaluation_checkpoints": {
+        "opened": 0.5,
+        "closed": 0.5
+      }
     }
   ]
 }
