@@ -1,0 +1,1304 @@
+{
+  "objects": {
+    "BP_AirCondition_2_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_BathCabinet_005_C_0": {
+      "openable": true,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_BathShelf_01_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_BathTub_005_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_BedSide_living005_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_BedSide_living005_C_1": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Bed_007_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Bed_Child_05_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Bedside_005_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Book_01_C_1": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Book_02_C_1": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Book_03_C_1": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Book_05_C_1": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Book_1_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Book_Magazine_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Book_Stack01_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Book_Stack02_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Book_Stack03_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Bottle_01_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Bottle_02_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Bottle_03_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_BowlCupboard_04_C_3": {
+      "openable": true,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Bowl_05_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Bowl_Stack005_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Cap_1_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Carpet_04_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Carpet_Mat2_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Carpet_R2_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Carpet_R3_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Carpet_Rectangle_01_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Carpet_map5_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_CeilingLamp_005_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_CeilingLamp_small_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_CeilingLamp_small_C_1": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_CeilingLamp_small_C_2": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_CeilingLamp_small_C_3": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_CeilingLamp_small_C_4": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_CeilingLamp_small_C_5": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_CeilingLamp_small_C_6": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_CeilingLamp_small_C_7": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_CeilingLamp_small_C_8": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_CeilingLamp_small_C_9": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_Ceiling_005_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Ceiling_Corner_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Ceiling_Map005_01_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Ceiling_Map005_Cube_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Chair_0_C_1": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Chair_Armchair_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Chair_Dining_White01_C_1": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Chair_Dining_White01_C_2": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Chair_Dining_White01_C_3": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Clock_1_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Closet_R3_5_C_0": {
+      "openable": true,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_CoffeeTable_45_C_1": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_CoffeeTable_LivingRoom005_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_CookRange_Toaster005_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_Cup_TeaCup_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Cupboard_TV_C_0": {
+      "openable": true,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Cupboard_kitchen_room5_C_0": {
+      "openable": true,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Curtains_01_C_0": {
+      "openable": true,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Curtains_01_C_1": {
+      "openable": true,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Curtains_01_C_2": {
+      "openable": true,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Curtains_01_C_3": {
+      "openable": true,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Curtains_Back_Low_C_0": {
+      "openable": true,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Curtains_Back_Low_C_1": {
+      "openable": true,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Curtains_Back_Low_C_2": {
+      "openable": true,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Curtains_Back_Low_C_3": {
+      "openable": true,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Curtains_Bedroom1_Blue_C_0": {
+      "openable": true,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Curtains_Bedroom1_C_0": {
+      "openable": true,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Curtains_tulle02_C_0": {
+      "openable": true,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Curtains_tulle02_C_1": {
+      "openable": true,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Curtains_tulle02_C_2": {
+      "openable": true,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Curtains_tulle02_C_3": {
+      "openable": true,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Decor_Calender_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Decor_Cloud_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Decor_LadlesBack_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Decor_WallPanel_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Decor_WallProtect_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Decor_ative38_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Decoration_Cup_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Desk_Out_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Desk_R005_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_DiningTable_03_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Diswasher_005_C_0": {
+      "openable": true,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_Diswasher_01_C_1": {
+      "openable": true,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_Door_5_DecorativeDoor_C_0": {
+      "openable": true,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Door_5_R_C_0": {
+      "openable": true,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Door_5_R_C_1": {
+      "openable": true,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Door_5_R_C_2": {
+      "openable": true,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_FloorFan_01_C_1": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_Floor_Map005_02_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Floor_polySurface4_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Food_Bread_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Food_Cake_C_1": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Food_Donut_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Food_Donut_C_1": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Food_Eggplant02_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Food_Eggplant_01_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Food_Tomato_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Food_Tomato_C_1": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Fork_Child01_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Frigerator_005_C_0": {
+      "openable": true,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_Fruit_Banana_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Fruit_Tomato_01_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Fruit_Tomato_02_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Furniture_5_C_0": {
+      "openable": true,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Heater_01_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_Heater_01_C_1": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_Hood_03_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_Hook_04_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Kettle_1_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": true
+    },
+    "BP_Keyboard_Map005_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Knife_Child01_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Knife_Kichen005_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Laptop_1_C_0": {
+      "openable": true,
+      "pickable": true,
+      "powerable": true
+    },
+    "BP_Milk_01_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Milk_02_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Mouse_05_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Painting_005_000_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Painting_005_001_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Painting_005_002_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Painting_005_003_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Painting_005_004_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Painting_1_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Painting_5_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Painting_7_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Pan_Egg_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Pan_Pot_005_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Paper_Toilet_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Paper_Used_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Photo_07_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Photo_FrameR3_000_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Photo_FrameR3_003_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Photo_FrameR3_004_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Photo_FrameR3_006_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Pillow_01_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Pillow_Child01_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Pillow_Child02_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Pillow_Child03_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Plant_02_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Plant_07_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Plant_07_C_1": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Plant_10_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Plant_Map36_03_C_2": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Plant_PotStick_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Plant_Pot_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Plant_Red_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Plant_yellow_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Plate1_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Plate_01_C_1": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Plate_3_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Plate_3_C_1": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Plate_3_C_2": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Plate_4_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Plate_4_C_1": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Plate_4_C_2": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Plug_Socket_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Plug_Socket_C_1": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Plug_Socket_C_2": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Radiator_01_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_Radiator_01_C_1": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_Radio_01_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_RemoteController_01_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Rod_Bath005_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Rod_Bath005_C_1": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Rod_Bath005_C_10": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Rod_Bath005_C_11": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Rod_Bath005_C_12": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Rod_Bath005_C_2": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Rod_Bath005_C_3": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Rod_Bath005_C_4": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Rod_Bath005_C_5": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Rod_Bath005_C_6": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Rod_Bath005_C_7": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Rod_Bath005_C_8": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Rod_Bath005_C_9": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Rod_Curtains_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_ShoesBox_005_C_0": {
+      "openable": true,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Shoes_01_C_3": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Shoes_01_C_4": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Sink_005_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Socket_1_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Socket_2_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_SofaStool_1_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Sofa_008_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Sofa_011_C_1": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Sofa_Single_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Stove_Oven3_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_Suitcase_Blue_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Switch_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_Switch_C_2": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_Switch_C_3": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_Switch_C_4": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_Switch_C_5": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_Switch_C_6": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_Switch_C_7": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_TV_Curved_C_3": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_TableLamp_BedsideLamp1_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_TableLamp_BedsideLamp1_C_1": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_TableLamp_R2_01_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_Tap_Faucet_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Toilet_005_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Towel_hanged_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Toy_BrownBear_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Toy_Elephant1_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Toy_Elephant_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Toy_Frog_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Toy_Horse_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Toy_Horse_C_1": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Toy_P_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Toy_Shapes_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Toy_SpaceManA_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Toy_W_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_TrashCan_01_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_TrashCan_Bathroom_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Tray_003_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Tray_005_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Tray_008_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_VanityUnit_Map005_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Vase_03_C_1": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Vase_06_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Vase_21_C_1": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_Vase_7_C_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "BP_WallLamp_Baulkhead1_C_2": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_WallLamp_Baulkhead1_C_5": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_WallLamp_Baulkhead1_C_7": {
+      "openable": false,
+      "pickable": false,
+      "powerable": true
+    },
+    "BP_WallMirror_Mirror_map005_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Wall_base_C_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Wall_base_C_1": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Wall_base_C_2": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Window_005_Frame_00_C_0": {
+      "openable": true,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Window_005_Frame_00_C_1": {
+      "openable": true,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Window_005_Frame_00_C_2": {
+      "openable": true,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Window_005_Frame_perfbx_C_0": {
+      "openable": true,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Window_Bath_C_0": {
+      "openable": true,
+      "pickable": false,
+      "powerable": false
+    },
+    "ChildActor_GEN_VARIABLE_BP_Plug_Back_C_CAT_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "ChildActor_GEN_VARIABLE_BP_Plug_Back_C_CAT_1": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "ChildActor_GEN_VARIABLE_BP_Plug_Withe_C_CAT_0": {
+      "openable": false,
+      "pickable": true,
+      "powerable": false
+    },
+    "SceneManager_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "StaticMeshActor_128": {
+      "openable": true,
+      "pickable": false,
+      "powerable": false
+    },
+    "StaticMeshActor_143": {
+      "openable": true,
+      "pickable": false,
+      "powerable": false
+    },
+    "StaticMeshActor_17": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "StaticMeshActor_18": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "StaticMeshActor_19": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "StaticMeshActor_20": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "StaticMeshActor_21": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "StaticMeshActor_22": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "StaticMeshActor_23": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "StaticMeshActor_24": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "StaticMeshActor_25": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "StaticMeshActor_26": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "StaticMeshActor_27": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "StaticMeshActor_28": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "StaticMeshActor_29": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "StaticMeshActor_30": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "StaticMeshActor_31": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "StaticMeshActor_33": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "StaticMeshActor_34": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "StaticMeshActor_37": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "TTSpectator_0": {
+      "openable": false,
+      "pickable": false,
+      "powerable": false
+    }
+  }
+}
