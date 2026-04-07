@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
@@ -12,9 +13,55 @@ def load_text(path: Path) -> str:
     return path.read_text(encoding="utf-8").strip()
 
 
-def load_env(path: Path) -> dict[str, Any]:
+def normalize_label_from_object_id(object_id: str) -> str | None:
+    s = object_id.split(".")[0]
+    if s.startswith("BP_"):
+        s = s[3:]
+    elif s.startswith("ChildActor_GEN_VARIABLE_BP_"):
+        s = s[len("ChildActor_GEN_VARIABLE_BP_") :]
+
+    s = re.sub(r"_C(_\d+)?$", "", s)
+    s = re.sub(r"_[0-9]+$", "", s)
+    s = re.sub(r"[^A-Za-z]+", "_", s).strip("_").lower()
+    if not s:
+        return None
+    return s
+
+
+def load_env(path: Path) -> dict[str, dict[str, Any]]:
     with path.open("r", encoding="utf-8") as f:
-        return json.load(f)
+        data = json.load(f)
+
+    # schema A: {"obj_id": {"label": "...", ...}, ...}
+    if isinstance(data, dict) and "objects" not in data:
+        return {k: v for k, v in data.items() if isinstance(v, dict)}
+
+    # schema B: {"objects": {"obj_id": {"openable":..., "pickable":..., ...}, ...}}
+    if isinstance(data, dict) and isinstance(data.get("objects"), dict):
+        normalized: dict[str, dict[str, Any]] = {}
+        for obj_id, info in data["objects"].items():
+            if not isinstance(info, dict):
+                continue
+            item = dict(info)
+            item.setdefault("label", normalize_label_from_object_id(obj_id))
+            normalized[obj_id] = item
+        return normalized
+
+    raise ValueError(f"Unsupported env data format: {path}")
+
+
+def load_and_merge_env(paths: list[Path]) -> dict[str, dict[str, Any]]:
+    merged: dict[str, dict[str, Any]] = {}
+    for path in paths:
+        current = load_env(path)
+        for obj_id, info in current.items():
+            if obj_id not in merged:
+                merged[obj_id] = {}
+            incoming = dict(info)
+            if "label" in merged[obj_id] and "label" in incoming:
+                incoming.pop("label")
+            merged[obj_id].update(incoming)
+    return merged
 
 
 def summarize_env(env_data: dict[str, Any], max_examples_per_label: int = 5) -> dict[str, Any]:
@@ -47,26 +94,28 @@ def build_messages(
     scene_name: str,
 ) -> list[dict[str, str]]:
     system_prompt = f"""
-你是一个“室内场景子任务生成器”。
-你必须严格依据给定环境数据生成可执行、可评估、原子化的子任务，不要虚构不存在的物体类别。
+You are an "indoor-scene subtask generator".
+You must strictly rely on the provided environment data to generate executable, evaluable, and atomic subtasks.
+Do not fabricate object categories that do not exist in the environment.
 
-下面是环境说明：
+Environment description:
 {env_intro}
 
-下面是可用动作说明：
+Available actions:
 {action_prompts}
 
-下面是子任务示例：
+Subtask examples:
 {subtask_example}
 
-下面是评估示例：
+Evaluation examples:
 {eval_example}
 """.strip()
 
     user_prompt = f"""
-请根据提供的环境，生成 {n_subtasks} 个不同的子任务模板，场景名统一为 "{scene_name}"。
+Based on the provided environment, generate {n_subtasks} different subtask templates.
+Use "{scene_name}" as the scene name for all subtasks.
 
-输出必须是一个 JSON 对象，格式如下：
+Output must be a JSON object in the format below:
 {{
   "subtasks": [
     {{
@@ -84,19 +133,19 @@ def build_messages(
   ]
 }}
 
-硬性约束：
-1) 只使用环境中真实存在的 label 作为参数候选，不要生成不存在的类别。
-2) 必须生成 {n_subtasks} 种不同 task_type（不能只是同一模板替换object）。
-3) 所有动作都要在结果集中覆盖：move, move2, rotation, pick_up, put_down, open, close, turn_on, turn_off。
-4) 每个子任务尽量原子化或两步组合，且 action_space 只能从以下动作名中选：
-   ["move", "move2", "rotation", "pick_up", "put_down", "open", "close", "turn_on", "turn_off"]
-5) 每个子任务都要给出可解释的 evaluation_checkpoints，权重和为 1.0。
-6) 只输出 JSON，不要输出额外解释。
+Hard constraints:
+1) Only use labels that truly exist in the environment as parameter candidates; do not invent categories.
+2) Generate {n_subtasks} different task types (not just one template with object substitution).
+3) The result set must cover all actions: move2, rotation, pick_up, put_down, open, close, turn_on, turn_off.
+4) Each subtask should be atomic or at most a two-step composition, and action_space can only use:
+   ["move2", "rotation", "pick_up", "put_down", "open", "close", "turn_on", "turn_off"]
+5) Each subtask must provide explainable evaluation_checkpoints with weights summing to 1.0.
+6) Output JSON only, with no extra explanation.
 
-环境统计摘要（便于快速参考）：
+Environment summary (for quick reference):
 {json.dumps(env_summary, ensure_ascii=False, indent=2)}
 
-完整环境数据（JSON）：
+Complete environment data (JSON):
 {json.dumps(env_data, ensure_ascii=False)}
 """.strip()
 
@@ -147,30 +196,73 @@ def call_chat_completions(
     return data["choices"][0]["message"]["content"]
 
 
+def call_qwen_dashscope(
+    *,
+    api_key: str,
+    model: str,
+    messages: list[dict[str, str]],
+    timeout: int = 180,
+) -> str:
+    try:
+        from dashscope import Generation
+    except ImportError as e:
+        raise RuntimeError("dashscope is not installed. Please install it with: pip install dashscope") from e
+
+    resp = Generation.call(
+        api_key=api_key,
+        model=model,
+        messages=messages,
+        result_format="message",
+        temperature=0.7,
+        timeout=timeout,
+    )
+
+    # DashScope SDK returns a response object with status_code / output fields.
+    status_code = getattr(resp, "status_code", None)
+    if status_code is not None and status_code != 200:
+        msg = getattr(resp, "message", "")
+        code = getattr(resp, "code", "")
+        raise RuntimeError(f"Qwen request failed: status={status_code}, code={code}, message={msg}")
+
+    output = getattr(resp, "output", None)
+    if isinstance(output, dict):
+        choices = output.get("choices") or []
+        if choices:
+            message = choices[0].get("message", {})
+            content = message.get("content", "")
+            if isinstance(content, str):
+                return content
+            if isinstance(content, list):
+                text_parts = [p.get("text", "") for p in content if isinstance(p, dict)]
+                return "".join(text_parts)
+
+    raise RuntimeError(f"Unexpected Qwen response format: {resp}")
+
+
 def generate_fallback_subtasks(env_summary: dict[str, Any], n_subtasks: int, scene_name: str) -> dict[str, Any]:
     labels = list(env_summary.get("label_counts", {}).keys()) or ["object"]
 
     task_pool: list[dict[str, Any]] = [
-        {"task_type": "locate_object", "instruction_template": "找到一个{object}。", "task_intent": "定位目标", "action_space": ["rotation"], "input_resources": ["{object}_exists"], "output_resources": ["{object}_visible"], "evaluation_checkpoints": {"visible": 1.0}},
-        {"task_type": "move_to_object", "instruction_template": "移动到{object}旁边。", "task_intent": "到达目标", "action_space": ["move2"], "input_resources": ["{object}_exists"], "output_resources": ["agent_at_{object}"], "evaluation_checkpoints": {"at_object": 1.0}},
-        {"task_type": "strafe_then_observe", "instruction_template": "先侧向移动，再找到{object}。", "task_intent": "位姿变化后观察", "action_space": ["move", "rotation"], "input_resources": ["{object}_exists"], "output_resources": ["agent_repositioned", "{object}_visible"], "evaluation_checkpoints": {"repositioned": 0.4, "visible": 0.6}},
-        {"task_type": "inspect_then_move", "instruction_template": "先观察到{object}，再移动到它旁边。", "task_intent": "感知后导航", "action_space": ["rotation", "move2"], "input_resources": ["{object}_exists"], "output_resources": ["{object}_visible", "agent_at_{object}"], "evaluation_checkpoints": {"visible": 0.4, "at_object": 0.6}},
-        {"task_type": "pick_object", "instruction_template": "找到{object}并将其拿起。", "task_intent": "拾取目标", "action_space": ["move2", "pick_up"], "input_resources": ["{object}_exists"], "output_resources": ["agent_at_{object}", "{object}_in_hand"], "evaluation_checkpoints": {"at_object": 0.4, "picked": 0.6}},
-        {"task_type": "pick_and_drop", "instruction_template": "拿起{object}后立刻放下。", "task_intent": "抓取放置", "action_space": ["move2", "pick_up", "put_down"], "input_resources": ["{object}_exists"], "output_resources": ["{object}_in_hand", "{object}_released"], "evaluation_checkpoints": {"picked": 0.5, "dropped": 0.5}},
-        {"task_type": "approach_two_objects", "instruction_template": "先到{object_a}，再到{object_b}。", "task_intent": "双目标导航", "action_space": ["move2"], "input_resources": ["{object_a}_exists", "{object_b}_exists"], "output_resources": ["agent_at_{object_a}", "agent_at_{object_b}"], "evaluation_checkpoints": {"at_a": 0.5, "at_b": 0.5}},
-        {"task_type": "open_object", "instruction_template": "移动到{object}并打开它。", "task_intent": "开启可开合物", "action_space": ["move2", "open"], "input_resources": ["{object}_exists"], "output_resources": ["agent_at_{object}", "{object}_opened"], "evaluation_checkpoints": {"at_object": 0.4, "opened": 0.6}},
-        {"task_type": "close_object", "instruction_template": "移动到{object}并关闭它。", "task_intent": "关闭可开合物", "action_space": ["move2", "close"], "input_resources": ["{object}_exists"], "output_resources": ["agent_at_{object}", "{object}_closed"], "evaluation_checkpoints": {"at_object": 0.4, "closed": 0.6}},
-        {"task_type": "open_then_close", "instruction_template": "先打开{object}再将其关闭。", "task_intent": "开合完整流程", "action_space": ["move2", "open", "close"], "input_resources": ["{object}_exists"], "output_resources": ["{object}_opened", "{object}_closed"], "evaluation_checkpoints": {"opened": 0.5, "closed": 0.5}},
-        {"task_type": "turn_on_object", "instruction_template": "移动到{object}并将其打开电源。", "task_intent": "开电源", "action_space": ["move2", "turn_on"], "input_resources": ["{object}_exists"], "output_resources": ["agent_at_{object}", "{object}_on"], "evaluation_checkpoints": {"at_object": 0.4, "turned_on": 0.6}},
-        {"task_type": "turn_off_object", "instruction_template": "移动到{object}并将其关闭电源。", "task_intent": "关电源", "action_space": ["move2", "turn_off"], "input_resources": ["{object}_exists"], "output_resources": ["agent_at_{object}", "{object}_off"], "evaluation_checkpoints": {"at_object": 0.4, "turned_off": 0.6}},
-        {"task_type": "turn_on_then_off", "instruction_template": "先打开{object}电源，再关闭它。", "task_intent": "电源开关闭环", "action_space": ["move2", "turn_on", "turn_off"], "input_resources": ["{object}_exists"], "output_resources": ["{object}_on", "{object}_off"], "evaluation_checkpoints": {"turned_on": 0.5, "turned_off": 0.5}},
-        {"task_type": "rotate_scan_full", "instruction_template": "原地旋转并确认看到{object}。", "task_intent": "全向扫描", "action_space": ["rotation"], "input_resources": ["{object}_exists"], "output_resources": ["scan_completed", "{object}_visible"], "evaluation_checkpoints": {"scan": 0.4, "visible": 0.6}},
-        {"task_type": "move_back_and_forth", "instruction_template": "向前移动后返回并再次看到{object}。", "task_intent": "往返移动与再识别", "action_space": ["move", "rotation"], "input_resources": ["{object}_exists"], "output_resources": ["agent_repositioned", "{object}_visible_again"], "evaluation_checkpoints": {"moved": 0.5, "reacquired": 0.5}},
-        {"task_type": "three_step_pick", "instruction_template": "先观察{object}，再靠近并拿起它。", "task_intent": "三步感知交互", "action_space": ["rotation", "move2", "pick_up"], "input_resources": ["{object}_exists"], "output_resources": ["{object}_visible", "agent_at_{object}", "{object}_in_hand"], "evaluation_checkpoints": {"visible": 0.2, "at_object": 0.3, "picked": 0.5}},
-        {"task_type": "pick_move_drop", "instruction_template": "拿起{object}后移动一步再放下。", "task_intent": "携带后放置", "action_space": ["move2", "pick_up", "move", "put_down"], "input_resources": ["{object}_exists"], "output_resources": ["{object}_in_hand", "agent_repositioned", "{object}_released"], "evaluation_checkpoints": {"picked": 0.3, "moved": 0.3, "dropped": 0.4}},
-        {"task_type": "open_then_pick", "instruction_template": "打开{object}附近区域后拿起一个{object2}。", "task_intent": "开合后抓取", "action_space": ["move2", "open", "pick_up"], "input_resources": ["{object}_exists", "{object2}_exists"], "output_resources": ["{object}_opened", "{object2}_in_hand"], "evaluation_checkpoints": {"opened": 0.4, "picked": 0.6}},
-        {"task_type": "power_then_pick", "instruction_template": "打开{object}电源后，拿起{object2}。", "task_intent": "通电后交互", "action_space": ["move2", "turn_on", "pick_up"], "input_resources": ["{object}_exists", "{object2}_exists"], "output_resources": ["{object}_on", "{object2}_in_hand"], "evaluation_checkpoints": {"turned_on": 0.4, "picked": 0.6}},
-        {"task_type": "close_then_turn_off", "instruction_template": "关闭{object}并将{object2}电源关闭。", "task_intent": "双目标关闭", "action_space": ["move2", "close", "turn_off"], "input_resources": ["{object}_exists", "{object2}_exists"], "output_resources": ["{object}_closed", "{object2}_off"], "evaluation_checkpoints": {"closed": 0.5, "turned_off": 0.5}},
+        {"task_type": "locate_object", "instruction_template": "Find a {object}.", "task_intent": "Locate target", "action_space": ["rotation"], "input_resources": ["{object}_exists"], "output_resources": ["{object}_visible"], "evaluation_checkpoints": {"visible": 1.0}},
+        {"task_type": "move_to_object", "instruction_template": "Move next to the {object}.", "task_intent": "Reach target", "action_space": ["move2"], "input_resources": ["{object}_exists"], "output_resources": ["agent_at_{object}"], "evaluation_checkpoints": {"at_object": 1.0}},
+        {"task_type": "observe_and_align", "instruction_template": "Rotate to observe, then align with the {object}.", "task_intent": "Align after scanning", "action_space": ["rotation"], "input_resources": ["{object}_exists"], "output_resources": ["{object}_visible", "agent_aligned_to_{object}"], "evaluation_checkpoints": {"visible": 0.5, "aligned": 0.5}},
+        {"task_type": "inspect_then_move", "instruction_template": "First observe the {object}, then move next to it.", "task_intent": "Perceive then navigate", "action_space": ["rotation", "move2"], "input_resources": ["{object}_exists"], "output_resources": ["{object}_visible", "agent_at_{object}"], "evaluation_checkpoints": {"visible": 0.4, "at_object": 0.6}},
+        {"task_type": "pick_object", "instruction_template": "Find the {object} and pick it up.", "task_intent": "Pick up target", "action_space": ["move2", "pick_up"], "input_resources": ["{object}_exists"], "output_resources": ["agent_at_{object}", "{object}_in_hand"], "evaluation_checkpoints": {"at_object": 0.4, "picked": 0.6}},
+        {"task_type": "pick_and_drop", "instruction_template": "Pick up the {object} and immediately put it down.", "task_intent": "Pick and place", "action_space": ["move2", "pick_up", "put_down"], "input_resources": ["{object}_exists"], "output_resources": ["{object}_in_hand", "{object}_released"], "evaluation_checkpoints": {"picked": 0.5, "dropped": 0.5}},
+        {"task_type": "approach_two_objects", "instruction_template": "Go to {object_a}, then go to {object_b}.", "task_intent": "Two-target navigation", "action_space": ["move2"], "input_resources": ["{object_a}_exists", "{object_b}_exists"], "output_resources": ["agent_at_{object_a}", "agent_at_{object_b}"], "evaluation_checkpoints": {"at_a": 0.5, "at_b": 0.5}},
+        {"task_type": "open_object", "instruction_template": "Move to the {object} and open it.", "task_intent": "Open an openable object", "action_space": ["move2", "open"], "input_resources": ["{object}_exists"], "output_resources": ["agent_at_{object}", "{object}_opened"], "evaluation_checkpoints": {"at_object": 0.4, "opened": 0.6}},
+        {"task_type": "close_object", "instruction_template": "Move to the {object} and close it.", "task_intent": "Close an openable object", "action_space": ["move2", "close"], "input_resources": ["{object}_exists"], "output_resources": ["agent_at_{object}", "{object}_closed"], "evaluation_checkpoints": {"at_object": 0.4, "closed": 0.6}},
+        {"task_type": "open_then_close", "instruction_template": "Open the {object}, then close it.", "task_intent": "Open-close cycle", "action_space": ["move2", "open", "close"], "input_resources": ["{object}_exists"], "output_resources": ["{object}_opened", "{object}_closed"], "evaluation_checkpoints": {"opened": 0.5, "closed": 0.5}},
+        {"task_type": "turn_on_object", "instruction_template": "Move to the {object} and turn it on.", "task_intent": "Power on", "action_space": ["move2", "turn_on"], "input_resources": ["{object}_exists"], "output_resources": ["agent_at_{object}", "{object}_on"], "evaluation_checkpoints": {"at_object": 0.4, "turned_on": 0.6}},
+        {"task_type": "turn_off_object", "instruction_template": "Move to the {object} and turn it off.", "task_intent": "Power off", "action_space": ["move2", "turn_off"], "input_resources": ["{object}_exists"], "output_resources": ["agent_at_{object}", "{object}_off"], "evaluation_checkpoints": {"at_object": 0.4, "turned_off": 0.6}},
+        {"task_type": "turn_on_then_off", "instruction_template": "Turn on the {object}, then turn it off.", "task_intent": "Power toggle cycle", "action_space": ["move2", "turn_on", "turn_off"], "input_resources": ["{object}_exists"], "output_resources": ["{object}_on", "{object}_off"], "evaluation_checkpoints": {"turned_on": 0.5, "turned_off": 0.5}},
+        {"task_type": "rotate_scan_full", "instruction_template": "Rotate in place and confirm the {object} is visible.", "task_intent": "Full-direction scan", "action_space": ["rotation"], "input_resources": ["{object}_exists"], "output_resources": ["scan_completed", "{object}_visible"], "evaluation_checkpoints": {"scan": 0.4, "visible": 0.6}},
+        {"task_type": "double_rotate_scan", "instruction_template": "Rotate twice and confirm the {object} is visible again.", "task_intent": "Repeated scan and reacquisition", "action_space": ["rotation"], "input_resources": ["{object}_exists"], "output_resources": ["scan_completed_twice", "{object}_visible_again"], "evaluation_checkpoints": {"scan": 0.5, "reacquired": 0.5}},
+        {"task_type": "three_step_pick", "instruction_template": "Observe the {object}, move closer, then pick it up.", "task_intent": "Three-step perception-interaction", "action_space": ["rotation", "move2", "pick_up"], "input_resources": ["{object}_exists"], "output_resources": ["{object}_visible", "agent_at_{object}", "{object}_in_hand"], "evaluation_checkpoints": {"visible": 0.2, "at_object": 0.3, "picked": 0.5}},
+        {"task_type": "pick_navigate_drop", "instruction_template": "Pick up the {object}, navigate to a new position, then put it down.", "task_intent": "Carry and place", "action_space": ["move2", "pick_up", "put_down"], "input_resources": ["{object}_exists"], "output_resources": ["{object}_in_hand", "agent_repositioned", "{object}_released"], "evaluation_checkpoints": {"picked": 0.3, "repositioned": 0.3, "dropped": 0.4}},
+        {"task_type": "open_then_pick", "instruction_template": "Open the {object} area and then pick up a {object2}.", "task_intent": "Open then pick", "action_space": ["move2", "open", "pick_up"], "input_resources": ["{object}_exists", "{object2}_exists"], "output_resources": ["{object}_opened", "{object2}_in_hand"], "evaluation_checkpoints": {"opened": 0.4, "picked": 0.6}},
+        {"task_type": "power_then_pick", "instruction_template": "Turn on the {object}, then pick up a {object2}.", "task_intent": "Power then interact", "action_space": ["move2", "turn_on", "pick_up"], "input_resources": ["{object}_exists", "{object2}_exists"], "output_resources": ["{object}_on", "{object2}_in_hand"], "evaluation_checkpoints": {"turned_on": 0.4, "picked": 0.6}},
+        {"task_type": "close_then_turn_off", "instruction_template": "Close the {object} and turn off the {object2}.", "task_intent": "Dual-object shutdown", "action_space": ["move2", "close", "turn_off"], "input_resources": ["{object}_exists", "{object2}_exists"], "output_resources": ["{object}_closed", "{object2}_off"], "evaluation_checkpoints": {"closed": 0.5, "turned_off": 0.5}},
     ]
 
     subtasks: list[dict[str, Any]] = []
@@ -208,47 +300,71 @@ def generate_fallback_subtasks(env_summary: dict[str, Any], n_subtasks: int, sce
 def validate_diversity(result: dict[str, Any], expected_num: int, min_unique_types: int) -> None:
     subtasks = result.get("subtasks", [])
     if len(subtasks) != expected_num:
-        raise ValueError(f"subtasks数量不正确: expected={expected_num}, got={len(subtasks)}")
+        raise ValueError(f"Invalid subtask count: expected={expected_num}, got={len(subtasks)}")
 
     task_types = [s.get("task_type") for s in subtasks]
     unique_task_types = {t for t in task_types if isinstance(t, str) and t.strip()}
     if len(unique_task_types) < min_unique_types:
         raise ValueError(
-            f"任务类型不够多样: 期望至少{min_unique_types}个不同task_type, 实际={len(unique_task_types)}"
+            f"Insufficient task-type diversity: expected at least {min_unique_types}, got {len(unique_task_types)}"
         )
 
 
 def validate_action_coverage(result: dict[str, Any]) -> None:
-    required = {"move", "move2", "rotation", "pick_up", "put_down", "open", "close", "turn_on", "turn_off"}
+    required = {"move2", "rotation", "pick_up", "put_down", "open", "close", "turn_on", "turn_off"}
     seen = {a for s in result.get("subtasks", []) for a in s.get("action_space", [])}
     missing = sorted(required - seen)
     if missing:
-        raise ValueError(f"动作覆盖不完整，缺少: {missing}")
+        raise ValueError(f"Incomplete action coverage, missing: {missing}")
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="基于环境与prompt模板调用大模型生成子任务。")
-    parser.add_argument("--env-data", default="env_data/touchdata.json", help="环境JSON文件路径")
-    parser.add_argument("--prompts-dir", default="prompts", help="prompt目录，需包含env.yaml/actions_prompts.yaml等")
-    parser.add_argument("--scene", default="daily_life_scene", help="子任务中的scene字段")
-    parser.add_argument("--num-subtasks", type=int, default=10, help="生成子任务数量")
-    parser.add_argument("--output", default="outputs/subtasks_generated_10.json", help="输出JSON路径")
-    parser.add_argument("--model", default=os.getenv("OPENAI_MODEL", "gpt-4o-mini"), help="模型名")
-    parser.add_argument("--base-url", default=os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1"), help="API base url")
-    parser.add_argument("--dry-run", action="store_true", help="不调用API，使用本地回退规则生成示例")
-    parser.add_argument("--min-unique-types", type=int, default=None, help="至少需要多少种不同task_type，默认等于任务数量")
-    parser.add_argument("--require-all-actions", action="store_true", help="要求结果覆盖全部动作")
+    parser = argparse.ArgumentParser(description="Generate subtasks from environment data and prompt templates.")
+    parser.add_argument("--api-key", default=None, help="API key. If omitted, fallback to OPENAI_API_KEY.")
+    parser.add_argument(
+        "--provider",
+        choices=["auto", "openai", "qwen"],
+        default="auto",
+        help="LLM provider. auto: route qwen* models to DashScope SDK, others to OpenAI-compatible API.",
+    )
+    parser.add_argument(
+        "--env-data",
+        nargs="+",
+        default=["env_data/touchdata.json"],
+        help="Environment JSON paths. Multiple files supported; later files supplement/override earlier ones.",
+    )
+    parser.add_argument("--prompts-dir", default="prompts", help="Prompt directory (must include env.yaml/actions_prompts.yaml, etc.).")
+    parser.add_argument("--scene", default="daily_life_scene", help="Scene field value in generated subtasks.")
+    parser.add_argument("--num-subtasks", type=int, default=10, help="Number of subtasks to generate.")
+    parser.add_argument("--output", default="outputs/subtasks_generated_10.json", help="Output JSON path.")
+    parser.add_argument("--model", default=os.getenv("OPENAI_MODEL", "gpt-4o-mini"), help="Model name.")
+    parser.add_argument("--base-url", default=os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1"), help="OpenAI-compatible API base url")
+    parser.add_argument("--dry-run", action="store_true", help="Do not call API; generate with local fallback rules.")
+    parser.add_argument("--min-unique-types", type=int, default=None, help="Minimum number of unique task_types; default equals num-subtasks.")
+    parser.add_argument("--require-all-actions", action="store_true", help="Require complete action coverage in results.")
     args = parser.parse_args()
 
-    env_data = load_env(Path(args.env_data))
+    env_data = load_and_merge_env([Path(p) for p in args.env_data])
     env_summary = summarize_env(env_data)
 
     if args.dry_run:
         result = generate_fallback_subtasks(env_summary, args.num_subtasks, args.scene)
     else:
-        api_key = os.getenv("OPENAI_API_KEY")
+        provider = args.provider
+        if provider == "auto":
+            provider = "qwen" if args.model.lower().startswith("qwen") else "openai"
+
+        api_key = str(
+            args.api_key
+            or (os.getenv("DASHSCOPE_API_KEY") if provider == "qwen" else os.getenv("OPENAI_API_KEY"))
+            or os.getenv("OPENAI_API_KEY")
+            or ""
+        )
         if not api_key:
-            raise RuntimeError("请先设置环境变量 OPENAI_API_KEY")
+            if provider == "qwen":
+                raise RuntimeError("Please set Qwen API key via --api-key or DASHSCOPE_API_KEY.")
+            raise RuntimeError("Please set OpenAI API key via --api-key or OPENAI_API_KEY.")
+        model = str(args.model)
 
         prompts_dir = Path(args.prompts_dir)
         messages = build_messages(
@@ -261,12 +377,20 @@ def main() -> None:
             n_subtasks=args.num_subtasks,
             scene_name=args.scene,
         )
-        raw = call_chat_completions(
-            api_key=api_key,
-            model=args.model,
-            messages=messages,
-            base_url=args.base_url,
-        )
+        if provider == "qwen":
+            raw = call_qwen_dashscope(
+                api_key=api_key,
+                model=model,
+                messages=messages,
+            )
+        else:
+            base_url = str(args.base_url)
+            raw = call_chat_completions(
+                api_key=api_key,
+                model=model,
+                messages=messages,
+                base_url=base_url,
+            )
         result = json.loads(raw)
 
     min_unique_types = args.min_unique_types if args.min_unique_types is not None else args.num_subtasks
