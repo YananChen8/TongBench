@@ -213,6 +213,18 @@ def call_qwen_dashscope(
         base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
     )
 
+    # ========== 查看输入长度 ==========
+    # 把所有消息内容拼起来，计算总长度
+    total_length = 0
+    for idx, msg in enumerate(messages):
+        content_len = len(msg["content"])
+        total_length += content_len
+        print(f"第 {idx+1} 条消息长度：{content_len}")
+
+    print(f"\n✅ 输入总长度：{total_length}")
+    print(f"⚠️  模型限制上限：30720")
+    # ========== 查看结束 ==========
+
     completion = client.chat.completions.create(
         model=model,
         messages=messages,

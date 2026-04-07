@@ -1,0 +1,1329 @@
+{
+  "subtasks": [
+    {
+      "subtask_id": "subtask_001",
+      "task_type": "Open Object",
+      "instruction_template": "Find the '{object}' and open it.",
+      "task_intent": "Open a closed container or barrier in the scene.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "door"
+        ]
+      },
+      "input_resources": [
+        "door_exists"
+      ],
+      "output_resources": [
+        "door_opened"
+      ],
+      "action_space": [
+        "move2",
+        "open"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "done": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_002",
+      "task_type": "Open Window",
+      "instruction_template": "Locate and open the '{object}'.",
+      "task_intent": "Open a window to let light or air in.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "window"
+        ]
+      },
+      "input_resources": [
+        "window_exists"
+      ],
+      "output_resources": [
+        "window_opened"
+      ],
+      "action_space": [
+        "move2",
+        "open"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "done": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_003",
+      "task_type": "Open Curtain",
+      "instruction_template": "Move to the '{object}' and open it.",
+      "task_intent": "Open curtains on a window.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "curtains"
+        ]
+      },
+      "input_resources": [
+        "curtains_exist"
+      ],
+      "output_resources": [
+        "curtains_opened"
+      ],
+      "action_space": [
+        "move2",
+        "open"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "done": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_004",
+      "task_type": "Open Wardrobe",
+      "instruction_template": "Find the '{object}' and open its door.",
+      "task_intent": "Access storage inside a wardrobe.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "wardrobe"
+        ]
+      },
+      "input_resources": [
+        "wardrobe_exists"
+      ],
+      "output_resources": [
+        "wardrobe_opened"
+      ],
+      "action_space": [
+        "move2",
+        "open"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "done": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_005",
+      "task_type": "Open Refrigerator",
+      "instruction_template": "Navigate to the '{object}' and open it.",
+      "task_intent": "Open the refrigerator for food access.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "refrigerator"
+        ]
+      },
+      "input_resources": [
+        "refrigerator_exists"
+      ],
+      "output_resources": [
+        "refrigerator_opened"
+      ],
+      "action_space": [
+        "move2",
+        "open"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "done": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_006",
+      "task_type": "Open Dishwasher",
+      "instruction_template": "Go to the '{object}' and open it.",
+      "task_intent": "Open the dishwasher to load or unload.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "dishwasher"
+        ]
+      },
+      "input_resources": [
+        "dishwasher_exists"
+      ],
+      "output_resources": [
+        "dishwasher_opened"
+      ],
+      "action_space": [
+        "move2",
+        "open"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "done": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_007",
+      "task_type": "Open Cabinet",
+      "instruction_template": "Identify the '{object}' and open it.",
+      "task_intent": "Open a kitchen cabinet.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "cupboard"
+        ]
+      },
+      "input_resources": [
+        "cupboard_exists"
+      ],
+      "output_resources": [
+        "cupboard_opened"
+      ],
+      "action_space": [
+        "move2",
+        "open"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "done": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_008",
+      "task_type": "Pick Book",
+      "instruction_template": "Find the '{object}' and pick it up.",
+      "task_intent": "Acquire a book from its location.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "book"
+        ]
+      },
+      "input_resources": [
+        "book_exists"
+      ],
+      "output_resources": [
+        "book_in_hand"
+      ],
+      "action_space": [
+        "move2",
+        "pick_up"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "picked": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_009",
+      "task_type": "Pick Toy",
+      "instruction_template": "Locate the '{object}' and pick it up.",
+      "task_intent": "Retrieve a toy object.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "toy"
+        ]
+      },
+      "input_resources": [
+        "toy_exists"
+      ],
+      "output_resources": [
+        "toy_in_hand"
+      ],
+      "action_space": [
+        "move2",
+        "pick_up"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "picked": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_010",
+      "task_type": "Pick Vase",
+      "instruction_template": "Move to the '{object}' and pick it up.",
+      "task_intent": "Grasp a vase object.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "vase"
+        ]
+      },
+      "input_resources": [
+        "vase_exists"
+      ],
+      "output_resources": [
+        "vase_in_hand"
+      ],
+      "action_space": [
+        "move2",
+        "pick_up"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "picked": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_011",
+      "task_type": "Pick Food Tomato",
+      "instruction_template": "Find the '{object}' and pick it up.",
+      "task_intent": "Pick up a tomato item.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "tomato"
+        ]
+      },
+      "input_resources": [
+        "tomato_exists"
+      ],
+      "output_resources": [
+        "tomato_in_hand"
+      ],
+      "action_space": [
+        "move2",
+        "pick_up"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "picked": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_012",
+      "task_type": "Pick Food Banana",
+      "instruction_template": "Locate and pick up the '{object}'.",
+      "task_intent": "Retrieve a banana.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "banana"
+        ]
+      },
+      "input_resources": [
+        "banana_exists"
+      ],
+      "output_resources": [
+        "banana_in_hand"
+      ],
+      "action_space": [
+        "move2",
+        "pick_up"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "picked": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_013",
+      "task_type": "Pick Food Doughnut",
+      "instruction_template": "Go to the '{object}' and pick it up.",
+      "task_intent": "Pick up a doughnut.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "doughnut"
+        ]
+      },
+      "input_resources": [
+        "doughnut_exists"
+      ],
+      "output_resources": [
+        "doughnut_in_hand"
+      ],
+      "action_space": [
+        "move2",
+        "pick_up"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "picked": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_014",
+      "task_type": "Pick Drink Container",
+      "instruction_template": "Find the '{object}' and pick it up.",
+      "task_intent": "Pick up a drink container.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "drinkContainer"
+        ]
+      },
+      "input_resources": [
+        "drinkContainer_exists"
+      ],
+      "output_resources": [
+        "drinkContainer_in_hand"
+      ],
+      "action_space": [
+        "move2",
+        "pick_up"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "picked": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_015",
+      "task_type": "Pick Plate",
+      "instruction_template": "Navigate to the '{object}' and pick it up.",
+      "task_intent": "Retrieve a plate.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "plate"
+        ]
+      },
+      "input_resources": [
+        "plate_exists"
+      ],
+      "output_resources": [
+        "plate_in_hand"
+      ],
+      "action_space": [
+        "move2",
+        "pick_up"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "picked": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_016",
+      "task_type": "Pick Bowl",
+      "instruction_template": "Find the '{object}' and pick it up.",
+      "task_intent": "Pick up a bowl.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "bowl"
+        ]
+      },
+      "input_resources": [
+        "bowl_exists"
+      ],
+      "output_resources": [
+        "bowl_in_hand"
+      ],
+      "action_space": [
+        "move2",
+        "pick_up"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "picked": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_017",
+      "task_type": "Pick Tray",
+      "instruction_template": "Go to the '{object}' and pick it up.",
+      "task_intent": "Retrieve a tray.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "tray"
+        ]
+      },
+      "input_resources": [
+        "tray_exists"
+      ],
+      "output_resources": [
+        "tray_in_hand"
+      ],
+      "action_space": [
+        "move2",
+        "pick_up"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "picked": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_018",
+      "task_type": "Pick Utensil Fork",
+      "instruction_template": "Locate the '{object}' and pick it up.",
+      "task_intent": "Pick up a fork.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "fork"
+        ]
+      },
+      "input_resources": [
+        "fork_exists"
+      ],
+      "output_resources": [
+        "fork_in_hand"
+      ],
+      "action_space": [
+        "move2",
+        "pick_up"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "picked": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_019",
+      "task_type": "Pick Utensil Knife",
+      "instruction_template": "Find the '{object}' and pick it up.",
+      "task_intent": "Pick up a knife.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "knife"
+        ]
+      },
+      "input_resources": [
+        "knife_exists"
+      ],
+      "output_resources": [
+        "knife_in_hand"
+      ],
+      "action_space": [
+        "move2",
+        "pick_up"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "picked": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_020",
+      "task_type": "Pick Pillow",
+      "instruction_template": "Move to the '{object}' and pick it up.",
+      "task_intent": "Grab a pillow.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "pillow"
+        ]
+      },
+      "input_resources": [
+        "pillow_exists"
+      ],
+      "output_resources": [
+        "pillow_in_hand"
+      ],
+      "action_space": [
+        "move2",
+        "pick_up"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "picked": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_021",
+      "task_type": "Pick Shoe",
+      "instruction_template": "Identify the '{object}' and pick it up.",
+      "task_intent": "Pick up a shoe.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "shoe"
+        ]
+      },
+      "input_resources": [
+        "shoe_exists"
+      ],
+      "output_resources": [
+        "shoe_in_hand"
+      ],
+      "action_space": [
+        "move2",
+        "pick_up"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "picked": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_022",
+      "task_type": "Pick Bottle",
+      "instruction_template": "Go to the '{object}' and pick it up.",
+      "task_intent": "Retrieve a bottle.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "bottle"
+        ]
+      },
+      "input_resources": [
+        "bottle_exists"
+      ],
+      "output_resources": [
+        "bottle_in_hand"
+      ],
+      "action_space": [
+        "move2",
+        "pick_up"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "picked": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_023",
+      "task_type": "Turn On Lamp",
+      "instruction_template": "Find the '{object}' and turn it on.",
+      "task_intent": "Activate a table lamp.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "tablelamp"
+        ]
+      },
+      "input_resources": [
+        "tablelamp_exists"
+      ],
+      "output_resources": [
+        "tablelamp_on"
+      ],
+      "action_space": [
+        "move2",
+        "turn_on"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "done": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_024",
+      "task_type": "Turn On Ceiling Lamp",
+      "instruction_template": "Locate and turn on the '{object}'.",
+      "task_intent": "Switch on a ceiling lamp.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "ceilinglamp"
+        ]
+      },
+      "input_resources": [
+        "ceilinglamp_exists"
+      ],
+      "output_resources": [
+        "ceilinglamp_on"
+      ],
+      "action_space": [
+        "move2",
+        "turn_on"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "done": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_025",
+      "task_type": "Turn On TV",
+      "instruction_template": "Navigate to the '{object}' and turn it on.",
+      "task_intent": "Power on the television.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "tv"
+        ]
+      },
+      "input_resources": [
+        "tv_exists"
+      ],
+      "output_resources": [
+        "tv_on"
+      ],
+      "action_space": [
+        "move2",
+        "turn_on"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "done": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_026",
+      "task_type": "Turn On Fan",
+      "instruction_template": "Find the '{object}' and turn it on.",
+      "task_intent": "Start the electric fan.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "electricFan"
+        ]
+      },
+      "input_resources": [
+        "electricFan_exists"
+      ],
+      "output_resources": [
+        "electricFan_on"
+      ],
+      "action_space": [
+        "move2",
+        "turn_on"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "done": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_027",
+      "task_type": "Turn On AC",
+      "instruction_template": "Go to the '{object}' and turn it on.",
+      "task_intent": "Activate the air conditioner.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "aircondition"
+        ]
+      },
+      "input_resources": [
+        "aircondition_exists"
+      ],
+      "output_resources": [
+        "aircondition_on"
+      ],
+      "action_space": [
+        "move2",
+        "turn_on"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "done": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_028",
+      "task_type": "Turn On Kettle",
+      "instruction_template": "Identify the '{object}' and turn it on.",
+      "task_intent": "Boil water using the kettle.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "kettle"
+        ]
+      },
+      "input_resources": [
+        "kettle_exists"
+      ],
+      "output_resources": [
+        "kettle_on"
+      ],
+      "action_space": [
+        "move2",
+        "turn_on"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "done": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_029",
+      "task_type": "Turn On Hood",
+      "instruction_template": "Locate and turn on the '{object}'.",
+      "task_intent": "Activate the kitchen hood.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "hood"
+        ]
+      },
+      "input_resources": [
+        "hood_exists"
+      ],
+      "output_resources": [
+        "hood_on"
+      ],
+      "action_space": [
+        "move2",
+        "turn_on"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "done": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_030",
+      "task_type": "Turn On Stove",
+      "instruction_template": "Find the '{object}' and turn it on.",
+      "task_intent": "Turn on the stove/hearth.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "hearth"
+        ]
+      },
+      "input_resources": [
+        "hearth_exists"
+      ],
+      "output_resources": [
+        "hearth_on"
+      ],
+      "action_space": [
+        "move2",
+        "turn_on"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "done": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_031",
+      "task_type": "Turn On Radiator",
+      "instruction_template": "Go to the '{object}' and turn it on.",
+      "task_intent": "Activate the radiator.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "radiator"
+        ]
+      },
+      "input_resources": [
+        "radiator_exists"
+      ],
+      "output_resources": [
+        "radiator_on"
+      ],
+      "action_space": [
+        "move2",
+        "turn_on"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "done": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_032",
+      "task_type": "Turn On Heater",
+      "instruction_template": "Navigate to the '{object}' and turn it on.",
+      "task_intent": "Turn on the bathroom heater.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "bathshelf"
+        ]
+      },
+      "input_resources": [
+        "bathshelf_exists"
+      ],
+      "output_resources": [
+        "bathshelf_on"
+      ],
+      "action_space": [
+        "move2",
+        "turn_on"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "done": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_033",
+      "task_type": "Turn On Radio",
+      "instruction_template": "Find the '{object}' and turn it on.",
+      "task_intent": "Play audio on the radio.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "radio"
+        ]
+      },
+      "input_resources": [
+        "radio_exists"
+      ],
+      "output_resources": [
+        "radio_on"
+      ],
+      "action_space": [
+        "move2",
+        "turn_on"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "done": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_034",
+      "task_type": "Turn Off Lamp",
+      "instruction_template": "Locate the '{object}' and turn it off.",
+      "task_intent": "Power off a table lamp.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "tablelamp"
+        ]
+      },
+      "input_resources": [
+        "tablelamp_exists"
+      ],
+      "output_resources": [
+        "tablelamp_off"
+      ],
+      "action_space": [
+        "move2",
+        "turn_off"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "done": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_035",
+      "task_type": "Turn Off TV",
+      "instruction_template": "Go to the '{object}' and turn it off.",
+      "task_intent": "Shut down the television.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "tv"
+        ]
+      },
+      "input_resources": [
+        "tv_exists"
+      ],
+      "output_resources": [
+        "tv_off"
+      ],
+      "action_space": [
+        "move2",
+        "turn_off"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "done": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_036",
+      "task_type": "Turn Off Fan",
+      "instruction_template": "Find the '{object}' and turn it off.",
+      "task_intent": "Stop the electric fan.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "electricFan"
+        ]
+      },
+      "input_resources": [
+        "electricFan_exists"
+      ],
+      "output_resources": [
+        "electricFan_off"
+      ],
+      "action_space": [
+        "move2",
+        "turn_off"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "done": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_037",
+      "task_type": "Turn Off AC",
+      "instruction_template": "Navigate to the '{object}' and turn it off.",
+      "task_intent": "Turn off the air conditioner.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "aircondition"
+        ]
+      },
+      "input_resources": [
+        "aircondition_exists"
+      ],
+      "output_resources": [
+        "aircondition_off"
+      ],
+      "action_space": [
+        "move2",
+        "turn_off"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "done": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_038",
+      "task_type": "Turn Off Kettle",
+      "instruction_template": "Locate and turn off the '{object}'.",
+      "task_intent": "Turn off the kettle.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "kettle"
+        ]
+      },
+      "input_resources": [
+        "kettle_exists"
+      ],
+      "output_resources": [
+        "kettle_off"
+      ],
+      "action_space": [
+        "move2",
+        "turn_off"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "done": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_039",
+      "task_type": "Move to Bed",
+      "instruction_template": "Move to the '{object}'.",
+      "task_intent": "Navigate to a bed.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "bed"
+        ]
+      },
+      "input_resources": [
+        "bed_exists"
+      ],
+      "output_resources": [
+        "agent_at_bed"
+      ],
+      "action_space": [
+        "move2"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.8
+      }
+    },
+    {
+      "subtask_id": "subtask_040",
+      "task_type": "Move to Sofa",
+      "instruction_template": "Navigate to the '{object}'.",
+      "task_intent": "Go to the sofa.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "sofa"
+        ]
+      },
+      "input_resources": [
+        "sofa_exists"
+      ],
+      "output_resources": [
+        "agent_at_sofa"
+      ],
+      "action_space": [
+        "move2"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.8
+      }
+    },
+    {
+      "subtask_id": "subtask_041",
+      "task_type": "Move to Chair",
+      "instruction_template": "Go to the '{object}'.",
+      "task_intent": "Position near a chair.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "chair"
+        ]
+      },
+      "input_resources": [
+        "chair_exists"
+      ],
+      "output_resources": [
+        "agent_at_chair"
+      ],
+      "action_space": [
+        "move2"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.8
+      }
+    },
+    {
+      "subtask_id": "subtask_042",
+      "task_type": "Move to Desk",
+      "instruction_template": "Move to the '{object}'.",
+      "task_intent": "Navigate to a desk.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "desk"
+        ]
+      },
+      "input_resources": [
+        "desk_exists"
+      ],
+      "output_resources": [
+        "agent_at_desk"
+      ],
+      "action_space": [
+        "move2"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.8
+      }
+    },
+    {
+      "subtask_id": "subtask_043",
+      "task_type": "Move to Toilet",
+      "instruction_template": "Navigate to the '{object}'.",
+      "task_intent": "Go to the toilet.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "toilet"
+        ]
+      },
+      "input_resources": [
+        "toilet_exists"
+      ],
+      "output_resources": [
+        "agent_at_toilet"
+      ],
+      "action_space": [
+        "move2"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.8
+      }
+    },
+    {
+      "subtask_id": "subtask_044",
+      "task_type": "Rotate View",
+      "instruction_template": "Rotate your view by 120 degrees.",
+      "task_intent": "Scan the environment by rotating.",
+      "scene": "daily_life_scene",
+      "available_parameters": {},
+      "input_resources": [],
+      "output_resources": [
+        "view_rotated"
+      ],
+      "action_space": [
+        "rotation"
+      ],
+      "evaluation_checkpoints": {
+        "rotated": 1.0
+      }
+    },
+    {
+      "subtask_id": "subtask_045",
+      "task_type": "Put Down Item",
+      "instruction_template": "Drop the held item.",
+      "task_intent": "Release an object currently carried.",
+      "scene": "daily_life_scene",
+      "available_parameters": {},
+      "input_resources": [
+        "item_held"
+      ],
+      "output_resources": [
+        "item_dropped"
+      ],
+      "action_space": [
+        "put_down"
+      ],
+      "evaluation_checkpoints": {
+        "held": 0.5,
+        "dropped": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_046",
+      "task_type": "Close Door",
+      "instruction_template": "Find the '{object}' and close it.",
+      "task_intent": "Close a door.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "door"
+        ]
+      },
+      "input_resources": [
+        "door_exists"
+      ],
+      "output_resources": [
+        "door_closed"
+      ],
+      "action_space": [
+        "move2",
+        "close"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "done": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_047",
+      "task_type": "Close Window",
+      "instruction_template": "Go to the '{object}' and close it.",
+      "task_intent": "Close a window.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "window"
+        ]
+      },
+      "input_resources": [
+        "window_exists"
+      ],
+      "output_resources": [
+        "window_closed"
+      ],
+      "action_space": [
+        "move2",
+        "close"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "done": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_048",
+      "task_type": "Pick Bread",
+      "instruction_template": "Locate the '{object}' and pick it up.",
+      "task_intent": "Retrieve a piece of bread.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "bread"
+        ]
+      },
+      "input_resources": [
+        "bread_exists"
+      ],
+      "output_resources": [
+        "bread_in_hand"
+      ],
+      "action_space": [
+        "move2",
+        "pick_up"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "picked": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_049",
+      "task_type": "Pick Cup",
+      "instruction_template": "Find the '{object}' and pick it up.",
+      "task_intent": "Pick up a cup.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "cup"
+        ]
+      },
+      "input_resources": [
+        "cup_exists"
+      ],
+      "output_resources": [
+        "cup_in_hand"
+      ],
+      "action_space": [
+        "move2",
+        "pick_up"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "picked": 0.5
+      }
+    },
+    {
+      "subtask_id": "subtask_050",
+      "task_type": "Pick Cap",
+      "instruction_template": "Navigate to the '{object}' and pick it up.",
+      "task_intent": "Retrieve a cap.",
+      "scene": "daily_life_scene",
+      "available_parameters": {
+        "object": [
+          "cap"
+        ]
+      },
+      "input_resources": [
+        "cap_exists"
+      ],
+      "output_resources": [
+        "cap_in_hand"
+      ],
+      "action_space": [
+        "move2",
+        "pick_up"
+      ],
+      "evaluation_checkpoints": {
+        "visible": 0.2,
+        "at_object": 0.3,
+        "picked": 0.5
+      }
+    }
+  ]
+}
