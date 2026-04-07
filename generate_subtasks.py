@@ -277,6 +277,7 @@ def validate_action_coverage(result: dict[str, Any]) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Generate subtasks from environment data and prompt templates.")
+    parser.add_argument("--api-key", default=None, help="API key. If omitted, fallback to OPENAI_API_KEY.")
     parser.add_argument(
         "--env-data",
         nargs="+",
@@ -300,9 +301,11 @@ def main() -> None:
     if args.dry_run:
         result = generate_fallback_subtasks(env_summary, args.num_subtasks, args.scene)
     else:
-        api_key = os.getenv("OPENAI_API_KEY")
+        api_key = str(args.api_key or os.getenv("OPENAI_API_KEY") or "")
         if not api_key:
-            raise RuntimeError("Please set OPENAI_API_KEY first.")
+            raise RuntimeError("Please set API key via --api-key or OPENAI_API_KEY.")
+        model = str(args.model)
+        base_url = str(args.base_url)
 
         prompts_dir = Path(args.prompts_dir)
         messages = build_messages(
@@ -317,9 +320,9 @@ def main() -> None:
         )
         raw = call_chat_completions(
             api_key=api_key,
-            model=args.model,
+            model=model,
             messages=messages,
-            base_url=args.base_url,
+            base_url=base_url,
         )
         result = json.loads(raw)
 
