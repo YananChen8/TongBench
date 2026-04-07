@@ -204,39 +204,26 @@ def call_qwen_dashscope(
     timeout: int = 180,
 ) -> str:
     try:
-        from dashscope import Generation
+        from openai import OpenAI
     except ImportError as e:
-        raise RuntimeError("dashscope is not installed. Please install it with: pip install dashscope") from e
+        raise RuntimeError("openai package is not installed. Please install it with: pip install openai") from e
 
-    resp = Generation.call(
+    client = OpenAI(
         api_key=api_key,
-        model=model,
-        messages=messages,
-        result_format="message",
-        temperature=0.7,
-        timeout=timeout,
+        base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
     )
 
-    # DashScope SDK returns a response object with status_code / output fields.
-    status_code = getattr(resp, "status_code", None)
-    if status_code is not None and status_code != 200:
-        msg = getattr(resp, "message", "")
-        code = getattr(resp, "code", "")
-        raise RuntimeError(f"Qwen request failed: status={status_code}, code={code}, message={msg}")
-
-    output = getattr(resp, "output", None)
-    if isinstance(output, dict):
-        choices = output.get("choices") or []
-        if choices:
-            message = choices[0].get("message", {})
-            content = message.get("content", "")
-            if isinstance(content, str):
-                return content
-            if isinstance(content, list):
-                text_parts = [p.get("text", "") for p in content if isinstance(p, dict)]
-                return "".join(text_parts)
-
-    raise RuntimeError(f"Unexpected Qwen response format: {resp}")
+    completion = client.chat.completions.create(
+        model=model,
+        messages=messages,
+        temperature=0.7,
+        response_format={"type": "json_object"},
+        timeout=timeout,
+    )
+    content = completion.choices[0].message.content
+    if not isinstance(content, str):
+        raise RuntimeError(f"Unexpected Qwen response format: {content}")
+    return content
 
 
 def generate_fallback_subtasks(env_summary: dict[str, Any], n_subtasks: int, scene_name: str) -> dict[str, Any]:
@@ -325,7 +312,7 @@ def main() -> None:
         "--provider",
         choices=["auto", "openai", "qwen"],
         default="auto",
-        help="LLM provider. auto: route qwen* models to DashScope SDK, others to OpenAI-compatible API.",
+        help="LLM provider. auto: route qwen* models to DashScope-compatible OpenAI API, others to OpenAI-compatible API.",
     )
     parser.add_argument(
         "--env-data",
