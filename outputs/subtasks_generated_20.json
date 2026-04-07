@@ -3,8 +3,8 @@
     {
       "subtask_id": "subtask_locate_object_01",
       "task_type": "locate_object",
-      "instruction_template": "找到一个{object}。",
-      "task_intent": "定位目标",
+      "instruction_template": "Find a {object}.",
+      "task_intent": "Locate target",
       "scene": "daily_life_scene",
       "available_parameters": {
         "object": [
@@ -27,8 +27,8 @@
     {
       "subtask_id": "subtask_move_to_object_02",
       "task_type": "move_to_object",
-      "instruction_template": "移动到{object}旁边。",
-      "task_intent": "到达目标",
+      "instruction_template": "Move next to the {object}.",
+      "task_intent": "Reach target",
       "scene": "daily_life_scene",
       "available_parameters": {
         "object": [
@@ -51,8 +51,8 @@
     {
       "subtask_id": "subtask_observe_and_align_03",
       "task_type": "observe_and_align",
-      "instruction_template": "先旋转观察，再对准{object}。",
-      "task_intent": "旋转后对准目标",
+      "instruction_template": "Rotate to observe, then align with the {object}.",
+      "task_intent": "Align after scanning",
       "scene": "daily_life_scene",
       "available_parameters": {
         "object": [
@@ -77,8 +77,8 @@
     {
       "subtask_id": "subtask_inspect_then_move_04",
       "task_type": "inspect_then_move",
-      "instruction_template": "先观察到{object}，再移动到它旁边。",
-      "task_intent": "感知后导航",
+      "instruction_template": "First observe the {object}, then move next to it.",
+      "task_intent": "Perceive then navigate",
       "scene": "daily_life_scene",
       "available_parameters": {
         "object": [
@@ -104,8 +104,8 @@
     {
       "subtask_id": "subtask_pick_object_05",
       "task_type": "pick_object",
-      "instruction_template": "找到{object}并将其拿起。",
-      "task_intent": "拾取目标",
+      "instruction_template": "Find the {object} and pick it up.",
+      "task_intent": "Pick up target",
       "scene": "daily_life_scene",
       "available_parameters": {
         "object": [
@@ -131,8 +131,8 @@
     {
       "subtask_id": "subtask_pick_and_drop_06",
       "task_type": "pick_and_drop",
-      "instruction_template": "拿起{object}后立刻放下。",
-      "task_intent": "抓取放置",
+      "instruction_template": "Pick up the {object} and immediately put it down.",
+      "task_intent": "Pick and place",
       "scene": "daily_life_scene",
       "available_parameters": {
         "object": [
@@ -159,8 +159,8 @@
     {
       "subtask_id": "subtask_approach_two_objects_07",
       "task_type": "approach_two_objects",
-      "instruction_template": "先到{object_a}，再到{object_b}。",
-      "task_intent": "双目标导航",
+      "instruction_template": "Go to {object_a}, then go to {object_b}.",
+      "task_intent": "Two-target navigation",
       "scene": "daily_life_scene",
       "available_parameters": {
         "object_a": [
@@ -189,8 +189,8 @@
     {
       "subtask_id": "subtask_open_object_08",
       "task_type": "open_object",
-      "instruction_template": "移动到{object}并打开它。",
-      "task_intent": "开启可开合物",
+      "instruction_template": "Move to the {object} and open it.",
+      "task_intent": "Open an openable object",
       "scene": "daily_life_scene",
       "available_parameters": {
         "object": [
@@ -216,8 +216,8 @@
     {
       "subtask_id": "subtask_close_object_09",
       "task_type": "close_object",
-      "instruction_template": "移动到{object}并关闭它。",
-      "task_intent": "关闭可开合物",
+      "instruction_template": "Move to the {object} and close it.",
+      "task_intent": "Close an openable object",
       "scene": "daily_life_scene",
       "available_parameters": {
         "object": [
@@ -243,8 +243,8 @@
     {
       "subtask_id": "subtask_open_then_close_10",
       "task_type": "open_then_close",
-      "instruction_template": "先打开{object}再将其关闭。",
-      "task_intent": "开合完整流程",
+      "instruction_template": "Open the {object}, then close it.",
+      "task_intent": "Open-close cycle",
       "scene": "daily_life_scene",
       "available_parameters": {
         "object": [
@@ -271,8 +271,8 @@
     {
       "subtask_id": "subtask_turn_on_object_11",
       "task_type": "turn_on_object",
-      "instruction_template": "移动到{object}并将其打开电源。",
-      "task_intent": "开电源",
+      "instruction_template": "Move to the {object} and turn it on.",
+      "task_intent": "Power on",
       "scene": "daily_life_scene",
       "available_parameters": {
         "object": [
@@ -298,8 +298,8 @@
     {
       "subtask_id": "subtask_turn_off_object_12",
       "task_type": "turn_off_object",
-      "instruction_template": "移动到{object}并将其关闭电源。",
-      "task_intent": "关电源",
+      "instruction_template": "Move to the {object} and turn it off.",
+      "task_intent": "Power off",
       "scene": "daily_life_scene",
       "available_parameters": {
         "object": [
@@ -325,8 +325,8 @@
     {
       "subtask_id": "subtask_turn_on_then_off_13",
       "task_type": "turn_on_then_off",
-      "instruction_template": "先打开{object}电源，再关闭它。",
-      "task_intent": "电源开关闭环",
+      "instruction_template": "Turn on the {object}, then turn it off.",
+      "task_intent": "Power toggle cycle",
       "scene": "daily_life_scene",
       "available_parameters": {
         "object": [
@@ -353,8 +353,8 @@
     {
       "subtask_id": "subtask_rotate_scan_full_14",
       "task_type": "rotate_scan_full",
-      "instruction_template": "原地旋转并确认看到{object}。",
-      "task_intent": "全向扫描",
+      "instruction_template": "Rotate in place and confirm the {object} is visible.",
+      "task_intent": "Full-direction scan",
       "scene": "daily_life_scene",
       "available_parameters": {
         "object": [
@@ -379,8 +379,8 @@
     {
       "subtask_id": "subtask_double_rotate_scan_15",
       "task_type": "double_rotate_scan",
-      "instruction_template": "连续旋转两次并确认看到{object}。",
-      "task_intent": "重复扫描后再识别",
+      "instruction_template": "Rotate twice and confirm the {object} is visible again.",
+      "task_intent": "Repeated scan and reacquisition",
       "scene": "daily_life_scene",
       "available_parameters": {
         "object": [
@@ -405,8 +405,8 @@
     {
       "subtask_id": "subtask_three_step_pick_16",
       "task_type": "three_step_pick",
-      "instruction_template": "先观察{object}，再靠近并拿起它。",
-      "task_intent": "三步感知交互",
+      "instruction_template": "Observe the {object}, move closer, then pick it up.",
+      "task_intent": "Three-step perception-interaction",
       "scene": "daily_life_scene",
       "available_parameters": {
         "object": [
@@ -435,8 +435,8 @@
     {
       "subtask_id": "subtask_pick_navigate_drop_17",
       "task_type": "pick_navigate_drop",
-      "instruction_template": "拿起{object}后导航到新位置再放下。",
-      "task_intent": "携带后导航放置",
+      "instruction_template": "Pick up the {object}, navigate to a new position, then put it down.",
+      "task_intent": "Carry and place",
       "scene": "daily_life_scene",
       "available_parameters": {
         "object": [
@@ -465,8 +465,8 @@
     {
       "subtask_id": "subtask_open_then_pick_18",
       "task_type": "open_then_pick",
-      "instruction_template": "打开{object}附近区域后拿起一个{object2}。",
-      "task_intent": "开合后抓取",
+      "instruction_template": "Open the {object} area and then pick up a {object2}.",
+      "task_intent": "Open then pick",
       "scene": "daily_life_scene",
       "available_parameters": {
         "object": [
@@ -497,8 +497,8 @@
     {
       "subtask_id": "subtask_power_then_pick_19",
       "task_type": "power_then_pick",
-      "instruction_template": "打开{object}电源后，拿起{object2}。",
-      "task_intent": "通电后交互",
+      "instruction_template": "Turn on the {object}, then pick up a {object2}.",
+      "task_intent": "Power then interact",
       "scene": "daily_life_scene",
       "available_parameters": {
         "object": [
@@ -529,8 +529,8 @@
     {
       "subtask_id": "subtask_close_then_turn_off_20",
       "task_type": "close_then_turn_off",
-      "instruction_template": "关闭{object}并将{object2}电源关闭。",
-      "task_intent": "双目标关闭",
+      "instruction_template": "Close the {object} and turn off the {object2}.",
+      "task_intent": "Dual-object shutdown",
       "scene": "daily_life_scene",
       "available_parameters": {
         "object": [
