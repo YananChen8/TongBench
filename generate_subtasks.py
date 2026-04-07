@@ -196,6 +196,49 @@ def call_chat_completions(
     return data["choices"][0]["message"]["content"]
 
 
+def call_qwen_dashscope(
+    *,
+    api_key: str,
+    model: str,
+    messages: list[dict[str, str]],
+    timeout: int = 180,
+) -> str:
+    try:
+        from dashscope import Generation
+    except ImportError as e:
+        raise RuntimeError("dashscope is not installed. Please install it with: pip install dashscope") from e
+
+    resp = Generation.call(
+        api_key=api_key,
+        model=model,
+        messages=messages,
+        result_format="message",
+        temperature=0.7,
+        timeout=timeout,
+    )
+
+    # DashScope SDK returns a response object with status_code / output fields.
+    status_code = getattr(resp, "status_code", None)
+    if status_code is not None and status_code != 200:
+        msg = getattr(resp, "message", "")
+        code = getattr(resp, "code", "")
+        raise RuntimeError(f"Qwen request failed: status={status_code}, code={code}, message={msg}")
+
+    output = getattr(resp, "output", None)
+    if isinstance(output, dict):
+        choices = output.get("choices") or []
+        if choices:
+            message = choices[0].get("message", {})
+            content = message.get("content", "")
+            if isinstance(content, str):
+                return content
+            if isinstance(content, list):
+                text_parts = [p.get("text", "") for p in content if isinstance(p, dict)]
+                return "".join(text_parts)
+
+    raise RuntimeError(f"Unexpected Qwen response format: {resp}")
+
+
 def generate_fallback_subtasks(env_summary: dict[str, Any], n_subtasks: int, scene_name: str) -> dict[str, Any]:
     labels = list(env_summary.get("label_counts", {}).keys()) or ["object"]
 
@@ -279,6 +322,12 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Generate subtasks from environment data and prompt templates.")
     parser.add_argument("--api-key", default=None, help="API key. If omitted, fallback to OPENAI_API_KEY.")
     parser.add_argument(
+        "--provider",
+        choices=["auto", "openai", "qwen"],
+        default="auto",
+        help="LLM provider. auto: route qwen* models to DashScope SDK, others to OpenAI-compatible API.",
+    )
+    parser.add_argument(
         "--env-data",
         nargs="+",
         default=["env_data/touchdata.json"],
@@ -289,7 +338,7 @@ def main() -> None:
     parser.add_argument("--num-subtasks", type=int, default=10, help="Number of subtasks to generate.")
     parser.add_argument("--output", default="outputs/subtasks_generated_10.json", help="Output JSON path.")
     parser.add_argument("--model", default=os.getenv("OPENAI_MODEL", "gpt-4o-mini"), help="Model name.")
-    parser.add_argument("--base-url", default=os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1"), help="API base url")
+    parser.add_argument("--base-url", default=os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1"), help="OpenAI-compatible API base url")
     parser.add_argument("--dry-run", action="store_true", help="Do not call API; generate with local fallback rules.")
     parser.add_argument("--min-unique-types", type=int, default=None, help="Minimum number of unique task_types; default equals num-subtasks.")
     parser.add_argument("--require-all-actions", action="store_true", help="Require complete action coverage in results.")
@@ -301,11 +350,21 @@ def main() -> None:
     if args.dry_run:
         result = generate_fallback_subtasks(env_summary, args.num_subtasks, args.scene)
     else:
-        api_key = str(args.api_key or os.getenv("OPENAI_API_KEY") or "")
+        provider = args.provider
+        if provider == "auto":
+            provider = "qwen" if args.model.lower().startswith("qwen") else "openai"
+
+        api_key = str(
+            args.api_key
+            or (os.getenv("DASHSCOPE_API_KEY") if provider == "qwen" else os.getenv("OPENAI_API_KEY"))
+            or os.getenv("OPENAI_API_KEY")
+            or ""
+        )
         if not api_key:
-            raise RuntimeError("Please set API key via --api-key or OPENAI_API_KEY.")
+            if provider == "qwen":
+                raise RuntimeError("Please set Qwen API key via --api-key or DASHSCOPE_API_KEY.")
+            raise RuntimeError("Please set OpenAI API key via --api-key or OPENAI_API_KEY.")
         model = str(args.model)
-        base_url = str(args.base_url)
 
         prompts_dir = Path(args.prompts_dir)
         messages = build_messages(
@@ -318,12 +377,20 @@ def main() -> None:
             n_subtasks=args.num_subtasks,
             scene_name=args.scene,
         )
-        raw = call_chat_completions(
-            api_key=api_key,
-            model=model,
-            messages=messages,
-            base_url=base_url,
-        )
+        if provider == "qwen":
+            raw = call_qwen_dashscope(
+                api_key=api_key,
+                model=model,
+                messages=messages,
+            )
+        else:
+            base_url = str(args.base_url)
+            raw = call_chat_completions(
+                api_key=api_key,
+                model=model,
+                messages=messages,
+                base_url=base_url,
+            )
         result = json.loads(raw)
 
     min_unique_types = args.min_unique_types if args.min_unique_types is not None else args.num_subtasks
