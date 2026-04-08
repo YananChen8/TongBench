@@ -1,0 +1,40 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "TongSimGrpc",
+	"Description": "Enables Unreal Engine to work with Google gRPC services from either C++ or Blueprints",
+	"Category": "BIGAI",
+	"CreatedBy": "BIGAI",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "TongosGrpc",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault"
+		},
+		{
+			"Name": "TongSimMemoryFixer",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault"
+		},
+		{
+			"Name": "TongSimProto",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault"
+		}
+	],
+	"IsExperimentalVersion": false,
+	"Plugins": [
+		{
+			"Name": "TongSimCore",
+			"Enabled": true
+		}
+	]
+}

@@ -1,0 +1,27 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "5.6",
+	"Category": "Games",
+	"Description": "TongSim Lite",
+	"Modules": [
+		{
+			"Name": "TongSim_Lite",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "TongSimCore",
+			"Enabled": true
+		},
+		{
+			"Name": "TongSimGrpc",
+			"Enabled": true
+		},
+		{
+			"Name": "ModularGameplayActors",
+			"Enabled": true
+		}
+	]
+}

@@ -1,0 +1,59 @@
+
+// TongSim Capture linear depth compute shader
+#include "/Engine/Private/Common.ush"
+#include "/Engine/Private/SceneTexturesCommon.ush"
+#include "/Engine/Private/SceneTextureParameters.ush"
+
+RWTexture2D<float> OutLinearDepth;
+
+int2 OutputSize;
+int2 ViewRectMin;
+uint DepthMode;
+float DepthNear;
+float DepthFar;
+float InvDepthRange;
+
+#define TSC_DEPTHMODE_NONE 0
+#define TSC_DEPTHMODE_LINEAR 1
+#define TSC_DEPTHMODE_DEVICEZ 2
+#define TSC_DEPTHMODE_VIEWSPACE 3
+#define TSC_DEPTHMODE_NORMALIZED 4
+
+[numthreads(8, 8, 1)]
+void MainCS(uint3 DTid : SV_DispatchThreadID)
+{
+	uint2 Pixel = DTid.xy;
+	if (Pixel.x >= OutputSize.x || Pixel.y >= OutputSize.y)
+	{
+		return;
+	}
+
+	uint2 ScenePixel = Pixel + ViewRectMin;
+	float DeviceZ = SceneTexturesStruct.SceneDepthTexture.Load(int3(ScenePixel, 0));
+	float LinearZ = ConvertFromDeviceZ(DeviceZ);
+
+    float DepthValue = LinearZ;
+
+	if (DepthMode == TSC_DEPTHMODE_NONE)
+	{
+		DepthValue = 0.0f;
+	}
+	else if (DepthMode == TSC_DEPTHMODE_VIEWSPACE)
+	{
+		float4 SvPosition = float4(float2(ScenePixel) + 0.5f, DeviceZ, 1.0f);
+		float4 TranslatedWorldPosition = mul(SvPosition, View.SVPositionToTranslatedWorld);
+		TranslatedWorldPosition.xyz /= TranslatedWorldPosition.w;
+		float3 ViewSpacePosition = mul(float4(TranslatedWorldPosition.xyz, 1.0f), View.TranslatedWorldToView).xyz;
+		DepthValue = ViewSpacePosition.z;
+	}
+    else if (DepthMode == TSC_DEPTHMODE_DEVICEZ)
+    {
+        DepthValue = DeviceZ;
+    }
+    else if (DepthMode == TSC_DEPTHMODE_NORMALIZED)
+	{
+		DepthValue = saturate((LinearZ - DepthNear) * InvDepthRange);
+	}
+
+	OutLinearDepth[Pixel] = DepthValue;
+}
