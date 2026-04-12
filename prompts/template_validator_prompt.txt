@@ -1,0 +1,17 @@
+You are validating atomic task templates.
+
+Reject a template if:
+- it uses an action forbidden by affordance flags
+- it depends on hidden state not present in the data
+- it duplicates another template at the same operator_family + canonical object label level
+- it encodes an object instance-specific task when a label-level template is sufficient
+- it uses put_down with an invented target location
+- it treats contact as guaranteed containment/support
+- it uses unlabeled or semantically unclear objects as the primary target
+
+For every rejected template, return:
+{
+  "template_id": "...",
+  "reject_reason": "...",
+  "fix": "..."
+}

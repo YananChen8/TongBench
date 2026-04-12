@@ -1,0 +1,330 @@
+{
+  "scene": "daily_life_scene",
+  "templates": [
+    {
+      "template_id": "navigate_to_{object}",
+      "scene": "daily_life_scene",
+      "action_space": [
+        "move2"
+      ],
+      "task_description": "Move the agent to a target object.",
+      "task_instruction": "Move to the {object}.",
+      "available_objects": [
+        "aircondition",
+        "banana",
+        "bath_shelf",
+        "bathcabinet",
+        "bathtub",
+        "bed",
+        "bedside",
+        "book",
+        "bottle",
+        "bowl",
+        "bread",
+        "cabinet",
+        "cap",
+        "carpet",
+        "centerpiecedecorator",
+        "chair",
+        "clock",
+        "coffee_table",
+        "cup",
+        "cupboard",
+        "curtains",
+        "decoration",
+        "desk",
+        "diningtable",
+        "dishwasher",
+        "door",
+        "doughnut",
+        "drinkcontainer",
+        "eggplant",
+        "fan",
+        "fork",
+        "fruit",
+        "hearth",
+        "hood",
+        "kettle",
+        "keyboard",
+        "knife",
+        "lamp",
+        "laptop",
+        "mirror",
+        "mousepad",
+        "painting",
+        "pan",
+        "paperball",
+        "photograph",
+        "pillow",
+        "plant",
+        "plate",
+        "plug",
+        "radiator",
+        "radio",
+        "refrigerator",
+        "remotecontrol",
+        "shoe",
+        "sofa",
+        "sofastool",
+        "storagebox",
+        "table_lamp",
+        "toilet",
+        "tomato",
+        "towel",
+        "toy",
+        "trash_can",
+        "tray",
+        "tv",
+        "vase",
+        "wardrobe",
+        "window"
+      ],
+      "pre_state": [
+        "exists({object})"
+      ],
+      "post_state": [
+        "at({object})"
+      ]
+    },
+    {
+      "template_id": "rotate_view",
+      "scene": "daily_life_scene",
+      "action_space": [
+        "rotation"
+      ],
+      "task_description": "Rotate the agent view to scan the environment.",
+      "task_instruction": "Rotate the view.",
+      "available_objects": [],
+      "pre_state": [],
+      "post_state": [
+        "view_rotated"
+      ]
+    },
+    {
+      "template_id": "pick_up_{object}",
+      "scene": "daily_life_scene",
+      "action_space": [
+        "pick_up"
+      ],
+      "task_description": "Pick up a movable object.",
+      "task_instruction": "Pick up the {object}.",
+      "available_objects": [
+        "banana",
+        "book",
+        "bottle",
+        "bowl",
+        "bread",
+        "cap",
+        "cup",
+        "decoration",
+        "doughnut",
+        "drinkcontainer",
+        "eggplant",
+        "fork",
+        "fruit",
+        "kettle",
+        "keyboard",
+        "knife",
+        "laptop",
+        "mousepad",
+        "pan",
+        "paperball",
+        "pillow",
+        "plate",
+        "plug",
+        "remotecontrol",
+        "shoe",
+        "storagebox",
+        "tomato",
+        "toy",
+        "tray",
+        "vase"
+      ],
+      "pre_state": [
+        "exists({object})",
+        "pickable({object})",
+        "in_view({object})",
+        "within_reach({object})",
+        "hand_empty"
+      ],
+      "post_state": [
+        "holding({object})"
+      ]
+    },
+    {
+      "template_id": "put_down_{object}",
+      "scene": "daily_life_scene",
+      "action_space": [
+        "put_down"
+      ],
+      "task_description": "Put down a currently held object.",
+      "task_instruction": "Put down the {object}.",
+      "available_objects": [
+        "banana",
+        "book",
+        "bottle",
+        "bowl",
+        "bread",
+        "cap",
+        "cup",
+        "decoration",
+        "doughnut",
+        "drinkcontainer",
+        "eggplant",
+        "fork",
+        "fruit",
+        "kettle",
+        "keyboard",
+        "knife",
+        "laptop",
+        "mousepad",
+        "pan",
+        "paperball",
+        "pillow",
+        "plate",
+        "plug",
+        "remotecontrol",
+        "shoe",
+        "storagebox",
+        "tomato",
+        "toy",
+        "tray",
+        "vase"
+      ],
+      "pre_state": [
+        "holding({object})"
+      ],
+      "post_state": [
+        "not_holding({object})"
+      ]
+    },
+    {
+      "template_id": "open_{object}",
+      "scene": "daily_life_scene",
+      "action_space": [
+        "open"
+      ],
+      "task_description": "Open an openable object.",
+      "task_instruction": "Open the {object}.",
+      "available_objects": [
+        "bathcabinet",
+        "cabinet",
+        "cupboard",
+        "curtains",
+        "dishwasher",
+        "door",
+        "laptop",
+        "refrigerator",
+        "wardrobe",
+        "window"
+      ],
+      "pre_state": [
+        "exists({object})",
+        "openable({object})",
+        "in_view({object})",
+        "within_reach({object})"
+      ],
+      "post_state": [
+        "opened({object})"
+      ]
+    },
+    {
+      "template_id": "close_{object}",
+      "scene": "daily_life_scene",
+      "action_space": [
+        "close"
+      ],
+      "task_description": "Close an openable object.",
+      "task_instruction": "Close the {object}.",
+      "available_objects": [
+        "bathcabinet",
+        "cabinet",
+        "cupboard",
+        "curtains",
+        "dishwasher",
+        "door",
+        "laptop",
+        "refrigerator",
+        "wardrobe",
+        "window"
+      ],
+      "pre_state": [
+        "exists({object})",
+        "openable({object})",
+        "in_view({object})",
+        "within_reach({object})"
+      ],
+      "post_state": [
+        "closed({object})"
+      ]
+    },
+    {
+      "template_id": "turn_on_{object}",
+      "scene": "daily_life_scene",
+      "action_space": [
+        "turn_on"
+      ],
+      "task_description": "Turn on a powerable object.",
+      "task_instruction": "Turn on the {object}.",
+      "available_objects": [
+        "aircondition",
+        "bath_shelf",
+        "decoration",
+        "dishwasher",
+        "fan",
+        "hearth",
+        "hood",
+        "kettle",
+        "lamp",
+        "laptop",
+        "radiator",
+        "radio",
+        "refrigerator",
+        "table_lamp"
+      ],
+      "pre_state": [
+        "exists({object})",
+        "powerable({object})",
+        "in_view({object})",
+        "within_reach({object})"
+      ],
+      "post_state": [
+        "powered_on({object})"
+      ]
+    },
+    {
+      "template_id": "turn_off_{object}",
+      "scene": "daily_life_scene",
+      "action_space": [
+        "turn_off"
+      ],
+      "task_description": "Turn off a powerable object.",
+      "task_instruction": "Turn off the {object}.",
+      "available_objects": [
+        "aircondition",
+        "bath_shelf",
+        "decoration",
+        "dishwasher",
+        "fan",
+        "hearth",
+        "hood",
+        "kettle",
+        "lamp",
+        "laptop",
+        "radiator",
+        "radio",
+        "refrigerator",
+        "table_lamp"
+      ],
+      "pre_state": [
+        "exists({object})",
+        "powerable({object})",
+        "in_view({object})",
+        "within_reach({object})"
+      ],
+      "post_state": [
+        "powered_off({object})"
+      ]
+    }
+  ]
+}

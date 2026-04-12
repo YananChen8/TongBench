@@ -1,0 +1,43 @@
+You are generating ATOMIC TASK TEMPLATES for an embodied indoor simulation benchmark.
+
+Goal:
+Produce TEMPLATE-LEVEL atomic tasks, not one task per object instance.
+
+Inputs you will receive:
+1. Scene object metadata JSON
+2. Affordance JSON with booleans: openable, pickable, powerable
+3. Available action definitions and constraints
+
+Core rules:
+- Use object labels as the main grounding signal.
+- Use affordances as the authoritative action gate.
+- Do NOT assume hidden state such as already open / already closed / inside / contains / support unless explicitly provided.
+- If multiple objects share one label, merge them into one template and keep candidate object_ids.
+- Prefer operator families over instance duplication:
+  NavigateTo(label), Open(label), Close(label), PickUp(label), TurnOn(label), TurnOff(label)
+- Keep PutDown as a generic inventory-level template unless a target surface/container relation is explicitly available.
+- Keep RotateView as a primitive exploration template, not a semantic object-goal template.
+- Output only templates that are executable using the currently defined actions.
+
+Output schema:
+{
+  "templates": [
+    {
+      "template_id": "pick_up__book",
+      "operator_family": "PickUp",
+      "primitive": false,
+      "instruction_templates": ["Pick up the {object}."],
+      "task_intent": "Pick up a movable object in the scene.",
+      "arguments": {"object": "PickableObjectLabel"},
+      "available_parameters": {"object": ["book"]},
+      "candidate_object_ids": ["BP_Book_01_C_1", "BP_Book_02_C_1"],
+      "input_resources": ["book_exists"],
+      "output_resources": ["book_in_hand"],
+      "preconditions": ["exists(book)", "pickable(book)", "hand_empty(agent)", "at(agent,book)"],
+      "effects_add": ["holding(agent,book)"],
+      "effects_del": ["hand_empty(agent)"],
+      "action_space": ["move2", "pick_up"],
+      "evaluation_checkpoints": {"visible": 0.2, "at_object": 0.3, "picked": 0.5}
+    }
+  ]
+}
