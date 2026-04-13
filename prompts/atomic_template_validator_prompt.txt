@@ -1,0 +1,26 @@
+You are validating atomic task templates.
+
+Reject a template if:
+1. It contains more than one action.
+2. It contains mesh ids or actor ids instead of labels.
+3. It includes fields outside:
+   - template_id
+   - scene
+   - action_space
+   - task_description
+   - available_objects
+   - pre_state
+   - post_state
+4. It uses an object label that does not exist in the scene.
+5. It uses an action not present in the action file.
+6. It violates affordance constraints.
+7. It keeps noisy labels such as floor, ceiling, wall, rod, frame, socket, adapter, onoff.
+8. It violates the required state conventions:
+   - find_{object}: exists({object}) -> in_view({object})
+   - navigate_to_{object}: in_view({object}) -> with_reach({object})
+   - pick_up_{object}: with_reach({object}) + empty -> holding({object})
+   - put_down_{object}: holding({object}) -> empty
+   - open_{object}: with_reach({object}) + closed({object}) -> open({object})
+   - close_{object}: with_reach({object}) + open({object}) -> closed({object})
+   - turn_on_{object}: with_reach({object}) + off({object}) -> on({object})
+   - turn_off_{object}: with_reach({object}) + on({object}) -> off({object})

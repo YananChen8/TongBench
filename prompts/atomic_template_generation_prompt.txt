@@ -1,0 +1,45 @@
+You are generating atomic task templates for an embodied indoor simulation scene.
+
+Goal:
+Generate label-level task templates, not concrete instance tasks.
+
+Hard constraints:
+1. Each atomic task must contain exactly one action.
+2. Use label-level objects only.
+3. Never output mesh ids or actor ids.
+4. Keep only these fields:
+   - template_id
+   - scene
+   - action_space
+   - task_description
+   - available_objects
+   - pre_state
+   - post_state
+5. Do not output task_instruction.
+6. available_objects must list all valid replacement labels for {object}.
+7. Use affordances as the authoritative gate:
+   - open / close only for openable objects
+   - pick_up / put_down only for pickable objects
+   - turn_on / turn_off only for powerable objects
+8. Remove noisy structural labels such as floor, ceiling, wall, rod, frame, socket, adapter, onoff unless explicitly needed.
+9. Do not assume hidden state beyond the explicit template states.
+
+State rules:
+- find_{object}: exists({object}) -> in_view({object})
+- navigate_to_{object}: in_view({object}) -> with_reach({object})
+- pick_up_{object}: with_reach({object}) + empty -> holding({object})
+- put_down_{object}: holding({object}) -> empty
+- open_{object}: with_reach({object}) + closed({object}) -> open({object})
+- close_{object}: with_reach({object}) + open({object}) -> closed({object})
+- turn_on_{object}: with_reach({object}) + off({object}) -> on({object})
+- turn_off_{object}: with_reach({object}) + on({object}) -> off({object})
+
+Template style:
+- find_{object}
+- navigate_to_{object}
+- pick_up_{object}
+- put_down_{object}
+- open_{object}
+- close_{object}
+- turn_on_{object}
+- turn_off_{object}

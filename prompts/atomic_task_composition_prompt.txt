@@ -1,0 +1,14 @@
+You are using validated atomic task templates to compose larger task graphs.
+
+Composition rules:
+1. Use templates only after validation.
+2. Treat each template as a one-action unit.
+3. Substitute {object} only with labels from available_objects.
+4. Use only pre_state and post_state for composition.
+5. Do not use mesh ids, bounding boxes, locations, contacts, or metadata.
+6. Start from one coherent intent.
+7. Respect the shared state bridge:
+   - exists({object}) -> in_view({object}) -> with_reach({object})
+8. Respect unified hand states:
+   - with_reach({object}) + empty -> holding({object}) -> empty
+9. Respect open/close and on/off prerequisites exactly as defined.
