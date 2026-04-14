@@ -1,14 +1,37 @@
 {
   "scene": "daily_life_scene",
+  "active_actions": [
+    "pick_up",
+    "place",
+    "open",
+    "close",
+    "pour",
+    "switch_on",
+    "switch_off",
+    "hang_object",
+    "hand_over",
+    "cut",
+    "plug_in",
+    "unplug",
+    "wash_object",
+    "drop",
+    "look_at",
+    "point_at",
+    "walk_to",
+    "turn",
+    "stand_up",
+    "wash_hand"
+  ],
   "templates": [
     {
-      "template_id": "find_{object}",
+      "template_id": "look_at_{object}",
       "scene": "daily_life_scene",
       "action_space": [
-        "rotation"
+        "look_at"
       ],
-      "task_description": "Find a target object by rotating the agent view until it enters view.",
+      "task_description": "Look at an object until it enters view.",
       "available_objects": [
+        "adapter",
         "aircondition",
         "banana",
         "bath_shelf",
@@ -63,6 +86,7 @@
         "refrigerator",
         "remotecontrol",
         "shoe",
+        "socket",
         "sofa",
         "sofastool",
         "storagebox",
@@ -86,13 +110,14 @@
       ]
     },
     {
-      "template_id": "navigate_to_{object}",
+      "template_id": "point_at_{object}",
       "scene": "daily_life_scene",
       "action_space": [
-        "move2"
+        "point_at"
       ],
-      "task_description": "Move to an object that is already in view until it becomes reachable.",
+      "task_description": "Point at an object that is already in view.",
       "available_objects": [
+        "adapter",
         "aircondition",
         "banana",
         "bath_shelf",
@@ -147,6 +172,93 @@
         "refrigerator",
         "remotecontrol",
         "shoe",
+        "socket",
+        "sofa",
+        "sofastool",
+        "storagebox",
+        "table_lamp",
+        "toilet",
+        "tomato",
+        "towel",
+        "toy",
+        "trash_can",
+        "tray",
+        "tv",
+        "vase",
+        "wardrobe",
+        "window"
+      ],
+      "pre_state": [
+        "in_view({object})"
+      ],
+      "post_state": [
+        "pointed_at({object})"
+      ]
+    },
+    {
+      "template_id": "walk_to_{object}",
+      "scene": "daily_life_scene",
+      "action_space": [
+        "walk_to"
+      ],
+      "task_description": "Walk to an object that is already in view until it becomes reachable.",
+      "available_objects": [
+        "adapter",
+        "aircondition",
+        "banana",
+        "bath_shelf",
+        "bathcabinet",
+        "bathtub",
+        "bed",
+        "bedside",
+        "book",
+        "bottle",
+        "bowl",
+        "bread",
+        "cabinet",
+        "cap",
+        "carpet",
+        "centerpiecedecorator",
+        "chair",
+        "clock",
+        "coffee_table",
+        "cup",
+        "cupboard",
+        "curtains",
+        "decoration",
+        "desk",
+        "diningtable",
+        "dishwasher",
+        "door",
+        "doughnut",
+        "drinkcontainer",
+        "eggplant",
+        "fan",
+        "fork",
+        "fruit",
+        "hearth",
+        "hood",
+        "kettle",
+        "keyboard",
+        "knife",
+        "lamp",
+        "laptop",
+        "mirror",
+        "mousepad",
+        "painting",
+        "pan",
+        "paperball",
+        "photograph",
+        "pillow",
+        "plant",
+        "plate",
+        "plug",
+        "radiator",
+        "radio",
+        "refrigerator",
+        "remotecontrol",
+        "shoe",
+        "socket",
         "sofa",
         "sofastool",
         "storagebox",
@@ -177,6 +289,7 @@
       ],
       "task_description": "Pick up a pickable object that is within reach.",
       "available_objects": [
+        "adapter",
         "banana",
         "book",
         "bottle",
@@ -217,13 +330,61 @@
       ]
     },
     {
-      "template_id": "put_down_{object}",
+      "template_id": "place_{object}",
       "scene": "daily_life_scene",
       "action_space": [
-        "put_down"
+        "place"
       ],
-      "task_description": "Put down a currently held object.",
+      "task_description": "Place a currently held object.",
       "available_objects": [
+        "adapter",
+        "banana",
+        "book",
+        "bottle",
+        "bowl",
+        "bread",
+        "cap",
+        "cup",
+        "decoration",
+        "doughnut",
+        "drinkcontainer",
+        "eggplant",
+        "fork",
+        "fruit",
+        "kettle",
+        "keyboard",
+        "knife",
+        "laptop",
+        "mousepad",
+        "pan",
+        "paperball",
+        "pillow",
+        "plate",
+        "plug",
+        "remotecontrol",
+        "shoe",
+        "storagebox",
+        "tomato",
+        "toy",
+        "tray",
+        "vase"
+      ],
+      "pre_state": [
+        "holding({object})"
+      ],
+      "post_state": [
+        "empty"
+      ]
+    },
+    {
+      "template_id": "drop_{object}",
+      "scene": "daily_life_scene",
+      "action_space": [
+        "drop"
+      ],
+      "task_description": "Drop a currently held object.",
+      "available_objects": [
+        "adapter",
         "banana",
         "book",
         "bottle",
@@ -317,12 +478,12 @@
       ]
     },
     {
-      "template_id": "turn_on_{object}",
+      "template_id": "switch_on_{object}",
       "scene": "daily_life_scene",
       "action_space": [
-        "turn_on"
+        "switch_on"
       ],
-      "task_description": "Turn on a powerable object that is within reach.",
+      "task_description": "Switch on a powerable object that is within reach.",
       "available_objects": [
         "aircondition",
         "bath_shelf",
@@ -348,12 +509,12 @@
       ]
     },
     {
-      "template_id": "turn_off_{object}",
+      "template_id": "switch_off_{object}",
       "scene": "daily_life_scene",
       "action_space": [
-        "turn_off"
+        "switch_off"
       ],
-      "task_description": "Turn off a powerable object that is within reach.",
+      "task_description": "Switch off a powerable object that is within reach.",
       "available_objects": [
         "aircondition",
         "bath_shelf",
@@ -376,6 +537,223 @@
       ],
       "post_state": [
         "off({object})"
+      ]
+    },
+    {
+      "template_id": "pour_{object}",
+      "scene": "daily_life_scene",
+      "action_space": [
+        "pour"
+      ],
+      "task_description": "Pour from a held container-like object.",
+      "available_objects": [
+        "bottle",
+        "bowl",
+        "cup",
+        "drinkcontainer",
+        "kettle"
+      ],
+      "pre_state": [
+        "holding({object})",
+        "filled({object})"
+      ],
+      "post_state": [
+        "holding({object})",
+        "empty({object})"
+      ]
+    },
+    {
+      "template_id": "hang_{object}",
+      "scene": "daily_life_scene",
+      "action_space": [
+        "hang_object"
+      ],
+      "task_description": "Hang a currently held object.",
+      "available_objects": [
+        "cap",
+        "towel"
+      ],
+      "pre_state": [
+        "holding({object})"
+      ],
+      "post_state": [
+        "empty"
+      ]
+    },
+    {
+      "template_id": "hand_over_{object}",
+      "scene": "daily_life_scene",
+      "action_space": [
+        "hand_over"
+      ],
+      "task_description": "Hand over a currently held object.",
+      "available_objects": [
+        "adapter",
+        "banana",
+        "book",
+        "bottle",
+        "bowl",
+        "bread",
+        "cap",
+        "cup",
+        "decoration",
+        "doughnut",
+        "drinkcontainer",
+        "eggplant",
+        "fork",
+        "fruit",
+        "kettle",
+        "keyboard",
+        "knife",
+        "laptop",
+        "mousepad",
+        "pan",
+        "paperball",
+        "pillow",
+        "plate",
+        "plug",
+        "remotecontrol",
+        "shoe",
+        "storagebox",
+        "tomato",
+        "toy",
+        "tray",
+        "vase"
+      ],
+      "pre_state": [
+        "holding({object})"
+      ],
+      "post_state": [
+        "empty"
+      ]
+    },
+    {
+      "template_id": "cut_{object}",
+      "scene": "daily_life_scene",
+      "action_space": [
+        "cut"
+      ],
+      "task_description": "Cut a reachable cuttable object while holding a knife.",
+      "available_objects": [
+        "banana",
+        "bread",
+        "eggplant",
+        "fruit",
+        "tomato"
+      ],
+      "pre_state": [
+        "with_reach({object})",
+        "holding(knife)"
+      ],
+      "post_state": [
+        "cut({object})",
+        "holding(knife)"
+      ]
+    },
+    {
+      "template_id": "plug_in_{object}",
+      "scene": "daily_life_scene",
+      "action_space": [
+        "plug_in"
+      ],
+      "task_description": "Plug in a reachable pluggable object.",
+      "available_objects": [
+        "adapter",
+        "aircondition",
+        "fan",
+        "lamp",
+        "laptop",
+        "plug",
+        "radio",
+        "tv"
+      ],
+      "pre_state": [
+        "with_reach({object})",
+        "unplugged({object})"
+      ],
+      "post_state": [
+        "plugged_in({object})"
+      ]
+    },
+    {
+      "template_id": "unplug_{object}",
+      "scene": "daily_life_scene",
+      "action_space": [
+        "unplug"
+      ],
+      "task_description": "Unplug a reachable pluggable object.",
+      "available_objects": [
+        "adapter",
+        "aircondition",
+        "fan",
+        "lamp",
+        "laptop",
+        "plug",
+        "radio",
+        "tv"
+      ],
+      "pre_state": [
+        "with_reach({object})",
+        "plugged_in({object})"
+      ],
+      "post_state": [
+        "unplugged({object})"
+      ]
+    },
+    {
+      "template_id": "wash_{object}",
+      "scene": "daily_life_scene",
+      "action_space": [
+        "wash_object"
+      ],
+      "task_description": "Wash a reachable washable object.",
+      "available_objects": [
+        "bottle",
+        "bowl",
+        "cup",
+        "fork",
+        "knife",
+        "plate",
+        "towel",
+        "toy",
+        "tray"
+      ],
+      "pre_state": [
+        "with_reach({object})",
+        "dirty({object})"
+      ],
+      "post_state": [
+        "clean({object})"
+      ]
+    },
+    {
+      "template_id": "stand_up",
+      "scene": "daily_life_scene",
+      "action_space": [
+        "stand_up"
+      ],
+      "task_description": "Stand up from a seated posture.",
+      "available_objects": [],
+      "pre_state": [
+        "sitting"
+      ],
+      "post_state": [
+        "standing"
+      ]
+    },
+    {
+      "template_id": "wash_hand",
+      "scene": "daily_life_scene",
+      "action_space": [
+        "wash_hand"
+      ],
+      "task_description": "Wash hands.",
+      "available_objects": [],
+      "pre_state": [
+        "dirty_hand"
+      ],
+      "post_state": [
+        "clean_hand"
       ]
     }
   ]

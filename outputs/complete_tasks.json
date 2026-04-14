@@ -1,0 +1,182 @@
+{
+  "id": "root",
+  "type": "task",
+  "intent": "完成晚间归家例行任务，包括安全进入房间、整理随身物品以及准备厨房饮食环境",
+  "children": [
+    {
+      "id": "subtask_entry",
+      "type": "subtask",
+      "intent": "在入口处进行操作以确保通道畅通并激活照明系统",
+      "children": [
+        {
+          "id": "subtask_entry_approach",
+          "type": "subtask",
+          "intent": "移动身体朝向装饰门位置并进行视角调整以确认门口状态",
+          "children": [
+            {
+              "id": "action_move_door",
+              "type": "action",
+              "action": "move2",
+              "target": "decorativeDoor",
+              "notes": "移动到装饰门前"
+            },
+            {
+              "id": "action_rotate_check",
+              "type": "action",
+              "action": "rotation",
+              "target": "",
+              "notes": "原地旋转观察门的状态"
+            }
+          ]
+        },
+        {
+          "id": "subtask_entry_activate",
+          "type": "subtask",
+          "intent": "打开装饰门并前往天花板灯具处开启电源以照亮房间",
+          "children": [
+            {
+              "id": "action_open_door",
+              "type": "action",
+              "action": "open",
+              "target": "decorativeDoor",
+              "notes": "打开装饰门"
+            },
+            {
+              "id": "action_move_lamp",
+              "type": "action",
+              "action": "move2",
+              "target": "ceilinglamp",
+              "notes": "移动到顶灯控制范围"
+            },
+            {
+              "id": "action_turn_on_light",
+              "type": "action",
+              "action": "turn_on",
+              "target": "ceilinglamp",
+              "notes": "开启顶灯照明"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "subtask_storage",
+      "type": "subtask",
+      "intent": "将手中的帽子收纳至指定的储物柜中以保持空间整洁",
+      "children": [
+        {
+          "id": "subtask_storage_retrieve",
+          "type": "subtask",
+          "intent": "拾取当前持有的帽子并移动至储物柜前方位置",
+          "children": [
+            {
+              "id": "action_pick_cap",
+              "type": "action",
+              "action": "pick_up",
+              "target": "cap",
+              "notes": "拾取帽子"
+            },
+            {
+              "id": "action_move_cabinet",
+              "type": "action",
+              "action": "move2",
+              "target": "cabinet",
+              "notes": "移动到储物柜前"
+            }
+          ]
+        },
+        {
+          "id": "subtask_storage_store",
+          "type": "subtask",
+          "intent": "打开柜门将帽子放入内部并关闭柜门以完成收纳",
+          "children": [
+            {
+              "id": "action_open_cabinet",
+              "type": "action",
+              "action": "open",
+              "target": "cabinet",
+              "notes": "打开储物柜"
+            },
+            {
+              "id": "action_put_cap",
+              "type": "action",
+              "action": "put_down",
+              "target": "cabinet",
+              "notes": "将帽子放入柜子"
+            },
+            {
+              "id": "action_close_cabinet",
+              "type": "action",
+              "action": "close",
+              "target": "cabinet",
+              "notes": "关闭储物柜"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "subtask_kitchen_hygiene",
+      "type": "subtask",
+      "intent": "检查卫生设施并获取食材后启动洗碗设备",
+      "children": [
+        {
+          "id": "subtask_bath_access",
+          "type": "subtask",
+          "intent": "前往浴室柜打开查看并随后关闭柜门以确认卫生用品",
+          "children": [
+            {
+              "id": "action_move_bath",
+              "type": "action",
+              "action": "move2",
+              "target": "bathcabinet",
+              "notes": "移动到浴室柜前"
+            },
+            {
+              "id": "action_open_bath",
+              "type": "action",
+              "action": "open",
+              "target": "bathcabinet",
+              "notes": "打开浴室柜"
+            },
+            {
+              "id": "action_close_bath",
+              "type": "action",
+              "action": "close",
+              "target": "bathcabinet",
+              "notes": "关闭浴室柜"
+            }
+          ]
+        },
+        {
+          "id": "subtask_food_appliance",
+          "type": "subtask",
+          "intent": "拾取茄子食材移动至洗碗机处并启动设备进行清洗",
+          "children": [
+            {
+              "id": "action_pick_eggplant",
+              "type": "action",
+              "action": "pick_up",
+              "target": "eggplant",
+              "notes": "拾取茄子"
+            },
+            {
+              "id": "action_move_dishwasher",
+              "type": "action",
+              "action": "move2",
+              "target": "dishwasher",
+              "notes": "移动到洗碗机前"
+            },
+            {
+              "id": "action_turn_on_dw",
+              "type": "action",
+              "action": "turn_on",
+              "target": "dishwasher",
+              "notes": "开启洗碗机"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,45 +1,77 @@
-You are generating atomic task templates for an embodied indoor simulation scene.
+Use these exact state conventions:
 
-Goal:
-Generate label-level task templates, not concrete instance tasks.
+look_at_{object}
+pre: exists({object})
+post: in_view({object})
 
-Hard constraints:
-1. Each atomic task must contain exactly one action.
-2. Use label-level objects only.
-3. Never output mesh ids or actor ids.
-4. Keep only these fields:
-   - template_id
-   - scene
-   - action_space
-   - task_description
-   - available_objects
-   - pre_state
-   - post_state
-5. Do not output task_instruction.
-6. available_objects must list all valid replacement labels for {object}.
-7. Use affordances as the authoritative gate:
-   - open / close only for openable objects
-   - pick_up / put_down only for pickable objects
-   - turn_on / turn_off only for powerable objects
-8. Remove noisy structural labels such as floor, ceiling, wall, rod, frame, socket, adapter, onoff unless explicitly needed.
-9. Do not assume hidden state beyond the explicit template states.
+point_at_{object}
+pre: in_view({object})
+post: pointed_at({object})
 
-State rules:
-- find_{object}: exists({object}) -> in_view({object})
-- navigate_to_{object}: in_view({object}) -> with_reach({object})
-- pick_up_{object}: with_reach({object}) + empty -> holding({object})
-- put_down_{object}: holding({object}) -> empty
-- open_{object}: with_reach({object}) + closed({object}) -> open({object})
-- close_{object}: with_reach({object}) + open({object}) -> closed({object})
-- turn_on_{object}: with_reach({object}) + off({object}) -> on({object})
-- turn_off_{object}: with_reach({object}) + on({object}) -> off({object})
+walk_to_{object}
+pre: in_view({object})
+post: with_reach({object})
 
-Template style:
-- find_{object}
-- navigate_to_{object}
-- pick_up_{object}
-- put_down_{object}
-- open_{object}
-- close_{object}
-- turn_on_{object}
-- turn_off_{object}
+pick_up_{object}
+pre: with_reach({object}), empty
+post: holding({object})
+
+place_{object}
+pre: holding({object})
+post: empty
+
+drop_{object}
+pre: holding({object})
+post: empty
+
+open_{object}
+pre: with_reach({object}), closed({object})
+post: open({object})
+
+close_{object}
+pre: with_reach({object}), open({object})
+post: closed({object})
+
+switch_on_{object}
+pre: with_reach({object}), off({object})
+post: on({object})
+
+switch_off_{object}
+pre: with_reach({object}), on({object})
+post: off({object})
+
+pour_{object}
+pre: holding({object}), filled({object})
+post: holding({object}), empty({object})
+
+hang_{object}
+pre: holding({object})
+post: empty
+
+hand_over_{object}
+pre: holding({object})
+post: empty
+
+cut_{object}
+pre: with_reach({object}), holding(knife)
+post: cut({object}), holding(knife)
+
+plug_in_{object}
+pre: with_reach({object}), unplugged({object})
+post: plugged_in({object})
+
+unplug_{object}
+pre: with_reach({object}), plugged_in({object})
+post: unplugged({object})
+
+wash_{object}
+pre: with_reach({object}), dirty({object})
+post: clean({object})
+
+stand_up
+pre: sitting
+post: standing
+
+wash_hand
+pre: dirty_hand
+post: clean_hand

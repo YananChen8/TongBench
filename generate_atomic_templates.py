@@ -7,17 +7,36 @@ import re
 from pathlib import Path
 from typing import Any, Dict, List, Set
 
-import yaml
+ACTIVE_ACTIONS = [
+    "pick_up",
+    "place",
+    "open",
+    "close",
+    "pour",
+    "switch_on",
+    "switch_off",
+    "hang_object",
+    "hand_over",
+    "cut",
+    "plug_in",
+    "unplug",
+    "wash_object",
+    "drop",
+    "look_at",
+    "point_at",
+    "walk_to",
+    "turn",
+    "stand_up",
+    "wash_hand",
+]
 
 EXCLUDED_LABELS = {
-    "adapter",
     "ceiling",
     "floor",
     "frame",
     "hook",
     "onoff",
     "rod",
-    "socket",
     "wall",
 }
 
@@ -38,13 +57,15 @@ LABEL_NORMALIZATION = {
     "ceilinglamp": "lamp",
 }
 
+POURABLE_LABELS = {"bottle", "drinkcontainer", "cup", "bowl", "kettle"}
+HANGABLE_LABELS = {"towel", "cap", "bag", "clothes", "coat", "hat"}
+CUTTABLE_LABELS = {"bread", "banana", "tomato", "eggplant", "fruit"}
+PLUGGABLE_LABELS = {"plug", "adapter", "laptop", "tv", "radio", "lamp", "fan", "aircondition"}
+WASHABLE_LABELS = {"plate", "bowl", "cup", "knife", "fork", "bottle", "tray", "toy", "towel"}
+
 def load_json(path: Path) -> Any:
     with path.open("r", encoding="utf-8") as f:
         return json.load(f)
-
-def load_yaml(path: Path) -> Any:
-    with path.open("r", encoding="utf-8") as f:
-        return yaml.safe_load(f)
 
 def slugify(text: str) -> str:
     text = text.strip().lower()
@@ -53,15 +74,14 @@ def slugify(text: str) -> str:
     return text
 
 def normalize_label(label: str) -> str:
-    key = slugify(label)
-    return LABEL_NORMALIZATION.get(key, key)
+    return LABEL_NORMALIZATION.get(slugify(label), slugify(label))
 
 def keep_label(label: str) -> bool:
     return bool(label) and label not in EXCLUDED_LABELS
 
 def collect_scene_labels(scene_json: Dict[str, Any]) -> Set[str]:
     labels: Set[str] = set()
-    for _, rec in scene_json.items():
+    for rec in scene_json.values():
         raw = rec.get("label")
         if not raw:
             continue
@@ -70,13 +90,9 @@ def collect_scene_labels(scene_json: Dict[str, Any]) -> Set[str]:
             labels.add(label)
     return labels
 
-def collect_affordance_labels(
-    scene_json: Dict[str, Any],
-    affordance_json: Dict[str, Any],
-) -> Dict[str, Set[str]]:
+def collect_affordance_labels(scene_json: Dict[str, Any], affordance_json: Dict[str, Any]) -> Dict[str, Set[str]]:
     affordance_map = affordance_json.get("objects", affordance_json)
     out = {"openable": set(), "pickable": set(), "powerable": set()}
-
     for object_id, rec in scene_json.items():
         raw = rec.get("label")
         if not raw:
@@ -84,7 +100,6 @@ def collect_affordance_labels(
         label = normalize_label(str(raw))
         if not keep_label(label):
             continue
-
         aff = affordance_map.get(object_id, {})
         if aff.get("openable") is True:
             out["openable"].add(label)
@@ -92,160 +107,213 @@ def collect_affordance_labels(
             out["pickable"].add(label)
         if aff.get("powerable") is True:
             out["powerable"].add(label)
-
     return out
 
-def make_template(
-    template_id: str,
-    scene: str,
-    action: str,
-    task_description: str,
-    available_objects: List[str],
-    pre_state: List[str],
-    post_state: List[str],
-) -> Dict[str, Any]:
+def subset(labels: Set[str], allowed: Set[str]) -> List[str]:
+    return sorted(x for x in labels if x in allowed)
+
+def tpl(template_id: str, scene: str, action: str, desc: str, objs: List[str], pre: List[str], post: List[str]) -> Dict[str, Any]:
     return {
         "template_id": template_id,
         "scene": scene,
         "action_space": [action],
-        "task_description": task_description,
-        "available_objects": available_objects,
-        "pre_state": pre_state,
-        "post_state": post_state,
+        "task_description": desc,
+        "available_objects": objs,
+        "pre_state": pre,
+        "post_state": post,
     }
 
-def build_find_template(scene: str, labels: List[str]) -> Dict[str, Any]:
-    return make_template(
-        template_id="find_{object}",
-        scene=scene,
-        action="rotation",
-        task_description="Find a target object by rotating the agent view until it enters view.",
-        available_objects=labels,
-        pre_state=["exists({object})"],
-        post_state=["in_view({object})"],
-    )
-
-def build_navigate_template(scene: str, labels: List[str]) -> Dict[str, Any]:
-    return make_template(
-        template_id="navigate_to_{object}",
-        scene=scene,
-        action="move2",
-        task_description="Move to an object that is already in view until it becomes reachable.",
-        available_objects=labels,
-        pre_state=["in_view({object})"],
-        post_state=["with_reach({object})"],
-    )
-
-def build_pick_up_template(scene: str, labels: List[str]) -> Dict[str, Any]:
-    return make_template(
-        template_id="pick_up_{object}",
-        scene=scene,
-        action="pick_up",
-        task_description="Pick up a pickable object that is within reach.",
-        available_objects=labels,
-        pre_state=["with_reach({object})", "empty"],
-        post_state=["holding({object})"],
-    )
-
-def build_put_down_template(scene: str, labels: List[str]) -> Dict[str, Any]:
-    return make_template(
-        template_id="put_down_{object}",
-        scene=scene,
-        action="put_down",
-        task_description="Put down a currently held object.",
-        available_objects=labels,
-        pre_state=["holding({object})"],
-        post_state=["empty"],
-    )
-
-def build_open_template(scene: str, labels: List[str]) -> Dict[str, Any]:
-    return make_template(
-        template_id="open_{object}",
-        scene=scene,
-        action="open",
-        task_description="Open an openable object that is within reach.",
-        available_objects=labels,
-        pre_state=["with_reach({object})", "closed({object})"],
-        post_state=["open({object})"],
-    )
-
-def build_close_template(scene: str, labels: List[str]) -> Dict[str, Any]:
-    return make_template(
-        template_id="close_{object}",
-        scene=scene,
-        action="close",
-        task_description="Close an openable object that is within reach.",
-        available_objects=labels,
-        pre_state=["with_reach({object})", "open({object})"],
-        post_state=["closed({object})"],
-    )
-
-def build_turn_on_template(scene: str, labels: List[str]) -> Dict[str, Any]:
-    return make_template(
-        template_id="turn_on_{object}",
-        scene=scene,
-        action="turn_on",
-        task_description="Turn on a powerable object that is within reach.",
-        available_objects=labels,
-        pre_state=["with_reach({object})", "off({object})"],
-        post_state=["on({object})"],
-    )
-
-def build_turn_off_template(scene: str, labels: List[str]) -> Dict[str, Any]:
-    return make_template(
-        template_id="turn_off_{object}",
-        scene=scene,
-        action="turn_off",
-        task_description="Turn off a powerable object that is within reach.",
-        available_objects=labels,
-        pre_state=["with_reach({object})", "on({object})"],
-        post_state=["off({object})"],
-    )
-
-def generate_templates(
-    scene_json: Dict[str, Any],
-    affordance_json: Dict[str, Any],
-    actions_yaml: Dict[str, Any],
-    scene_name: str,
-) -> Dict[str, Any]:
+def generate_templates(scene_json: Dict[str, Any], affordance_json: Dict[str, Any], scene_name: str) -> Dict[str, Any]:
     labels = sorted(collect_scene_labels(scene_json))
-    affordance_labels = collect_affordance_labels(scene_json, affordance_json)
-    action_keys = list(actions_yaml.keys())
+    label_set = set(labels)
+    aff = collect_affordance_labels(scene_json, affordance_json)
     templates: List[Dict[str, Any]] = []
 
-    if "rotation" in action_keys and labels:
-        templates.append(build_find_template(scene_name, labels))
-    if "move2" in action_keys and labels:
-        templates.append(build_navigate_template(scene_name, labels))
+    if "look_at" in ACTIVE_ACTIONS and labels:
+        templates.append(tpl(
+            "look_at_{object}", scene_name, "look_at",
+            "Look at an object until it enters view.",
+            labels,
+            ["exists({object})"],
+            ["in_view({object})"],
+        ))
 
-    pickable_labels = sorted(affordance_labels["pickable"])
-    if "pick_up" in action_keys and pickable_labels:
-        templates.append(build_pick_up_template(scene_name, pickable_labels))
-    if "put_down" in action_keys and pickable_labels:
-        templates.append(build_put_down_template(scene_name, pickable_labels))
+    if "point_at" in ACTIVE_ACTIONS and labels:
+        templates.append(tpl(
+            "point_at_{object}", scene_name, "point_at",
+            "Point at an object that is already in view.",
+            labels,
+            ["in_view({object})"],
+            ["pointed_at({object})"],
+        ))
 
-    openable_labels = sorted(affordance_labels["openable"])
-    if "open" in action_keys and openable_labels:
-        templates.append(build_open_template(scene_name, openable_labels))
-    if "close" in action_keys and openable_labels:
-        templates.append(build_close_template(scene_name, openable_labels))
+    if "walk_to" in ACTIVE_ACTIONS and labels:
+        templates.append(tpl(
+            "walk_to_{object}", scene_name, "walk_to",
+            "Walk to an object that is already in view until it becomes reachable.",
+            labels,
+            ["in_view({object})"],
+            ["with_reach({object})"],
+        ))
 
-    powerable_labels = sorted(affordance_labels["powerable"])
-    if "turn_on" in action_keys and powerable_labels:
-        templates.append(build_turn_on_template(scene_name, powerable_labels))
-    if "turn_off" in action_keys and powerable_labels:
-        templates.append(build_turn_off_template(scene_name, powerable_labels))
+    pickable = sorted(aff["pickable"])
+    if "pick_up" in ACTIVE_ACTIONS and pickable:
+        templates.append(tpl(
+            "pick_up_{object}", scene_name, "pick_up",
+            "Pick up a pickable object that is within reach.",
+            pickable,
+            ["with_reach({object})", "empty"],
+            ["holding({object})"],
+        ))
 
-    return {
-        "scene": scene_name,
-        "templates": templates,
-    }
+    if "place" in ACTIVE_ACTIONS and pickable:
+        templates.append(tpl(
+            "place_{object}", scene_name, "place",
+            "Place a currently held object.",
+            pickable,
+            ["holding({object})"],
+            ["empty"],
+        ))
+
+    if "drop" in ACTIVE_ACTIONS and pickable:
+        templates.append(tpl(
+            "drop_{object}", scene_name, "drop",
+            "Drop a currently held object.",
+            pickable,
+            ["holding({object})"],
+            ["empty"],
+        ))
+
+    openable = sorted(aff["openable"])
+    if "open" in ACTIVE_ACTIONS and openable:
+        templates.append(tpl(
+            "open_{object}", scene_name, "open",
+            "Open an openable object that is within reach.",
+            openable,
+            ["with_reach({object})", "closed({object})"],
+            ["open({object})"],
+        ))
+
+    if "close" in ACTIVE_ACTIONS and openable:
+        templates.append(tpl(
+            "close_{object}", scene_name, "close",
+            "Close an openable object that is within reach.",
+            openable,
+            ["with_reach({object})", "open({object})"],
+            ["closed({object})"],
+        ))
+
+    powerable = sorted(aff["powerable"])
+    if "switch_on" in ACTIVE_ACTIONS and powerable:
+        templates.append(tpl(
+            "switch_on_{object}", scene_name, "switch_on",
+            "Switch on a powerable object that is within reach.",
+            powerable,
+            ["with_reach({object})", "off({object})"],
+            ["on({object})"],
+        ))
+
+    if "switch_off" in ACTIVE_ACTIONS and powerable:
+        templates.append(tpl(
+            "switch_off_{object}", scene_name, "switch_off",
+            "Switch off a powerable object that is within reach.",
+            powerable,
+            ["with_reach({object})", "on({object})"],
+            ["off({object})"],
+        ))
+
+    pourable = subset(label_set, POURABLE_LABELS)
+    if "pour" in ACTIVE_ACTIONS and pourable:
+        templates.append(tpl(
+            "pour_{object}", scene_name, "pour",
+            "Pour from a held container-like object.",
+            pourable,
+            ["holding({object})", "filled({object})"],
+            ["holding({object})", "empty({object})"],
+        ))
+
+    hangable = subset(label_set, HANGABLE_LABELS)
+    if "hang_object" in ACTIVE_ACTIONS and hangable:
+        templates.append(tpl(
+            "hang_{object}", scene_name, "hang_object",
+            "Hang a currently held object.",
+            hangable,
+            ["holding({object})"],
+            ["empty"],
+        ))
+
+    if "hand_over" in ACTIVE_ACTIONS and pickable:
+        templates.append(tpl(
+            "hand_over_{object}", scene_name, "hand_over",
+            "Hand over a currently held object.",
+            pickable,
+            ["holding({object})"],
+            ["empty"],
+        ))
+
+    cuttable = subset(label_set, CUTTABLE_LABELS)
+    if "cut" in ACTIVE_ACTIONS and cuttable:
+        templates.append(tpl(
+            "cut_{object}", scene_name, "cut",
+            "Cut a reachable cuttable object while holding a knife.",
+            cuttable,
+            ["with_reach({object})", "holding(knife)"],
+            ["cut({object})", "holding(knife)"],
+        ))
+
+    pluggable = subset(label_set, PLUGGABLE_LABELS)
+    if "plug_in" in ACTIVE_ACTIONS and pluggable:
+        templates.append(tpl(
+            "plug_in_{object}", scene_name, "plug_in",
+            "Plug in a reachable pluggable object.",
+            pluggable,
+            ["with_reach({object})", "unplugged({object})"],
+            ["plugged_in({object})"],
+        ))
+
+    if "unplug" in ACTIVE_ACTIONS and pluggable:
+        templates.append(tpl(
+            "unplug_{object}", scene_name, "unplug",
+            "Unplug a reachable pluggable object.",
+            pluggable,
+            ["with_reach({object})", "plugged_in({object})"],
+            ["unplugged({object})"],
+        ))
+
+    washable = subset(label_set, WASHABLE_LABELS)
+    if "wash_object" in ACTIVE_ACTIONS and washable:
+        templates.append(tpl(
+            "wash_{object}", scene_name, "wash_object",
+            "Wash a reachable washable object.",
+            washable,
+            ["with_reach({object})", "dirty({object})"],
+            ["clean({object})"],
+        ))
+
+    if "stand_up" in ACTIVE_ACTIONS:
+        templates.append(tpl(
+            "stand_up", scene_name, "stand_up",
+            "Stand up from a seated posture.",
+            [],
+            ["sitting"],
+            ["standing"],
+        ))
+
+    if "wash_hand" in ACTIVE_ACTIONS:
+        templates.append(tpl(
+            "wash_hand", scene_name, "wash_hand",
+            "Wash hands.",
+            [],
+            ["dirty_hand"],
+            ["clean_hand"],
+        ))
+
+    return {"scene": scene_name, "active_actions": ACTIVE_ACTIONS, "templates": templates}
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--scene_json", type=Path, required=True)
     parser.add_argument("--affordance_json", type=Path, required=True)
-    parser.add_argument("--actions_yaml", type=Path, required=True)
     parser.add_argument("--output_json", type=Path, required=True)
     parser.add_argument("--scene_name", type=str, default="daily_life_scene")
     return parser.parse_args()
@@ -254,19 +322,10 @@ def main() -> None:
     args = parse_args()
     scene_json = load_json(args.scene_json)
     affordance_json = load_json(args.affordance_json)
-    actions_yaml = load_yaml(args.actions_yaml)
-
-    output = generate_templates(
-        scene_json=scene_json,
-        affordance_json=affordance_json,
-        actions_yaml=actions_yaml,
-        scene_name=args.scene_name,
-    )
-
+    out = generate_templates(scene_json, affordance_json, args.scene_name)
     args.output_json.parent.mkdir(parents=True, exist_ok=True)
     with args.output_json.open("w", encoding="utf-8") as f:
-        json.dump(output, f, ensure_ascii=False, indent=2)
-
+        json.dump(out, f, ensure_ascii=False, indent=2)
     print(f"Wrote templates to: {args.output_json}")
 
 if __name__ == "__main__":
