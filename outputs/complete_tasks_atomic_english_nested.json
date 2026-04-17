@@ -1,0 +1,449 @@
+{
+  "id": "root",
+  "type": "task",
+  "intent": "Complete an evening return-home routine, including entering safely, storing personal items, and preparing the kitchen area.",
+  "children": [
+    {
+      "id": "subtask_entry",
+      "type": "subtask",
+      "intent": "Operate at the entrance to clear access and activate lighting.",
+      "children": [
+        {
+          "id": "subtask_entry_approach",
+          "type": "subtask",
+          "intent": "Inspect the entrance door and move into interaction range.",
+          "children": [
+            {
+              "id": "atomic_look_at_door",
+              "type": "atomic_task",
+              "template_id": "look_at_{object}",
+              "object": "door",
+              "pre_state": [
+                "exists(door)"
+              ],
+              "post_state": [
+                "in_view(door)"
+              ],
+              "children": [
+                {
+                  "id": "atomic_walk_to_door",
+                  "type": "atomic_task",
+                  "template_id": "walk_to_{object}",
+                  "object": "door",
+                  "pre_state": [
+                    "in_view(door)"
+                  ],
+                  "post_state": [
+                    "with_reach(door)"
+                  ],
+                  "via_state": [
+                    "in_view(door)"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "subtask_entry_activate",
+          "type": "subtask",
+          "intent": "Open the door, then inspect the lamp and move into range to switch it on.",
+          "children": [
+            {
+              "id": "atomic_open_door",
+              "type": "atomic_task",
+              "template_id": "open_{object}",
+              "object": "door",
+              "pre_state": [
+                "with_reach(door)",
+                "closed(door)"
+              ],
+              "post_state": [
+                "open(door)"
+              ]
+            },
+            {
+              "id": "atomic_look_at_lamp",
+              "type": "atomic_task",
+              "template_id": "look_at_{object}",
+              "object": "lamp",
+              "pre_state": [
+                "exists(lamp)"
+              ],
+              "post_state": [
+                "in_view(lamp)"
+              ],
+              "children": [
+                {
+                  "id": "atomic_walk_to_lamp",
+                  "type": "atomic_task",
+                  "template_id": "walk_to_{object}",
+                  "object": "lamp",
+                  "pre_state": [
+                    "in_view(lamp)"
+                  ],
+                  "post_state": [
+                    "with_reach(lamp)"
+                  ],
+                  "via_state": [
+                    "in_view(lamp)"
+                  ],
+                  "children": [
+                    {
+                      "id": "atomic_switch_on_lamp",
+                      "type": "atomic_task",
+                      "template_id": "switch_on_{object}",
+                      "object": "lamp",
+                      "pre_state": [
+                        "with_reach(lamp)",
+                        "off(lamp)"
+                      ],
+                      "post_state": [
+                        "on(lamp)"
+                      ],
+                      "via_state": [
+                        "with_reach(lamp)"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "subtask_storage",
+      "type": "subtask",
+      "intent": "Store the cap in the cabinet to keep the area tidy.",
+      "children": [
+        {
+          "id": "subtask_storage_retrieve",
+          "type": "subtask",
+          "intent": "Inspect the cap, move into range, pick it up, then inspect the cabinet and move there.",
+          "children": [
+            {
+              "id": "atomic_look_at_cap",
+              "type": "atomic_task",
+              "template_id": "look_at_{object}",
+              "object": "cap",
+              "pre_state": [
+                "exists(cap)"
+              ],
+              "post_state": [
+                "in_view(cap)"
+              ],
+              "children": [
+                {
+                  "id": "atomic_walk_to_cap",
+                  "type": "atomic_task",
+                  "template_id": "walk_to_{object}",
+                  "object": "cap",
+                  "pre_state": [
+                    "in_view(cap)"
+                  ],
+                  "post_state": [
+                    "with_reach(cap)"
+                  ],
+                  "via_state": [
+                    "in_view(cap)"
+                  ],
+                  "children": [
+                    {
+                      "id": "atomic_pick_up_cap",
+                      "type": "atomic_task",
+                      "template_id": "pick_up_{object}",
+                      "object": "cap",
+                      "pre_state": [
+                        "with_reach(cap)",
+                        "empty"
+                      ],
+                      "post_state": [
+                        "holding(cap)"
+                      ],
+                      "via_state": [
+                        "with_reach(cap)"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "atomic_look_at_cabinet",
+              "type": "atomic_task",
+              "template_id": "look_at_{object}",
+              "object": "cabinet",
+              "pre_state": [
+                "exists(cabinet)"
+              ],
+              "post_state": [
+                "in_view(cabinet)"
+              ],
+              "children": [
+                {
+                  "id": "atomic_walk_to_cabinet",
+                  "type": "atomic_task",
+                  "template_id": "walk_to_{object}",
+                  "object": "cabinet",
+                  "pre_state": [
+                    "in_view(cabinet)"
+                  ],
+                  "post_state": [
+                    "with_reach(cabinet)"
+                  ],
+                  "via_state": [
+                    "in_view(cabinet)"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "subtask_storage_store",
+          "type": "subtask",
+          "intent": "Open the cabinet, place the cap, and close the cabinet.",
+          "children": [
+            {
+              "id": "atomic_open_cabinet",
+              "type": "atomic_task",
+              "template_id": "open_{object}",
+              "object": "cabinet",
+              "pre_state": [
+                "with_reach(cabinet)",
+                "closed(cabinet)"
+              ],
+              "post_state": [
+                "open(cabinet)"
+              ],
+              "children": [
+                {
+                  "id": "atomic_close_cabinet",
+                  "type": "atomic_task",
+                  "template_id": "close_{object}",
+                  "object": "cabinet",
+                  "pre_state": [
+                    "with_reach(cabinet)",
+                    "open(cabinet)"
+                  ],
+                  "post_state": [
+                    "closed(cabinet)"
+                  ],
+                  "via_state": [
+                    "open(cabinet)"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "atomic_place_cap",
+              "type": "atomic_task",
+              "template_id": "place_{object}",
+              "object": "cap",
+              "pre_state": [
+                "holding(cap)"
+              ],
+              "post_state": [
+                "empty"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "subtask_kitchen_hygiene",
+      "type": "subtask",
+      "intent": "Check the bathroom cabinet, then retrieve an ingredient and prepare the dishwasher area.",
+      "children": [
+        {
+          "id": "subtask_bath_access",
+          "type": "subtask",
+          "intent": "Inspect the bathroom cabinet, move into range, open it, and then close it.",
+          "children": [
+            {
+              "id": "atomic_look_at_bathcabinet",
+              "type": "atomic_task",
+              "template_id": "look_at_{object}",
+              "object": "bathcabinet",
+              "pre_state": [
+                "exists(bathcabinet)"
+              ],
+              "post_state": [
+                "in_view(bathcabinet)"
+              ],
+              "children": [
+                {
+                  "id": "atomic_walk_to_bathcabinet",
+                  "type": "atomic_task",
+                  "template_id": "walk_to_{object}",
+                  "object": "bathcabinet",
+                  "pre_state": [
+                    "in_view(bathcabinet)"
+                  ],
+                  "post_state": [
+                    "with_reach(bathcabinet)"
+                  ],
+                  "via_state": [
+                    "in_view(bathcabinet)"
+                  ],
+                  "children": [
+                    {
+                      "id": "atomic_open_bathcabinet",
+                      "type": "atomic_task",
+                      "template_id": "open_{object}",
+                      "object": "bathcabinet",
+                      "pre_state": [
+                        "with_reach(bathcabinet)",
+                        "closed(bathcabinet)"
+                      ],
+                      "post_state": [
+                        "open(bathcabinet)"
+                      ],
+                      "via_state": [
+                        "with_reach(bathcabinet)"
+                      ],
+                      "children": [
+                        {
+                          "id": "atomic_close_bathcabinet",
+                          "type": "atomic_task",
+                          "template_id": "close_{object}",
+                          "object": "bathcabinet",
+                          "pre_state": [
+                            "with_reach(bathcabinet)",
+                            "open(bathcabinet)"
+                          ],
+                          "post_state": [
+                            "closed(bathcabinet)"
+                          ],
+                          "via_state": [
+                            "open(bathcabinet)"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "subtask_food_appliance",
+          "type": "subtask",
+          "intent": "Pick up the eggplant, move to the dishwasher, place the eggplant, and switch on the dishwasher.",
+          "children": [
+            {
+              "id": "atomic_look_at_eggplant",
+              "type": "atomic_task",
+              "template_id": "look_at_{object}",
+              "object": "eggplant",
+              "pre_state": [
+                "exists(eggplant)"
+              ],
+              "post_state": [
+                "in_view(eggplant)"
+              ],
+              "children": [
+                {
+                  "id": "atomic_walk_to_eggplant",
+                  "type": "atomic_task",
+                  "template_id": "walk_to_{object}",
+                  "object": "eggplant",
+                  "pre_state": [
+                    "in_view(eggplant)"
+                  ],
+                  "post_state": [
+                    "with_reach(eggplant)"
+                  ],
+                  "via_state": [
+                    "in_view(eggplant)"
+                  ],
+                  "children": [
+                    {
+                      "id": "atomic_pick_up_eggplant",
+                      "type": "atomic_task",
+                      "template_id": "pick_up_{object}",
+                      "object": "eggplant",
+                      "pre_state": [
+                        "with_reach(eggplant)",
+                        "empty"
+                      ],
+                      "post_state": [
+                        "holding(eggplant)"
+                      ],
+                      "via_state": [
+                        "with_reach(eggplant)"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "atomic_look_at_dishwasher",
+              "type": "atomic_task",
+              "template_id": "look_at_{object}",
+              "object": "dishwasher",
+              "pre_state": [
+                "exists(dishwasher)"
+              ],
+              "post_state": [
+                "in_view(dishwasher)"
+              ],
+              "children": [
+                {
+                  "id": "atomic_walk_to_dishwasher",
+                  "type": "atomic_task",
+                  "template_id": "walk_to_{object}",
+                  "object": "dishwasher",
+                  "pre_state": [
+                    "in_view(dishwasher)"
+                  ],
+                  "post_state": [
+                    "with_reach(dishwasher)"
+                  ],
+                  "via_state": [
+                    "in_view(dishwasher)"
+                  ],
+                  "children": [
+                    {
+                      "id": "atomic_switch_on_dishwasher",
+                      "type": "atomic_task",
+                      "template_id": "switch_on_{object}",
+                      "object": "dishwasher",
+                      "pre_state": [
+                        "with_reach(dishwasher)",
+                        "off(dishwasher)"
+                      ],
+                      "post_state": [
+                        "on(dishwasher)"
+                      ],
+                      "via_state": [
+                        "with_reach(dishwasher)"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "atomic_place_eggplant",
+              "type": "atomic_task",
+              "template_id": "place_{object}",
+              "object": "eggplant",
+              "pre_state": [
+                "holding(eggplant)"
+              ],
+              "post_state": [
+                "empty"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

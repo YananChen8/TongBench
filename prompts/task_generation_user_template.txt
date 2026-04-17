@@ -1,0 +1,78 @@
+{{
+  "goal": "Generate {num_tasks} high-level complex tasks for later task-graph construction.",
+  "output_schema": {{
+    "type": "array",
+    "item_schema": {{
+      "task_id": "string",
+      "description": "string",
+      "intention": "string",
+      "initial_state": {{
+        "predicates": ["string"],
+        "bindings": {{
+          "object_alias": "scene_object_id"
+        }}
+      }},
+      "final_state": {{
+        "predicates": ["string"],
+        "bindings": {{
+          "object_alias": "scene_object_id"
+        }}
+      }}
+    }}
+  }},
+  "allowed_predicates": {{
+    "zero_argument_predicates": {{
+      "empty": "The agent is not holding any object."
+    }},
+    "one_argument_predicates": {{
+      "exists(object_id)": "The object exists in the scene.",
+      "dirty(object_id)": "The object is dirty.",
+      "clean(object_id)": "The object is clean.",
+      "holding(object_id)": "The agent is holding the object.",
+      "open(object_id)": "The object is open.",
+      "closed(object_id)": "The object is closed.",
+      "powered_on(object_id)": "The object is powered on.",
+      "powered_off(object_id)": "The object is powered off.",
+      "plugged_in(object_id)": "The object is plugged in.",
+      "unplugged(object_id)": "The object is unplugged.",
+      "in_view(object_id)": "The object is visible to the agent.",
+      "with_reach(object_id)": "The object is within reach of the agent."
+    }},
+    "two_argument_predicates": {{
+      "on(object_id_1, object_id_2)": "Object 1 is on top of object 2.",
+      "in(object_id_1, object_id_2)": "Object 1 is inside object 2."
+    }}
+  }}
+  }},
+  "predicate_usage_rules": [
+    "Use only predicates from the allowed_predicates set above.",
+    "Do not invent any new predicates.",
+    "The initial_state must always include empty.",
+    "Do not use holding(object_id) in initial_state.",
+    "Do not use in_view(object_id) in initial_state.",
+    "Do not use with_reach(object_id) in initial_state.",
+    "If final_state contains clean(object_id), then initial_state must contain dirty(object_id).",
+    "If final_state contains open(object_id), then initial_state must contain closed(object_id).",
+    "If final_state contains powered_on(object_id), then initial_state must contain powered_off(object_id).",
+    "If final_state contains plugged_in(object_id), then initial_state must contain unplugged(object_id).",
+    "Use on(object_id_1, object_id_2) only for surface placement relations.",
+    "Use in(object_id_1, object_id_2) only for containment relations that are explicitly supported by the task design.",
+    "For the same ordered pair of objects, do not use both on(object_id_1, object_id_2) and in(object_id_1, object_id_2) in the same state.",
+    "Do not use holding(object_id) in final_state unless holding the object is itself the explicit task goal."
+  ],
+  "state_consistency_rules": [
+    "Every task must start with the agent empty-handed, so initial_state must include empty.",
+    "No task may start with holding any object.",
+    "No task may start with in_view for target objects.",
+    "No task may start with with_reach for target objects.",
+    "If an object becomes clean in final_state, it must be dirty in initial_state.",
+    "If an object becomes open in final_state, it must be closed in initial_state.",
+    "If an object becomes powered on in final_state, it must be powered off in initial_state.",
+    "If an object becomes plugged in in final_state, it must be unplugged in initial_state.",
+    "The initial_state and final_state must form a logically valid before-and-after pair rather than two unrelated snapshots."
+  ],
+  "scene_capabilities": {scene_capabilities_json},
+  "object_catalog": {object_catalog_json},
+  "atomic_templates": {atomic_templates_json},
+  "environment_guidance_excerpt": {environment_guidance_json}
+}}

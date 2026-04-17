@@ -1,4 +1,4 @@
-Compose graphs using only these bridges:
-exists({object}) -> in_view({object}) -> with_reach({object})
-with_reach({object}) + empty -> holding({object})
-holding({object}) -> empty
+When composing placement templates, use:
+
+holding({object1}) -> on({object1},{object2}) + empty
+holding({object1}) -> in({object1},{object2}) + empty

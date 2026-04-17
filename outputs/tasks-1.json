@@ -1,0 +1,284 @@
+[
+  {
+    "task_id": "T001",
+    "description": "Prepare the living room for a guest by arranging seating, lighting, and refreshments.",
+    "intention": "guest_hospitality",
+    "initial_state": {
+      "predicates": [
+        "closed(\"BP_Curtains_Bedroom1_C_0\")",
+        "closed(\"BP_Curtains_tulle02_C_0\")",
+        "off(\"BP_CeilingLamp_005_C_0\")",
+        "off(\"BP_TableLamp_BedsideLamp1_C_0\")",
+        "off(\"BP_TableLamp_BedsideLamp1_C_1\")",
+        "empty(\"BP_Plate_01_C_1\")",
+        "empty(\"BP_CoffeeTable_LivingRoom005_C_0\")"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "open(\"BP_Curtains_Bedroom1_C_0\")",
+        "open(\"BP_Curtains_tulle02_C_0\")",
+        "on(\"BP_CeilingLamp_005_C_0\")",
+        "on(\"BP_TableLamp_BedsideLamp1_C_0\")",
+        "on(\"BP_TableLamp_BedsideLamp1_C_1\")",
+        "on(\"BP_CoffeeTable_LivingRoom005_C_0\")",
+        "holding(\"BP_Food_Donut_C_1\")",
+        "holding(\"BP_Cup_TeaCup_C_0\")"
+      ],
+      "bindings": {}
+    }
+  },
+  {
+    "task_id": "T002",
+    "description": "Gather scattered toys from the floor and place them in the shoescabinet for tidying.",
+    "intention": "toy_tidy_up",
+    "initial_state": {
+      "predicates": [
+        "exists(\"BP_Toy_Horse_C_0\")",
+        "exists(\"BP_Toy_W_C_0\")",
+        "exists(\"BP_Toy_Frog_C_0\")",
+        "exists(\"BP_Toy_P_C_0\")",
+        "closed(\"BP_ShoesBox_005_C_0\")"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "empty(\"BP_Toy_Horse_C_0\")",
+        "empty(\"BP_Toy_W_C_0\")",
+        "empty(\"BP_Toy_Frog_C_0\")",
+        "empty(\"BP_Toy_P_C_0\")",
+        "open(\"BP_ShoesBox_005_C_0\")",
+        "in_view(\"BP_ShoesBox_005_C_0\")"
+      ],
+      "bindings": {}
+    }
+  },
+  {
+    "task_id": "T003",
+    "description": "Set up a functional workspace at the desk for studying or computer use.",
+    "intention": "workspace_preparation",
+    "initial_state": {
+      "predicates": [
+        "off(\"BP_Desk_R005_C_0\")",
+        "closed(\"BP_Laptop_1_C_0\")",
+        "empty(\"BP_Keyboard_Map005_C_0\")",
+        "empty(\"BP_Mouse_05_C_0\")"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "on(\"BP_Desk_R005_C_0\")",
+        "open(\"BP_Laptop_1_C_0\")",
+        "holding(\"BP_Keyboard_Map005_C_0\")",
+        "holding(\"BP_Mouse_05_C_0\")"
+      ],
+      "bindings": {}
+    }
+  },
+  {
+    "task_id": "T004",
+    "description": "Adjust lighting and air conditions to improve room comfort after a long day.",
+    "intention": "air_and_light_adjustment",
+    "initial_state": {
+      "predicates": [
+        "off(\"BP_AirCondition_2_C_0\")",
+        "off(\"BP_ElectricFan_01_C_1\")",
+        "off(\"BP_CeilingLamp_005_C_0\")",
+        "off(\"BP_CeilingLamp_small_C_3\")",
+        "off(\"BP_CeilingLamp_small_C_4\")"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "on(\"BP_AirCondition_2_C_0\")",
+        "on(\"BP_ElectricFan_01_C_1\")",
+        "on(\"BP_CeilingLamp_005_C_0\")",
+        "on(\"BP_CeilingLamp_small_C_3\")",
+        "on(\"BP_CeilingLamp_small_C_4\")"
+      ],
+      "bindings": {}
+    }
+  },
+  {
+    "task_id": "T005",
+    "description": "Reset the kitchen area after cooking by cleaning utensils and turning off appliances.",
+    "intention": "kitchen_after_use_reset",
+    "initial_state": {
+      "predicates": [
+        "on(\"BP_Hood_03_C_0\")",
+        "on(\"BP_Stove_Oven3_C_0\")",
+        "on(\"BP_Diswasher_01_C_1\")",
+        "filled(\"BP_Pan_Egg_C_0\")",
+        "dirty(\"BP_Plate_3_C_0\")",
+        "dirty(\"BP_Knife_Child01_C_0\")"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "off(\"BP_Hood_03_C_0\")",
+        "off(\"BP_Stove_Oven3_C_0\")",
+        "off(\"BP_Diswasher_01_C_1\")",
+        "empty(\"BP_Pan_Egg_C_0\")",
+        "clean(\"BP_Plate_3_C_0\")",
+        "clean(\"BP_Knife_Child01_C_0\")"
+      ],
+      "bindings": {}
+    }
+  },
+  {
+    "task_id": "T006",
+    "description": "Prepare a simple tea-serving setup on the coffee table for someone in the room.",
+    "intention": "simple_tea_serving",
+    "initial_state": {
+      "predicates": [
+        "closed(\"BP_Cupboard_kitchen_room5_C_0\")",
+        "empty(\"BP_Kettle_1_C_0\")",
+        "empty(\"BP_Cup_TeaCup_C_0\")",
+        "empty(\"BP_Plate_3_C_2\")"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "open(\"BP_Cupboard_kitchen_room5_C_0\")",
+        "plugged_in(\"BP_Kettle_1_C_0\")",
+        "on(\"BP_Kettle_1_C_0\")",
+        "holding(\"BP_Cup_TeaCup_C_0\")",
+        "on(\"BP_Plate_3_C_2\")"
+      ],
+      "bindings": {}
+    }
+  },
+  {
+    "task_id": "T007",
+    "description": "Host a guest by opening the bedroom door, adjusting curtains, and placing a pillow on the bed.",
+    "intention": "guest_hospitality",
+    "initial_state": {
+      "predicates": [
+        "closed(\"BP_Door_5_R_C_0\")",
+        "closed(\"BP_Curtains_Bedroom1_C_0\")",
+        "closed(\"BP_Curtains_Bedroom1_Blue_C_0\")",
+        "empty(\"BP_Pillow_Child01_C_0\")"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "open(\"BP_Door_5_R_C_0\")",
+        "open(\"BP_Curtains_Bedroom1_C_0\")",
+        "open(\"BP_Curtains_Bedroom1_Blue_C_0\")",
+        "on(\"BP_Bed_Child_05_C_0\")"
+      ],
+      "bindings": {}
+    }
+  },
+  {
+    "task_id": "T008",
+    "description": "Clear clutter from the dining table and place all items into the cupboard.",
+    "intention": "kitchen_after_use_reset",
+    "initial_state": {
+      "predicates": [
+        "on(\"BP_DiningTable_03_C_0\")",
+        "on(\"BP_Plate_3_C_0\")",
+        "on(\"BP_Fork_Child01_C_0\")",
+        "on(\"BP_Knife_Child01_C_0\")",
+        "closed(\"BP_Cupboard_kitchen_room5_C_0\")"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "empty(\"BP_DiningTable_03_C_0\")",
+        "open(\"BP_Cupboard_kitchen_room5_C_0\")",
+        "in_view(\"BP_Cupboard_kitchen_room5_C_0\")"
+      ],
+      "bindings": {}
+    }
+  },
+  {
+    "task_id": "T009",
+    "description": "Prepare the bedside area for reading by turning on the lamp and placing a book nearby.",
+    "intention": "workspace_preparation",
+    "initial_state": {
+      "predicates": [
+        "off(\"BP_TableLamp_R2_01_C_0\")",
+        "empty(\"BP_Bedside_005_C_0\")"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "on(\"BP_TableLamp_R2_01_C_0\")",
+        "on(\"BP_Bedside_005_C_0\")"
+      ],
+      "bindings": {}
+    }
+  },
+  {
+    "task_id": "T010",
+    "description": "Restore order in the living room by picking up scattered items and placing them on shelves.",
+    "intention": "toy_tidy_up",
+    "initial_state": {
+      "predicates": [
+        "exists(\"BP_Food_Donut_C_1\")",
+        "exists(\"BP_Toy_Frog_C_0\")",
+        "exists(\"BP_Paper_Used_C_0\")",
+        "empty(\"BP_Bowl_Stack005_C_0\")"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "empty(\"BP_Food_Donut_C_1\")",
+        "empty(\"BP_Toy_Frog_C_0\")",
+        "empty(\"BP_Paper_Used_C_0\")",
+        "on(\"BP_Bowl_Stack005_C_0\")"
+      ],
+      "bindings": {}
+    }
+  },
+  {
+    "task_id": "T011",
+    "description": "Turn on the bathroom light and open the bathcabinet to prepare for morning use.",
+    "intention": "air_and_light_adjustment",
+    "initial_state": {
+      "predicates": [
+        "off(\"BP_BathShelf_01_C_0\")",
+        "closed(\"BP_BathCabinet_005_C_0\")"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "on(\"BP_BathShelf_01_C_0\")",
+        "open(\"BP_BathCabinet_005_C_0\")"
+      ],
+      "bindings": {}
+    }
+  },
+  {
+    "task_id": "T012",
+    "description": "Ensure the refrigerator is closed and powered, and place a drink container inside.",
+    "intention": "kitchen_after_use_reset",
+    "initial_state": {
+      "predicates": [
+        "open(\"BP_Frigerator_005_C_0\")",
+        "unplugged(\"BP_Frigerator_005_C_0\")"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "closed(\"BP_Frigerator_005_C_0\")",
+        "plugged_in(\"BP_Frigerator_005_C_0\")",
+        "on(\"BP_Frigerator_005_C_0\")"
+      ],
+      "bindings": {}
+    }
+  }
+]

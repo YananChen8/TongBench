@@ -1,77 +1,12 @@
-Use these exact state conventions:
+Update the two placement templates as follows:
 
-look_at_{object}
-pre: exists({object})
-post: in_view({object})
+place_{object1}_on_{object2}
+pre: holding({object1})
+post: on({object1},{object2}), empty
 
-point_at_{object}
-pre: in_view({object})
-post: pointed_at({object})
+place_{object1}_in_{object2}
+pre: holding({object1})
+post: in({object1},{object2}), empty
 
-walk_to_{object}
-pre: in_view({object})
-post: with_reach({object})
-
-pick_up_{object}
-pre: with_reach({object}), empty
-post: holding({object})
-
-place_{object}
-pre: holding({object})
-post: empty
-
-drop_{object}
-pre: holding({object})
-post: empty
-
-open_{object}
-pre: with_reach({object}), closed({object})
-post: open({object})
-
-close_{object}
-pre: with_reach({object}), open({object})
-post: closed({object})
-
-switch_on_{object}
-pre: with_reach({object}), off({object})
-post: on({object})
-
-switch_off_{object}
-pre: with_reach({object}), on({object})
-post: off({object})
-
-pour_{object}
-pre: holding({object}), filled({object})
-post: holding({object}), empty({object})
-
-hang_{object}
-pre: holding({object})
-post: empty
-
-hand_over_{object}
-pre: holding({object})
-post: empty
-
-cut_{object}
-pre: with_reach({object}), holding(knife)
-post: cut({object}), holding(knife)
-
-plug_in_{object}
-pre: with_reach({object}), unplugged({object})
-post: plugged_in({object})
-
-unplug_{object}
-pre: with_reach({object}), plugged_in({object})
-post: unplugged({object})
-
-wash_{object}
-pre: with_reach({object}), dirty({object})
-post: clean({object})
-
-stand_up
-pre: sitting
-post: standing
-
-wash_hand
-pre: dirty_hand
-post: clean_hand
+Reason:
+placing the held object onto or into a target should also release the hand state to empty.

@@ -5,7 +5,7 @@ import argparse
 import json
 import re
 from pathlib import Path
-from typing import Any, Dict, List, Set
+from typing import Any, Dict, List, Set, Union
 
 ACTIVE_ACTIONS = [
     "pick_up",
@@ -63,6 +63,27 @@ CUTTABLE_LABELS = {"bread", "banana", "tomato", "eggplant", "fruit"}
 PLUGGABLE_LABELS = {"plug", "adapter", "laptop", "tv", "radio", "lamp", "fan", "aircondition"}
 WASHABLE_LABELS = {"plate", "bowl", "cup", "knife", "fork", "bottle", "tray", "toy", "towel"}
 
+SURFACE_TARGET_LABELS = {
+    "coffee_table",
+    "desk",
+    "bedside",
+    "diningtable",
+    "bath_shelf",
+    "cabinet",
+    "cupboard",
+    "bed",
+    "tray",
+}
+CONTAINER_TARGET_LABELS = {
+    "cabinet",
+    "cupboard",
+    "bathcabinet",
+    "wardrobe",
+    "dishwasher",
+    "refrigerator",
+    "trash_can",
+}
+
 def load_json(path: Path) -> Any:
     with path.open("r", encoding="utf-8") as f:
         return json.load(f)
@@ -74,7 +95,8 @@ def slugify(text: str) -> str:
     return text
 
 def normalize_label(label: str) -> str:
-    return LABEL_NORMALIZATION.get(slugify(label), slugify(label))
+    key = slugify(label)
+    return LABEL_NORMALIZATION.get(key, key)
 
 def keep_label(label: str) -> bool:
     return bool(label) and label not in EXCLUDED_LABELS
@@ -112,7 +134,15 @@ def collect_affordance_labels(scene_json: Dict[str, Any], affordance_json: Dict[
 def subset(labels: Set[str], allowed: Set[str]) -> List[str]:
     return sorted(x for x in labels if x in allowed)
 
-def tpl(template_id: str, scene: str, action: str, desc: str, objs: List[str], pre: List[str], post: List[str]) -> Dict[str, Any]:
+def tpl(
+    template_id: str,
+    scene: str,
+    action: str,
+    desc: str,
+    objs: Union[List[str], Dict[str, List[str]]],
+    pre: List[str],
+    post: List[str],
+) -> Dict[str, Any]:
     return {
         "template_id": template_id,
         "scene": scene,
@@ -175,6 +205,26 @@ def generate_templates(scene_json: Dict[str, Any], affordance_json: Dict[str, An
             ["empty"],
         ))
 
+        surface_targets = subset(label_set, SURFACE_TARGET_LABELS)
+        if surface_targets:
+            templates.append(tpl(
+                "place_{object1}_on_{object2}", scene_name, "place",
+                "Place a held object onto a target surface object.",
+                {"object1": pickable, "object2": surface_targets},
+                ["holding({object1})"],
+                ["on({object1},{object2})", "empty"],
+            ))
+
+        container_targets = subset(label_set, CONTAINER_TARGET_LABELS)
+        if container_targets:
+            templates.append(tpl(
+                "place_{object1}_in_{object2}", scene_name, "place",
+                "Place a held object into a target container object.",
+                {"object1": pickable, "object2": container_targets},
+                ["holding({object1})"],
+                ["in({object1},{object2})", "empty"],
+            ))
+
     if "drop" in ACTIVE_ACTIONS and pickable:
         templates.append(tpl(
             "drop_{object}", scene_name, "drop",
@@ -209,8 +259,8 @@ def generate_templates(scene_json: Dict[str, Any], affordance_json: Dict[str, An
             "switch_on_{object}", scene_name, "switch_on",
             "Switch on a powerable object that is within reach.",
             powerable,
-            ["with_reach({object})", "off({object})"],
-            ["on({object})"],
+            ["with_reach({object})", "powered_off({object})"],
+            ["powered_on({object})"],
         ))
 
     if "switch_off" in ACTIVE_ACTIONS and powerable:
@@ -218,8 +268,8 @@ def generate_templates(scene_json: Dict[str, Any], affordance_json: Dict[str, An
             "switch_off_{object}", scene_name, "switch_off",
             "Switch off a powerable object that is within reach.",
             powerable,
-            ["with_reach({object})", "on({object})"],
-            ["off({object})"],
+            ["with_reach({object})", "powered_on({object})"],
+            ["powered_off({object})"],
         ))
 
     pourable = subset(label_set, POURABLE_LABELS)

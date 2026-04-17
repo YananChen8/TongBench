@@ -1,20 +1,11 @@
-Validate templates against these exact states:
-- look_at_{object}: exists({object}) -> in_view({object})
-- point_at_{object}: in_view({object}) -> pointed_at({object})
-- walk_to_{object}: in_view({object}) -> with_reach({object})
-- pick_up_{object}: with_reach({object}) + empty -> holding({object})
-- place_{object}: holding({object}) -> empty
-- drop_{object}: holding({object}) -> empty
-- open_{object}: with_reach({object}) + closed({object}) -> open({object})
-- close_{object}: with_reach({object}) + open({object}) -> closed({object})
-- switch_on_{object}: with_reach({object}) + off({object}) -> on({object})
-- switch_off_{object}: with_reach({object}) + on({object}) -> off({object})
-- pour_{object}: holding({object}) + filled({object}) -> holding({object}) + empty({object})
-- hang_{object}: holding({object}) -> empty
-- hand_over_{object}: holding({object}) -> empty
-- cut_{object}: with_reach({object}) + holding(knife) -> cut({object}) + holding(knife)
-- plug_in_{object}: with_reach({object}) + unplugged({object}) -> plugged_in({object})
-- unplug_{object}: with_reach({object}) + plugged_in({object}) -> unplugged({object})
-- wash_{object}: with_reach({object}) + dirty({object}) -> clean({object})
-- stand_up: sitting -> standing
-- wash_hand: dirty_hand -> clean_hand
+Validate these two placement templates exactly:
+
+place_{object1}_on_{object2}
+pre: holding({object1})
+post: on({object1},{object2}), empty
+
+place_{object1}_in_{object2}
+pre: holding({object1})
+post: in({object1},{object2}), empty
+
+Reject versions that omit empty in post_state.

@@ -377,6 +377,126 @@
       ]
     },
     {
+      "template_id": "place_{object1}_on_{object2}",
+      "scene": "daily_life_scene",
+      "action_space": [
+        "place"
+      ],
+      "task_description": "Place a held object onto a target surface object.",
+      "available_objects": {
+        "object1": [
+          "adapter",
+          "banana",
+          "book",
+          "bottle",
+          "bowl",
+          "bread",
+          "cap",
+          "cup",
+          "decoration",
+          "doughnut",
+          "drinkcontainer",
+          "eggplant",
+          "fork",
+          "fruit",
+          "kettle",
+          "keyboard",
+          "knife",
+          "laptop",
+          "mousepad",
+          "pan",
+          "paperball",
+          "pillow",
+          "plate",
+          "plug",
+          "remotecontrol",
+          "shoe",
+          "storagebox",
+          "tomato",
+          "toy",
+          "tray",
+          "vase"
+        ],
+        "object2": [
+          "bath_shelf",
+          "bed",
+          "bedside",
+          "cabinet",
+          "coffee_table",
+          "cupboard",
+          "desk",
+          "diningtable",
+          "tray"
+        ]
+      },
+      "pre_state": [
+        "holding({object1})"
+      ],
+      "post_state": [
+        "on({object1},{object2})",
+        "empty"
+      ]
+    },
+    {
+      "template_id": "place_{object1}_in_{object2}",
+      "scene": "daily_life_scene",
+      "action_space": [
+        "place"
+      ],
+      "task_description": "Place a held object into a target container object.",
+      "available_objects": {
+        "object1": [
+          "adapter",
+          "banana",
+          "book",
+          "bottle",
+          "bowl",
+          "bread",
+          "cap",
+          "cup",
+          "decoration",
+          "doughnut",
+          "drinkcontainer",
+          "eggplant",
+          "fork",
+          "fruit",
+          "kettle",
+          "keyboard",
+          "knife",
+          "laptop",
+          "mousepad",
+          "pan",
+          "paperball",
+          "pillow",
+          "plate",
+          "plug",
+          "remotecontrol",
+          "shoe",
+          "storagebox",
+          "tomato",
+          "toy",
+          "tray",
+          "vase"
+        ],
+        "object2": [
+          "bathcabinet",
+          "cabinet",
+          "cupboard",
+          "dishwasher",
+          "refrigerator",
+          "trash_can",
+          "wardrobe"
+        ]
+      },
+      "pre_state": [
+        "holding({object1})"
+      ],
+      "post_state": [
+        "in({object1},{object2})",
+        "empty"
+      ]
+    },
+    {
       "template_id": "drop_{object}",
       "scene": "daily_life_scene",
       "action_space": [
@@ -502,10 +622,10 @@
       ],
       "pre_state": [
         "with_reach({object})",
-        "off({object})"
+        "powered_off({object})"
       ],
       "post_state": [
-        "on({object})"
+        "powered_on({object})"
       ]
     },
     {
@@ -533,10 +653,10 @@
       ],
       "pre_state": [
         "with_reach({object})",
-        "on({object})"
+        "powered_on({object})"
       ],
       "post_state": [
-        "off({object})"
+        "powered_off({object})"
       ]
     },
     {
