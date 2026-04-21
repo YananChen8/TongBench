@@ -1,0 +1,103 @@
+[
+  {
+    "task_id": "task_001",
+    "has_solution": true,
+    "node_count": 446,
+    "transition_edge_count": 445,
+    "equivalence_edge_count": 0,
+    "grounded_action_count": 26,
+    "goal_path_count": 100,
+    "success_trace_count": 100,
+    "static_unsatisfied_constraints": [],
+    "dropped_predicates": []
+  },
+  {
+    "task_id": "task_002",
+    "has_solution": true,
+    "node_count": 458,
+    "transition_edge_count": 457,
+    "equivalence_edge_count": 0,
+    "grounded_action_count": 18,
+    "goal_path_count": 100,
+    "success_trace_count": 100,
+    "static_unsatisfied_constraints": [],
+    "dropped_predicates": []
+  },
+  {
+    "task_id": "task_003",
+    "has_solution": true,
+    "node_count": 351,
+    "transition_edge_count": 350,
+    "equivalence_edge_count": 0,
+    "grounded_action_count": 16,
+    "goal_path_count": 100,
+    "success_trace_count": 100,
+    "static_unsatisfied_constraints": [],
+    "dropped_predicates": []
+  },
+  {
+    "task_id": "task_004",
+    "has_solution": false,
+    "node_count": 1,
+    "transition_edge_count": 0,
+    "equivalence_edge_count": 0,
+    "grounded_action_count": 5,
+    "goal_path_count": 0,
+    "success_trace_count": 0,
+    "static_unsatisfied_constraints": [],
+    "dropped_predicates": []
+  },
+  {
+    "task_id": "task_005",
+    "has_solution": true,
+    "node_count": 489,
+    "transition_edge_count": 488,
+    "equivalence_edge_count": 0,
+    "grounded_action_count": 35,
+    "goal_path_count": 100,
+    "success_trace_count": 100,
+    "static_unsatisfied_constraints": [],
+    "dropped_predicates": []
+  },
+  {
+    "task_id": "task_006",
+    "has_solution": false,
+    "node_count": 1,
+    "transition_edge_count": 0,
+    "equivalence_edge_count": 0,
+    "grounded_action_count": 14,
+    "goal_path_count": 0,
+    "success_trace_count": 0,
+    "static_unsatisfied_constraints": [],
+    "dropped_predicates": []
+  },
+  {
+    "task_id": "task_007",
+    "has_solution": false,
+    "node_count": 1,
+    "transition_edge_count": 0,
+    "equivalence_edge_count": 0,
+    "grounded_action_count": 9,
+    "goal_path_count": 0,
+    "success_trace_count": 0,
+    "static_unsatisfied_constraints": [
+      "Unsatisfied movable-goal predicate on(BP_Towel_hanged_C_0, BP_Rod_Bath005_C_4): BP_Towel_hanged_C_0 is not pickable."
+    ],
+    "dropped_predicates": [
+      "Dropped closed(BP_Wardrobe_005_C_0) because BP_Wardrobe_005_C_0 is not openable.",
+      "Dropped open(BP_Wardrobe_005_C_0) because BP_Wardrobe_005_C_0 is not openable."
+    ]
+  },
+  {
+    "task_id": "task_008",
+    "has_solution": true,
+    "node_count": 479,
+    "transition_edge_count": 478,
+    "equivalence_edge_count": 0,
+    "grounded_action_count": 11,
+    "goal_path_count": 100,
+    "success_trace_count": 100,
+    "static_unsatisfied_constraints": [],
+    "dropped_predicates": []
+  }
+]

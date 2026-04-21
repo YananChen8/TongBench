@@ -1,0 +1,232 @@
+[
+  {
+    "task_id": "task_001",
+    "description": "Prepare a guest-friendly living area by arranging seating, lighting, and refreshments.",
+    "intention": "Create a welcoming and functional space for a guest by organizing furniture, adjusting ambient lighting, and setting up a refreshment tray with drinks and snacks.",
+    "initial_state": {
+      "predicates": [
+        "empty",
+        "exists(BP_Sofa_008_C_0)",
+        "exists(BP_Sofa_011_C_0)",
+        "exists(BP_CoffeeTable_LivingRoom005_C_0)",
+        "exists(BP_TableLamp_BedsideLamp1_C_0)",
+        "exists(BP_TableLamp_BedsideLamp1_C_1)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Fruit_Banana_C_0)",
+        "exists(BP_Food_Donut_C_1)",
+        "exists(BP_Milk_02_C_0)",
+        "exists(BP_Plate_01_C_1)"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "on(BP_Cup_TeaCup_C_0, BP_CoffeeTable_LivingRoom005_C_0)",
+        "on(BP_Fruit_Banana_C_0, BP_CoffeeTable_LivingRoom005_C_0)",
+        "on(BP_Food_Donut_C_1, BP_CoffeeTable_LivingRoom005_C_0)",
+        "on(BP_Milk_02_C_0, BP_CoffeeTable_LivingRoom005_C_0)",
+        "on(BP_Plate_01_C_1, BP_CoffeeTable_LivingRoom005_C_0)",
+        "powered_on(BP_TableLamp_BedsideLamp1_C_0)",
+        "powered_on(BP_TableLamp_BedsideLamp1_C_1)",
+        "empty"
+      ],
+      "bindings": {}
+    }
+  },
+  {
+    "task_id": "task_002",
+    "description": "Tidy up scattered toys in the play area and store them in a designated box.",
+    "intention": "Reduce clutter and restore order in the child’s play zone by collecting all loose toys and placing them into a storage container.",
+    "initial_state": {
+      "predicates": [
+        "empty",
+        "exists(BP_Toy_Horse_C_0)",
+        "exists(BP_Toy_W_C_0)",
+        "exists(BP_Toy_Frog_C_0)",
+        "exists(BP_Toy_P_C_0)",
+        "exists(BP_Suitcase_Blue_C_0)"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "in(BP_Toy_Horse_C_0, BP_Suitcase_Blue_C_0)",
+        "in(BP_Toy_W_C_0, BP_Suitcase_Blue_C_0)",
+        "in(BP_Toy_Frog_C_0, BP_Suitcase_Blue_C_0)",
+        "in(BP_Toy_P_C_0, BP_Suitcase_Blue_C_0)",
+        "closed(BP_Suitcase_Blue_C_0)",
+        "empty"
+      ],
+      "bindings": {}
+    }
+  },
+  {
+    "task_id": "task_003",
+    "description": "Set up a functional workspace for studying or computer use on the desk.",
+    "intention": "Prepare a clean and organized desk environment suitable for reading, writing, or using a laptop by arranging essential tools and powering on necessary devices.",
+    "initial_state": {
+      "predicates": [
+        "empty",
+        "exists(BP_Desk_R005_C_0)",
+        "exists(BP_Laptop_1_C_0)",
+        "exists(BP_Keyboard_Map005_C_0)",
+        "exists(BP_Mouse_05_C_0)",
+        "exists(BP_TableLamp_BedsideLamp1_C_0)",
+        "exists(BP_Book_05_C_1)"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "on(BP_Laptop_1_C_0, BP_Desk_R005_C_0)",
+        "on(BP_Keyboard_Map005_C_0, BP_Desk_R005_C_0)",
+        "on(BP_Mouse_05_C_0, BP_Desk_R005_C_0)",
+        "on(BP_Book_05_C_1, BP_Desk_R005_C_0)",
+        "powered_on(BP_TableLamp_BedsideLamp1_C_0)",
+        "open(BP_Laptop_1_C_0)",
+        "empty"
+      ],
+      "bindings": {}
+    }
+  },
+  {
+    "task_id": "task_004",
+    "description": "Adjust room comfort by controlling air conditioning and lighting based on time of day.",
+    "intention": "Enhance indoor climate and ambiance by turning on the air conditioner and switching on ceiling lamps to create a pleasant environment.",
+    "initial_state": {
+      "predicates": [
+        "empty",
+        "exists(BP_AirCondition_2_C_0)",
+        "exists(BP_CeilingLamp_005_C_0)",
+        "exists(BP_WallLamp_Baulkhead1_C_7)",
+        "exists(BP_WallLamp_Baulkhead1_C_5)",
+        "exists(BP_WallLamp_Baulkhead1_C_2)"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "powered_on(BP_AirCondition_2_C_0)",
+        "powered_on(BP_CeilingLamp_005_C_0)",
+        "powered_on(BP_WallLamp_Baulkhead1_C_7)",
+        "powered_on(BP_WallLamp_Baulkhead1_C_5)",
+        "powered_on(BP_WallLamp_Baulkhead1_C_2)",
+        "empty"
+      ],
+      "bindings": {}
+    }
+  },
+  {
+    "task_id": "task_005",
+    "description": "Reset the kitchen after meal preparation by cleaning utensils and returning items to storage.",
+    "intention": "Restore the kitchen to a clean and orderly state after cooking by washing used dishes, placing them back in cabinets, and unplugging appliances.",
+    "initial_state": {
+      "predicates": [
+        "empty",
+        "exists(BP_Plate_3_C_0)",
+        "exists(BP_Fork_Child01_C_0)",
+        "exists(BP_Knife_Child01_C_0)",
+        "exists(BP_Pan_Egg_C_0)",
+        "exists(BP_Dishwasher_01_C_1)",
+        "exists(BP_Kettle_1_C_0)"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "clean(BP_Plate_3_C_0)",
+        "clean(BP_Fork_Child01_C_0)",
+        "clean(BP_Knife_Child01_C_0)",
+        "in(BP_Plate_3_C_0, BP_Cupboard_kitchen_room5_C_0)",
+        "in(BP_Fork_Child01_C_0, BP_Cupboard_kitchen_room5_C_0)",
+        "in(BP_Knife_Child01_C_0, BP_Cupboard_kitchen_room5_C_0)",
+        "in(BP_Pan_Egg_C_0, BP_Cupboard_kitchen_room5_C_0)",
+        "unplugged(BP_Kettle_1_C_0)",
+        "closed(BP_Dishwasher_01_C_1)",
+        "empty"
+      ],
+      "bindings": {}
+    }
+  },
+  {
+    "task_id": "task_006",
+    "description": "Prepare a simple tea-serving setup on the coffee table for someone in the room.",
+    "intention": "Serve a light refreshment by placing a cup, tea, and snack on the coffee table in an accessible and presentable way.",
+    "initial_state": {
+      "predicates": [
+        "empty",
+        "exists(BP_CoffeeTable_LivingRoom005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Fruit_Banana_C_0)",
+        "exists(BP_Food_Donut_C_1)"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "on(BP_Cup_TeaCup_C_0, BP_CoffeeTable_LivingRoom005_C_0)",
+        "on(BP_Fruit_Banana_C_0, BP_CoffeeTable_LivingRoom005_C_0)",
+        "on(BP_Food_Donut_C_1, BP_CoffeeTable_LivingRoom005_C_0)",
+        "empty"
+      ],
+      "bindings": {}
+    }
+  },
+  {
+    "task_id": "task_007",
+    "description": "Organize the bathroom vanity by opening the cabinet, placing toiletries inside, and closing it.",
+    "intention": "Maintain cleanliness and order in the bathroom by storing personal items in the cabinet after use.",
+    "initial_state": {
+      "predicates": [
+        "empty",
+        "exists(BP_BathCabinet_005_C_0)",
+        "exists(BP_Bottle_01_C_0)",
+        "exists(BP_Bottle_02_C_0)",
+        "exists(BP_Bottle_03_C_0)",
+        "exists(BP_Towel_hanged_C_0)"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "open(BP_BathCabinet_005_C_0)",
+        "in(BP_Bottle_01_C_0, BP_BathCabinet_005_C_0)",
+        "in(BP_Bottle_02_C_0, BP_BathCabinet_005_C_0)",
+        "in(BP_Bottle_03_C_0, BP_BathCabinet_005_C_0)",
+        "closed(BP_BathCabinet_005_C_0)",
+        "empty"
+      ],
+      "bindings": {}
+    }
+  },
+  {
+    "task_id": "task_008",
+    "description": "Prepare the bedroom for sleep by adjusting curtains, turning off lights, and arranging pillows.",
+    "intention": "Create a restful sleeping environment by dimming lights, closing curtains, and aligning bedding for comfort.",
+    "initial_state": {
+      "predicates": [
+        "empty",
+        "exists(BP_Bed_Child_05_C_0)",
+        "exists(BP_Pillow_Child01_C_0)",
+        "exists(BP_Pillow_Child03_C_0)",
+        "exists(BP_Pillow_Child02_C_0)",
+        "exists(BP_Curtains_Bedroom1_C_0)",
+        "exists(BP_Curtains_Bedroom1_Blue_C_0)",
+        "exists(BP_TableLamp_R2_01_C_0)"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "on(BP_Pillow_Child01_C_0, BP_Bed_Child_05_C_0)",
+        "on(BP_Pillow_Child03_C_0, BP_Bed_Child_05_C_0)",
+        "on(BP_Pillow_Child02_C_0, BP_Bed_Child_05_C_0)",
+        "closed(BP_Curtains_Bedroom1_C_0)",
+        "closed(BP_Curtains_Bedroom1_Blue_C_0)",
+        "powered_off(BP_TableLamp_R2_01_C_0)",
+        "empty"
+      ],
+      "bindings": {}
+    }
+  }
+]

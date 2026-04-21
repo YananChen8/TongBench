@@ -32,3 +32,13 @@ You must follow these rules exactly:
 22. If final_state contains holding(object_id), then initial_state must contain empty and must not contain holding(...) for any object.
 23. For any state change predicate, the initial_state must explicitly include the corresponding opposite starting condition whenever such an opposite predicate exists in the allowed predicate set.
 24. Do not use with_reach(object_id) in initial_state. The initial state must not assume the agent already stands within reach of target objects.
+25. All predicates and task goals must respect the affordance constraints provided in the object catalog.
+26. Do not use open(object_id) or closed(object_id) for any object that is not explicitly openable in the affordance data.
+27. Do not use powered_on(object_id) or powered_off(object_id) for any object that is not explicitly powerable in the affordance data.
+28. Do not use holding(object_id), on(object_id_1, object_id_2), or in(object_id_1, object_id_2) with object_id_1 as the moved object unless object_id_1 is explicitly pickable in the affordance data.
+29. If an object is not openable but can still serve as an accessible storage area or receptacle in the scene description, treat it as already accessible by default and do not introduce open(...) or closed(...) predicates for it.
+30. Do not generate any task whose completion would require moving or repositioning a non-pickable object.
+31. The initial_state may include at most 3 auxiliary objects that appear only as exists(object_id) and are not required to appear in final_state.
+32. Auxiliary objects may be included only if they are plausibly useful for intermediate execution, spatial support, or realistic task context.
+33. Do not include decorative, irrelevant, or redundant auxiliary objects.
+34. The number of auxiliary exists(object_id) predicates must remain smaller than the number of task-relevant predicates. Auxiliary context must not dominate the task definition.

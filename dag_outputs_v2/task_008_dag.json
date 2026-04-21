@@ -1,0 +1,1688 @@
+{
+  "task_id": "task_008",
+  "description": "Clean the bathroom sink area by removing dirty dishes, washing them, and placing them back in the cupboard.",
+  "output_language": "English",
+  "is_dag": true,
+  "task_scope": [
+    "BP_BowlCupboard_04_C_3",
+    "BP_Bowl_Stack005_C_0",
+    "BP_Cup_TeaCup_C_0",
+    "BP_Sink_005_C_0"
+  ],
+  "preprocess": {
+    "dropped_predicates": [],
+    "static_unsatisfied_constraints": []
+  },
+  "initial_state": [
+    "closed(BP_BowlCupboard_04_C_3)",
+    "dirty(BP_Bowl_Stack005_C_0)",
+    "dirty(BP_Cup_TeaCup_C_0)",
+    "empty",
+    "exists(BP_BowlCupboard_04_C_3)",
+    "exists(BP_Bowl_Stack005_C_0)",
+    "exists(BP_Cup_TeaCup_C_0)",
+    "exists(BP_Sink_005_C_0)"
+  ],
+  "goal_state": [
+    "clean(BP_Bowl_Stack005_C_0)",
+    "clean(BP_Cup_TeaCup_C_0)",
+    "empty",
+    "in(BP_Bowl_Stack005_C_0, BP_BowlCupboard_04_C_3)",
+    "in(BP_Cup_TeaCup_C_0, BP_BowlCupboard_04_C_3)"
+  ],
+  "nodes": [
+    {
+      "id": "n0",
+      "depth": 0,
+      "state": [
+        "closed(BP_BowlCupboard_04_C_3)",
+        "dirty(BP_Bowl_Stack005_C_0)",
+        "dirty(BP_Cup_TeaCup_C_0)",
+        "empty",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n1",
+      "depth": 1,
+      "state": [
+        "closed(BP_BowlCupboard_04_C_3)",
+        "dirty(BP_Bowl_Stack005_C_0)",
+        "dirty(BP_Cup_TeaCup_C_0)",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "holding(BP_Bowl_Stack005_C_0)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "with_reach(BP_Bowl_Stack005_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n2",
+      "depth": 1,
+      "state": [
+        "closed(BP_BowlCupboard_04_C_3)",
+        "dirty(BP_Bowl_Stack005_C_0)",
+        "dirty(BP_Cup_TeaCup_C_0)",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "holding(BP_Cup_TeaCup_C_0)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n3",
+      "depth": 1,
+      "state": [
+        "clean(BP_Bowl_Stack005_C_0)",
+        "closed(BP_BowlCupboard_04_C_3)",
+        "dirty(BP_Cup_TeaCup_C_0)",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "holding(BP_Bowl_Stack005_C_0)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "with_reach(BP_Bowl_Stack005_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n4",
+      "depth": 1,
+      "state": [
+        "clean(BP_Cup_TeaCup_C_0)",
+        "closed(BP_BowlCupboard_04_C_3)",
+        "dirty(BP_Bowl_Stack005_C_0)",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "holding(BP_Cup_TeaCup_C_0)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n5",
+      "depth": 1,
+      "state": [
+        "dirty(BP_Bowl_Stack005_C_0)",
+        "dirty(BP_Cup_TeaCup_C_0)",
+        "empty",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "open(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_BowlCupboard_04_C_3)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n6",
+      "depth": 2,
+      "state": [
+        "dirty(BP_Bowl_Stack005_C_0)",
+        "dirty(BP_Cup_TeaCup_C_0)",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "holding(BP_Bowl_Stack005_C_0)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "open(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Bowl_Stack005_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n7",
+      "depth": 2,
+      "state": [
+        "dirty(BP_Bowl_Stack005_C_0)",
+        "dirty(BP_Cup_TeaCup_C_0)",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "holding(BP_Cup_TeaCup_C_0)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "open(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n8",
+      "depth": 2,
+      "state": [
+        "clean(BP_Bowl_Stack005_C_0)",
+        "dirty(BP_Cup_TeaCup_C_0)",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "holding(BP_Bowl_Stack005_C_0)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "open(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Bowl_Stack005_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n9",
+      "depth": 2,
+      "state": [
+        "clean(BP_Cup_TeaCup_C_0)",
+        "dirty(BP_Bowl_Stack005_C_0)",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "holding(BP_Cup_TeaCup_C_0)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "open(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n10",
+      "depth": 3,
+      "state": [
+        "dirty(BP_Bowl_Stack005_C_0)",
+        "dirty(BP_Cup_TeaCup_C_0)",
+        "empty",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "in(BP_Bowl_Stack005_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "open(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Bowl_Stack005_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n11",
+      "depth": 3,
+      "state": [
+        "dirty(BP_Bowl_Stack005_C_0)",
+        "dirty(BP_Cup_TeaCup_C_0)",
+        "empty",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "in(BP_Cup_TeaCup_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "open(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n12",
+      "depth": 3,
+      "state": [
+        "clean(BP_Bowl_Stack005_C_0)",
+        "dirty(BP_Cup_TeaCup_C_0)",
+        "empty",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "in(BP_Bowl_Stack005_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "open(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Bowl_Stack005_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n13",
+      "depth": 3,
+      "state": [
+        "clean(BP_Cup_TeaCup_C_0)",
+        "dirty(BP_Bowl_Stack005_C_0)",
+        "empty",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "in(BP_Cup_TeaCup_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "open(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n14",
+      "depth": 4,
+      "state": [
+        "dirty(BP_Bowl_Stack005_C_0)",
+        "dirty(BP_Cup_TeaCup_C_0)",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "holding(BP_Cup_TeaCup_C_0)",
+        "in(BP_Bowl_Stack005_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "open(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Bowl_Stack005_C_0)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n15",
+      "depth": 4,
+      "state": [
+        "clean(BP_Cup_TeaCup_C_0)",
+        "dirty(BP_Bowl_Stack005_C_0)",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "holding(BP_Cup_TeaCup_C_0)",
+        "in(BP_Bowl_Stack005_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "open(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Bowl_Stack005_C_0)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n16",
+      "depth": 4,
+      "state": [
+        "closed(BP_BowlCupboard_04_C_3)",
+        "dirty(BP_Bowl_Stack005_C_0)",
+        "dirty(BP_Cup_TeaCup_C_0)",
+        "empty",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "in(BP_Bowl_Stack005_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Bowl_Stack005_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n17",
+      "depth": 4,
+      "state": [
+        "dirty(BP_Bowl_Stack005_C_0)",
+        "dirty(BP_Cup_TeaCup_C_0)",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "holding(BP_Bowl_Stack005_C_0)",
+        "in(BP_Cup_TeaCup_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "open(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Bowl_Stack005_C_0)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n18",
+      "depth": 4,
+      "state": [
+        "clean(BP_Bowl_Stack005_C_0)",
+        "dirty(BP_Cup_TeaCup_C_0)",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "holding(BP_Bowl_Stack005_C_0)",
+        "in(BP_Cup_TeaCup_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "open(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Bowl_Stack005_C_0)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n19",
+      "depth": 4,
+      "state": [
+        "closed(BP_BowlCupboard_04_C_3)",
+        "dirty(BP_Bowl_Stack005_C_0)",
+        "dirty(BP_Cup_TeaCup_C_0)",
+        "empty",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "in(BP_Cup_TeaCup_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n20",
+      "depth": 4,
+      "state": [
+        "clean(BP_Bowl_Stack005_C_0)",
+        "dirty(BP_Cup_TeaCup_C_0)",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "holding(BP_Cup_TeaCup_C_0)",
+        "in(BP_Bowl_Stack005_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "open(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Bowl_Stack005_C_0)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n21",
+      "depth": 4,
+      "state": [
+        "clean(BP_Bowl_Stack005_C_0)",
+        "clean(BP_Cup_TeaCup_C_0)",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "holding(BP_Cup_TeaCup_C_0)",
+        "in(BP_Bowl_Stack005_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "open(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Bowl_Stack005_C_0)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n22",
+      "depth": 4,
+      "state": [
+        "clean(BP_Bowl_Stack005_C_0)",
+        "closed(BP_BowlCupboard_04_C_3)",
+        "dirty(BP_Cup_TeaCup_C_0)",
+        "empty",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "in(BP_Bowl_Stack005_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Bowl_Stack005_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n23",
+      "depth": 4,
+      "state": [
+        "clean(BP_Cup_TeaCup_C_0)",
+        "dirty(BP_Bowl_Stack005_C_0)",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "holding(BP_Bowl_Stack005_C_0)",
+        "in(BP_Cup_TeaCup_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "open(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Bowl_Stack005_C_0)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n24",
+      "depth": 4,
+      "state": [
+        "clean(BP_Bowl_Stack005_C_0)",
+        "clean(BP_Cup_TeaCup_C_0)",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "holding(BP_Bowl_Stack005_C_0)",
+        "in(BP_Cup_TeaCup_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "open(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Bowl_Stack005_C_0)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n25",
+      "depth": 4,
+      "state": [
+        "clean(BP_Cup_TeaCup_C_0)",
+        "closed(BP_BowlCupboard_04_C_3)",
+        "dirty(BP_Bowl_Stack005_C_0)",
+        "empty",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "in(BP_Cup_TeaCup_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n26",
+      "depth": 5,
+      "state": [
+        "closed(BP_BowlCupboard_04_C_3)",
+        "dirty(BP_Bowl_Stack005_C_0)",
+        "dirty(BP_Cup_TeaCup_C_0)",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "holding(BP_Cup_TeaCup_C_0)",
+        "in(BP_Bowl_Stack005_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Bowl_Stack005_C_0)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n27",
+      "depth": 5,
+      "state": [
+        "dirty(BP_Bowl_Stack005_C_0)",
+        "dirty(BP_Cup_TeaCup_C_0)",
+        "empty",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "in(BP_Bowl_Stack005_C_0, BP_BowlCupboard_04_C_3)",
+        "in(BP_Cup_TeaCup_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "open(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Bowl_Stack005_C_0)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n28",
+      "depth": 5,
+      "state": [
+        "clean(BP_Cup_TeaCup_C_0)",
+        "closed(BP_BowlCupboard_04_C_3)",
+        "dirty(BP_Bowl_Stack005_C_0)",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "holding(BP_Cup_TeaCup_C_0)",
+        "in(BP_Bowl_Stack005_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Bowl_Stack005_C_0)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n29",
+      "depth": 5,
+      "state": [
+        "clean(BP_Cup_TeaCup_C_0)",
+        "dirty(BP_Bowl_Stack005_C_0)",
+        "empty",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "in(BP_Bowl_Stack005_C_0, BP_BowlCupboard_04_C_3)",
+        "in(BP_Cup_TeaCup_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "open(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Bowl_Stack005_C_0)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n30",
+      "depth": 5,
+      "state": [
+        "closed(BP_BowlCupboard_04_C_3)",
+        "dirty(BP_Bowl_Stack005_C_0)",
+        "dirty(BP_Cup_TeaCup_C_0)",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "holding(BP_Bowl_Stack005_C_0)",
+        "in(BP_Cup_TeaCup_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Bowl_Stack005_C_0)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n31",
+      "depth": 5,
+      "state": [
+        "clean(BP_Bowl_Stack005_C_0)",
+        "closed(BP_BowlCupboard_04_C_3)",
+        "dirty(BP_Cup_TeaCup_C_0)",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "holding(BP_Bowl_Stack005_C_0)",
+        "in(BP_Cup_TeaCup_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Bowl_Stack005_C_0)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n32",
+      "depth": 5,
+      "state": [
+        "clean(BP_Bowl_Stack005_C_0)",
+        "dirty(BP_Cup_TeaCup_C_0)",
+        "empty",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "in(BP_Bowl_Stack005_C_0, BP_BowlCupboard_04_C_3)",
+        "in(BP_Cup_TeaCup_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "open(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Bowl_Stack005_C_0)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n33",
+      "depth": 5,
+      "state": [
+        "clean(BP_Bowl_Stack005_C_0)",
+        "closed(BP_BowlCupboard_04_C_3)",
+        "dirty(BP_Cup_TeaCup_C_0)",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "holding(BP_Cup_TeaCup_C_0)",
+        "in(BP_Bowl_Stack005_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Bowl_Stack005_C_0)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n34",
+      "depth": 5,
+      "state": [
+        "clean(BP_Bowl_Stack005_C_0)",
+        "clean(BP_Cup_TeaCup_C_0)",
+        "closed(BP_BowlCupboard_04_C_3)",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "holding(BP_Cup_TeaCup_C_0)",
+        "in(BP_Bowl_Stack005_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Bowl_Stack005_C_0)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n35",
+      "depth": 5,
+      "state": [
+        "clean(BP_Bowl_Stack005_C_0)",
+        "clean(BP_Cup_TeaCup_C_0)",
+        "empty",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "in(BP_Bowl_Stack005_C_0, BP_BowlCupboard_04_C_3)",
+        "in(BP_Cup_TeaCup_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "open(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Bowl_Stack005_C_0)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": true
+    },
+    {
+      "id": "n36",
+      "depth": 5,
+      "state": [
+        "clean(BP_Cup_TeaCup_C_0)",
+        "closed(BP_BowlCupboard_04_C_3)",
+        "dirty(BP_Bowl_Stack005_C_0)",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "holding(BP_Bowl_Stack005_C_0)",
+        "in(BP_Cup_TeaCup_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Bowl_Stack005_C_0)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n37",
+      "depth": 5,
+      "state": [
+        "clean(BP_Bowl_Stack005_C_0)",
+        "clean(BP_Cup_TeaCup_C_0)",
+        "closed(BP_BowlCupboard_04_C_3)",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "holding(BP_Bowl_Stack005_C_0)",
+        "in(BP_Cup_TeaCup_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Bowl_Stack005_C_0)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n38",
+      "depth": 6,
+      "state": [
+        "closed(BP_BowlCupboard_04_C_3)",
+        "dirty(BP_Bowl_Stack005_C_0)",
+        "dirty(BP_Cup_TeaCup_C_0)",
+        "empty",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "in(BP_Bowl_Stack005_C_0, BP_BowlCupboard_04_C_3)",
+        "in(BP_Cup_TeaCup_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Bowl_Stack005_C_0)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n39",
+      "depth": 6,
+      "state": [
+        "clean(BP_Cup_TeaCup_C_0)",
+        "closed(BP_BowlCupboard_04_C_3)",
+        "dirty(BP_Bowl_Stack005_C_0)",
+        "empty",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "in(BP_Bowl_Stack005_C_0, BP_BowlCupboard_04_C_3)",
+        "in(BP_Cup_TeaCup_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Bowl_Stack005_C_0)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n40",
+      "depth": 6,
+      "state": [
+        "clean(BP_Bowl_Stack005_C_0)",
+        "closed(BP_BowlCupboard_04_C_3)",
+        "dirty(BP_Cup_TeaCup_C_0)",
+        "empty",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "in(BP_Bowl_Stack005_C_0, BP_BowlCupboard_04_C_3)",
+        "in(BP_Cup_TeaCup_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "with_reach(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Bowl_Stack005_C_0)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false
+    }
+  ],
+  "dag_edges": [
+    {
+      "from": "n0",
+      "to": "n1",
+      "action": "acquire_{object}__BP_Bowl_Stack005_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n0",
+      "to": "n2",
+      "action": "acquire_{object}__BP_Cup_TeaCup_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n0",
+      "to": "n3",
+      "action": "acquire_and_clean_{object}__BP_Bowl_Stack005_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n0",
+      "to": "n4",
+      "action": "acquire_and_clean_{object}__BP_Cup_TeaCup_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n0",
+      "to": "n5",
+      "action": "open_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n1",
+      "to": "n6",
+      "action": "open_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n2",
+      "to": "n7",
+      "action": "open_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n3",
+      "to": "n8",
+      "action": "open_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n4",
+      "to": "n9",
+      "action": "open_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n6",
+      "to": "n10",
+      "action": "place_BP_Bowl_Stack005_C_0_in_BP_BowlCupboard_04_C_3",
+      "source": "primitive",
+      "type": "transition"
+    },
+    {
+      "from": "n7",
+      "to": "n11",
+      "action": "place_BP_Cup_TeaCup_C_0_in_BP_BowlCupboard_04_C_3",
+      "source": "primitive",
+      "type": "transition"
+    },
+    {
+      "from": "n8",
+      "to": "n12",
+      "action": "place_BP_Bowl_Stack005_C_0_in_BP_BowlCupboard_04_C_3",
+      "source": "primitive",
+      "type": "transition"
+    },
+    {
+      "from": "n9",
+      "to": "n13",
+      "action": "place_BP_Cup_TeaCup_C_0_in_BP_BowlCupboard_04_C_3",
+      "source": "primitive",
+      "type": "transition"
+    },
+    {
+      "from": "n10",
+      "to": "n14",
+      "action": "acquire_{object}__BP_Cup_TeaCup_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n10",
+      "to": "n15",
+      "action": "acquire_and_clean_{object}__BP_Cup_TeaCup_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n10",
+      "to": "n16",
+      "action": "close_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n11",
+      "to": "n17",
+      "action": "acquire_{object}__BP_Bowl_Stack005_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n11",
+      "to": "n18",
+      "action": "acquire_and_clean_{object}__BP_Bowl_Stack005_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n11",
+      "to": "n19",
+      "action": "close_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n12",
+      "to": "n20",
+      "action": "acquire_{object}__BP_Cup_TeaCup_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n12",
+      "to": "n21",
+      "action": "acquire_and_clean_{object}__BP_Cup_TeaCup_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n12",
+      "to": "n22",
+      "action": "close_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n13",
+      "to": "n23",
+      "action": "acquire_{object}__BP_Bowl_Stack005_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n13",
+      "to": "n24",
+      "action": "acquire_and_clean_{object}__BP_Bowl_Stack005_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n13",
+      "to": "n25",
+      "action": "close_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n14",
+      "to": "n26",
+      "action": "close_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n14",
+      "to": "n27",
+      "action": "place_BP_Cup_TeaCup_C_0_in_BP_BowlCupboard_04_C_3",
+      "source": "primitive",
+      "type": "transition"
+    },
+    {
+      "from": "n15",
+      "to": "n28",
+      "action": "close_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n15",
+      "to": "n29",
+      "action": "place_BP_Cup_TeaCup_C_0_in_BP_BowlCupboard_04_C_3",
+      "source": "primitive",
+      "type": "transition"
+    },
+    {
+      "from": "n17",
+      "to": "n30",
+      "action": "close_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n18",
+      "to": "n31",
+      "action": "close_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n18",
+      "to": "n32",
+      "action": "place_BP_Bowl_Stack005_C_0_in_BP_BowlCupboard_04_C_3",
+      "source": "primitive",
+      "type": "transition"
+    },
+    {
+      "from": "n20",
+      "to": "n33",
+      "action": "close_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n21",
+      "to": "n34",
+      "action": "close_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n21",
+      "to": "n35",
+      "action": "place_BP_Cup_TeaCup_C_0_in_BP_BowlCupboard_04_C_3",
+      "source": "primitive",
+      "type": "transition"
+    },
+    {
+      "from": "n23",
+      "to": "n36",
+      "action": "close_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n24",
+      "to": "n37",
+      "action": "close_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n27",
+      "to": "n38",
+      "action": "close_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n29",
+      "to": "n39",
+      "action": "close_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n32",
+      "to": "n40",
+      "action": "close_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "transition"
+    }
+  ],
+  "equivalence_edges": [
+    {
+      "from": "n5",
+      "to": "n6",
+      "action": "acquire_{object}__BP_Bowl_Stack005_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n5",
+      "to": "n7",
+      "action": "acquire_{object}__BP_Cup_TeaCup_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n5",
+      "to": "n8",
+      "action": "acquire_and_clean_{object}__BP_Bowl_Stack005_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n5",
+      "to": "n9",
+      "action": "acquire_and_clean_{object}__BP_Cup_TeaCup_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n5",
+      "to": "n0",
+      "action": "close_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n6",
+      "to": "n1",
+      "action": "close_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n7",
+      "to": "n2",
+      "action": "close_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n8",
+      "to": "n3",
+      "action": "close_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n9",
+      "to": "n4",
+      "action": "close_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n10",
+      "to": "n6",
+      "action": "acquire_{object}__BP_Bowl_Stack005_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n10",
+      "to": "n8",
+      "action": "acquire_and_clean_{object}__BP_Bowl_Stack005_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n11",
+      "to": "n7",
+      "action": "acquire_{object}__BP_Cup_TeaCup_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n11",
+      "to": "n9",
+      "action": "acquire_and_clean_{object}__BP_Cup_TeaCup_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n12",
+      "to": "n8",
+      "action": "acquire_{object}__BP_Bowl_Stack005_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n13",
+      "to": "n9",
+      "action": "acquire_{object}__BP_Cup_TeaCup_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n16",
+      "to": "n1",
+      "action": "acquire_{object}__BP_Bowl_Stack005_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n16",
+      "to": "n26",
+      "action": "acquire_{object}__BP_Cup_TeaCup_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n16",
+      "to": "n3",
+      "action": "acquire_and_clean_{object}__BP_Bowl_Stack005_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n16",
+      "to": "n28",
+      "action": "acquire_and_clean_{object}__BP_Cup_TeaCup_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n16",
+      "to": "n10",
+      "action": "open_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n17",
+      "to": "n27",
+      "action": "place_BP_Bowl_Stack005_C_0_in_BP_BowlCupboard_04_C_3",
+      "source": "primitive",
+      "type": "equivalence"
+    },
+    {
+      "from": "n19",
+      "to": "n30",
+      "action": "acquire_{object}__BP_Bowl_Stack005_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n19",
+      "to": "n2",
+      "action": "acquire_{object}__BP_Cup_TeaCup_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n19",
+      "to": "n31",
+      "action": "acquire_and_clean_{object}__BP_Bowl_Stack005_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n19",
+      "to": "n4",
+      "action": "acquire_and_clean_{object}__BP_Cup_TeaCup_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n19",
+      "to": "n11",
+      "action": "open_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n20",
+      "to": "n32",
+      "action": "place_BP_Cup_TeaCup_C_0_in_BP_BowlCupboard_04_C_3",
+      "source": "primitive",
+      "type": "equivalence"
+    },
+    {
+      "from": "n22",
+      "to": "n3",
+      "action": "acquire_{object}__BP_Bowl_Stack005_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n22",
+      "to": "n33",
+      "action": "acquire_{object}__BP_Cup_TeaCup_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n22",
+      "to": "n34",
+      "action": "acquire_and_clean_{object}__BP_Cup_TeaCup_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n22",
+      "to": "n12",
+      "action": "open_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n23",
+      "to": "n29",
+      "action": "place_BP_Bowl_Stack005_C_0_in_BP_BowlCupboard_04_C_3",
+      "source": "primitive",
+      "type": "equivalence"
+    },
+    {
+      "from": "n24",
+      "to": "n35",
+      "action": "place_BP_Bowl_Stack005_C_0_in_BP_BowlCupboard_04_C_3",
+      "source": "primitive",
+      "type": "equivalence"
+    },
+    {
+      "from": "n25",
+      "to": "n36",
+      "action": "acquire_{object}__BP_Bowl_Stack005_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n25",
+      "to": "n4",
+      "action": "acquire_{object}__BP_Cup_TeaCup_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n25",
+      "to": "n37",
+      "action": "acquire_and_clean_{object}__BP_Bowl_Stack005_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n25",
+      "to": "n13",
+      "action": "open_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n26",
+      "to": "n14",
+      "action": "open_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n27",
+      "to": "n17",
+      "action": "acquire_{object}__BP_Bowl_Stack005_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n27",
+      "to": "n14",
+      "action": "acquire_{object}__BP_Cup_TeaCup_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n27",
+      "to": "n18",
+      "action": "acquire_and_clean_{object}__BP_Bowl_Stack005_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n27",
+      "to": "n15",
+      "action": "acquire_and_clean_{object}__BP_Cup_TeaCup_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n28",
+      "to": "n15",
+      "action": "open_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n29",
+      "to": "n23",
+      "action": "acquire_{object}__BP_Bowl_Stack005_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n29",
+      "to": "n15",
+      "action": "acquire_{object}__BP_Cup_TeaCup_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n29",
+      "to": "n24",
+      "action": "acquire_and_clean_{object}__BP_Bowl_Stack005_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n30",
+      "to": "n17",
+      "action": "open_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n31",
+      "to": "n18",
+      "action": "open_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n32",
+      "to": "n18",
+      "action": "acquire_{object}__BP_Bowl_Stack005_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n32",
+      "to": "n20",
+      "action": "acquire_{object}__BP_Cup_TeaCup_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n32",
+      "to": "n21",
+      "action": "acquire_and_clean_{object}__BP_Cup_TeaCup_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n33",
+      "to": "n20",
+      "action": "open_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n34",
+      "to": "n21",
+      "action": "open_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n36",
+      "to": "n23",
+      "action": "open_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n37",
+      "to": "n24",
+      "action": "open_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n38",
+      "to": "n30",
+      "action": "acquire_{object}__BP_Bowl_Stack005_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n38",
+      "to": "n26",
+      "action": "acquire_{object}__BP_Cup_TeaCup_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n38",
+      "to": "n31",
+      "action": "acquire_and_clean_{object}__BP_Bowl_Stack005_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n38",
+      "to": "n28",
+      "action": "acquire_and_clean_{object}__BP_Cup_TeaCup_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n38",
+      "to": "n27",
+      "action": "open_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n39",
+      "to": "n36",
+      "action": "acquire_{object}__BP_Bowl_Stack005_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n39",
+      "to": "n28",
+      "action": "acquire_{object}__BP_Cup_TeaCup_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n39",
+      "to": "n37",
+      "action": "acquire_and_clean_{object}__BP_Bowl_Stack005_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n39",
+      "to": "n29",
+      "action": "open_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n40",
+      "to": "n31",
+      "action": "acquire_{object}__BP_Bowl_Stack005_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n40",
+      "to": "n33",
+      "action": "acquire_{object}__BP_Cup_TeaCup_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n40",
+      "to": "n34",
+      "action": "acquire_and_clean_{object}__BP_Cup_TeaCup_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n40",
+      "to": "n32",
+      "action": "open_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "equivalence"
+    }
+  ],
+  "goal_nodes": [
+    "n35"
+  ],
+  "goal_paths": [
+    [
+      {
+        "from": "n0",
+        "to": "n3",
+        "action": "acquire_and_clean_{object}__BP_Bowl_Stack005_C_0",
+        "source": "subtask"
+      },
+      {
+        "from": "n3",
+        "to": "n8",
+        "action": "open_container_{object}__BP_BowlCupboard_04_C_3",
+        "source": "subtask"
+      },
+      {
+        "from": "n8",
+        "to": "n12",
+        "action": "place_BP_Bowl_Stack005_C_0_in_BP_BowlCupboard_04_C_3",
+        "source": "primitive"
+      },
+      {
+        "from": "n12",
+        "to": "n21",
+        "action": "acquire_and_clean_{object}__BP_Cup_TeaCup_C_0",
+        "source": "subtask"
+      },
+      {
+        "from": "n21",
+        "to": "n35",
+        "action": "place_BP_Cup_TeaCup_C_0_in_BP_BowlCupboard_04_C_3",
+        "source": "primitive"
+      }
+    ]
+  ],
+  "has_solution": true,
+  "node_count": 41,
+  "transition_edge_count": 40,
+  "equivalence_edge_count": 68,
+  "grounded_action_count": 11,
+  "grounded_subtask_count": 9,
+  "grounded_place_primitive_count": 2
+}

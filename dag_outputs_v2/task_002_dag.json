@@ -1,0 +1,169 @@
+{
+  "task_id": "task_002",
+  "description": "Tidy up the child's play area by collecting scattered toys and placing them in the storage box.",
+  "output_language": "English",
+  "is_dag": true,
+  "task_scope": [
+    "BP_Suitcase_Blue_C_0",
+    "BP_Toy_Frog_C_0",
+    "BP_Toy_Horse_C_0",
+    "BP_Toy_P_C_0",
+    "BP_Toy_W_C_0"
+  ],
+  "preprocess": {
+    "dropped_predicates": [],
+    "static_unsatisfied_constraints": []
+  },
+  "initial_state": [
+    "empty",
+    "exists(BP_Suitcase_Blue_C_0)",
+    "exists(BP_Toy_Frog_C_0)",
+    "exists(BP_Toy_Horse_C_0)",
+    "exists(BP_Toy_P_C_0)",
+    "exists(BP_Toy_W_C_0)"
+  ],
+  "goal_state": [
+    "empty",
+    "in(BP_Toy_Frog_C_0, BP_Suitcase_Blue_C_0)",
+    "in(BP_Toy_Horse_C_0, BP_Suitcase_Blue_C_0)",
+    "in(BP_Toy_P_C_0, BP_Suitcase_Blue_C_0)",
+    "in(BP_Toy_W_C_0, BP_Suitcase_Blue_C_0)"
+  ],
+  "nodes": [
+    {
+      "id": "n0",
+      "depth": 0,
+      "state": [
+        "empty",
+        "exists(BP_Suitcase_Blue_C_0)",
+        "exists(BP_Toy_Frog_C_0)",
+        "exists(BP_Toy_Horse_C_0)",
+        "exists(BP_Toy_P_C_0)",
+        "exists(BP_Toy_W_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n1",
+      "depth": 1,
+      "state": [
+        "exists(BP_Suitcase_Blue_C_0)",
+        "exists(BP_Toy_Frog_C_0)",
+        "exists(BP_Toy_Horse_C_0)",
+        "exists(BP_Toy_P_C_0)",
+        "exists(BP_Toy_W_C_0)",
+        "holding(BP_Suitcase_Blue_C_0)",
+        "in_view(BP_Suitcase_Blue_C_0)",
+        "with_reach(BP_Suitcase_Blue_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n2",
+      "depth": 1,
+      "state": [
+        "exists(BP_Suitcase_Blue_C_0)",
+        "exists(BP_Toy_Frog_C_0)",
+        "exists(BP_Toy_Horse_C_0)",
+        "exists(BP_Toy_P_C_0)",
+        "exists(BP_Toy_W_C_0)",
+        "holding(BP_Toy_Frog_C_0)",
+        "in_view(BP_Toy_Frog_C_0)",
+        "with_reach(BP_Toy_Frog_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n3",
+      "depth": 1,
+      "state": [
+        "exists(BP_Suitcase_Blue_C_0)",
+        "exists(BP_Toy_Frog_C_0)",
+        "exists(BP_Toy_Horse_C_0)",
+        "exists(BP_Toy_P_C_0)",
+        "exists(BP_Toy_W_C_0)",
+        "holding(BP_Toy_Horse_C_0)",
+        "in_view(BP_Toy_Horse_C_0)",
+        "with_reach(BP_Toy_Horse_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n4",
+      "depth": 1,
+      "state": [
+        "exists(BP_Suitcase_Blue_C_0)",
+        "exists(BP_Toy_Frog_C_0)",
+        "exists(BP_Toy_Horse_C_0)",
+        "exists(BP_Toy_P_C_0)",
+        "exists(BP_Toy_W_C_0)",
+        "holding(BP_Toy_P_C_0)",
+        "in_view(BP_Toy_P_C_0)",
+        "with_reach(BP_Toy_P_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n5",
+      "depth": 1,
+      "state": [
+        "exists(BP_Suitcase_Blue_C_0)",
+        "exists(BP_Toy_Frog_C_0)",
+        "exists(BP_Toy_Horse_C_0)",
+        "exists(BP_Toy_P_C_0)",
+        "exists(BP_Toy_W_C_0)",
+        "holding(BP_Toy_W_C_0)",
+        "in_view(BP_Toy_W_C_0)",
+        "with_reach(BP_Toy_W_C_0)"
+      ],
+      "is_goal": false
+    }
+  ],
+  "dag_edges": [
+    {
+      "from": "n0",
+      "to": "n1",
+      "action": "acquire_{object}__BP_Suitcase_Blue_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n0",
+      "to": "n2",
+      "action": "acquire_{object}__BP_Toy_Frog_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n0",
+      "to": "n3",
+      "action": "acquire_{object}__BP_Toy_Horse_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n0",
+      "to": "n4",
+      "action": "acquire_{object}__BP_Toy_P_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n0",
+      "to": "n5",
+      "action": "acquire_{object}__BP_Toy_W_C_0",
+      "source": "subtask",
+      "type": "transition"
+    }
+  ],
+  "equivalence_edges": [],
+  "goal_nodes": [],
+  "goal_paths": [],
+  "has_solution": false,
+  "node_count": 6,
+  "transition_edge_count": 5,
+  "equivalence_edge_count": 0,
+  "grounded_action_count": 18,
+  "grounded_subtask_count": 14,
+  "grounded_place_primitive_count": 4
+}

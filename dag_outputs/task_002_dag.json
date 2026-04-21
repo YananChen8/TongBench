@@ -1,0 +1,56 @@
+{
+  "task_id": "task_002",
+  "description": "Tidy up the child's play area by collecting scattered toys and placing them in the storage box.",
+  "intention": "Reduce clutter and organize the space by gathering all visible toys and storing them safely in a designated container.",
+  "initial_state": [
+    "empty",
+    "exists(BP_Suitcase_Blue_C_0)",
+    "exists(BP_Toy_Frog_C_0)",
+    "exists(BP_Toy_Horse_C_0)",
+    "exists(BP_Toy_P_C_0)",
+    "exists(BP_Toy_W_C_0)"
+  ],
+  "goal_state": [
+    "empty",
+    "in(BP_Toy_Frog_C_0, BP_Suitcase_Blue_C_0)",
+    "in(BP_Toy_Horse_C_0, BP_Suitcase_Blue_C_0)",
+    "in(BP_Toy_P_C_0, BP_Suitcase_Blue_C_0)",
+    "in(BP_Toy_W_C_0, BP_Suitcase_Blue_C_0)"
+  ],
+  "task_scope_objects": [
+    "BP_Suitcase_Blue_C_0",
+    "BP_Toy_Frog_C_0",
+    "BP_Toy_Horse_C_0",
+    "BP_Toy_P_C_0",
+    "BP_Toy_W_C_0"
+  ],
+  "grounded_action_count": 18,
+  "grounded_subtask_count": 14,
+  "grounded_place_primitive_count": 4,
+  "node_count": 1,
+  "transition_edge_count": 0,
+  "equivalence_edge_count": 0,
+  "goal_nodes": [],
+  "has_solution": false,
+  "nodes": [
+    {
+      "id": "n0",
+      "depth": 0,
+      "state": [
+        "empty",
+        "exists(BP_Suitcase_Blue_C_0)",
+        "exists(BP_Toy_Frog_C_0)",
+        "exists(BP_Toy_Horse_C_0)",
+        "exists(BP_Toy_P_C_0)",
+        "exists(BP_Toy_W_C_0)"
+      ],
+      "is_goal": false
+    }
+  ],
+  "edges": [],
+  "equivalence_edges": [],
+  "topological_order": [
+    "n0"
+  ],
+  "goal_paths": []
+}

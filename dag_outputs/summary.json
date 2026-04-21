@@ -1,0 +1,98 @@
+[
+  {
+    "task_id": "task_001",
+    "has_solution": false,
+    "goal_nodes": [],
+    "node_count": 1,
+    "transition_edge_count": 0,
+    "equivalence_edge_count": 0,
+    "grounded_action_count": 18,
+    "grounded_subtask_count": 14,
+    "grounded_place_primitive_count": 4,
+    "goal_path_count": 0
+  },
+  {
+    "task_id": "task_002",
+    "has_solution": false,
+    "goal_nodes": [],
+    "node_count": 1,
+    "transition_edge_count": 0,
+    "equivalence_edge_count": 0,
+    "grounded_action_count": 18,
+    "grounded_subtask_count": 14,
+    "grounded_place_primitive_count": 4,
+    "goal_path_count": 0
+  },
+  {
+    "task_id": "task_003",
+    "has_solution": false,
+    "goal_nodes": [],
+    "node_count": 1,
+    "transition_edge_count": 0,
+    "equivalence_edge_count": 0,
+    "grounded_action_count": 16,
+    "grounded_subtask_count": 13,
+    "grounded_place_primitive_count": 3,
+    "goal_path_count": 0
+  },
+  {
+    "task_id": "task_004",
+    "has_solution": false,
+    "goal_nodes": [],
+    "node_count": 1,
+    "transition_edge_count": 0,
+    "equivalence_edge_count": 0,
+    "grounded_action_count": 5,
+    "grounded_subtask_count": 5,
+    "grounded_place_primitive_count": 0,
+    "goal_path_count": 0
+  },
+  {
+    "task_id": "task_005",
+    "has_solution": false,
+    "goal_nodes": [],
+    "node_count": 1,
+    "transition_edge_count": 0,
+    "equivalence_edge_count": 0,
+    "grounded_action_count": 38,
+    "grounded_subtask_count": 23,
+    "grounded_place_primitive_count": 15,
+    "goal_path_count": 0
+  },
+  {
+    "task_id": "task_006",
+    "has_solution": false,
+    "goal_nodes": [],
+    "node_count": 1,
+    "transition_edge_count": 0,
+    "equivalence_edge_count": 0,
+    "grounded_action_count": 14,
+    "grounded_subtask_count": 11,
+    "grounded_place_primitive_count": 3,
+    "goal_path_count": 0
+  },
+  {
+    "task_id": "task_007",
+    "has_solution": false,
+    "goal_nodes": [],
+    "node_count": 1,
+    "transition_edge_count": 0,
+    "equivalence_edge_count": 0,
+    "grounded_action_count": 9,
+    "grounded_subtask_count": 7,
+    "grounded_place_primitive_count": 2,
+    "goal_path_count": 0
+  },
+  {
+    "task_id": "task_008",
+    "has_solution": false,
+    "goal_nodes": [],
+    "node_count": 1,
+    "transition_edge_count": 0,
+    "equivalence_edge_count": 0,
+    "grounded_action_count": 10,
+    "grounded_subtask_count": 10,
+    "grounded_place_primitive_count": 0,
+    "goal_path_count": 0
+  }
+]

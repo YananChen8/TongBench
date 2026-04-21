@@ -1,0 +1,60 @@
+{
+  "task_id": "task_007",
+  "description": "Organize the bedroom by opening the wardrobe, hanging the towel, and placing clothes neatly inside.",
+  "intention": "Improve bedroom order by accessing the wardrobe, properly hanging the towel, and stowing away loose clothing items.",
+  "initial_state": [
+    "closed(BP_Wardrobe_005_C_0)",
+    "empty",
+    "exists(BP_Rod_Bath005_C_4)",
+    "exists(BP_ShoesBox_005_C_0)",
+    "exists(BP_Shoes_01_C_3)",
+    "exists(BP_Shoes_01_C_4)",
+    "exists(BP_Towel_hanged_C_0)",
+    "exists(BP_Wardrobe_005_C_0)"
+  ],
+  "goal_state": [
+    "empty",
+    "in(BP_Shoes_01_C_3, BP_ShoesBox_005_C_0)",
+    "in(BP_Shoes_01_C_4, BP_ShoesBox_005_C_0)",
+    "on(BP_Towel_hanged_C_0, BP_Rod_Bath005_C_4)",
+    "open(BP_Wardrobe_005_C_0)"
+  ],
+  "task_scope_objects": [
+    "BP_Rod_Bath005_C_4",
+    "BP_ShoesBox_005_C_0",
+    "BP_Shoes_01_C_3",
+    "BP_Shoes_01_C_4",
+    "BP_Towel_hanged_C_0"
+  ],
+  "grounded_action_count": 9,
+  "grounded_subtask_count": 7,
+  "grounded_place_primitive_count": 2,
+  "node_count": 1,
+  "transition_edge_count": 0,
+  "equivalence_edge_count": 0,
+  "goal_nodes": [],
+  "has_solution": false,
+  "nodes": [
+    {
+      "id": "n0",
+      "depth": 0,
+      "state": [
+        "closed(BP_Wardrobe_005_C_0)",
+        "empty",
+        "exists(BP_Rod_Bath005_C_4)",
+        "exists(BP_ShoesBox_005_C_0)",
+        "exists(BP_Shoes_01_C_3)",
+        "exists(BP_Shoes_01_C_4)",
+        "exists(BP_Towel_hanged_C_0)",
+        "exists(BP_Wardrobe_005_C_0)"
+      ],
+      "is_goal": false
+    }
+  ],
+  "edges": [],
+  "equivalence_edges": [],
+  "topological_order": [
+    "n0"
+  ],
+  "goal_paths": []
+}

@@ -1,0 +1,1103 @@
+[
+  {
+    "subtask_id": "subtask_0002",
+    "subtask_type": "acquire",
+    "length": 3,
+    "primitive_sequence": [
+      {
+        "template_id": "look_at_{object}",
+        "action_type": "look",
+        "var_mapping": {
+          "object": "r1"
+        }
+      },
+      {
+        "template_id": "walk_to_{object}",
+        "action_type": "walk",
+        "var_mapping": {
+          "object": "r1"
+        }
+      },
+      {
+        "template_id": "pick_up_{object}",
+        "action_type": "pick",
+        "var_mapping": {
+          "object": "r1"
+        }
+      }
+    ],
+    "roles": {
+      "r1": [
+        "adapter",
+        "banana",
+        "book",
+        "bottle",
+        "bowl",
+        "bread",
+        "cap",
+        "cup",
+        "decoration",
+        "doughnut",
+        "drinkcontainer",
+        "eggplant",
+        "fork",
+        "fruit",
+        "kettle",
+        "keyboard",
+        "knife",
+        "laptop",
+        "mousepad",
+        "pan",
+        "paperball",
+        "pillow",
+        "plate",
+        "plug",
+        "remotecontrol",
+        "shoe",
+        "storagebox",
+        "tomato",
+        "toy",
+        "tray",
+        "vase"
+      ]
+    },
+    "pre_state": [
+      "empty",
+      "exists(r1)"
+    ],
+    "post_state": [
+      "exists(r1)",
+      "holding(r1)",
+      "in_view(r1)",
+      "with_reach(r1)"
+    ],
+    "net_add": [
+      "holding(r1)",
+      "in_view(r1)",
+      "with_reach(r1)"
+    ],
+    "net_delete": [
+      "empty"
+    ]
+  },
+  {
+    "subtask_id": "subtask_0005",
+    "subtask_type": "acquire_and_clean",
+    "length": 4,
+    "primitive_sequence": [
+      {
+        "template_id": "look_at_{object}",
+        "action_type": "look",
+        "var_mapping": {
+          "object": "r1"
+        }
+      },
+      {
+        "template_id": "walk_to_{object}",
+        "action_type": "walk",
+        "var_mapping": {
+          "object": "r1"
+        }
+      },
+      {
+        "template_id": "pick_up_{object}",
+        "action_type": "pick",
+        "var_mapping": {
+          "object": "r1"
+        }
+      },
+      {
+        "template_id": "wash_{object}",
+        "action_type": "wash",
+        "var_mapping": {
+          "object": "r1"
+        }
+      }
+    ],
+    "roles": {
+      "r1": [
+        "bottle",
+        "bowl",
+        "cup",
+        "fork",
+        "knife",
+        "plate",
+        "toy",
+        "tray"
+      ]
+    },
+    "pre_state": [
+      "dirty(r1)",
+      "empty",
+      "exists(r1)"
+    ],
+    "post_state": [
+      "clean(r1)",
+      "exists(r1)",
+      "holding(r1)",
+      "in_view(r1)",
+      "with_reach(r1)"
+    ],
+    "net_add": [
+      "clean(r1)",
+      "holding(r1)",
+      "in_view(r1)",
+      "with_reach(r1)"
+    ],
+    "net_delete": [
+      "dirty(r1)",
+      "empty"
+    ]
+  },
+  {
+    "subtask_id": "subtask_0012",
+    "subtask_type": "clean",
+    "length": 3,
+    "primitive_sequence": [
+      {
+        "template_id": "look_at_{object}",
+        "action_type": "look",
+        "var_mapping": {
+          "object": "r1"
+        }
+      },
+      {
+        "template_id": "walk_to_{object}",
+        "action_type": "walk",
+        "var_mapping": {
+          "object": "r1"
+        }
+      },
+      {
+        "template_id": "wash_{object}",
+        "action_type": "wash",
+        "var_mapping": {
+          "object": "r1"
+        }
+      }
+    ],
+    "roles": {
+      "r1": [
+        "bottle",
+        "bowl",
+        "cup",
+        "fork",
+        "knife",
+        "plate",
+        "towel",
+        "toy",
+        "tray"
+      ]
+    },
+    "pre_state": [
+      "dirty(r1)",
+      "empty",
+      "exists(r1)"
+    ],
+    "post_state": [
+      "clean(r1)",
+      "empty",
+      "exists(r1)",
+      "in_view(r1)",
+      "with_reach(r1)"
+    ],
+    "net_add": [
+      "clean(r1)",
+      "in_view(r1)",
+      "with_reach(r1)"
+    ],
+    "net_delete": [
+      "dirty(r1)"
+    ]
+  },
+  {
+    "subtask_id": "subtask_0007",
+    "subtask_type": "close_container",
+    "length": 3,
+    "primitive_sequence": [
+      {
+        "template_id": "look_at_{object}",
+        "action_type": "look",
+        "var_mapping": {
+          "object": "r1"
+        }
+      },
+      {
+        "template_id": "walk_to_{object}",
+        "action_type": "walk",
+        "var_mapping": {
+          "object": "r1"
+        }
+      },
+      {
+        "template_id": "close_{object}",
+        "action_type": "close",
+        "var_mapping": {
+          "object": "r1"
+        }
+      }
+    ],
+    "roles": {
+      "r1": [
+        "bathcabinet",
+        "cabinet",
+        "cupboard",
+        "curtains",
+        "dishwasher",
+        "door",
+        "laptop",
+        "refrigerator",
+        "wardrobe",
+        "window"
+      ]
+    },
+    "pre_state": [
+      "empty",
+      "exists(r1)",
+      "open(r1)"
+    ],
+    "post_state": [
+      "closed(r1)",
+      "empty",
+      "exists(r1)",
+      "in_view(r1)",
+      "with_reach(r1)"
+    ],
+    "net_add": [
+      "closed(r1)",
+      "in_view(r1)",
+      "with_reach(r1)"
+    ],
+    "net_delete": [
+      "open(r1)"
+    ]
+  },
+  {
+    "subtask_id": "subtask_0006",
+    "subtask_type": "open_container",
+    "length": 3,
+    "primitive_sequence": [
+      {
+        "template_id": "look_at_{object}",
+        "action_type": "look",
+        "var_mapping": {
+          "object": "r1"
+        }
+      },
+      {
+        "template_id": "walk_to_{object}",
+        "action_type": "walk",
+        "var_mapping": {
+          "object": "r1"
+        }
+      },
+      {
+        "template_id": "open_{object}",
+        "action_type": "open",
+        "var_mapping": {
+          "object": "r1"
+        }
+      }
+    ],
+    "roles": {
+      "r1": [
+        "bathcabinet",
+        "cabinet",
+        "cupboard",
+        "curtains",
+        "dishwasher",
+        "door",
+        "laptop",
+        "refrigerator",
+        "wardrobe",
+        "window"
+      ]
+    },
+    "pre_state": [
+      "closed(r1)",
+      "empty",
+      "exists(r1)"
+    ],
+    "post_state": [
+      "empty",
+      "exists(r1)",
+      "in_view(r1)",
+      "open(r1)",
+      "with_reach(r1)"
+    ],
+    "net_add": [
+      "in_view(r1)",
+      "open(r1)",
+      "with_reach(r1)"
+    ],
+    "net_delete": [
+      "closed(r1)"
+    ]
+  },
+  {
+    "subtask_id": "subtask_0003",
+    "subtask_type": "place_on",
+    "length": 4,
+    "primitive_sequence": [
+      {
+        "template_id": "look_at_{object}",
+        "action_type": "look",
+        "var_mapping": {
+          "object": "r1"
+        }
+      },
+      {
+        "template_id": "walk_to_{object}",
+        "action_type": "walk",
+        "var_mapping": {
+          "object": "r1"
+        }
+      },
+      {
+        "template_id": "pick_up_{object}",
+        "action_type": "pick",
+        "var_mapping": {
+          "object": "r1"
+        }
+      },
+      {
+        "template_id": "place_{object1}_on_{object2}",
+        "action_type": "place",
+        "var_mapping": {
+          "object1": "r1",
+          "object2": "r2"
+        }
+      }
+    ],
+    "roles": {
+      "r1": [
+        "adapter",
+        "banana",
+        "book",
+        "bottle",
+        "bowl",
+        "bread",
+        "cap",
+        "cup",
+        "decoration",
+        "doughnut",
+        "drinkcontainer",
+        "eggplant",
+        "fork",
+        "fruit",
+        "kettle",
+        "keyboard",
+        "knife",
+        "laptop",
+        "mousepad",
+        "pan",
+        "paperball",
+        "pillow",
+        "plate",
+        "plug",
+        "remotecontrol",
+        "shoe",
+        "storagebox",
+        "tomato",
+        "toy",
+        "tray",
+        "vase"
+      ],
+      "r2": [
+        "bathshelf",
+        "bed",
+        "bedside",
+        "cabinet",
+        "coffeetable",
+        "cupboard",
+        "desk",
+        "diningtable",
+        "tray"
+      ]
+    },
+    "pre_state": [
+      "empty",
+      "exists(r1)",
+      "exists(r2)"
+    ],
+    "post_state": [
+      "empty",
+      "exists(r1)",
+      "exists(r2)",
+      "in_view(r1)",
+      "on(r1, r2)",
+      "with_reach(r1)"
+    ],
+    "net_add": [
+      "in_view(r1)",
+      "on(r1, r2)",
+      "with_reach(r1)"
+    ],
+    "net_delete": []
+  },
+  {
+    "subtask_id": "subtask_0013",
+    "subtask_type": "place_on",
+    "length": 4,
+    "primitive_sequence": [
+      {
+        "template_id": "look_at_{object}",
+        "action_type": "look",
+        "var_mapping": {
+          "object": "r1"
+        }
+      },
+      {
+        "template_id": "walk_to_{object}",
+        "action_type": "walk",
+        "var_mapping": {
+          "object": "r1"
+        }
+      },
+      {
+        "template_id": "pick_up_{object}",
+        "action_type": "pick",
+        "var_mapping": {
+          "object": "r1"
+        }
+      },
+      {
+        "template_id": "place_{object1}_on_{object2}",
+        "action_type": "place",
+        "var_mapping": {
+          "object1": "r1",
+          "object2": "r2"
+        }
+      }
+    ],
+    "roles": {
+      "r1": [
+        "adapter",
+        "banana",
+        "book",
+        "bottle",
+        "bowl",
+        "bread",
+        "cap",
+        "cup",
+        "decoration",
+        "doughnut",
+        "drinkcontainer",
+        "eggplant",
+        "fork",
+        "fruit",
+        "kettle",
+        "keyboard",
+        "knife",
+        "laptop",
+        "mousepad",
+        "pan",
+        "paperball",
+        "pillow",
+        "plate",
+        "plug",
+        "remotecontrol",
+        "shoe",
+        "storagebox",
+        "tomato",
+        "toy",
+        "tray",
+        "vase"
+      ],
+      "r2": [
+        "bathshelf",
+        "bed",
+        "bedside",
+        "cabinet",
+        "coffeetable",
+        "cupboard",
+        "desk",
+        "diningtable",
+        "tray"
+      ]
+    },
+    "pre_state": [
+      "empty",
+      "exists(r1)",
+      "exists(r1)"
+    ],
+    "post_state": [
+      "empty",
+      "exists(r1)",
+      "exists(r1)",
+      "in_view(r1)",
+      "on(r1, r1)",
+      "with_reach(r1)"
+    ],
+    "net_add": [
+      "in_view(r1)",
+      "on(r1, r1)",
+      "with_reach(r1)"
+    ],
+    "net_delete": []
+  },
+  {
+    "subtask_id": "subtask_0010",
+    "subtask_type": "plug_in",
+    "length": 3,
+    "primitive_sequence": [
+      {
+        "template_id": "look_at_{object}",
+        "action_type": "look",
+        "var_mapping": {
+          "object": "r1"
+        }
+      },
+      {
+        "template_id": "walk_to_{object}",
+        "action_type": "walk",
+        "var_mapping": {
+          "object": "r1"
+        }
+      },
+      {
+        "template_id": "plug_in_{object}",
+        "action_type": "plug_in",
+        "var_mapping": {
+          "object": "r1"
+        }
+      }
+    ],
+    "roles": {
+      "r1": [
+        "adapter",
+        "aircondition",
+        "electricfan",
+        "lamp",
+        "laptop",
+        "plug",
+        "radio",
+        "tv"
+      ]
+    },
+    "pre_state": [
+      "empty",
+      "exists(r1)",
+      "unplugged(r1)"
+    ],
+    "post_state": [
+      "empty",
+      "exists(r1)",
+      "in_view(r1)",
+      "plugged_in(r1)",
+      "with_reach(r1)"
+    ],
+    "net_add": [
+      "in_view(r1)",
+      "plugged_in(r1)",
+      "with_reach(r1)"
+    ],
+    "net_delete": [
+      "unplugged(r1)"
+    ]
+  },
+  {
+    "subtask_id": "subtask_0009",
+    "subtask_type": "power_off",
+    "length": 3,
+    "primitive_sequence": [
+      {
+        "template_id": "look_at_{object}",
+        "action_type": "look",
+        "var_mapping": {
+          "object": "r1"
+        }
+      },
+      {
+        "template_id": "walk_to_{object}",
+        "action_type": "walk",
+        "var_mapping": {
+          "object": "r1"
+        }
+      },
+      {
+        "template_id": "switch_off_{object}",
+        "action_type": "switch_off",
+        "var_mapping": {
+          "object": "r1"
+        }
+      }
+    ],
+    "roles": {
+      "r1": [
+        "aircondition",
+        "bathshelf",
+        "decoration",
+        "dishwasher",
+        "electricfan",
+        "hearth",
+        "hood",
+        "kettle",
+        "lamp",
+        "laptop",
+        "radiator",
+        "radio",
+        "refrigerator",
+        "tablelamp"
+      ]
+    },
+    "pre_state": [
+      "empty",
+      "exists(r1)",
+      "powered_on(r1)"
+    ],
+    "post_state": [
+      "empty",
+      "exists(r1)",
+      "in_view(r1)",
+      "powered_off(r1)",
+      "with_reach(r1)"
+    ],
+    "net_add": [
+      "in_view(r1)",
+      "powered_off(r1)",
+      "with_reach(r1)"
+    ],
+    "net_delete": [
+      "powered_on(r1)"
+    ]
+  },
+  {
+    "subtask_id": "subtask_0008",
+    "subtask_type": "power_on",
+    "length": 3,
+    "primitive_sequence": [
+      {
+        "template_id": "look_at_{object}",
+        "action_type": "look",
+        "var_mapping": {
+          "object": "r1"
+        }
+      },
+      {
+        "template_id": "walk_to_{object}",
+        "action_type": "walk",
+        "var_mapping": {
+          "object": "r1"
+        }
+      },
+      {
+        "template_id": "switch_on_{object}",
+        "action_type": "switch_on",
+        "var_mapping": {
+          "object": "r1"
+        }
+      }
+    ],
+    "roles": {
+      "r1": [
+        "aircondition",
+        "bathshelf",
+        "decoration",
+        "dishwasher",
+        "electricfan",
+        "hearth",
+        "hood",
+        "kettle",
+        "lamp",
+        "laptop",
+        "radiator",
+        "radio",
+        "refrigerator",
+        "tablelamp"
+      ]
+    },
+    "pre_state": [
+      "empty",
+      "exists(r1)",
+      "powered_off(r1)"
+    ],
+    "post_state": [
+      "empty",
+      "exists(r1)",
+      "in_view(r1)",
+      "powered_on(r1)",
+      "with_reach(r1)"
+    ],
+    "net_add": [
+      "in_view(r1)",
+      "powered_on(r1)",
+      "with_reach(r1)"
+    ],
+    "net_delete": [
+      "powered_off(r1)"
+    ]
+  },
+  {
+    "subtask_id": "subtask_0001",
+    "subtask_type": "reach",
+    "length": 2,
+    "primitive_sequence": [
+      {
+        "template_id": "look_at_{object}",
+        "action_type": "look",
+        "var_mapping": {
+          "object": "r1"
+        }
+      },
+      {
+        "template_id": "walk_to_{object}",
+        "action_type": "walk",
+        "var_mapping": {
+          "object": "r1"
+        }
+      }
+    ],
+    "roles": {
+      "r1": [
+        "adapter",
+        "aircondition",
+        "banana",
+        "bathcabinet",
+        "bathshelf",
+        "bathtub",
+        "bed",
+        "bedside",
+        "book",
+        "bottle",
+        "bowl",
+        "bread",
+        "cabinet",
+        "cap",
+        "carpet",
+        "centerpiecedecorator",
+        "chair",
+        "clock",
+        "coffeetable",
+        "cup",
+        "cupboard",
+        "curtains",
+        "decoration",
+        "desk",
+        "diningtable",
+        "dishwasher",
+        "door",
+        "doughnut",
+        "drinkcontainer",
+        "eggplant",
+        "electricfan",
+        "fork",
+        "fruit",
+        "hearth",
+        "hood",
+        "kettle",
+        "keyboard",
+        "knife",
+        "lamp",
+        "laptop",
+        "mirror",
+        "mousepad",
+        "painting",
+        "pan",
+        "paperball",
+        "photograph",
+        "pillow",
+        "plant",
+        "plate",
+        "plug",
+        "radiator",
+        "radio",
+        "refrigerator",
+        "remotecontrol",
+        "shoe",
+        "socket",
+        "sofa",
+        "sofastool",
+        "storagebox",
+        "tablelamp",
+        "toilet",
+        "tomato",
+        "towel",
+        "toy",
+        "trashcan",
+        "tray",
+        "tv",
+        "vase",
+        "wardrobe",
+        "window"
+      ]
+    },
+    "pre_state": [
+      "empty",
+      "exists(r1)"
+    ],
+    "post_state": [
+      "empty",
+      "exists(r1)",
+      "in_view(r1)",
+      "with_reach(r1)"
+    ],
+    "net_add": [
+      "in_view(r1)",
+      "with_reach(r1)"
+    ],
+    "net_delete": []
+  },
+  {
+    "subtask_id": "subtask_0004",
+    "subtask_type": "store_in",
+    "length": 4,
+    "primitive_sequence": [
+      {
+        "template_id": "look_at_{object}",
+        "action_type": "look",
+        "var_mapping": {
+          "object": "r1"
+        }
+      },
+      {
+        "template_id": "walk_to_{object}",
+        "action_type": "walk",
+        "var_mapping": {
+          "object": "r1"
+        }
+      },
+      {
+        "template_id": "pick_up_{object}",
+        "action_type": "pick",
+        "var_mapping": {
+          "object": "r1"
+        }
+      },
+      {
+        "template_id": "place_{object1}_in_{object2}",
+        "action_type": "place",
+        "var_mapping": {
+          "object1": "r1",
+          "object2": "r2"
+        }
+      }
+    ],
+    "roles": {
+      "r1": [
+        "adapter",
+        "banana",
+        "book",
+        "bottle",
+        "bowl",
+        "bread",
+        "cap",
+        "cup",
+        "decoration",
+        "doughnut",
+        "drinkcontainer",
+        "eggplant",
+        "fork",
+        "fruit",
+        "kettle",
+        "keyboard",
+        "knife",
+        "laptop",
+        "mousepad",
+        "pan",
+        "paperball",
+        "pillow",
+        "plate",
+        "plug",
+        "remotecontrol",
+        "shoe",
+        "storagebox",
+        "tomato",
+        "toy",
+        "tray",
+        "vase"
+      ],
+      "r2": [
+        "bathcabinet",
+        "cabinet",
+        "cupboard",
+        "dishwasher",
+        "refrigerator",
+        "trashcan",
+        "wardrobe"
+      ]
+    },
+    "pre_state": [
+      "empty",
+      "exists(r1)",
+      "exists(r2)",
+      "open(r2)"
+    ],
+    "post_state": [
+      "empty",
+      "exists(r1)",
+      "exists(r2)",
+      "in(r1, r2)",
+      "in_view(r1)",
+      "open(r2)",
+      "with_reach(r1)"
+    ],
+    "net_add": [
+      "in(r1, r2)",
+      "in_view(r1)",
+      "with_reach(r1)"
+    ],
+    "net_delete": []
+  },
+  {
+    "subtask_id": "subtask_0014",
+    "subtask_type": "store_in",
+    "length": 4,
+    "primitive_sequence": [
+      {
+        "template_id": "look_at_{object}",
+        "action_type": "look",
+        "var_mapping": {
+          "object": "r1"
+        }
+      },
+      {
+        "template_id": "walk_to_{object}",
+        "action_type": "walk",
+        "var_mapping": {
+          "object": "r1"
+        }
+      },
+      {
+        "template_id": "pick_up_{object}",
+        "action_type": "pick",
+        "var_mapping": {
+          "object": "r1"
+        }
+      },
+      {
+        "template_id": "place_{object1}_in_{object2}",
+        "action_type": "place",
+        "var_mapping": {
+          "object1": "r1",
+          "object2": "r2"
+        }
+      }
+    ],
+    "roles": {
+      "r1": [
+        "adapter",
+        "banana",
+        "book",
+        "bottle",
+        "bowl",
+        "bread",
+        "cap",
+        "cup",
+        "decoration",
+        "doughnut",
+        "drinkcontainer",
+        "eggplant",
+        "fork",
+        "fruit",
+        "kettle",
+        "keyboard",
+        "knife",
+        "laptop",
+        "mousepad",
+        "pan",
+        "paperball",
+        "pillow",
+        "plate",
+        "plug",
+        "remotecontrol",
+        "shoe",
+        "storagebox",
+        "tomato",
+        "toy",
+        "tray",
+        "vase"
+      ],
+      "r2": [
+        "bathcabinet",
+        "cabinet",
+        "cupboard",
+        "dishwasher",
+        "refrigerator",
+        "trashcan",
+        "wardrobe"
+      ]
+    },
+    "pre_state": [
+      "empty",
+      "exists(r1)",
+      "exists(r1)",
+      "open(r1)"
+    ],
+    "post_state": [
+      "empty",
+      "exists(r1)",
+      "exists(r1)",
+      "in(r1, r1)",
+      "in_view(r1)",
+      "open(r1)",
+      "with_reach(r1)"
+    ],
+    "net_add": [
+      "in(r1, r1)",
+      "in_view(r1)",
+      "with_reach(r1)"
+    ],
+    "net_delete": []
+  },
+  {
+    "subtask_id": "subtask_0011",
+    "subtask_type": "unplug",
+    "length": 3,
+    "primitive_sequence": [
+      {
+        "template_id": "look_at_{object}",
+        "action_type": "look",
+        "var_mapping": {
+          "object": "r1"
+        }
+      },
+      {
+        "template_id": "walk_to_{object}",
+        "action_type": "walk",
+        "var_mapping": {
+          "object": "r1"
+        }
+      },
+      {
+        "template_id": "unplug_{object}",
+        "action_type": "unplug",
+        "var_mapping": {
+          "object": "r1"
+        }
+      }
+    ],
+    "roles": {
+      "r1": [
+        "adapter",
+        "aircondition",
+        "electricfan",
+        "lamp",
+        "laptop",
+        "plug",
+        "radio",
+        "tv"
+      ]
+    },
+    "pre_state": [
+      "empty",
+      "exists(r1)",
+      "plugged_in(r1)"
+    ],
+    "post_state": [
+      "empty",
+      "exists(r1)",
+      "in_view(r1)",
+      "unplugged(r1)",
+      "with_reach(r1)"
+    ],
+    "net_add": [
+      "in_view(r1)",
+      "unplugged(r1)",
+      "with_reach(r1)"
+    ],
+    "net_delete": [
+      "plugged_in(r1)"
+    ]
+  }
+]

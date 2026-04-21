@@ -1,0 +1,73 @@
+{
+  "task_id": "task_005",
+  "description": "Reset the kitchen after meal preparation by cleaning dishes, closing appliances, and returning items to storage.",
+  "intention": "Restore the kitchen to a clean, organized state after use by washing utensils, securing open appliances, and storing food items.",
+  "initial_state": [
+    "dirty(BP_Fork_Child01_C_0)",
+    "dirty(BP_Knife_Child01_C_0)",
+    "dirty(BP_Plate_3_C_0)",
+    "empty",
+    "exists(BP_Cupboard_kitchen_room5_C_0)",
+    "exists(BP_DiningTable_03_C_0)",
+    "exists(BP_Diswasher_01_C_1)",
+    "exists(BP_Fork_Child01_C_0)",
+    "exists(BP_Frigerator_005_C_0)",
+    "exists(BP_Knife_Child01_C_0)",
+    "exists(BP_Plate_3_C_0)",
+    "open(BP_Diswasher_01_C_1)",
+    "open(BP_Frigerator_005_C_0)"
+  ],
+  "goal_state": [
+    "clean(BP_Fork_Child01_C_0)",
+    "clean(BP_Knife_Child01_C_0)",
+    "clean(BP_Plate_3_C_0)",
+    "closed(BP_Diswasher_01_C_1)",
+    "closed(BP_Frigerator_005_C_0)",
+    "empty"
+  ],
+  "task_scope_objects": [
+    "BP_Cupboard_kitchen_room5_C_0",
+    "BP_DiningTable_03_C_0",
+    "BP_Diswasher_01_C_1",
+    "BP_Fork_Child01_C_0",
+    "BP_Frigerator_005_C_0",
+    "BP_Knife_Child01_C_0",
+    "BP_Plate_3_C_0"
+  ],
+  "grounded_action_count": 38,
+  "grounded_subtask_count": 23,
+  "grounded_place_primitive_count": 15,
+  "node_count": 1,
+  "transition_edge_count": 0,
+  "equivalence_edge_count": 0,
+  "goal_nodes": [],
+  "has_solution": false,
+  "nodes": [
+    {
+      "id": "n0",
+      "depth": 0,
+      "state": [
+        "dirty(BP_Fork_Child01_C_0)",
+        "dirty(BP_Knife_Child01_C_0)",
+        "dirty(BP_Plate_3_C_0)",
+        "empty",
+        "exists(BP_Cupboard_kitchen_room5_C_0)",
+        "exists(BP_DiningTable_03_C_0)",
+        "exists(BP_Diswasher_01_C_1)",
+        "exists(BP_Fork_Child01_C_0)",
+        "exists(BP_Frigerator_005_C_0)",
+        "exists(BP_Knife_Child01_C_0)",
+        "exists(BP_Plate_3_C_0)",
+        "open(BP_Diswasher_01_C_1)",
+        "open(BP_Frigerator_005_C_0)"
+      ],
+      "is_goal": false
+    }
+  ],
+  "edges": [],
+  "equivalence_edges": [],
+  "topological_order": [
+    "n0"
+  ],
+  "goal_paths": []
+}

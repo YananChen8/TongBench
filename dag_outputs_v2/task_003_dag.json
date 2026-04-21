@@ -1,0 +1,621 @@
+{
+  "task_id": "task_003",
+  "description": "Set up a functional workspace at the desk for studying or working with laptop and peripherals.",
+  "output_language": "English",
+  "is_dag": true,
+  "task_scope": [
+    "BP_Desk_R005_C_0",
+    "BP_Keyboard_Map005_C_0",
+    "BP_Laptop_1_C_0",
+    "BP_Mouse_05_C_0"
+  ],
+  "preprocess": {
+    "dropped_predicates": [],
+    "static_unsatisfied_constraints": []
+  },
+  "initial_state": [
+    "empty",
+    "exists(BP_Desk_R005_C_0)",
+    "exists(BP_Keyboard_Map005_C_0)",
+    "exists(BP_Laptop_1_C_0)",
+    "exists(BP_Mouse_05_C_0)",
+    "powered_off(BP_Laptop_1_C_0)",
+    "unplugged(BP_Laptop_1_C_0)"
+  ],
+  "goal_state": [
+    "empty",
+    "on(BP_Keyboard_Map005_C_0, BP_Desk_R005_C_0)",
+    "on(BP_Mouse_05_C_0, BP_Desk_R005_C_0)",
+    "plugged_in(BP_Laptop_1_C_0)",
+    "powered_on(BP_Laptop_1_C_0)"
+  ],
+  "nodes": [
+    {
+      "id": "n0",
+      "depth": 0,
+      "state": [
+        "empty",
+        "exists(BP_Desk_R005_C_0)",
+        "exists(BP_Keyboard_Map005_C_0)",
+        "exists(BP_Laptop_1_C_0)",
+        "exists(BP_Mouse_05_C_0)",
+        "powered_off(BP_Laptop_1_C_0)",
+        "unplugged(BP_Laptop_1_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n1",
+      "depth": 1,
+      "state": [
+        "exists(BP_Desk_R005_C_0)",
+        "exists(BP_Keyboard_Map005_C_0)",
+        "exists(BP_Laptop_1_C_0)",
+        "exists(BP_Mouse_05_C_0)",
+        "holding(BP_Keyboard_Map005_C_0)",
+        "in_view(BP_Keyboard_Map005_C_0)",
+        "powered_off(BP_Laptop_1_C_0)",
+        "unplugged(BP_Laptop_1_C_0)",
+        "with_reach(BP_Keyboard_Map005_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n2",
+      "depth": 1,
+      "state": [
+        "exists(BP_Desk_R005_C_0)",
+        "exists(BP_Keyboard_Map005_C_0)",
+        "exists(BP_Laptop_1_C_0)",
+        "exists(BP_Mouse_05_C_0)",
+        "holding(BP_Laptop_1_C_0)",
+        "in_view(BP_Laptop_1_C_0)",
+        "powered_off(BP_Laptop_1_C_0)",
+        "unplugged(BP_Laptop_1_C_0)",
+        "with_reach(BP_Laptop_1_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n3",
+      "depth": 1,
+      "state": [
+        "exists(BP_Desk_R005_C_0)",
+        "exists(BP_Keyboard_Map005_C_0)",
+        "exists(BP_Laptop_1_C_0)",
+        "exists(BP_Mouse_05_C_0)",
+        "holding(BP_Mouse_05_C_0)",
+        "in_view(BP_Mouse_05_C_0)",
+        "powered_off(BP_Laptop_1_C_0)",
+        "unplugged(BP_Laptop_1_C_0)",
+        "with_reach(BP_Mouse_05_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n4",
+      "depth": 1,
+      "state": [
+        "empty",
+        "exists(BP_Desk_R005_C_0)",
+        "exists(BP_Keyboard_Map005_C_0)",
+        "exists(BP_Laptop_1_C_0)",
+        "exists(BP_Mouse_05_C_0)",
+        "in_view(BP_Laptop_1_C_0)",
+        "plugged_in(BP_Laptop_1_C_0)",
+        "powered_off(BP_Laptop_1_C_0)",
+        "with_reach(BP_Laptop_1_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n5",
+      "depth": 1,
+      "state": [
+        "empty",
+        "exists(BP_Desk_R005_C_0)",
+        "exists(BP_Keyboard_Map005_C_0)",
+        "exists(BP_Laptop_1_C_0)",
+        "exists(BP_Mouse_05_C_0)",
+        "in_view(BP_Laptop_1_C_0)",
+        "powered_on(BP_Laptop_1_C_0)",
+        "unplugged(BP_Laptop_1_C_0)",
+        "with_reach(BP_Laptop_1_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n6",
+      "depth": 2,
+      "state": [
+        "exists(BP_Desk_R005_C_0)",
+        "exists(BP_Keyboard_Map005_C_0)",
+        "exists(BP_Laptop_1_C_0)",
+        "exists(BP_Mouse_05_C_0)",
+        "holding(BP_Keyboard_Map005_C_0)",
+        "in_view(BP_Keyboard_Map005_C_0)",
+        "in_view(BP_Laptop_1_C_0)",
+        "plugged_in(BP_Laptop_1_C_0)",
+        "powered_off(BP_Laptop_1_C_0)",
+        "with_reach(BP_Keyboard_Map005_C_0)",
+        "with_reach(BP_Laptop_1_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n7",
+      "depth": 2,
+      "state": [
+        "exists(BP_Desk_R005_C_0)",
+        "exists(BP_Keyboard_Map005_C_0)",
+        "exists(BP_Laptop_1_C_0)",
+        "exists(BP_Mouse_05_C_0)",
+        "holding(BP_Keyboard_Map005_C_0)",
+        "in_view(BP_Keyboard_Map005_C_0)",
+        "in_view(BP_Laptop_1_C_0)",
+        "powered_on(BP_Laptop_1_C_0)",
+        "unplugged(BP_Laptop_1_C_0)",
+        "with_reach(BP_Keyboard_Map005_C_0)",
+        "with_reach(BP_Laptop_1_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n8",
+      "depth": 2,
+      "state": [
+        "exists(BP_Desk_R005_C_0)",
+        "exists(BP_Keyboard_Map005_C_0)",
+        "exists(BP_Laptop_1_C_0)",
+        "exists(BP_Mouse_05_C_0)",
+        "holding(BP_Laptop_1_C_0)",
+        "in_view(BP_Laptop_1_C_0)",
+        "plugged_in(BP_Laptop_1_C_0)",
+        "powered_off(BP_Laptop_1_C_0)",
+        "with_reach(BP_Laptop_1_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n9",
+      "depth": 2,
+      "state": [
+        "exists(BP_Desk_R005_C_0)",
+        "exists(BP_Keyboard_Map005_C_0)",
+        "exists(BP_Laptop_1_C_0)",
+        "exists(BP_Mouse_05_C_0)",
+        "holding(BP_Laptop_1_C_0)",
+        "in_view(BP_Laptop_1_C_0)",
+        "powered_on(BP_Laptop_1_C_0)",
+        "unplugged(BP_Laptop_1_C_0)",
+        "with_reach(BP_Laptop_1_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n10",
+      "depth": 2,
+      "state": [
+        "exists(BP_Desk_R005_C_0)",
+        "exists(BP_Keyboard_Map005_C_0)",
+        "exists(BP_Laptop_1_C_0)",
+        "exists(BP_Mouse_05_C_0)",
+        "holding(BP_Mouse_05_C_0)",
+        "in_view(BP_Laptop_1_C_0)",
+        "in_view(BP_Mouse_05_C_0)",
+        "plugged_in(BP_Laptop_1_C_0)",
+        "powered_off(BP_Laptop_1_C_0)",
+        "with_reach(BP_Laptop_1_C_0)",
+        "with_reach(BP_Mouse_05_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n11",
+      "depth": 2,
+      "state": [
+        "exists(BP_Desk_R005_C_0)",
+        "exists(BP_Keyboard_Map005_C_0)",
+        "exists(BP_Laptop_1_C_0)",
+        "exists(BP_Mouse_05_C_0)",
+        "holding(BP_Mouse_05_C_0)",
+        "in_view(BP_Laptop_1_C_0)",
+        "in_view(BP_Mouse_05_C_0)",
+        "powered_on(BP_Laptop_1_C_0)",
+        "unplugged(BP_Laptop_1_C_0)",
+        "with_reach(BP_Laptop_1_C_0)",
+        "with_reach(BP_Mouse_05_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n12",
+      "depth": 2,
+      "state": [
+        "empty",
+        "exists(BP_Desk_R005_C_0)",
+        "exists(BP_Keyboard_Map005_C_0)",
+        "exists(BP_Laptop_1_C_0)",
+        "exists(BP_Mouse_05_C_0)",
+        "in_view(BP_Laptop_1_C_0)",
+        "plugged_in(BP_Laptop_1_C_0)",
+        "powered_on(BP_Laptop_1_C_0)",
+        "with_reach(BP_Laptop_1_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n13",
+      "depth": 3,
+      "state": [
+        "exists(BP_Desk_R005_C_0)",
+        "exists(BP_Keyboard_Map005_C_0)",
+        "exists(BP_Laptop_1_C_0)",
+        "exists(BP_Mouse_05_C_0)",
+        "holding(BP_Keyboard_Map005_C_0)",
+        "in_view(BP_Keyboard_Map005_C_0)",
+        "in_view(BP_Laptop_1_C_0)",
+        "plugged_in(BP_Laptop_1_C_0)",
+        "powered_on(BP_Laptop_1_C_0)",
+        "with_reach(BP_Keyboard_Map005_C_0)",
+        "with_reach(BP_Laptop_1_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n14",
+      "depth": 3,
+      "state": [
+        "exists(BP_Desk_R005_C_0)",
+        "exists(BP_Keyboard_Map005_C_0)",
+        "exists(BP_Laptop_1_C_0)",
+        "exists(BP_Mouse_05_C_0)",
+        "holding(BP_Laptop_1_C_0)",
+        "in_view(BP_Laptop_1_C_0)",
+        "plugged_in(BP_Laptop_1_C_0)",
+        "powered_on(BP_Laptop_1_C_0)",
+        "with_reach(BP_Laptop_1_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n15",
+      "depth": 3,
+      "state": [
+        "exists(BP_Desk_R005_C_0)",
+        "exists(BP_Keyboard_Map005_C_0)",
+        "exists(BP_Laptop_1_C_0)",
+        "exists(BP_Mouse_05_C_0)",
+        "holding(BP_Mouse_05_C_0)",
+        "in_view(BP_Laptop_1_C_0)",
+        "in_view(BP_Mouse_05_C_0)",
+        "plugged_in(BP_Laptop_1_C_0)",
+        "powered_on(BP_Laptop_1_C_0)",
+        "with_reach(BP_Laptop_1_C_0)",
+        "with_reach(BP_Mouse_05_C_0)"
+      ],
+      "is_goal": false
+    }
+  ],
+  "dag_edges": [
+    {
+      "from": "n0",
+      "to": "n1",
+      "action": "acquire_{object}__BP_Keyboard_Map005_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n0",
+      "to": "n2",
+      "action": "acquire_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n0",
+      "to": "n3",
+      "action": "acquire_{object}__BP_Mouse_05_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n0",
+      "to": "n4",
+      "action": "plug_in_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n0",
+      "to": "n5",
+      "action": "power_on_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n1",
+      "to": "n6",
+      "action": "plug_in_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n1",
+      "to": "n7",
+      "action": "power_on_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n2",
+      "to": "n8",
+      "action": "plug_in_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n2",
+      "to": "n9",
+      "action": "power_on_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n3",
+      "to": "n10",
+      "action": "plug_in_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n3",
+      "to": "n11",
+      "action": "power_on_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n4",
+      "to": "n12",
+      "action": "power_on_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n6",
+      "to": "n13",
+      "action": "power_on_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n8",
+      "to": "n14",
+      "action": "power_on_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n10",
+      "to": "n15",
+      "action": "power_on_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "transition"
+    }
+  ],
+  "equivalence_edges": [
+    {
+      "from": "n4",
+      "to": "n6",
+      "action": "acquire_{object}__BP_Keyboard_Map005_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n4",
+      "to": "n8",
+      "action": "acquire_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n4",
+      "to": "n10",
+      "action": "acquire_{object}__BP_Mouse_05_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n4",
+      "to": "n0",
+      "action": "unplug_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n5",
+      "to": "n7",
+      "action": "acquire_{object}__BP_Keyboard_Map005_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n5",
+      "to": "n9",
+      "action": "acquire_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n5",
+      "to": "n11",
+      "action": "acquire_{object}__BP_Mouse_05_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n5",
+      "to": "n12",
+      "action": "plug_in_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n5",
+      "to": "n0",
+      "action": "power_off_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n6",
+      "to": "n1",
+      "action": "unplug_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n7",
+      "to": "n13",
+      "action": "plug_in_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n7",
+      "to": "n1",
+      "action": "power_off_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n8",
+      "to": "n2",
+      "action": "unplug_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n9",
+      "to": "n14",
+      "action": "plug_in_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n9",
+      "to": "n2",
+      "action": "power_off_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n10",
+      "to": "n3",
+      "action": "unplug_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n11",
+      "to": "n15",
+      "action": "plug_in_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n11",
+      "to": "n3",
+      "action": "power_off_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n12",
+      "to": "n13",
+      "action": "acquire_{object}__BP_Keyboard_Map005_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n12",
+      "to": "n14",
+      "action": "acquire_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n12",
+      "to": "n15",
+      "action": "acquire_{object}__BP_Mouse_05_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n12",
+      "to": "n4",
+      "action": "power_off_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n12",
+      "to": "n5",
+      "action": "unplug_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n13",
+      "to": "n6",
+      "action": "power_off_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n13",
+      "to": "n7",
+      "action": "unplug_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n14",
+      "to": "n8",
+      "action": "power_off_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n14",
+      "to": "n9",
+      "action": "unplug_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n15",
+      "to": "n10",
+      "action": "power_off_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n15",
+      "to": "n11",
+      "action": "unplug_{object}__BP_Laptop_1_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    }
+  ],
+  "goal_nodes": [],
+  "goal_paths": [],
+  "has_solution": false,
+  "node_count": 16,
+  "transition_edge_count": 15,
+  "equivalence_edge_count": 29,
+  "grounded_action_count": 16,
+  "grounded_subtask_count": 13,
+  "grounded_place_primitive_count": 3
+}

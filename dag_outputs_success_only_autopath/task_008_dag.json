@@ -1,0 +1,520 @@
+{
+  "task_id": "task_008",
+  "description": "Clean the bathroom sink area by removing dirty dishes, washing them, and placing them back in the cupboard.",
+  "output_language": "English",
+  "is_dag": true,
+  "graph_mode": "success_prefix_graph_no_state_merge",
+  "task_scope": [
+    "BP_BowlCupboard_04_C_3",
+    "BP_Bowl_Stack005_C_0",
+    "BP_Cup_TeaCup_C_0",
+    "BP_Sink_005_C_0"
+  ],
+  "preprocess": {
+    "dropped_predicates": [],
+    "static_unsatisfied_constraints": []
+  },
+  "initial_state": [
+    "closed(BP_BowlCupboard_04_C_3)",
+    "dirty(BP_Bowl_Stack005_C_0)",
+    "dirty(BP_Cup_TeaCup_C_0)",
+    "empty",
+    "exists(BP_BowlCupboard_04_C_3)",
+    "exists(BP_Bowl_Stack005_C_0)",
+    "exists(BP_Cup_TeaCup_C_0)",
+    "exists(BP_Sink_005_C_0)"
+  ],
+  "goal_state": [
+    "clean(BP_Bowl_Stack005_C_0)",
+    "clean(BP_Cup_TeaCup_C_0)",
+    "empty",
+    "in(BP_Bowl_Stack005_C_0, BP_BowlCupboard_04_C_3)",
+    "in(BP_Cup_TeaCup_C_0, BP_BowlCupboard_04_C_3)"
+  ],
+  "nodes": [
+    {
+      "id": "n0",
+      "depth": 0,
+      "state": [
+        "closed(BP_BowlCupboard_04_C_3)",
+        "dirty(BP_Bowl_Stack005_C_0)",
+        "dirty(BP_Cup_TeaCup_C_0)",
+        "empty",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)"
+      ],
+      "is_goal": false,
+      "prefix_count": 2
+    },
+    {
+      "id": "n1",
+      "depth": 1,
+      "state": [
+        "clean(BP_Bowl_Stack005_C_0)",
+        "closed(BP_BowlCupboard_04_C_3)",
+        "dirty(BP_Cup_TeaCup_C_0)",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "holding(BP_Bowl_Stack005_C_0)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "with_reach(BP_Bowl_Stack005_C_0)"
+      ],
+      "is_goal": false,
+      "prefix_count": 1
+    },
+    {
+      "id": "n2",
+      "depth": 2,
+      "state": [
+        "clean(BP_Bowl_Stack005_C_0)",
+        "dirty(BP_Cup_TeaCup_C_0)",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "holding(BP_Bowl_Stack005_C_0)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "open(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_BowlCupboard_04_C_3)"
+      ],
+      "is_goal": false,
+      "prefix_count": 1
+    },
+    {
+      "id": "n3",
+      "depth": 3,
+      "state": [
+        "clean(BP_Bowl_Stack005_C_0)",
+        "dirty(BP_Cup_TeaCup_C_0)",
+        "empty",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "in(BP_Bowl_Stack005_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "open(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_BowlCupboard_04_C_3)"
+      ],
+      "is_goal": false,
+      "prefix_count": 1
+    },
+    {
+      "id": "n4",
+      "depth": 4,
+      "state": [
+        "clean(BP_Bowl_Stack005_C_0)",
+        "clean(BP_Cup_TeaCup_C_0)",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "holding(BP_Cup_TeaCup_C_0)",
+        "in(BP_Bowl_Stack005_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "open(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false,
+      "prefix_count": 1
+    },
+    {
+      "id": "n5",
+      "depth": 5,
+      "state": [
+        "clean(BP_Bowl_Stack005_C_0)",
+        "clean(BP_Cup_TeaCup_C_0)",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "holding(BP_Cup_TeaCup_C_0)",
+        "in(BP_Bowl_Stack005_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "open(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_BowlCupboard_04_C_3)"
+      ],
+      "is_goal": false,
+      "prefix_count": 1
+    },
+    {
+      "id": "n6",
+      "depth": 6,
+      "state": [
+        "clean(BP_Bowl_Stack005_C_0)",
+        "clean(BP_Cup_TeaCup_C_0)",
+        "empty",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "in(BP_Bowl_Stack005_C_0, BP_BowlCupboard_04_C_3)",
+        "in(BP_Cup_TeaCup_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "open(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_BowlCupboard_04_C_3)"
+      ],
+      "is_goal": true,
+      "prefix_count": 1
+    },
+    {
+      "id": "n7",
+      "depth": 1,
+      "state": [
+        "clean(BP_Cup_TeaCup_C_0)",
+        "closed(BP_BowlCupboard_04_C_3)",
+        "dirty(BP_Bowl_Stack005_C_0)",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "holding(BP_Cup_TeaCup_C_0)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false,
+      "prefix_count": 1
+    },
+    {
+      "id": "n8",
+      "depth": 2,
+      "state": [
+        "clean(BP_Cup_TeaCup_C_0)",
+        "dirty(BP_Bowl_Stack005_C_0)",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "holding(BP_Cup_TeaCup_C_0)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "open(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_BowlCupboard_04_C_3)"
+      ],
+      "is_goal": false,
+      "prefix_count": 1
+    },
+    {
+      "id": "n9",
+      "depth": 3,
+      "state": [
+        "clean(BP_Cup_TeaCup_C_0)",
+        "dirty(BP_Bowl_Stack005_C_0)",
+        "empty",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "in(BP_Cup_TeaCup_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "open(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_BowlCupboard_04_C_3)"
+      ],
+      "is_goal": false,
+      "prefix_count": 1
+    },
+    {
+      "id": "n10",
+      "depth": 4,
+      "state": [
+        "clean(BP_Bowl_Stack005_C_0)",
+        "clean(BP_Cup_TeaCup_C_0)",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "holding(BP_Bowl_Stack005_C_0)",
+        "in(BP_Cup_TeaCup_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "open(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_Bowl_Stack005_C_0)"
+      ],
+      "is_goal": false,
+      "prefix_count": 1
+    },
+    {
+      "id": "n11",
+      "depth": 5,
+      "state": [
+        "clean(BP_Bowl_Stack005_C_0)",
+        "clean(BP_Cup_TeaCup_C_0)",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "holding(BP_Bowl_Stack005_C_0)",
+        "in(BP_Cup_TeaCup_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "open(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_BowlCupboard_04_C_3)"
+      ],
+      "is_goal": false,
+      "prefix_count": 1
+    },
+    {
+      "id": "n12",
+      "depth": 6,
+      "state": [
+        "clean(BP_Bowl_Stack005_C_0)",
+        "clean(BP_Cup_TeaCup_C_0)",
+        "empty",
+        "exists(BP_BowlCupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Sink_005_C_0)",
+        "in(BP_Bowl_Stack005_C_0, BP_BowlCupboard_04_C_3)",
+        "in(BP_Cup_TeaCup_C_0, BP_BowlCupboard_04_C_3)",
+        "in_view(BP_BowlCupboard_04_C_3)",
+        "open(BP_BowlCupboard_04_C_3)",
+        "with_reach(BP_BowlCupboard_04_C_3)"
+      ],
+      "is_goal": true,
+      "prefix_count": 1
+    }
+  ],
+  "dag_edges": [
+    {
+      "from": "n0",
+      "to": "n1",
+      "action": "acquire_and_clean_{object}__BP_Bowl_Stack005_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n1",
+      "to": "n2",
+      "action": "open_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n2",
+      "to": "n3",
+      "action": "place_BP_Bowl_Stack005_C_0_in_BP_BowlCupboard_04_C_3",
+      "source": "primitive",
+      "type": "transition"
+    },
+    {
+      "from": "n3",
+      "to": "n4",
+      "action": "acquire_and_clean_{object}__BP_Cup_TeaCup_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n4",
+      "to": "n5",
+      "action": "reach_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n5",
+      "to": "n6",
+      "action": "place_BP_Cup_TeaCup_C_0_in_BP_BowlCupboard_04_C_3",
+      "source": "primitive",
+      "type": "transition"
+    },
+    {
+      "from": "n0",
+      "to": "n7",
+      "action": "acquire_and_clean_{object}__BP_Cup_TeaCup_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n7",
+      "to": "n8",
+      "action": "open_container_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n8",
+      "to": "n9",
+      "action": "place_BP_Cup_TeaCup_C_0_in_BP_BowlCupboard_04_C_3",
+      "source": "primitive",
+      "type": "transition"
+    },
+    {
+      "from": "n9",
+      "to": "n10",
+      "action": "acquire_and_clean_{object}__BP_Bowl_Stack005_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n10",
+      "to": "n11",
+      "action": "reach_{object}__BP_BowlCupboard_04_C_3",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n11",
+      "to": "n12",
+      "action": "place_BP_Bowl_Stack005_C_0_in_BP_BowlCupboard_04_C_3",
+      "source": "primitive",
+      "type": "transition"
+    }
+  ],
+  "equivalence_edges": [],
+  "goal_nodes": [
+    "n6",
+    "n12"
+  ],
+  "goal_paths": [
+    [
+      {
+        "from": "n0",
+        "to": "n1",
+        "action": "acquire_and_clean_{object}__BP_Bowl_Stack005_C_0",
+        "source": "subtask"
+      },
+      {
+        "from": "n1",
+        "to": "n2",
+        "action": "open_container_{object}__BP_BowlCupboard_04_C_3",
+        "source": "subtask"
+      },
+      {
+        "from": "n2",
+        "to": "n3",
+        "action": "place_BP_Bowl_Stack005_C_0_in_BP_BowlCupboard_04_C_3",
+        "source": "primitive"
+      },
+      {
+        "from": "n3",
+        "to": "n4",
+        "action": "acquire_and_clean_{object}__BP_Cup_TeaCup_C_0",
+        "source": "subtask"
+      },
+      {
+        "from": "n4",
+        "to": "n5",
+        "action": "reach_{object}__BP_BowlCupboard_04_C_3",
+        "source": "subtask"
+      },
+      {
+        "from": "n5",
+        "to": "n6",
+        "action": "place_BP_Cup_TeaCup_C_0_in_BP_BowlCupboard_04_C_3",
+        "source": "primitive"
+      }
+    ],
+    [
+      {
+        "from": "n0",
+        "to": "n7",
+        "action": "acquire_and_clean_{object}__BP_Cup_TeaCup_C_0",
+        "source": "subtask"
+      },
+      {
+        "from": "n7",
+        "to": "n8",
+        "action": "open_container_{object}__BP_BowlCupboard_04_C_3",
+        "source": "subtask"
+      },
+      {
+        "from": "n8",
+        "to": "n9",
+        "action": "place_BP_Cup_TeaCup_C_0_in_BP_BowlCupboard_04_C_3",
+        "source": "primitive"
+      },
+      {
+        "from": "n9",
+        "to": "n10",
+        "action": "acquire_and_clean_{object}__BP_Bowl_Stack005_C_0",
+        "source": "subtask"
+      },
+      {
+        "from": "n10",
+        "to": "n11",
+        "action": "reach_{object}__BP_BowlCupboard_04_C_3",
+        "source": "subtask"
+      },
+      {
+        "from": "n11",
+        "to": "n12",
+        "action": "place_BP_Bowl_Stack005_C_0_in_BP_BowlCupboard_04_C_3",
+        "source": "primitive"
+      }
+    ]
+  ],
+  "success_traces": [
+    [
+      "acquire_and_clean_{object}__BP_Bowl_Stack005_C_0",
+      "open_container_{object}__BP_BowlCupboard_04_C_3",
+      "place_BP_Bowl_Stack005_C_0_in_BP_BowlCupboard_04_C_3",
+      "acquire_and_clean_{object}__BP_Cup_TeaCup_C_0",
+      "reach_{object}__BP_BowlCupboard_04_C_3",
+      "place_BP_Cup_TeaCup_C_0_in_BP_BowlCupboard_04_C_3"
+    ],
+    [
+      "acquire_and_clean_{object}__BP_Cup_TeaCup_C_0",
+      "open_container_{object}__BP_BowlCupboard_04_C_3",
+      "place_BP_Cup_TeaCup_C_0_in_BP_BowlCupboard_04_C_3",
+      "acquire_and_clean_{object}__BP_Bowl_Stack005_C_0",
+      "reach_{object}__BP_BowlCupboard_04_C_3",
+      "place_BP_Bowl_Stack005_C_0_in_BP_BowlCupboard_04_C_3"
+    ]
+  ],
+  "has_solution": true,
+  "node_count": 13,
+  "transition_edge_count": 12,
+  "equivalence_edge_count": 0,
+  "grounded_action_count": 11,
+  "grounded_subtask_count": 9,
+  "grounded_place_primitive_count": 2,
+  "success_trace_count": 2,
+  "max_success_traces": 100,
+  "max_path_nodes": 7,
+  "auto_search": {
+    "enabled": true,
+    "min_path_nodes": 2,
+    "max_path_nodes": 15,
+    "step": 1,
+    "selected_max_path_nodes": 7,
+    "trials": [
+      {
+        "max_path_nodes": 2,
+        "has_solution": false,
+        "success_trace_count": 0,
+        "node_count": 1
+      },
+      {
+        "max_path_nodes": 3,
+        "has_solution": false,
+        "success_trace_count": 0,
+        "node_count": 1
+      },
+      {
+        "max_path_nodes": 4,
+        "has_solution": false,
+        "success_trace_count": 0,
+        "node_count": 1
+      },
+      {
+        "max_path_nodes": 5,
+        "has_solution": false,
+        "success_trace_count": 0,
+        "node_count": 1
+      },
+      {
+        "max_path_nodes": 6,
+        "has_solution": false,
+        "success_trace_count": 0,
+        "node_count": 1
+      },
+      {
+        "max_path_nodes": 7,
+        "has_solution": true,
+        "success_trace_count": 2,
+        "node_count": 13
+      }
+    ]
+  }
+}

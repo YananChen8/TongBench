@@ -1,0 +1,177 @@
+version: 2
+scene: daily_life_scene
+output_language: English
+normalization:
+  normalize_case: true
+  remove_underscores: true
+  remove_spaces: true
+  remove_hyphens: true
+  label_aliases:
+    coffee_table: coffeetable
+    table_lamp: tablelamp
+    bath_shelf: bathshelf
+    dining_table: diningtable
+    storage_box: storagebox
+    remote_control: remotecontrol
+    drink_container: drinkcontainer
+    paper_ball: paperball
+    electric_fan: electricfan
+    bowlcupboard: cupboard
+    bowl_cupboard: cupboard
+    trash_can: trashcan
+    shoes_cabinet: shoescabinet
+    suitcase: storagebox
+  object_id_aliases:
+    BP_Refriegerator_005_C_0: BP_Frigerator_005_C_0
+    BP_Dishwasher_01_C_1: BP_Diswasher_01_C_1
+    BP_Dishwasher_005_C_0: BP_Diswasher_005_C_0
+    BP_Doughnut_C_1: BP_Food_Donut_C_1
+search:
+  strategy: exhaustive_bfs
+  max_depth: 30
+  max_nodes: 120000
+  stop_expanding_at_goal: true
+  deduplicate_states: true
+  record_equivalence_edges: true
+  equivalence_edges_are_not_dag_edges: true
+  include_only_goal_relevant_templates: true
+  export_all_goal_paths: true
+  disallow_consecutive_same_action_type: false
+  ignore_transient_in_state_key: true
+state:
+  movable_location_predicates:
+    - holding
+    - on
+    - in
+  transient_predicates:
+    - in_view
+    - with_reach
+    - pointed_at
+  agent_scoped_predicates:
+    - in_view
+    - with_reach
+    - pointed_at
+    - holding
+  mutex_groups:
+    - [open, closed]
+    - [powered_on, powered_off]
+    - [plugged_in, unplugged]
+    - [clean, dirty]
+    - [empty, dirty_hand, clean_hand, sitting, standing]
+  binary_relation_mutex:
+    - [on, in]
+  singleton_holding: true
+  singleton_empty: true
+semantics:
+  use_affordance_flags_as_authority: true
+  require_exists_for_all_actions: true
+  require_open_container_for_place_in: true
+  require_open_container_for_pick_from_in: true
+  allow_pick_if_pickable_false_when_explicitly_mentioned_in_task: false
+  allow_relation_target_to_be_nonpickable: true
+  drop_open_close_for_non_openable: true
+  drop_power_preds_for_non_powerable: true
+container_labels:
+  - bathcabinet
+  - cabinet
+  - cupboard
+  - dishwasher
+  - refrigerator
+  - trashcan
+  - wastebasket
+  - wardrobe
+  - shoescabinet
+  - storagebox
+surface_labels:
+  - bathshelf
+  - bed
+  - bedside
+  - cabinet
+  - coffeetable
+  - cupboard
+  - desk
+  - diningtable
+  - tray
+  - tablelamp
+  - bathcabinet
+hanger_labels:
+  - rod
+  - hook
+pluggable_labels:
+  - adapter
+  - aircondition
+  - fan
+  - electricfan
+  - lamp
+  - tablelamp
+  - laptop
+  - plug
+  - radio
+  - tv
+  - kettle
+suppressed_templates:
+  - place_{object}
+  - drop_{object}
+  - hand_over_{object}
+action_rules:
+  look_at_{object}:
+    deletes: []
+  point_at_{object}:
+    deletes: []
+  walk_to_{object}:
+    deletes: []
+    implies:
+      - in_view({object})
+  pick_up_{object}:
+    deletes:
+      - empty
+      - on({object},*)
+      - in({object},*)
+  place_{object1}_on_{object2}:
+    deletes:
+      - holding({object1})
+      - on({object1},*)
+      - in({object1},*)
+    adds:
+      - empty
+  place_{object1}_in_{object2}:
+    deletes:
+      - holding({object1})
+      - on({object1},*)
+      - in({object1},*)
+    adds:
+      - empty
+  open_{object}:
+    deletes:
+      - closed({object})
+  close_{object}:
+    deletes:
+      - open({object})
+  switch_on_{object}:
+    deletes:
+      - powered_off({object})
+  switch_off_{object}:
+    deletes:
+      - powered_on({object})
+  plug_in_{object}:
+    deletes:
+      - unplugged({object})
+  unplug_{object}:
+    deletes:
+      - plugged_in({object})
+  wash_{object}:
+    deletes:
+      - dirty({object})
+  cut_{object}:
+    deletes: []
+  hang_{object}:
+    deletes:
+      - holding({object})
+    adds:
+      - empty
+  stand_up:
+    deletes:
+      - sitting
+  wash_hand:
+    deletes:
+      - dirty_hand

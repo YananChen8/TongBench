@@ -1,0 +1,56 @@
+{
+  "task_id": "task_008",
+  "description": "Clean the bathroom sink area by removing dirty dishes, washing them, and placing them back in the cupboard.",
+  "intention": "Ensure hygiene and tidiness in the bathroom by cleaning used bowls and cups and returning them to their proper storage location.",
+  "initial_state": [
+    "dirty(BP_Bowl_Stack005_C_0)",
+    "dirty(BP_Cup_TeaCup_C_0)",
+    "empty",
+    "exists(BP_Bowl_Stack005_C_0)",
+    "exists(BP_Cup_TeaCup_C_0)",
+    "exists(BP_Cupboard_04_C_3)",
+    "exists(BP_Sink_005_C_0)"
+  ],
+  "goal_state": [
+    "clean(BP_Bowl_Stack005_C_0)",
+    "clean(BP_Cup_TeaCup_C_0)",
+    "empty",
+    "in(BP_Bowl_Stack005_C_0, BP_Cupboard_04_C_3)",
+    "in(BP_Cup_TeaCup_C_0, BP_Cupboard_04_C_3)"
+  ],
+  "task_scope_objects": [
+    "BP_Bowl_Stack005_C_0",
+    "BP_Cup_TeaCup_C_0",
+    "BP_Sink_005_C_0"
+  ],
+  "grounded_action_count": 10,
+  "grounded_subtask_count": 10,
+  "grounded_place_primitive_count": 0,
+  "node_count": 1,
+  "transition_edge_count": 0,
+  "equivalence_edge_count": 0,
+  "goal_nodes": [],
+  "has_solution": false,
+  "nodes": [
+    {
+      "id": "n0",
+      "depth": 0,
+      "state": [
+        "dirty(BP_Bowl_Stack005_C_0)",
+        "dirty(BP_Cup_TeaCup_C_0)",
+        "empty",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Cupboard_04_C_3)",
+        "exists(BP_Sink_005_C_0)"
+      ],
+      "is_goal": false
+    }
+  ],
+  "edges": [],
+  "equivalence_edges": [],
+  "topological_order": [
+    "n0"
+  ],
+  "goal_paths": []
+}

@@ -421,15 +421,15 @@
           "bath_shelf",
           "bed",
           "bedside",
-          "cabinet",
           "coffee_table",
-          "cupboard",
           "desk",
           "diningtable",
-          "tray"
+          "tray",
+          "sofa"
         ]
       },
       "pre_state": [
+        "with_reach({object2})",
         "holding({object1})"
       ],
       "post_state": [
@@ -485,10 +485,12 @@
           "dishwasher",
           "refrigerator",
           "trash_can",
-          "wardrobe"
+          "wardrobe",
+          "suitcase"
         ]
       },
       "pre_state": [
+        "with_reach({object2})",
         "holding({object1})"
       ],
       "post_state": [
@@ -560,7 +562,8 @@
         "laptop",
         "refrigerator",
         "wardrobe",
-        "window"
+        "window",
+        "shoescabinet"
       ],
       "pre_state": [
         "with_reach({object})",
@@ -587,7 +590,8 @@
         "laptop",
         "refrigerator",
         "wardrobe",
-        "window"
+        "window",
+        "shoescabinet"
       ],
       "pre_state": [
         "with_reach({object})",
@@ -618,7 +622,8 @@
         "radiator",
         "radio",
         "refrigerator",
-        "table_lamp"
+        "table_lamp",
+        "ceilinglamp"
       ],
       "pre_state": [
         "with_reach({object})",
@@ -649,7 +654,8 @@
         "radiator",
         "radio",
         "refrigerator",
-        "table_lamp"
+        "table_lamp",
+        "ceilinglamp"
       ],
       "pre_state": [
         "with_reach({object})",
@@ -792,7 +798,8 @@
         "unplugged({object})"
       ],
       "post_state": [
-        "plugged_in({object})"
+        "plugged_in({object})",
+        "powered_off({object})"
       ]
     },
     {
@@ -839,7 +846,7 @@
         "tray"
       ],
       "pre_state": [
-        "with_reach({object})",
+        "holding({object})",
         "dirty({object})"
       ],
       "post_state": [

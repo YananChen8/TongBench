@@ -1,0 +1,81 @@
+{
+  "task_id": "task_004",
+  "description": "Adjust lighting and air quality to improve room comfort using ceiling lamps and air conditioning.",
+  "output_language": "English",
+  "is_dag": true,
+  "task_scope": [
+    "BP_AirCondition_2_C_0",
+    "BP_CeilingLamp_005_C_0"
+  ],
+  "preprocess": {
+    "dropped_predicates": [],
+    "static_unsatisfied_constraints": []
+  },
+  "initial_state": [
+    "empty",
+    "exists(BP_AirCondition_2_C_0)",
+    "exists(BP_CeilingLamp_005_C_0)",
+    "powered_off(BP_AirCondition_2_C_0)",
+    "powered_off(BP_CeilingLamp_005_C_0)"
+  ],
+  "goal_state": [
+    "empty",
+    "powered_on(BP_AirCondition_2_C_0)",
+    "powered_on(BP_CeilingLamp_005_C_0)"
+  ],
+  "nodes": [
+    {
+      "id": "n0",
+      "depth": 0,
+      "state": [
+        "empty",
+        "exists(BP_AirCondition_2_C_0)",
+        "exists(BP_CeilingLamp_005_C_0)",
+        "powered_off(BP_AirCondition_2_C_0)",
+        "powered_off(BP_CeilingLamp_005_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n1",
+      "depth": 1,
+      "state": [
+        "empty",
+        "exists(BP_AirCondition_2_C_0)",
+        "exists(BP_CeilingLamp_005_C_0)",
+        "in_view(BP_AirCondition_2_C_0)",
+        "powered_off(BP_CeilingLamp_005_C_0)",
+        "powered_on(BP_AirCondition_2_C_0)",
+        "with_reach(BP_AirCondition_2_C_0)"
+      ],
+      "is_goal": false
+    }
+  ],
+  "dag_edges": [
+    {
+      "from": "n0",
+      "to": "n1",
+      "action": "power_on_{object}__BP_AirCondition_2_C_0",
+      "source": "subtask",
+      "type": "transition"
+    }
+  ],
+  "equivalence_edges": [
+    {
+      "from": "n1",
+      "to": "n0",
+      "action": "power_off_{object}__BP_AirCondition_2_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    }
+  ],
+  "goal_nodes": [],
+  "goal_paths": [],
+  "has_solution": false,
+  "node_count": 2,
+  "transition_edge_count": 1,
+  "equivalence_edge_count": 1,
+  "grounded_action_count": 5,
+  "grounded_subtask_count": 5,
+  "grounded_place_primitive_count": 0
+}

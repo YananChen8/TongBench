@@ -1,0 +1,49 @@
+{
+  "task_id": "task_004",
+  "description": "Adjust lighting and air quality to improve room comfort using ceiling lamps and air conditioning.",
+  "intention": "Enhance indoor environmental conditions by turning on ambient lighting and activating the air conditioner for better temperature control.",
+  "initial_state": [
+    "empty",
+    "exists(BP_AirCondition_2_C_0)",
+    "exists(BP_CeilingLamp_005_C_0)",
+    "powered_off(BP_AirCondition_2_C_0)",
+    "powered_off(BP_CeilingLamp_005_C_0)"
+  ],
+  "goal_state": [
+    "empty",
+    "powered_on(BP_AirCondition_2_C_0)",
+    "powered_on(BP_CeilingLamp_005_C_0)"
+  ],
+  "task_scope_objects": [
+    "BP_AirCondition_2_C_0",
+    "BP_CeilingLamp_005_C_0"
+  ],
+  "grounded_action_count": 5,
+  "grounded_subtask_count": 5,
+  "grounded_place_primitive_count": 0,
+  "node_count": 1,
+  "transition_edge_count": 0,
+  "equivalence_edge_count": 0,
+  "goal_nodes": [],
+  "has_solution": false,
+  "nodes": [
+    {
+      "id": "n0",
+      "depth": 0,
+      "state": [
+        "empty",
+        "exists(BP_AirCondition_2_C_0)",
+        "exists(BP_CeilingLamp_005_C_0)",
+        "powered_off(BP_AirCondition_2_C_0)",
+        "powered_off(BP_CeilingLamp_005_C_0)"
+      ],
+      "is_goal": false
+    }
+  ],
+  "edges": [],
+  "equivalence_edges": [],
+  "topological_order": [
+    "n0"
+  ],
+  "goal_paths": []
+}

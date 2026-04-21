@@ -156,7 +156,7 @@
       "powerable": false
     },
     "BP_CeilingLamp_005_C_0": {
-      "openable": false,
+      "openable": true,
       "pickable": false,
       "powerable": true
     },
@@ -217,6 +217,11 @@
     },
     "BP_Ceiling_Corner_C_0": {
       "openable": false,
+      "pickable": false,
+      "powerable": false
+    },
+    "BP_Wardrobe_005_C_0": {
+      "openable": true,
       "pickable": false,
       "powerable": false
     },

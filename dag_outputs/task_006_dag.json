@@ -1,0 +1,56 @@
+{
+  "task_id": "task_006",
+  "description": "Prepare a simple tea-serving setup on the coffee table using the kettle, cup, and bowl.",
+  "intention": "Create a ready-to-use tea service by placing the kettle on the table, filling the cup, and positioning the bowl nearby.",
+  "initial_state": [
+    "empty",
+    "exists(BP_Bowl_Stack005_C_0)",
+    "exists(BP_CoffeeTable_LivingRoom005_C_0)",
+    "exists(BP_Cup_TeaCup_C_0)",
+    "exists(BP_Kettle_1_C_0)",
+    "unplugged(BP_Kettle_1_C_0)"
+  ],
+  "goal_state": [
+    "empty",
+    "on(BP_Bowl_Stack005_C_0, BP_CoffeeTable_LivingRoom005_C_0)",
+    "on(BP_Cup_TeaCup_C_0, BP_CoffeeTable_LivingRoom005_C_0)",
+    "on(BP_Kettle_1_C_0, BP_CoffeeTable_LivingRoom005_C_0)",
+    "plugged_in(BP_Kettle_1_C_0)",
+    "powered_on(BP_Kettle_1_C_0)"
+  ],
+  "task_scope_objects": [
+    "BP_Bowl_Stack005_C_0",
+    "BP_CoffeeTable_LivingRoom005_C_0",
+    "BP_Cup_TeaCup_C_0",
+    "BP_Kettle_1_C_0"
+  ],
+  "grounded_action_count": 14,
+  "grounded_subtask_count": 11,
+  "grounded_place_primitive_count": 3,
+  "node_count": 1,
+  "transition_edge_count": 0,
+  "equivalence_edge_count": 0,
+  "goal_nodes": [],
+  "has_solution": false,
+  "nodes": [
+    {
+      "id": "n0",
+      "depth": 0,
+      "state": [
+        "empty",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_CoffeeTable_LivingRoom005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Kettle_1_C_0)",
+        "unplugged(BP_Kettle_1_C_0)"
+      ],
+      "is_goal": false
+    }
+  ],
+  "edges": [],
+  "equivalence_edges": [],
+  "topological_order": [
+    "n0"
+  ],
+  "goal_paths": []
+}

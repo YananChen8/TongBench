@@ -1,0 +1,57 @@
+{
+  "task_id": "task_004",
+  "description": "Adjust lighting and air quality to improve room comfort using ceiling lamps and air conditioning.",
+  "output_language": "English",
+  "is_dag": true,
+  "graph_mode": "success_prefix_graph_no_state_merge",
+  "task_scope": [
+    "BP_AirCondition_2_C_0",
+    "BP_CeilingLamp_005_C_0"
+  ],
+  "preprocess": {
+    "dropped_predicates": [],
+    "static_unsatisfied_constraints": []
+  },
+  "initial_state": [
+    "empty",
+    "exists(BP_AirCondition_2_C_0)",
+    "exists(BP_CeilingLamp_005_C_0)",
+    "powered_off(BP_AirCondition_2_C_0)",
+    "powered_off(BP_CeilingLamp_005_C_0)"
+  ],
+  "goal_state": [
+    "empty",
+    "powered_on(BP_AirCondition_2_C_0)",
+    "powered_on(BP_CeilingLamp_005_C_0)"
+  ],
+  "nodes": [
+    {
+      "id": "n0",
+      "depth": 0,
+      "state": [
+        "empty",
+        "exists(BP_AirCondition_2_C_0)",
+        "exists(BP_CeilingLamp_005_C_0)",
+        "powered_off(BP_AirCondition_2_C_0)",
+        "powered_off(BP_CeilingLamp_005_C_0)"
+      ],
+      "is_goal": false,
+      "prefix_count": 0
+    }
+  ],
+  "dag_edges": [],
+  "equivalence_edges": [],
+  "goal_nodes": [],
+  "goal_paths": [],
+  "success_traces": [],
+  "has_solution": false,
+  "node_count": 1,
+  "transition_edge_count": 0,
+  "equivalence_edge_count": 0,
+  "grounded_action_count": 5,
+  "grounded_subtask_count": 5,
+  "grounded_place_primitive_count": 0,
+  "success_trace_count": 0,
+  "max_success_traces": 10000,
+  "max_path_nodes": 7
+}

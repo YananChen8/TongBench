@@ -28,19 +28,19 @@
       "exists(object_id)": "The object exists in the scene.",
       "dirty(object_id)": "The object is dirty.",
       "clean(object_id)": "The object is clean.",
-      "holding(object_id)": "The agent is holding the object.",
-      "open(object_id)": "The object is open.",
-      "closed(object_id)": "The object is closed.",
-      "powered_on(object_id)": "The object is powered on.",
-      "powered_off(object_id)": "The object is powered off.",
+      "holding(object_id)": "The agent is holding the object. Use only for objects that are explicitly pickable in the affordance data.",
+      "open(object_id)": "The object is open. Use only for objects that are explicitly openable in the affordance data.",
+      "closed(object_id)": "The object is closed. Use only for objects that are explicitly openable in the affordance data.",
+      "powered_on(object_id)": "The object is powered on. Use only for objects that are explicitly powerable in the affordance data.",
+      "powered_off(object_id)": "The object is powered off. Use only for objects that are explicitly powerable in the affordance data.",
       "plugged_in(object_id)": "The object is plugged in.",
       "unplugged(object_id)": "The object is unplugged.",
       "in_view(object_id)": "The object is visible to the agent.",
       "with_reach(object_id)": "The object is within reach of the agent."
     }},
     "two_argument_predicates": {{
-      "on(object_id_1, object_id_2)": "Object 1 is on top of object 2.",
-      "in(object_id_1, object_id_2)": "Object 1 is inside object 2."
+      "on(object_id_1, object_id_2)": "Object 1 is on top of object 2. Use only when object 1 is explicitly pickable if the task implies the agent moved it there.",
+      "in(object_id_1, object_id_2)": "Object 1 is inside object 2. Use only when object 1 is explicitly pickable if the task implies the agent moved it there. Do not require open/closed predicates for object 2 unless object 2 is explicitly openable."
     }}
   }}
   }},
@@ -59,6 +59,14 @@
     "Use in(object_id_1, object_id_2) only for containment relations that are explicitly supported by the task design.",
     "For the same ordered pair of objects, do not use both on(object_id_1, object_id_2) and in(object_id_1, object_id_2) in the same state.",
     "Do not use holding(object_id) in final_state unless holding the object is itself the explicit task goal."
+    "Every predicate must be compatible with the affordance flags of the referenced objects.",
+    "Do not use open(object_id) or closed(object_id) unless that object is explicitly openable.",
+    "Do not use powered_on(object_id) or powered_off(object_id) unless that object is explicitly powerable.",
+    "Do not use holding(object_id) unless that object is explicitly pickable.",
+    "If final_state contains on(A, B) or in(A, B), then A must be explicitly pickable.",
+    "Do not generate tasks that require moving, carrying, placing, or storing a non-pickable object.",
+    "If a target receptacle or storage object is not openable, do not introduce open/closed predicates for it; instead treat it as already accessible if the task can still be stated feasibly.",
+    "Reject any task idea that would require an affordance not supported by the provided object catalog."
   ],
   "state_consistency_rules": [
     "Every task must start with the agent empty-handed, so initial_state must include empty.",
@@ -70,6 +78,33 @@
     "If an object becomes powered on in final_state, it must be powered off in initial_state.",
     "If an object becomes plugged in in final_state, it must be unplugged in initial_state.",
     "The initial_state and final_state must form a logically valid before-and-after pair rather than two unrelated snapshots."
+  ],
+  "affordance_consistency_rules": [
+    "Use object affordances as hard constraints, not as suggestions.",
+    "An object with openable=false must never appear with open(object_id) or closed(object_id).",
+    "An object with powerable=false must never appear with powered_on(object_id) or powered_off(object_id).",
+    "An object with pickable=false must never appear with holding(object_id).",
+    "An object with pickable=false must never be used as the moved object in on(object_id_1, object_id_2) or in(object_id_1, object_id_2).",
+    "If final_state contains on(A, B) or in(A, B), then A must be explicitly pickable in the affordance data.",
+    "Do not generate tasks that require moving, carrying, placing, storing, or rearranging a non-pickable object.",
+    "If an object is not openable but can still function as an already-accessible storage area, receptacle, or surface, do not introduce open/closed predicates for it.",
+    "When a task would otherwise require an unsupported affordance, discard that task and generate a different feasible one."
+  ],
+  "invalid_examples": [
+    "Do not generate open(BP_Suitcase_Blue_C_0) if BP_Suitcase_Blue_C_0 is not openable.",
+    "Do not generate closed(BP_Suitcase_Blue_C_0) if BP_Suitcase_Blue_C_0 is not openable.",
+    "Do not generate holding(BP_Towel_hanged_C_0) if BP_Towel_hanged_C_0 is not pickable.",
+    "Do not generate holding(BP_BathShelf_01_C_0) if BP_BathShelf_01_C_0 is not pickable.",
+    "Do not generate on(BP_Towel_hanged_C_0, BP_BathShelf_01_C_0) if it implies moving a non-pickable object."
+  ], 
+  "auxiliary_object_rules": [
+    "A task may include auxiliary objects that are useful during intermediate execution but are not part of the final goal.",
+    "Such auxiliary objects may appear in initial_state only as exists(object_id).",
+    "Auxiliary objects do not need to appear in final_state unless their state is explicitly changed by the task.",
+    "Use at most 3 auxiliary objects per task.",
+    "Include auxiliary objects only when they are plausibly useful for execution, support surfaces, receptacles, or realistic task context.",
+    "Do not include decorative, irrelevant, or redundant auxiliary objects.",
+    "The auxiliary context must not dominate the task; task-relevant state predicates should remain primary."
   ],
   "scene_capabilities": {scene_capabilities_json},
   "object_catalog": {object_catalog_json},

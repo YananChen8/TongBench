@@ -1,0 +1,95 @@
+[
+  {
+    "task_id": "task_001",
+    "has_solution": false,
+    "node_count": 6,
+    "transition_edge_count": 5,
+    "equivalence_edge_count": 0,
+    "grounded_action_count": 16,
+    "goal_path_count": 0,
+    "static_unsatisfied_constraints": [],
+    "dropped_predicates": []
+  },
+  {
+    "task_id": "task_002",
+    "has_solution": false,
+    "node_count": 6,
+    "transition_edge_count": 5,
+    "equivalence_edge_count": 0,
+    "grounded_action_count": 18,
+    "goal_path_count": 0,
+    "static_unsatisfied_constraints": [],
+    "dropped_predicates": []
+  },
+  {
+    "task_id": "task_003",
+    "has_solution": false,
+    "node_count": 16,
+    "transition_edge_count": 15,
+    "equivalence_edge_count": 29,
+    "grounded_action_count": 16,
+    "goal_path_count": 0,
+    "static_unsatisfied_constraints": [],
+    "dropped_predicates": []
+  },
+  {
+    "task_id": "task_004",
+    "has_solution": false,
+    "node_count": 2,
+    "transition_edge_count": 1,
+    "equivalence_edge_count": 1,
+    "grounded_action_count": 5,
+    "goal_path_count": 0,
+    "static_unsatisfied_constraints": [],
+    "dropped_predicates": []
+  },
+  {
+    "task_id": "task_005",
+    "has_solution": false,
+    "node_count": 21,
+    "transition_edge_count": 20,
+    "equivalence_edge_count": 26,
+    "grounded_action_count": 35,
+    "goal_path_count": 0,
+    "static_unsatisfied_constraints": [],
+    "dropped_predicates": []
+  },
+  {
+    "task_id": "task_006",
+    "has_solution": false,
+    "node_count": 4,
+    "transition_edge_count": 3,
+    "equivalence_edge_count": 0,
+    "grounded_action_count": 14,
+    "goal_path_count": 0,
+    "static_unsatisfied_constraints": [],
+    "dropped_predicates": []
+  },
+  {
+    "task_id": "task_007",
+    "has_solution": false,
+    "node_count": 3,
+    "transition_edge_count": 2,
+    "equivalence_edge_count": 0,
+    "grounded_action_count": 9,
+    "goal_path_count": 0,
+    "static_unsatisfied_constraints": [
+      "Unsatisfied movable-goal predicate on(BP_Towel_hanged_C_0, BP_Rod_Bath005_C_4): BP_Towel_hanged_C_0 is not pickable."
+    ],
+    "dropped_predicates": [
+      "Dropped closed(BP_Wardrobe_005_C_0) because BP_Wardrobe_005_C_0 is not openable.",
+      "Dropped open(BP_Wardrobe_005_C_0) because BP_Wardrobe_005_C_0 is not openable."
+    ]
+  },
+  {
+    "task_id": "task_008",
+    "has_solution": true,
+    "node_count": 41,
+    "transition_edge_count": 40,
+    "equivalence_edge_count": 68,
+    "grounded_action_count": 11,
+    "goal_path_count": 1,
+    "static_unsatisfied_constraints": [],
+    "dropped_predicates": []
+  }
+]

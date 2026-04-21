@@ -1,0 +1,200 @@
+{
+  "task_id": "task_001",
+  "description": "Prepare the living room for a guest by arranging seating, cleaning surfaces, and setting up refreshments.",
+  "output_language": "English",
+  "is_dag": true,
+  "task_scope": [
+    "BP_Bowl_05_C_0",
+    "BP_CoffeeTable_LivingRoom005_C_0",
+    "BP_Fruit_Banana_C_0",
+    "BP_Sofa_008_C_0",
+    "BP_Sofa_011_C_1",
+    "BP_Toy_Frog_C_0",
+    "BP_Toy_Horse_C_0"
+  ],
+  "preprocess": {
+    "dropped_predicates": [],
+    "static_unsatisfied_constraints": []
+  },
+  "initial_state": [
+    "dirty(BP_Bowl_05_C_0)",
+    "dirty(BP_Fruit_Banana_C_0)",
+    "empty",
+    "exists(BP_Bowl_05_C_0)",
+    "exists(BP_CoffeeTable_LivingRoom005_C_0)",
+    "exists(BP_Fruit_Banana_C_0)",
+    "exists(BP_Sofa_008_C_0)",
+    "exists(BP_Sofa_011_C_1)",
+    "exists(BP_Toy_Frog_C_0)",
+    "exists(BP_Toy_Horse_C_0)"
+  ],
+  "goal_state": [
+    "clean(BP_Bowl_05_C_0)",
+    "empty",
+    "on(BP_Bowl_05_C_0, BP_CoffeeTable_LivingRoom005_C_0)",
+    "on(BP_Fruit_Banana_C_0, BP_CoffeeTable_LivingRoom005_C_0)",
+    "on(BP_Toy_Frog_C_0, BP_Sofa_008_C_0)",
+    "on(BP_Toy_Horse_C_0, BP_Sofa_011_C_1)"
+  ],
+  "nodes": [
+    {
+      "id": "n0",
+      "depth": 0,
+      "state": [
+        "dirty(BP_Bowl_05_C_0)",
+        "dirty(BP_Fruit_Banana_C_0)",
+        "empty",
+        "exists(BP_Bowl_05_C_0)",
+        "exists(BP_CoffeeTable_LivingRoom005_C_0)",
+        "exists(BP_Fruit_Banana_C_0)",
+        "exists(BP_Sofa_008_C_0)",
+        "exists(BP_Sofa_011_C_1)",
+        "exists(BP_Toy_Frog_C_0)",
+        "exists(BP_Toy_Horse_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n1",
+      "depth": 1,
+      "state": [
+        "dirty(BP_Bowl_05_C_0)",
+        "dirty(BP_Fruit_Banana_C_0)",
+        "exists(BP_Bowl_05_C_0)",
+        "exists(BP_CoffeeTable_LivingRoom005_C_0)",
+        "exists(BP_Fruit_Banana_C_0)",
+        "exists(BP_Sofa_008_C_0)",
+        "exists(BP_Sofa_011_C_1)",
+        "exists(BP_Toy_Frog_C_0)",
+        "exists(BP_Toy_Horse_C_0)",
+        "holding(BP_Bowl_05_C_0)",
+        "in_view(BP_Bowl_05_C_0)",
+        "with_reach(BP_Bowl_05_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n2",
+      "depth": 1,
+      "state": [
+        "dirty(BP_Bowl_05_C_0)",
+        "dirty(BP_Fruit_Banana_C_0)",
+        "exists(BP_Bowl_05_C_0)",
+        "exists(BP_CoffeeTable_LivingRoom005_C_0)",
+        "exists(BP_Fruit_Banana_C_0)",
+        "exists(BP_Sofa_008_C_0)",
+        "exists(BP_Sofa_011_C_1)",
+        "exists(BP_Toy_Frog_C_0)",
+        "exists(BP_Toy_Horse_C_0)",
+        "holding(BP_Fruit_Banana_C_0)",
+        "in_view(BP_Fruit_Banana_C_0)",
+        "with_reach(BP_Fruit_Banana_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n3",
+      "depth": 1,
+      "state": [
+        "dirty(BP_Bowl_05_C_0)",
+        "dirty(BP_Fruit_Banana_C_0)",
+        "exists(BP_Bowl_05_C_0)",
+        "exists(BP_CoffeeTable_LivingRoom005_C_0)",
+        "exists(BP_Fruit_Banana_C_0)",
+        "exists(BP_Sofa_008_C_0)",
+        "exists(BP_Sofa_011_C_1)",
+        "exists(BP_Toy_Frog_C_0)",
+        "exists(BP_Toy_Horse_C_0)",
+        "holding(BP_Toy_Frog_C_0)",
+        "in_view(BP_Toy_Frog_C_0)",
+        "with_reach(BP_Toy_Frog_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n4",
+      "depth": 1,
+      "state": [
+        "dirty(BP_Bowl_05_C_0)",
+        "dirty(BP_Fruit_Banana_C_0)",
+        "exists(BP_Bowl_05_C_0)",
+        "exists(BP_CoffeeTable_LivingRoom005_C_0)",
+        "exists(BP_Fruit_Banana_C_0)",
+        "exists(BP_Sofa_008_C_0)",
+        "exists(BP_Sofa_011_C_1)",
+        "exists(BP_Toy_Frog_C_0)",
+        "exists(BP_Toy_Horse_C_0)",
+        "holding(BP_Toy_Horse_C_0)",
+        "in_view(BP_Toy_Horse_C_0)",
+        "with_reach(BP_Toy_Horse_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n5",
+      "depth": 1,
+      "state": [
+        "clean(BP_Bowl_05_C_0)",
+        "dirty(BP_Fruit_Banana_C_0)",
+        "exists(BP_Bowl_05_C_0)",
+        "exists(BP_CoffeeTable_LivingRoom005_C_0)",
+        "exists(BP_Fruit_Banana_C_0)",
+        "exists(BP_Sofa_008_C_0)",
+        "exists(BP_Sofa_011_C_1)",
+        "exists(BP_Toy_Frog_C_0)",
+        "exists(BP_Toy_Horse_C_0)",
+        "holding(BP_Bowl_05_C_0)",
+        "in_view(BP_Bowl_05_C_0)",
+        "with_reach(BP_Bowl_05_C_0)"
+      ],
+      "is_goal": false
+    }
+  ],
+  "dag_edges": [
+    {
+      "from": "n0",
+      "to": "n1",
+      "action": "acquire_{object}__BP_Bowl_05_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n0",
+      "to": "n2",
+      "action": "acquire_{object}__BP_Fruit_Banana_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n0",
+      "to": "n3",
+      "action": "acquire_{object}__BP_Toy_Frog_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n0",
+      "to": "n4",
+      "action": "acquire_{object}__BP_Toy_Horse_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n0",
+      "to": "n5",
+      "action": "acquire_and_clean_{object}__BP_Bowl_05_C_0",
+      "source": "subtask",
+      "type": "transition"
+    }
+  ],
+  "equivalence_edges": [],
+  "goal_nodes": [],
+  "goal_paths": [],
+  "has_solution": false,
+  "node_count": 6,
+  "transition_edge_count": 5,
+  "equivalence_edge_count": 0,
+  "grounded_action_count": 16,
+  "grounded_subtask_count": 12,
+  "grounded_place_primitive_count": 4
+}

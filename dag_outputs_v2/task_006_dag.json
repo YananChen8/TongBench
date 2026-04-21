@@ -1,0 +1,125 @@
+{
+  "task_id": "task_006",
+  "description": "Prepare a simple tea-serving setup on the coffee table using the kettle, cup, and bowl.",
+  "output_language": "English",
+  "is_dag": true,
+  "task_scope": [
+    "BP_Bowl_Stack005_C_0",
+    "BP_CoffeeTable_LivingRoom005_C_0",
+    "BP_Cup_TeaCup_C_0",
+    "BP_Kettle_1_C_0"
+  ],
+  "preprocess": {
+    "dropped_predicates": [],
+    "static_unsatisfied_constraints": []
+  },
+  "initial_state": [
+    "empty",
+    "exists(BP_Bowl_Stack005_C_0)",
+    "exists(BP_CoffeeTable_LivingRoom005_C_0)",
+    "exists(BP_Cup_TeaCup_C_0)",
+    "exists(BP_Kettle_1_C_0)",
+    "unplugged(BP_Kettle_1_C_0)"
+  ],
+  "goal_state": [
+    "empty",
+    "on(BP_Bowl_Stack005_C_0, BP_CoffeeTable_LivingRoom005_C_0)",
+    "on(BP_Cup_TeaCup_C_0, BP_CoffeeTable_LivingRoom005_C_0)",
+    "on(BP_Kettle_1_C_0, BP_CoffeeTable_LivingRoom005_C_0)",
+    "plugged_in(BP_Kettle_1_C_0)",
+    "powered_on(BP_Kettle_1_C_0)"
+  ],
+  "nodes": [
+    {
+      "id": "n0",
+      "depth": 0,
+      "state": [
+        "empty",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_CoffeeTable_LivingRoom005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Kettle_1_C_0)",
+        "unplugged(BP_Kettle_1_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n1",
+      "depth": 1,
+      "state": [
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_CoffeeTable_LivingRoom005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Kettle_1_C_0)",
+        "holding(BP_Bowl_Stack005_C_0)",
+        "in_view(BP_Bowl_Stack005_C_0)",
+        "unplugged(BP_Kettle_1_C_0)",
+        "with_reach(BP_Bowl_Stack005_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n2",
+      "depth": 1,
+      "state": [
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_CoffeeTable_LivingRoom005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Kettle_1_C_0)",
+        "holding(BP_Cup_TeaCup_C_0)",
+        "in_view(BP_Cup_TeaCup_C_0)",
+        "unplugged(BP_Kettle_1_C_0)",
+        "with_reach(BP_Cup_TeaCup_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n3",
+      "depth": 1,
+      "state": [
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_CoffeeTable_LivingRoom005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Kettle_1_C_0)",
+        "holding(BP_Kettle_1_C_0)",
+        "in_view(BP_Kettle_1_C_0)",
+        "unplugged(BP_Kettle_1_C_0)",
+        "with_reach(BP_Kettle_1_C_0)"
+      ],
+      "is_goal": false
+    }
+  ],
+  "dag_edges": [
+    {
+      "from": "n0",
+      "to": "n1",
+      "action": "acquire_{object}__BP_Bowl_Stack005_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n0",
+      "to": "n2",
+      "action": "acquire_{object}__BP_Cup_TeaCup_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n0",
+      "to": "n3",
+      "action": "acquire_{object}__BP_Kettle_1_C_0",
+      "source": "subtask",
+      "type": "transition"
+    }
+  ],
+  "equivalence_edges": [],
+  "goal_nodes": [],
+  "goal_paths": [],
+  "has_solution": false,
+  "node_count": 4,
+  "transition_edge_count": 3,
+  "equivalence_edge_count": 0,
+  "grounded_action_count": 14,
+  "grounded_subtask_count": 11,
+  "grounded_place_primitive_count": 3
+}

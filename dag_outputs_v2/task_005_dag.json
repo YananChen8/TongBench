@@ -1,0 +1,863 @@
+{
+  "task_id": "task_005",
+  "description": "Reset the kitchen after meal preparation by cleaning dishes, closing appliances, and returning items to storage.",
+  "output_language": "English",
+  "is_dag": true,
+  "task_scope": [
+    "BP_Cupboard_kitchen_room5_C_0",
+    "BP_DiningTable_03_C_0",
+    "BP_Diswasher_01_C_1",
+    "BP_Fork_Child01_C_0",
+    "BP_Frigerator_005_C_0",
+    "BP_Knife_Child01_C_0",
+    "BP_Plate_3_C_0"
+  ],
+  "preprocess": {
+    "dropped_predicates": [],
+    "static_unsatisfied_constraints": []
+  },
+  "initial_state": [
+    "dirty(BP_Fork_Child01_C_0)",
+    "dirty(BP_Knife_Child01_C_0)",
+    "dirty(BP_Plate_3_C_0)",
+    "empty",
+    "exists(BP_Cupboard_kitchen_room5_C_0)",
+    "exists(BP_DiningTable_03_C_0)",
+    "exists(BP_Diswasher_01_C_1)",
+    "exists(BP_Fork_Child01_C_0)",
+    "exists(BP_Frigerator_005_C_0)",
+    "exists(BP_Knife_Child01_C_0)",
+    "exists(BP_Plate_3_C_0)",
+    "open(BP_Diswasher_01_C_1)",
+    "open(BP_Frigerator_005_C_0)"
+  ],
+  "goal_state": [
+    "clean(BP_Fork_Child01_C_0)",
+    "clean(BP_Knife_Child01_C_0)",
+    "clean(BP_Plate_3_C_0)",
+    "closed(BP_Diswasher_01_C_1)",
+    "closed(BP_Frigerator_005_C_0)",
+    "empty"
+  ],
+  "nodes": [
+    {
+      "id": "n0",
+      "depth": 0,
+      "state": [
+        "dirty(BP_Fork_Child01_C_0)",
+        "dirty(BP_Knife_Child01_C_0)",
+        "dirty(BP_Plate_3_C_0)",
+        "empty",
+        "exists(BP_Cupboard_kitchen_room5_C_0)",
+        "exists(BP_DiningTable_03_C_0)",
+        "exists(BP_Diswasher_01_C_1)",
+        "exists(BP_Fork_Child01_C_0)",
+        "exists(BP_Frigerator_005_C_0)",
+        "exists(BP_Knife_Child01_C_0)",
+        "exists(BP_Plate_3_C_0)",
+        "open(BP_Diswasher_01_C_1)",
+        "open(BP_Frigerator_005_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n1",
+      "depth": 1,
+      "state": [
+        "dirty(BP_Fork_Child01_C_0)",
+        "dirty(BP_Knife_Child01_C_0)",
+        "dirty(BP_Plate_3_C_0)",
+        "exists(BP_Cupboard_kitchen_room5_C_0)",
+        "exists(BP_DiningTable_03_C_0)",
+        "exists(BP_Diswasher_01_C_1)",
+        "exists(BP_Fork_Child01_C_0)",
+        "exists(BP_Frigerator_005_C_0)",
+        "exists(BP_Knife_Child01_C_0)",
+        "exists(BP_Plate_3_C_0)",
+        "holding(BP_Fork_Child01_C_0)",
+        "in_view(BP_Fork_Child01_C_0)",
+        "open(BP_Diswasher_01_C_1)",
+        "open(BP_Frigerator_005_C_0)",
+        "with_reach(BP_Fork_Child01_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n2",
+      "depth": 1,
+      "state": [
+        "dirty(BP_Fork_Child01_C_0)",
+        "dirty(BP_Knife_Child01_C_0)",
+        "dirty(BP_Plate_3_C_0)",
+        "exists(BP_Cupboard_kitchen_room5_C_0)",
+        "exists(BP_DiningTable_03_C_0)",
+        "exists(BP_Diswasher_01_C_1)",
+        "exists(BP_Fork_Child01_C_0)",
+        "exists(BP_Frigerator_005_C_0)",
+        "exists(BP_Knife_Child01_C_0)",
+        "exists(BP_Plate_3_C_0)",
+        "holding(BP_Knife_Child01_C_0)",
+        "in_view(BP_Knife_Child01_C_0)",
+        "open(BP_Diswasher_01_C_1)",
+        "open(BP_Frigerator_005_C_0)",
+        "with_reach(BP_Knife_Child01_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n3",
+      "depth": 1,
+      "state": [
+        "dirty(BP_Fork_Child01_C_0)",
+        "dirty(BP_Knife_Child01_C_0)",
+        "dirty(BP_Plate_3_C_0)",
+        "exists(BP_Cupboard_kitchen_room5_C_0)",
+        "exists(BP_DiningTable_03_C_0)",
+        "exists(BP_Diswasher_01_C_1)",
+        "exists(BP_Fork_Child01_C_0)",
+        "exists(BP_Frigerator_005_C_0)",
+        "exists(BP_Knife_Child01_C_0)",
+        "exists(BP_Plate_3_C_0)",
+        "holding(BP_Plate_3_C_0)",
+        "in_view(BP_Plate_3_C_0)",
+        "open(BP_Diswasher_01_C_1)",
+        "open(BP_Frigerator_005_C_0)",
+        "with_reach(BP_Plate_3_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n4",
+      "depth": 1,
+      "state": [
+        "clean(BP_Fork_Child01_C_0)",
+        "dirty(BP_Knife_Child01_C_0)",
+        "dirty(BP_Plate_3_C_0)",
+        "exists(BP_Cupboard_kitchen_room5_C_0)",
+        "exists(BP_DiningTable_03_C_0)",
+        "exists(BP_Diswasher_01_C_1)",
+        "exists(BP_Fork_Child01_C_0)",
+        "exists(BP_Frigerator_005_C_0)",
+        "exists(BP_Knife_Child01_C_0)",
+        "exists(BP_Plate_3_C_0)",
+        "holding(BP_Fork_Child01_C_0)",
+        "in_view(BP_Fork_Child01_C_0)",
+        "open(BP_Diswasher_01_C_1)",
+        "open(BP_Frigerator_005_C_0)",
+        "with_reach(BP_Fork_Child01_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n5",
+      "depth": 1,
+      "state": [
+        "clean(BP_Knife_Child01_C_0)",
+        "dirty(BP_Fork_Child01_C_0)",
+        "dirty(BP_Plate_3_C_0)",
+        "exists(BP_Cupboard_kitchen_room5_C_0)",
+        "exists(BP_DiningTable_03_C_0)",
+        "exists(BP_Diswasher_01_C_1)",
+        "exists(BP_Fork_Child01_C_0)",
+        "exists(BP_Frigerator_005_C_0)",
+        "exists(BP_Knife_Child01_C_0)",
+        "exists(BP_Plate_3_C_0)",
+        "holding(BP_Knife_Child01_C_0)",
+        "in_view(BP_Knife_Child01_C_0)",
+        "open(BP_Diswasher_01_C_1)",
+        "open(BP_Frigerator_005_C_0)",
+        "with_reach(BP_Knife_Child01_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n6",
+      "depth": 1,
+      "state": [
+        "clean(BP_Plate_3_C_0)",
+        "dirty(BP_Fork_Child01_C_0)",
+        "dirty(BP_Knife_Child01_C_0)",
+        "exists(BP_Cupboard_kitchen_room5_C_0)",
+        "exists(BP_DiningTable_03_C_0)",
+        "exists(BP_Diswasher_01_C_1)",
+        "exists(BP_Fork_Child01_C_0)",
+        "exists(BP_Frigerator_005_C_0)",
+        "exists(BP_Knife_Child01_C_0)",
+        "exists(BP_Plate_3_C_0)",
+        "holding(BP_Plate_3_C_0)",
+        "in_view(BP_Plate_3_C_0)",
+        "open(BP_Diswasher_01_C_1)",
+        "open(BP_Frigerator_005_C_0)",
+        "with_reach(BP_Plate_3_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n7",
+      "depth": 1,
+      "state": [
+        "closed(BP_Diswasher_01_C_1)",
+        "dirty(BP_Fork_Child01_C_0)",
+        "dirty(BP_Knife_Child01_C_0)",
+        "dirty(BP_Plate_3_C_0)",
+        "empty",
+        "exists(BP_Cupboard_kitchen_room5_C_0)",
+        "exists(BP_DiningTable_03_C_0)",
+        "exists(BP_Diswasher_01_C_1)",
+        "exists(BP_Fork_Child01_C_0)",
+        "exists(BP_Frigerator_005_C_0)",
+        "exists(BP_Knife_Child01_C_0)",
+        "exists(BP_Plate_3_C_0)",
+        "in_view(BP_Diswasher_01_C_1)",
+        "open(BP_Frigerator_005_C_0)",
+        "with_reach(BP_Diswasher_01_C_1)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n8",
+      "depth": 1,
+      "state": [
+        "closed(BP_Frigerator_005_C_0)",
+        "dirty(BP_Fork_Child01_C_0)",
+        "dirty(BP_Knife_Child01_C_0)",
+        "dirty(BP_Plate_3_C_0)",
+        "empty",
+        "exists(BP_Cupboard_kitchen_room5_C_0)",
+        "exists(BP_DiningTable_03_C_0)",
+        "exists(BP_Diswasher_01_C_1)",
+        "exists(BP_Fork_Child01_C_0)",
+        "exists(BP_Frigerator_005_C_0)",
+        "exists(BP_Knife_Child01_C_0)",
+        "exists(BP_Plate_3_C_0)",
+        "in_view(BP_Frigerator_005_C_0)",
+        "open(BP_Diswasher_01_C_1)",
+        "with_reach(BP_Frigerator_005_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n9",
+      "depth": 2,
+      "state": [
+        "closed(BP_Diswasher_01_C_1)",
+        "dirty(BP_Fork_Child01_C_0)",
+        "dirty(BP_Knife_Child01_C_0)",
+        "dirty(BP_Plate_3_C_0)",
+        "exists(BP_Cupboard_kitchen_room5_C_0)",
+        "exists(BP_DiningTable_03_C_0)",
+        "exists(BP_Diswasher_01_C_1)",
+        "exists(BP_Fork_Child01_C_0)",
+        "exists(BP_Frigerator_005_C_0)",
+        "exists(BP_Knife_Child01_C_0)",
+        "exists(BP_Plate_3_C_0)",
+        "holding(BP_Fork_Child01_C_0)",
+        "in_view(BP_Diswasher_01_C_1)",
+        "in_view(BP_Fork_Child01_C_0)",
+        "open(BP_Frigerator_005_C_0)",
+        "with_reach(BP_Diswasher_01_C_1)",
+        "with_reach(BP_Fork_Child01_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n10",
+      "depth": 2,
+      "state": [
+        "closed(BP_Frigerator_005_C_0)",
+        "dirty(BP_Fork_Child01_C_0)",
+        "dirty(BP_Knife_Child01_C_0)",
+        "dirty(BP_Plate_3_C_0)",
+        "exists(BP_Cupboard_kitchen_room5_C_0)",
+        "exists(BP_DiningTable_03_C_0)",
+        "exists(BP_Diswasher_01_C_1)",
+        "exists(BP_Fork_Child01_C_0)",
+        "exists(BP_Frigerator_005_C_0)",
+        "exists(BP_Knife_Child01_C_0)",
+        "exists(BP_Plate_3_C_0)",
+        "holding(BP_Fork_Child01_C_0)",
+        "in_view(BP_Fork_Child01_C_0)",
+        "in_view(BP_Frigerator_005_C_0)",
+        "open(BP_Diswasher_01_C_1)",
+        "with_reach(BP_Fork_Child01_C_0)",
+        "with_reach(BP_Frigerator_005_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n11",
+      "depth": 2,
+      "state": [
+        "closed(BP_Diswasher_01_C_1)",
+        "dirty(BP_Fork_Child01_C_0)",
+        "dirty(BP_Knife_Child01_C_0)",
+        "dirty(BP_Plate_3_C_0)",
+        "exists(BP_Cupboard_kitchen_room5_C_0)",
+        "exists(BP_DiningTable_03_C_0)",
+        "exists(BP_Diswasher_01_C_1)",
+        "exists(BP_Fork_Child01_C_0)",
+        "exists(BP_Frigerator_005_C_0)",
+        "exists(BP_Knife_Child01_C_0)",
+        "exists(BP_Plate_3_C_0)",
+        "holding(BP_Knife_Child01_C_0)",
+        "in_view(BP_Diswasher_01_C_1)",
+        "in_view(BP_Knife_Child01_C_0)",
+        "open(BP_Frigerator_005_C_0)",
+        "with_reach(BP_Diswasher_01_C_1)",
+        "with_reach(BP_Knife_Child01_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n12",
+      "depth": 2,
+      "state": [
+        "closed(BP_Frigerator_005_C_0)",
+        "dirty(BP_Fork_Child01_C_0)",
+        "dirty(BP_Knife_Child01_C_0)",
+        "dirty(BP_Plate_3_C_0)",
+        "exists(BP_Cupboard_kitchen_room5_C_0)",
+        "exists(BP_DiningTable_03_C_0)",
+        "exists(BP_Diswasher_01_C_1)",
+        "exists(BP_Fork_Child01_C_0)",
+        "exists(BP_Frigerator_005_C_0)",
+        "exists(BP_Knife_Child01_C_0)",
+        "exists(BP_Plate_3_C_0)",
+        "holding(BP_Knife_Child01_C_0)",
+        "in_view(BP_Frigerator_005_C_0)",
+        "in_view(BP_Knife_Child01_C_0)",
+        "open(BP_Diswasher_01_C_1)",
+        "with_reach(BP_Frigerator_005_C_0)",
+        "with_reach(BP_Knife_Child01_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n13",
+      "depth": 2,
+      "state": [
+        "closed(BP_Diswasher_01_C_1)",
+        "dirty(BP_Fork_Child01_C_0)",
+        "dirty(BP_Knife_Child01_C_0)",
+        "dirty(BP_Plate_3_C_0)",
+        "exists(BP_Cupboard_kitchen_room5_C_0)",
+        "exists(BP_DiningTable_03_C_0)",
+        "exists(BP_Diswasher_01_C_1)",
+        "exists(BP_Fork_Child01_C_0)",
+        "exists(BP_Frigerator_005_C_0)",
+        "exists(BP_Knife_Child01_C_0)",
+        "exists(BP_Plate_3_C_0)",
+        "holding(BP_Plate_3_C_0)",
+        "in_view(BP_Diswasher_01_C_1)",
+        "in_view(BP_Plate_3_C_0)",
+        "open(BP_Frigerator_005_C_0)",
+        "with_reach(BP_Diswasher_01_C_1)",
+        "with_reach(BP_Plate_3_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n14",
+      "depth": 2,
+      "state": [
+        "closed(BP_Frigerator_005_C_0)",
+        "dirty(BP_Fork_Child01_C_0)",
+        "dirty(BP_Knife_Child01_C_0)",
+        "dirty(BP_Plate_3_C_0)",
+        "exists(BP_Cupboard_kitchen_room5_C_0)",
+        "exists(BP_DiningTable_03_C_0)",
+        "exists(BP_Diswasher_01_C_1)",
+        "exists(BP_Fork_Child01_C_0)",
+        "exists(BP_Frigerator_005_C_0)",
+        "exists(BP_Knife_Child01_C_0)",
+        "exists(BP_Plate_3_C_0)",
+        "holding(BP_Plate_3_C_0)",
+        "in_view(BP_Frigerator_005_C_0)",
+        "in_view(BP_Plate_3_C_0)",
+        "open(BP_Diswasher_01_C_1)",
+        "with_reach(BP_Frigerator_005_C_0)",
+        "with_reach(BP_Plate_3_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n15",
+      "depth": 2,
+      "state": [
+        "clean(BP_Fork_Child01_C_0)",
+        "closed(BP_Diswasher_01_C_1)",
+        "dirty(BP_Knife_Child01_C_0)",
+        "dirty(BP_Plate_3_C_0)",
+        "exists(BP_Cupboard_kitchen_room5_C_0)",
+        "exists(BP_DiningTable_03_C_0)",
+        "exists(BP_Diswasher_01_C_1)",
+        "exists(BP_Fork_Child01_C_0)",
+        "exists(BP_Frigerator_005_C_0)",
+        "exists(BP_Knife_Child01_C_0)",
+        "exists(BP_Plate_3_C_0)",
+        "holding(BP_Fork_Child01_C_0)",
+        "in_view(BP_Diswasher_01_C_1)",
+        "in_view(BP_Fork_Child01_C_0)",
+        "open(BP_Frigerator_005_C_0)",
+        "with_reach(BP_Diswasher_01_C_1)",
+        "with_reach(BP_Fork_Child01_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n16",
+      "depth": 2,
+      "state": [
+        "clean(BP_Fork_Child01_C_0)",
+        "closed(BP_Frigerator_005_C_0)",
+        "dirty(BP_Knife_Child01_C_0)",
+        "dirty(BP_Plate_3_C_0)",
+        "exists(BP_Cupboard_kitchen_room5_C_0)",
+        "exists(BP_DiningTable_03_C_0)",
+        "exists(BP_Diswasher_01_C_1)",
+        "exists(BP_Fork_Child01_C_0)",
+        "exists(BP_Frigerator_005_C_0)",
+        "exists(BP_Knife_Child01_C_0)",
+        "exists(BP_Plate_3_C_0)",
+        "holding(BP_Fork_Child01_C_0)",
+        "in_view(BP_Fork_Child01_C_0)",
+        "in_view(BP_Frigerator_005_C_0)",
+        "open(BP_Diswasher_01_C_1)",
+        "with_reach(BP_Fork_Child01_C_0)",
+        "with_reach(BP_Frigerator_005_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n17",
+      "depth": 2,
+      "state": [
+        "clean(BP_Knife_Child01_C_0)",
+        "closed(BP_Diswasher_01_C_1)",
+        "dirty(BP_Fork_Child01_C_0)",
+        "dirty(BP_Plate_3_C_0)",
+        "exists(BP_Cupboard_kitchen_room5_C_0)",
+        "exists(BP_DiningTable_03_C_0)",
+        "exists(BP_Diswasher_01_C_1)",
+        "exists(BP_Fork_Child01_C_0)",
+        "exists(BP_Frigerator_005_C_0)",
+        "exists(BP_Knife_Child01_C_0)",
+        "exists(BP_Plate_3_C_0)",
+        "holding(BP_Knife_Child01_C_0)",
+        "in_view(BP_Diswasher_01_C_1)",
+        "in_view(BP_Knife_Child01_C_0)",
+        "open(BP_Frigerator_005_C_0)",
+        "with_reach(BP_Diswasher_01_C_1)",
+        "with_reach(BP_Knife_Child01_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n18",
+      "depth": 2,
+      "state": [
+        "clean(BP_Knife_Child01_C_0)",
+        "closed(BP_Frigerator_005_C_0)",
+        "dirty(BP_Fork_Child01_C_0)",
+        "dirty(BP_Plate_3_C_0)",
+        "exists(BP_Cupboard_kitchen_room5_C_0)",
+        "exists(BP_DiningTable_03_C_0)",
+        "exists(BP_Diswasher_01_C_1)",
+        "exists(BP_Fork_Child01_C_0)",
+        "exists(BP_Frigerator_005_C_0)",
+        "exists(BP_Knife_Child01_C_0)",
+        "exists(BP_Plate_3_C_0)",
+        "holding(BP_Knife_Child01_C_0)",
+        "in_view(BP_Frigerator_005_C_0)",
+        "in_view(BP_Knife_Child01_C_0)",
+        "open(BP_Diswasher_01_C_1)",
+        "with_reach(BP_Frigerator_005_C_0)",
+        "with_reach(BP_Knife_Child01_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n19",
+      "depth": 2,
+      "state": [
+        "clean(BP_Plate_3_C_0)",
+        "closed(BP_Diswasher_01_C_1)",
+        "dirty(BP_Fork_Child01_C_0)",
+        "dirty(BP_Knife_Child01_C_0)",
+        "exists(BP_Cupboard_kitchen_room5_C_0)",
+        "exists(BP_DiningTable_03_C_0)",
+        "exists(BP_Diswasher_01_C_1)",
+        "exists(BP_Fork_Child01_C_0)",
+        "exists(BP_Frigerator_005_C_0)",
+        "exists(BP_Knife_Child01_C_0)",
+        "exists(BP_Plate_3_C_0)",
+        "holding(BP_Plate_3_C_0)",
+        "in_view(BP_Diswasher_01_C_1)",
+        "in_view(BP_Plate_3_C_0)",
+        "open(BP_Frigerator_005_C_0)",
+        "with_reach(BP_Diswasher_01_C_1)",
+        "with_reach(BP_Plate_3_C_0)"
+      ],
+      "is_goal": false
+    },
+    {
+      "id": "n20",
+      "depth": 2,
+      "state": [
+        "clean(BP_Plate_3_C_0)",
+        "closed(BP_Frigerator_005_C_0)",
+        "dirty(BP_Fork_Child01_C_0)",
+        "dirty(BP_Knife_Child01_C_0)",
+        "exists(BP_Cupboard_kitchen_room5_C_0)",
+        "exists(BP_DiningTable_03_C_0)",
+        "exists(BP_Diswasher_01_C_1)",
+        "exists(BP_Fork_Child01_C_0)",
+        "exists(BP_Frigerator_005_C_0)",
+        "exists(BP_Knife_Child01_C_0)",
+        "exists(BP_Plate_3_C_0)",
+        "holding(BP_Plate_3_C_0)",
+        "in_view(BP_Frigerator_005_C_0)",
+        "in_view(BP_Plate_3_C_0)",
+        "open(BP_Diswasher_01_C_1)",
+        "with_reach(BP_Frigerator_005_C_0)",
+        "with_reach(BP_Plate_3_C_0)"
+      ],
+      "is_goal": false
+    }
+  ],
+  "dag_edges": [
+    {
+      "from": "n0",
+      "to": "n1",
+      "action": "acquire_{object}__BP_Fork_Child01_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n0",
+      "to": "n2",
+      "action": "acquire_{object}__BP_Knife_Child01_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n0",
+      "to": "n3",
+      "action": "acquire_{object}__BP_Plate_3_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n0",
+      "to": "n4",
+      "action": "acquire_and_clean_{object}__BP_Fork_Child01_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n0",
+      "to": "n5",
+      "action": "acquire_and_clean_{object}__BP_Knife_Child01_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n0",
+      "to": "n6",
+      "action": "acquire_and_clean_{object}__BP_Plate_3_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n0",
+      "to": "n7",
+      "action": "close_container_{object}__BP_Diswasher_01_C_1",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n0",
+      "to": "n8",
+      "action": "close_container_{object}__BP_Frigerator_005_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n1",
+      "to": "n9",
+      "action": "close_container_{object}__BP_Diswasher_01_C_1",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n1",
+      "to": "n10",
+      "action": "close_container_{object}__BP_Frigerator_005_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n2",
+      "to": "n11",
+      "action": "close_container_{object}__BP_Diswasher_01_C_1",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n2",
+      "to": "n12",
+      "action": "close_container_{object}__BP_Frigerator_005_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n3",
+      "to": "n13",
+      "action": "close_container_{object}__BP_Diswasher_01_C_1",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n3",
+      "to": "n14",
+      "action": "close_container_{object}__BP_Frigerator_005_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n4",
+      "to": "n15",
+      "action": "close_container_{object}__BP_Diswasher_01_C_1",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n4",
+      "to": "n16",
+      "action": "close_container_{object}__BP_Frigerator_005_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n5",
+      "to": "n17",
+      "action": "close_container_{object}__BP_Diswasher_01_C_1",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n5",
+      "to": "n18",
+      "action": "close_container_{object}__BP_Frigerator_005_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n6",
+      "to": "n19",
+      "action": "close_container_{object}__BP_Diswasher_01_C_1",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n6",
+      "to": "n20",
+      "action": "close_container_{object}__BP_Frigerator_005_C_0",
+      "source": "subtask",
+      "type": "transition"
+    }
+  ],
+  "equivalence_edges": [
+    {
+      "from": "n7",
+      "to": "n9",
+      "action": "acquire_{object}__BP_Fork_Child01_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n7",
+      "to": "n11",
+      "action": "acquire_{object}__BP_Knife_Child01_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n7",
+      "to": "n13",
+      "action": "acquire_{object}__BP_Plate_3_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n7",
+      "to": "n15",
+      "action": "acquire_and_clean_{object}__BP_Fork_Child01_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n7",
+      "to": "n17",
+      "action": "acquire_and_clean_{object}__BP_Knife_Child01_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n7",
+      "to": "n19",
+      "action": "acquire_and_clean_{object}__BP_Plate_3_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n7",
+      "to": "n0",
+      "action": "open_container_{object}__BP_Diswasher_01_C_1",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n8",
+      "to": "n10",
+      "action": "acquire_{object}__BP_Fork_Child01_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n8",
+      "to": "n12",
+      "action": "acquire_{object}__BP_Knife_Child01_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n8",
+      "to": "n14",
+      "action": "acquire_{object}__BP_Plate_3_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n8",
+      "to": "n16",
+      "action": "acquire_and_clean_{object}__BP_Fork_Child01_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n8",
+      "to": "n18",
+      "action": "acquire_and_clean_{object}__BP_Knife_Child01_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n8",
+      "to": "n20",
+      "action": "acquire_and_clean_{object}__BP_Plate_3_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n8",
+      "to": "n0",
+      "action": "open_container_{object}__BP_Frigerator_005_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n9",
+      "to": "n1",
+      "action": "open_container_{object}__BP_Diswasher_01_C_1",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n10",
+      "to": "n1",
+      "action": "open_container_{object}__BP_Frigerator_005_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n11",
+      "to": "n2",
+      "action": "open_container_{object}__BP_Diswasher_01_C_1",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n12",
+      "to": "n2",
+      "action": "open_container_{object}__BP_Frigerator_005_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n13",
+      "to": "n3",
+      "action": "open_container_{object}__BP_Diswasher_01_C_1",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n14",
+      "to": "n3",
+      "action": "open_container_{object}__BP_Frigerator_005_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n15",
+      "to": "n4",
+      "action": "open_container_{object}__BP_Diswasher_01_C_1",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n16",
+      "to": "n4",
+      "action": "open_container_{object}__BP_Frigerator_005_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n17",
+      "to": "n5",
+      "action": "open_container_{object}__BP_Diswasher_01_C_1",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n18",
+      "to": "n5",
+      "action": "open_container_{object}__BP_Frigerator_005_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n19",
+      "to": "n6",
+      "action": "open_container_{object}__BP_Diswasher_01_C_1",
+      "source": "subtask",
+      "type": "equivalence"
+    },
+    {
+      "from": "n20",
+      "to": "n6",
+      "action": "open_container_{object}__BP_Frigerator_005_C_0",
+      "source": "subtask",
+      "type": "equivalence"
+    }
+  ],
+  "goal_nodes": [],
+  "goal_paths": [],
+  "has_solution": false,
+  "node_count": 21,
+  "transition_edge_count": 20,
+  "equivalence_edge_count": 26,
+  "grounded_action_count": 35,
+  "grounded_subtask_count": 23,
+  "grounded_place_primitive_count": 12
+}
