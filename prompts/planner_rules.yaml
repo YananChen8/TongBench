@@ -34,7 +34,7 @@ search:
   deduplicate_states: true
   record_equivalence_edges: true
   equivalence_edges_are_not_dag_edges: true
-  include_only_goal_relevant_templates: true
+  include_only_goal_relevant_templates: false
   export_all_goal_paths: true
   disallow_consecutive_same_action_type: false
   ignore_transient_in_state_key: true

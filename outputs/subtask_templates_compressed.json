@@ -170,7 +170,8 @@
         "refrigerator",
         "wardrobe",
         "window",
-        "shoescabinet"
+        "shoescabinet",
+        "shoesbox"
       ]
     },
     "pre_state": [
@@ -223,7 +224,8 @@
         "refrigerator",
         "wardrobe",
         "window",
-        "shoescabinet"
+        "shoescabinet",
+        "shoesbox"
       ]
     },
     "pre_state": [

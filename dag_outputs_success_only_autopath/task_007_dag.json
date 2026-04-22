@@ -7,69 +7,495 @@
   "task_scope": [
     "BP_ShoesBox_005_C_0",
     "BP_Shoes_01_C_3",
-    "BP_Shoes_01_C_4",
-    "BP_Towel_hanged_C_0",
-    "BP_Wardrobe_005_C_0"
+    "BP_Shoes_01_C_4"
   ],
   "preprocess": {
     "dropped_predicates": [],
     "static_unsatisfied_constraints": []
   },
   "initial_state": [
-    "closed(BP_ShoesBox_005_C_0)",
-    "closed(BP_Wardrobe_005_C_0)",
     "empty",
     "exists(BP_ShoesBox_005_C_0)",
     "exists(BP_Shoes_01_C_3)",
     "exists(BP_Shoes_01_C_4)",
-    "exists(BP_Towel_hanged_C_0)",
-    "exists(BP_Wardrobe_005_C_0)"
+    "open(BP_ShoesBox_005_C_0)"
   ],
   "goal_state": [
+    "closed(BP_ShoesBox_005_C_0)",
     "empty",
     "in(BP_Shoes_01_C_3, BP_ShoesBox_005_C_0)",
-    "in(BP_Shoes_01_C_4, BP_ShoesBox_005_C_0)",
-    "open(BP_Wardrobe_005_C_0)"
+    "in(BP_Shoes_01_C_4, BP_ShoesBox_005_C_0)"
   ],
   "nodes": [
     {
       "id": "n0",
       "depth": 0,
       "state": [
-        "closed(BP_ShoesBox_005_C_0)",
-        "closed(BP_Wardrobe_005_C_0)",
         "empty",
         "exists(BP_ShoesBox_005_C_0)",
         "exists(BP_Shoes_01_C_3)",
         "exists(BP_Shoes_01_C_4)",
-        "exists(BP_Towel_hanged_C_0)",
-        "exists(BP_Wardrobe_005_C_0)"
+        "open(BP_ShoesBox_005_C_0)"
       ],
       "is_goal": false,
-      "prefix_count": 0
+      "prefix_count": 2
+    },
+    {
+      "id": "n1",
+      "depth": 1,
+      "state": [
+        "exists(BP_ShoesBox_005_C_0)",
+        "exists(BP_Shoes_01_C_3)",
+        "exists(BP_Shoes_01_C_4)",
+        "holding(BP_Shoes_01_C_3)",
+        "in_view(BP_Shoes_01_C_3)",
+        "open(BP_ShoesBox_005_C_0)",
+        "with_reach(BP_Shoes_01_C_3)"
+      ],
+      "is_goal": false,
+      "prefix_count": 1
+    },
+    {
+      "id": "n2",
+      "depth": 2,
+      "state": [
+        "exists(BP_ShoesBox_005_C_0)",
+        "exists(BP_Shoes_01_C_3)",
+        "exists(BP_Shoes_01_C_4)",
+        "holding(BP_Shoes_01_C_3)",
+        "in_view(BP_ShoesBox_005_C_0)",
+        "open(BP_ShoesBox_005_C_0)",
+        "with_reach(BP_ShoesBox_005_C_0)"
+      ],
+      "is_goal": false,
+      "prefix_count": 1
+    },
+    {
+      "id": "n3",
+      "depth": 3,
+      "state": [
+        "empty",
+        "exists(BP_ShoesBox_005_C_0)",
+        "exists(BP_Shoes_01_C_3)",
+        "exists(BP_Shoes_01_C_4)",
+        "in(BP_Shoes_01_C_3, BP_ShoesBox_005_C_0)",
+        "in_view(BP_ShoesBox_005_C_0)",
+        "open(BP_ShoesBox_005_C_0)",
+        "with_reach(BP_ShoesBox_005_C_0)"
+      ],
+      "is_goal": false,
+      "prefix_count": 1
+    },
+    {
+      "id": "n4",
+      "depth": 4,
+      "state": [
+        "exists(BP_ShoesBox_005_C_0)",
+        "exists(BP_Shoes_01_C_3)",
+        "exists(BP_Shoes_01_C_4)",
+        "holding(BP_Shoes_01_C_4)",
+        "in(BP_Shoes_01_C_3, BP_ShoesBox_005_C_0)",
+        "in_view(BP_Shoes_01_C_4)",
+        "open(BP_ShoesBox_005_C_0)",
+        "with_reach(BP_Shoes_01_C_4)"
+      ],
+      "is_goal": false,
+      "prefix_count": 1
+    },
+    {
+      "id": "n5",
+      "depth": 5,
+      "state": [
+        "exists(BP_ShoesBox_005_C_0)",
+        "exists(BP_Shoes_01_C_3)",
+        "exists(BP_Shoes_01_C_4)",
+        "holding(BP_Shoes_01_C_4)",
+        "in(BP_Shoes_01_C_3, BP_ShoesBox_005_C_0)",
+        "in_view(BP_ShoesBox_005_C_0)",
+        "open(BP_ShoesBox_005_C_0)",
+        "with_reach(BP_ShoesBox_005_C_0)"
+      ],
+      "is_goal": false,
+      "prefix_count": 1
+    },
+    {
+      "id": "n6",
+      "depth": 6,
+      "state": [
+        "empty",
+        "exists(BP_ShoesBox_005_C_0)",
+        "exists(BP_Shoes_01_C_3)",
+        "exists(BP_Shoes_01_C_4)",
+        "in(BP_Shoes_01_C_3, BP_ShoesBox_005_C_0)",
+        "in(BP_Shoes_01_C_4, BP_ShoesBox_005_C_0)",
+        "in_view(BP_ShoesBox_005_C_0)",
+        "open(BP_ShoesBox_005_C_0)",
+        "with_reach(BP_ShoesBox_005_C_0)"
+      ],
+      "is_goal": false,
+      "prefix_count": 1
+    },
+    {
+      "id": "n7",
+      "depth": 7,
+      "state": [
+        "closed(BP_ShoesBox_005_C_0)",
+        "empty",
+        "exists(BP_ShoesBox_005_C_0)",
+        "exists(BP_Shoes_01_C_3)",
+        "exists(BP_Shoes_01_C_4)",
+        "in(BP_Shoes_01_C_3, BP_ShoesBox_005_C_0)",
+        "in(BP_Shoes_01_C_4, BP_ShoesBox_005_C_0)",
+        "in_view(BP_ShoesBox_005_C_0)",
+        "with_reach(BP_ShoesBox_005_C_0)"
+      ],
+      "is_goal": true,
+      "prefix_count": 1
+    },
+    {
+      "id": "n8",
+      "depth": 1,
+      "state": [
+        "exists(BP_ShoesBox_005_C_0)",
+        "exists(BP_Shoes_01_C_3)",
+        "exists(BP_Shoes_01_C_4)",
+        "holding(BP_Shoes_01_C_4)",
+        "in_view(BP_Shoes_01_C_4)",
+        "open(BP_ShoesBox_005_C_0)",
+        "with_reach(BP_Shoes_01_C_4)"
+      ],
+      "is_goal": false,
+      "prefix_count": 1
+    },
+    {
+      "id": "n9",
+      "depth": 2,
+      "state": [
+        "exists(BP_ShoesBox_005_C_0)",
+        "exists(BP_Shoes_01_C_3)",
+        "exists(BP_Shoes_01_C_4)",
+        "holding(BP_Shoes_01_C_4)",
+        "in_view(BP_ShoesBox_005_C_0)",
+        "open(BP_ShoesBox_005_C_0)",
+        "with_reach(BP_ShoesBox_005_C_0)"
+      ],
+      "is_goal": false,
+      "prefix_count": 1
+    },
+    {
+      "id": "n10",
+      "depth": 3,
+      "state": [
+        "empty",
+        "exists(BP_ShoesBox_005_C_0)",
+        "exists(BP_Shoes_01_C_3)",
+        "exists(BP_Shoes_01_C_4)",
+        "in(BP_Shoes_01_C_4, BP_ShoesBox_005_C_0)",
+        "in_view(BP_ShoesBox_005_C_0)",
+        "open(BP_ShoesBox_005_C_0)",
+        "with_reach(BP_ShoesBox_005_C_0)"
+      ],
+      "is_goal": false,
+      "prefix_count": 1
+    },
+    {
+      "id": "n11",
+      "depth": 4,
+      "state": [
+        "exists(BP_ShoesBox_005_C_0)",
+        "exists(BP_Shoes_01_C_3)",
+        "exists(BP_Shoes_01_C_4)",
+        "holding(BP_Shoes_01_C_3)",
+        "in(BP_Shoes_01_C_4, BP_ShoesBox_005_C_0)",
+        "in_view(BP_Shoes_01_C_3)",
+        "open(BP_ShoesBox_005_C_0)",
+        "with_reach(BP_Shoes_01_C_3)"
+      ],
+      "is_goal": false,
+      "prefix_count": 1
+    },
+    {
+      "id": "n12",
+      "depth": 5,
+      "state": [
+        "exists(BP_ShoesBox_005_C_0)",
+        "exists(BP_Shoes_01_C_3)",
+        "exists(BP_Shoes_01_C_4)",
+        "holding(BP_Shoes_01_C_3)",
+        "in(BP_Shoes_01_C_4, BP_ShoesBox_005_C_0)",
+        "in_view(BP_ShoesBox_005_C_0)",
+        "open(BP_ShoesBox_005_C_0)",
+        "with_reach(BP_ShoesBox_005_C_0)"
+      ],
+      "is_goal": false,
+      "prefix_count": 1
+    },
+    {
+      "id": "n13",
+      "depth": 6,
+      "state": [
+        "empty",
+        "exists(BP_ShoesBox_005_C_0)",
+        "exists(BP_Shoes_01_C_3)",
+        "exists(BP_Shoes_01_C_4)",
+        "in(BP_Shoes_01_C_3, BP_ShoesBox_005_C_0)",
+        "in(BP_Shoes_01_C_4, BP_ShoesBox_005_C_0)",
+        "in_view(BP_ShoesBox_005_C_0)",
+        "open(BP_ShoesBox_005_C_0)",
+        "with_reach(BP_ShoesBox_005_C_0)"
+      ],
+      "is_goal": false,
+      "prefix_count": 1
+    },
+    {
+      "id": "n14",
+      "depth": 7,
+      "state": [
+        "closed(BP_ShoesBox_005_C_0)",
+        "empty",
+        "exists(BP_ShoesBox_005_C_0)",
+        "exists(BP_Shoes_01_C_3)",
+        "exists(BP_Shoes_01_C_4)",
+        "in(BP_Shoes_01_C_3, BP_ShoesBox_005_C_0)",
+        "in(BP_Shoes_01_C_4, BP_ShoesBox_005_C_0)",
+        "in_view(BP_ShoesBox_005_C_0)",
+        "with_reach(BP_ShoesBox_005_C_0)"
+      ],
+      "is_goal": true,
+      "prefix_count": 1
     }
   ],
-  "dag_edges": [],
+  "dag_edges": [
+    {
+      "from": "n0",
+      "to": "n1",
+      "action": "acquire_{object}__BP_Shoes_01_C_3",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n1",
+      "to": "n2",
+      "action": "reach_{object}__BP_ShoesBox_005_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n2",
+      "to": "n3",
+      "action": "place_BP_Shoes_01_C_3_in_BP_ShoesBox_005_C_0",
+      "source": "primitive",
+      "type": "transition"
+    },
+    {
+      "from": "n3",
+      "to": "n4",
+      "action": "acquire_{object}__BP_Shoes_01_C_4",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n4",
+      "to": "n5",
+      "action": "reach_{object}__BP_ShoesBox_005_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n5",
+      "to": "n6",
+      "action": "place_BP_Shoes_01_C_4_in_BP_ShoesBox_005_C_0",
+      "source": "primitive",
+      "type": "transition"
+    },
+    {
+      "from": "n6",
+      "to": "n7",
+      "action": "close_container_{object}__BP_ShoesBox_005_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n0",
+      "to": "n8",
+      "action": "acquire_{object}__BP_Shoes_01_C_4",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n8",
+      "to": "n9",
+      "action": "reach_{object}__BP_ShoesBox_005_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n9",
+      "to": "n10",
+      "action": "place_BP_Shoes_01_C_4_in_BP_ShoesBox_005_C_0",
+      "source": "primitive",
+      "type": "transition"
+    },
+    {
+      "from": "n10",
+      "to": "n11",
+      "action": "acquire_{object}__BP_Shoes_01_C_3",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n11",
+      "to": "n12",
+      "action": "reach_{object}__BP_ShoesBox_005_C_0",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n12",
+      "to": "n13",
+      "action": "place_BP_Shoes_01_C_3_in_BP_ShoesBox_005_C_0",
+      "source": "primitive",
+      "type": "transition"
+    },
+    {
+      "from": "n13",
+      "to": "n14",
+      "action": "close_container_{object}__BP_ShoesBox_005_C_0",
+      "source": "subtask",
+      "type": "transition"
+    }
+  ],
   "equivalence_edges": [],
-  "goal_nodes": [],
-  "goal_paths": [],
-  "success_traces": [],
-  "has_solution": false,
-  "node_count": 1,
-  "transition_edge_count": 0,
+  "goal_nodes": [
+    "n7",
+    "n14"
+  ],
+  "goal_paths": [
+    [
+      {
+        "from": "n0",
+        "to": "n1",
+        "action": "acquire_{object}__BP_Shoes_01_C_3",
+        "source": "subtask"
+      },
+      {
+        "from": "n1",
+        "to": "n2",
+        "action": "reach_{object}__BP_ShoesBox_005_C_0",
+        "source": "subtask"
+      },
+      {
+        "from": "n2",
+        "to": "n3",
+        "action": "place_BP_Shoes_01_C_3_in_BP_ShoesBox_005_C_0",
+        "source": "primitive"
+      },
+      {
+        "from": "n3",
+        "to": "n4",
+        "action": "acquire_{object}__BP_Shoes_01_C_4",
+        "source": "subtask"
+      },
+      {
+        "from": "n4",
+        "to": "n5",
+        "action": "reach_{object}__BP_ShoesBox_005_C_0",
+        "source": "subtask"
+      },
+      {
+        "from": "n5",
+        "to": "n6",
+        "action": "place_BP_Shoes_01_C_4_in_BP_ShoesBox_005_C_0",
+        "source": "primitive"
+      },
+      {
+        "from": "n6",
+        "to": "n7",
+        "action": "close_container_{object}__BP_ShoesBox_005_C_0",
+        "source": "subtask"
+      }
+    ],
+    [
+      {
+        "from": "n0",
+        "to": "n8",
+        "action": "acquire_{object}__BP_Shoes_01_C_4",
+        "source": "subtask"
+      },
+      {
+        "from": "n8",
+        "to": "n9",
+        "action": "reach_{object}__BP_ShoesBox_005_C_0",
+        "source": "subtask"
+      },
+      {
+        "from": "n9",
+        "to": "n10",
+        "action": "place_BP_Shoes_01_C_4_in_BP_ShoesBox_005_C_0",
+        "source": "primitive"
+      },
+      {
+        "from": "n10",
+        "to": "n11",
+        "action": "acquire_{object}__BP_Shoes_01_C_3",
+        "source": "subtask"
+      },
+      {
+        "from": "n11",
+        "to": "n12",
+        "action": "reach_{object}__BP_ShoesBox_005_C_0",
+        "source": "subtask"
+      },
+      {
+        "from": "n12",
+        "to": "n13",
+        "action": "place_BP_Shoes_01_C_3_in_BP_ShoesBox_005_C_0",
+        "source": "primitive"
+      },
+      {
+        "from": "n13",
+        "to": "n14",
+        "action": "close_container_{object}__BP_ShoesBox_005_C_0",
+        "source": "subtask"
+      }
+    ]
+  ],
+  "success_traces": [
+    [
+      "acquire_{object}__BP_Shoes_01_C_3",
+      "reach_{object}__BP_ShoesBox_005_C_0",
+      "place_BP_Shoes_01_C_3_in_BP_ShoesBox_005_C_0",
+      "acquire_{object}__BP_Shoes_01_C_4",
+      "reach_{object}__BP_ShoesBox_005_C_0",
+      "place_BP_Shoes_01_C_4_in_BP_ShoesBox_005_C_0",
+      "close_container_{object}__BP_ShoesBox_005_C_0"
+    ],
+    [
+      "acquire_{object}__BP_Shoes_01_C_4",
+      "reach_{object}__BP_ShoesBox_005_C_0",
+      "place_BP_Shoes_01_C_4_in_BP_ShoesBox_005_C_0",
+      "acquire_{object}__BP_Shoes_01_C_3",
+      "reach_{object}__BP_ShoesBox_005_C_0",
+      "place_BP_Shoes_01_C_3_in_BP_ShoesBox_005_C_0",
+      "close_container_{object}__BP_ShoesBox_005_C_0"
+    ]
+  ],
+  "has_solution": true,
+  "node_count": 15,
+  "transition_edge_count": 14,
   "equivalence_edge_count": 0,
   "grounded_action_count": 9,
   "grounded_subtask_count": 7,
   "grounded_place_primitive_count": 2,
-  "success_trace_count": 0,
+  "success_trace_count": 2,
   "max_success_traces": 100,
-  "max_path_nodes": 15,
+  "max_path_nodes": 8,
   "auto_search": {
     "enabled": true,
     "min_path_nodes": 2,
     "max_path_nodes": 15,
     "step": 1,
-    "selected_max_path_nodes": null,
+    "selected_max_path_nodes": 8,
     "trials": [
       {
         "max_path_nodes": 2,
@@ -109,51 +535,9 @@
       },
       {
         "max_path_nodes": 8,
-        "has_solution": false,
-        "success_trace_count": 0,
-        "node_count": 1
-      },
-      {
-        "max_path_nodes": 9,
-        "has_solution": false,
-        "success_trace_count": 0,
-        "node_count": 1
-      },
-      {
-        "max_path_nodes": 10,
-        "has_solution": false,
-        "success_trace_count": 0,
-        "node_count": 1
-      },
-      {
-        "max_path_nodes": 11,
-        "has_solution": false,
-        "success_trace_count": 0,
-        "node_count": 1
-      },
-      {
-        "max_path_nodes": 12,
-        "has_solution": false,
-        "success_trace_count": 0,
-        "node_count": 1
-      },
-      {
-        "max_path_nodes": 13,
-        "has_solution": false,
-        "success_trace_count": 0,
-        "node_count": 1
-      },
-      {
-        "max_path_nodes": 14,
-        "has_solution": false,
-        "success_trace_count": 0,
-        "node_count": 1
-      },
-      {
-        "max_path_nodes": 15,
-        "has_solution": false,
-        "success_trace_count": 0,
-        "node_count": 1
+        "has_solution": true,
+        "success_trace_count": 2,
+        "node_count": 15
       }
     ]
   }

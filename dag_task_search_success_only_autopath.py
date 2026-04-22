@@ -8,6 +8,13 @@ from pathlib import Path
 from typing import Dict, Iterable, List, Optional, Set, Tuple
 
 import yaml
+# import debugpy
+# try:
+#     debugpy.configure({"subProcess": False})
+# except Exception:
+#     pass
+
+# 下面再放原来的 import
 
 PRED_RE = re.compile(r'^\s*([A-Za-z_][A-Za-z0-9_]*)\((.*)\)\s*$')
 

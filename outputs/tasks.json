@@ -171,19 +171,19 @@
     "initial_state": {
       "predicates": [
         "empty",
-        "exists(BP_Wardrobe_005_C_0)",
-        "exists(BP_Towel_hanged_C_0)",
-        "closed(BP_Wardrobe_005_C_0)",
-        "closed(BP_ShoesBox_005_C_0)"
+        "exists(BP_ShoesBox_005_C_0)",
+        "exists(BP_Shoes_01_C_4)",
+        "exists(BP_Shoes_01_C_3)",
+        "open(BP_ShoesBox_005_C_0)"
       ],
       "bindings": {}
     },
     "final_state": {
       "predicates": [
         "empty",
-        "open(BP_Wardrobe_005_C_0)",
         "in(BP_Shoes_01_C_4, BP_ShoesBox_005_C_0)",
-        "in(BP_Shoes_01_C_3, BP_ShoesBox_005_C_0)"
+        "in(BP_Shoes_01_C_3, BP_ShoesBox_005_C_0)",
+        "closed(BP_ShoesBox_005_C_0)"
       ],
       "bindings": {}
     }

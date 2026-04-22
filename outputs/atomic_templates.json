@@ -563,7 +563,8 @@
         "refrigerator",
         "wardrobe",
         "window",
-        "shoescabinet"
+        "shoescabinet",
+        "shoesbox"
       ],
       "pre_state": [
         "with_reach({object})",
