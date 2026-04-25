@@ -113,25 +113,25 @@
     "initial_state": {
       "predicates": [
         "empty",
-        "exists(BP_DiningTable_03_C_0)",
-        "exists(BP_Cupboard_kitchen_room5_C_0)",
         "exists(BP_Dishwasher_01_C_1)",
+        "exists(BP_Fruit_Banana_C_0)",
         "exists(BP_Refriegerator_005_C_0)",
-        "dirty(BP_Plate_3_C_0)",
-        "dirty(BP_Fork_Child01_C_0)",
-        "dirty(BP_Knife_Child01_C_0)",
-        "open(BP_Dishwasher_01_C_1)",
-        "open(BP_Refriegerator_005_C_0)"
+        "exists(BP_Plate_3_C_0)",
+        "exists(BP_Fork_Child01_C_0)",
+        "exists(BP_Knife_Child01_C_0)",
+        "closed(BP_Dishwasher_01_C_1)",
+        "closed(BP_Refriegerator_005_C_0)"
       ],
       "bindings": {}
     },
     "final_state": {
       "predicates": [
         "empty",
-        "clean(BP_Plate_3_C_0)",
-        "clean(BP_Fork_Child01_C_0)",
-        "clean(BP_Knife_Child01_C_0)",
-        "closed(BP_Dishwasher_01_C_1)",
+        "in(BP_Plate_3_C_0, BP_Dishwasher_01_C_1)",
+        "in(BP_Fork_Child01_C_0, BP_Dishwasher_01_C_1)",
+        "in(BP_Knife_Child01_C_0, BP_Dishwasher_01_C_1)",
+        "in(BP_Fruit_Banana_C_0, BP_Refriegerator_005_C_0)",
+        "open(BP_Dishwasher_01_C_1)",
         "closed(BP_Refriegerator_005_C_0)"
       ],
       "bindings": {}

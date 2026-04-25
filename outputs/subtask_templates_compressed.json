@@ -288,7 +288,7 @@
       "in_view(r1)",
       "plugged_in(r1)",
       "with_reach(r1)",
-      "powered_off({object})"
+      "powered_off({r1})"
     ]
   },
   {
