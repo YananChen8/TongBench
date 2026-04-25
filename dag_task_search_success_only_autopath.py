@@ -50,8 +50,7 @@ class Planner:
         self.tasks = json.loads((out_dir / 'tasks.json').read_text())
         self.templates = json.loads((out_dir / 'atomic_templates.json').read_text())['templates']
         self.subtasks = json.loads(subtasks_path.read_text())
-        self.scene = json.loads((base_dir / 'touchdata.json').read_text())
-        self.affordances = json.loads((base_dir / 'touchdata_objects.json').read_text())['objects']
+        self.scene, self.affordances = self.load_scene_and_affordances()
 
         self.obj_alias = self.rules['normalization'].get('object_id_aliases', {})
         self.label_alias = self.rules['normalization'].get('label_aliases', {})
@@ -71,6 +70,56 @@ class Planner:
             for obj_id, meta in self.scene.items()
         }
         self.by_task = {t['task_id']: t for t in self.tasks}
+
+    def _load_existing_interactable_objects(self) -> Tuple[Dict[str, dict], Dict[str, dict]]:
+        path = self.base_dir / 'existing_interactable_objects.json'
+        if not path.exists():
+            return {}, {}
+        raw = json.loads(path.read_text())
+        objects = raw.get('objects', [])
+        if not isinstance(objects, list):
+            return {}, {}
+
+        scene: Dict[str, dict] = {}
+        affordances: Dict[str, dict] = {}
+        for obj in objects:
+            if not isinstance(obj, dict):
+                continue
+            obj_id = str(obj.get('object_id', '')).strip()
+            if not obj_id:
+                continue
+            label = str(obj.get('rdf') or obj.get('object_name') or '').strip()
+            candidate_actions = {str(a).strip().lower() for a in obj.get('candidate_actions', []) if str(a).strip()}
+
+            scene[obj_id] = {
+                'label': label,
+                'raw': obj,
+            }
+            affordances[obj_id] = {
+                'openable': bool({'open', 'close'} & candidate_actions),
+                'pickable': bool({
+                    'pick_up', 'pickup', 'pick', 'grab', 'take', 'hold', 'put_down', 'drop'
+                } & candidate_actions),
+                'powerable': bool({
+                    'power_on', 'power_off', 'turn_on', 'turn_off', 'switch_on', 'switch_off', 'plug_in', 'unplug'
+                } & candidate_actions),
+            }
+        return scene, affordances
+
+    def _load_touchdata_legacy(self) -> Tuple[Dict[str, dict], Dict[str, dict]]:
+        scene_path = self.base_dir / 'touchdata.json'
+        afford_path = self.base_dir / 'touchdata_objects.json'
+        if not (scene_path.exists() and afford_path.exists()):
+            return {}, {}
+        scene = json.loads(scene_path.read_text())
+        affordances = json.loads(afford_path.read_text()).get('objects', {})
+        return scene, affordances
+
+    def load_scene_and_affordances(self) -> Tuple[Dict[str, dict], Dict[str, dict]]:
+        scene, affordances = self._load_existing_interactable_objects()
+        if scene and affordances:
+            return scene, affordances
+        return self._load_touchdata_legacy()
 
     def normalize_token(self, text: str) -> str:
         x = text.strip()
