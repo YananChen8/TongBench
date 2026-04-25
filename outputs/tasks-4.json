@@ -1,0 +1,219 @@
+[
+  {
+    "task_id": "task_001",
+    "description": "Prepare the living room for a guest by arranging seating, cleaning surfaces, and setting up refreshments.",
+    "intention": "Create a welcoming and presentable environment for a visitor by organizing furniture, cleaning used items, and placing refreshments on the coffee table.",
+    "initial_state": {
+      "predicates": [
+        "empty",
+        "exists(BP_CoffeeTable_LivingRoom005_C_0)",
+        "exists(BP_Sofa_008_C_0)",
+        "exists(BP_Sofa_011_C_1)",
+        "exists(BP_Bowl_05_C_0)",
+        "exists(BP_Fruit_Banana_C_0)",
+        "exists(BP_Toy_Frog_C_0)",
+        "exists(BP_Toy_Horse_C_0)",
+        "dirty(BP_Bowl_05_C_0)",
+        "dirty(BP_Fruit_Banana_C_0)"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "empty",
+        "on(BP_Bowl_05_C_0, BP_CoffeeTable_LivingRoom005_C_0)",
+        "on(BP_Fruit_Banana_C_0, BP_CoffeeTable_LivingRoom005_C_0)",
+        "clean(BP_Bowl_05_C_0)",
+        "on(BP_Toy_Frog_C_0, BP_Sofa_008_C_0)",
+        "on(BP_Toy_Horse_C_0, BP_Sofa_011_C_0)"
+      ],
+      "bindings": {}
+    }
+  },
+  {
+    "task_id": "task_002",
+    "description": "Tidy up the child's play area by collecting scattered toys and placing them in the storage box.",
+    "intention": "Reduce clutter and organize the space by gathering all visible toys and storing them safely in a designated container.",
+    "initial_state": {
+      "predicates": [
+        "empty",
+        "exists(BP_Toy_Frog_C_0)",
+        "exists(BP_Toy_Horse_C_0)",
+        "exists(BP_Toy_W_C_0)",
+        "exists(BP_Toy_P_C_0)",
+        "exists(BP_Suitcase_Blue_C_0)"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "empty",
+        "in(BP_Toy_Frog_C_0, BP_Suitcase_Blue_C_0)",
+        "in(BP_Toy_Horse_C_0, BP_Suitcase_Blue_C_0)",
+        "in(BP_Toy_W_C_0, BP_Suitcase_Blue_C_0)",
+        "in(BP_Toy_P_C_0, BP_Suitcase_Blue_C_0)"
+      ],
+      "bindings": {}
+    }
+  },
+  {
+    "task_id": "task_003",
+    "description": "Set up a functional workspace at the desk for studying or working with laptop and peripherals.",
+    "intention": "Prepare a dedicated study or work zone by powering on the laptop, placing the keyboard and mousepad, and ensuring all components are accessible.",
+    "initial_state": {
+      "predicates": [
+        "empty",
+        "exists(BP_Desk_R005_C_0)",
+        "exists(BP_Laptop_1_C_0)",
+        "exists(BP_Keyboard_Map005_C_0)",
+        "exists(BP_Mouse_05_C_0)",
+        "powered_off(BP_Laptop_1_C_0)",
+        "unplugged(BP_Laptop_1_C_0)"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "empty",
+        "on(BP_Keyboard_Map005_C_0, BP_Desk_R005_C_0)",
+        "on(BP_Mouse_05_C_0, BP_Desk_R005_C_0)",
+        "powered_on(BP_Laptop_1_C_0)",
+        "plugged_in(BP_Laptop_1_C_0)"
+      ],
+      "bindings": {}
+    }
+  },
+  {
+    "task_id": "task_004",
+    "description": "Adjust lighting and air quality to improve room comfort using ceiling lamps and air conditioning.",
+    "intention": "Enhance indoor environmental conditions by turning on ambient lighting and activating the air conditioner for better temperature control.",
+    "initial_state": {
+      "predicates": [
+        "empty",
+        "exists(BP_CeilingLamp_005_C_0)",
+        "exists(BP_AirCondition_2_C_0)",
+        "powered_off(BP_CeilingLamp_005_C_0)",
+        "powered_off(BP_AirCondition_2_C_0)"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "empty",
+        "powered_on(BP_CeilingLamp_005_C_0)",
+        "powered_on(BP_AirCondition_2_C_0)"
+      ],
+      "bindings": {}
+    }
+  },
+  {
+    "task_id": "task_005",
+    "description": "Reset the kitchen after meal preparation by cleaning dishes, closing appliances, and returning items to storage.",
+    "intention": "Restore the kitchen to a clean, organized state after use by washing utensils, securing open appliances, and storing food items.",
+    "initial_state": {
+      "predicates": [
+        "empty",
+        "exists(BP_Dishwasher_01_C_1)",
+        "exists(BP_Fruit_Banana_C_0)",
+        "exists(BP_Refriegerator_005_C_0)",
+        "exists(BP_Plate_3_C_0)",
+        "exists(BP_Fork_Child01_C_0)",
+        "exists(BP_Knife_Child01_C_0)",
+        "closed(BP_Dishwasher_01_C_1)",
+        "closed(BP_Refriegerator_005_C_0)"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "empty",
+        "in(BP_Plate_3_C_0, BP_Dishwasher_01_C_1)",
+        "in(BP_Fork_Child01_C_0, BP_Dishwasher_01_C_1)",
+        "in(BP_Knife_Child01_C_0, BP_Dishwasher_01_C_1)",
+        "in(BP_Fruit_Banana_C_0, BP_Refriegerator_005_C_0)",
+        "open(BP_Dishwasher_01_C_1)",
+        "closed(BP_Refriegerator_005_C_0)"
+      ],
+      "bindings": {}
+    }
+  },
+  {
+    "task_id": "task_006",
+    "description": "Prepare a simple tea-serving setup on the coffee table using the kettle, cup, and bowl.",
+    "intention": "Create a ready-to-use tea service by placing the kettle on the table, filling the cup, and positioning the bowl nearby.",
+    "initial_state": {
+      "predicates": [
+        "empty",
+        "exists(BP_CoffeeTable_LivingRoom005_C_0)",
+        "exists(BP_Kettle_1_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "unplugged(BP_Kettle_1_C_0)"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "empty",
+        "on(BP_Kettle_1_C_0, BP_CoffeeTable_LivingRoom005_C_0)",
+        "on(BP_Cup_TeaCup_C_0, BP_CoffeeTable_LivingRoom005_C_0)",
+        "on(BP_Bowl_Stack005_C_0, BP_CoffeeTable_LivingRoom005_C_0)",
+        "plugged_in(BP_Kettle_1_C_0)",
+        "powered_on(BP_Kettle_1_C_0)"
+      ],
+      "bindings": {}
+    }
+  },
+  {
+    "task_id": "task_007",
+    "description": "Organize the bedroom by opening the wardrobe, hanging the towel, and placing clothes neatly inside.",
+    "intention": "Improve bedroom order by accessing the wardrobe, properly hanging the towel, and stowing away loose clothing items.",
+    "initial_state": {
+      "predicates": [
+        "empty",
+        "exists(BP_ShoesBox_005_C_0)",
+        "exists(BP_Shoes_01_C_4)",
+        "exists(BP_Shoes_01_C_3)",
+        "open(BP_ShoesBox_005_C_0)"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "empty",
+        "in(BP_Shoes_01_C_4, BP_ShoesBox_005_C_0)",
+        "in(BP_Shoes_01_C_3, BP_ShoesBox_005_C_0)",
+        "closed(BP_ShoesBox_005_C_0)"
+      ],
+      "bindings": {}
+    }
+  },
+  {
+    "task_id": "task_008",
+    "description": "Clean the bathroom sink area by removing dirty dishes, washing them, and placing them back in the cupboard.",
+    "intention": "Ensure hygiene and tidiness in the bathroom by cleaning used bowls and cups and returning them to their proper storage location.",
+    "initial_state": {
+      "predicates": [
+        "empty",
+        "exists(BP_Sink_005_C_0)",
+        "exists(BP_Cupboard_04_C_3)",
+        "closed(BP_Cupboard_04_C_3)",
+        "exists(BP_Bowl_Stack005_C_0)",
+        "exists(BP_Cup_TeaCup_C_0)",
+        "dirty(BP_Bowl_Stack005_C_0)",
+        "dirty(BP_Cup_TeaCup_C_0)"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "empty",
+        "clean(BP_Bowl_Stack005_C_0)",
+        "clean(BP_Cup_TeaCup_C_0)",
+        "in(BP_Bowl_Stack005_C_0, BP_Cupboard_04_C_3)",
+        "in(BP_Cup_TeaCup_C_0, BP_Cupboard_04_C_3)"
+      ],
+      "bindings": {}
+    }
+  }
+]
