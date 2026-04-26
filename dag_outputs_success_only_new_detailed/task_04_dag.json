@@ -1,0 +1,1543 @@
+{
+  "task_id": "task_04",
+  "description": "Prepare a workspace on the desk for studying by opening the desk, placing books and a pen, and turning on the lamp.",
+  "output_language": "English",
+  "is_dag": true,
+  "graph_mode": "success_prefix_graph_no_state_merge",
+  "task_scope": [
+    "BP_Book_19_C_1",
+    "BP_Desk_001_C_1",
+    "BP_TableLamp_03_C_1"
+  ],
+  "preprocess": {
+    "dropped_predicates": [],
+    "static_unsatisfied_constraints": []
+  },
+  "initial_state": [
+    "closed(BP_Desk_001_C_1)",
+    "empty",
+    "exists(BP_Book_19_C_1)",
+    "exists(BP_Desk_001_C_1)",
+    "exists(BP_TableLamp_03_C_1)",
+    "powered_off(BP_TableLamp_03_C_1)"
+  ],
+  "goal_state": [
+    "on(BP_Book_19_C_1, BP_Desk_001_C_1)",
+    "open(BP_Desk_001_C_1)",
+    "powered_on(BP_TableLamp_03_C_1)"
+  ],
+  "nodes": [
+    {
+      "id": "n0",
+      "depth": 0,
+      "state": [
+        "closed(BP_Desk_001_C_1)",
+        "empty",
+        "exists(BP_Book_19_C_1)",
+        "exists(BP_Desk_001_C_1)",
+        "exists(BP_TableLamp_03_C_1)",
+        "powered_off(BP_TableLamp_03_C_1)"
+      ],
+      "is_goal": false,
+      "prefix_count": 3
+    },
+    {
+      "id": "n1",
+      "depth": 1,
+      "state": [
+        "closed(BP_Desk_001_C_1)",
+        "exists(BP_Book_19_C_1)",
+        "exists(BP_Desk_001_C_1)",
+        "exists(BP_TableLamp_03_C_1)",
+        "holding(BP_Book_19_C_1)",
+        "in_view(BP_Book_19_C_1)",
+        "powered_off(BP_TableLamp_03_C_1)",
+        "with_reach(BP_Book_19_C_1)"
+      ],
+      "is_goal": false,
+      "prefix_count": 2
+    },
+    {
+      "id": "n2",
+      "depth": 2,
+      "state": [
+        "exists(BP_Book_19_C_1)",
+        "exists(BP_Desk_001_C_1)",
+        "exists(BP_TableLamp_03_C_1)",
+        "holding(BP_Book_19_C_1)",
+        "in_view(BP_Desk_001_C_1)",
+        "open(BP_Desk_001_C_1)",
+        "powered_off(BP_TableLamp_03_C_1)",
+        "with_reach(BP_Desk_001_C_1)"
+      ],
+      "is_goal": false,
+      "prefix_count": 1
+    },
+    {
+      "id": "n3",
+      "depth": 3,
+      "state": [
+        "empty",
+        "exists(BP_Book_19_C_1)",
+        "exists(BP_Desk_001_C_1)",
+        "exists(BP_TableLamp_03_C_1)",
+        "in_view(BP_Desk_001_C_1)",
+        "on(BP_Book_19_C_1, BP_Desk_001_C_1)",
+        "open(BP_Desk_001_C_1)",
+        "powered_off(BP_TableLamp_03_C_1)",
+        "with_reach(BP_Desk_001_C_1)"
+      ],
+      "is_goal": false,
+      "prefix_count": 1
+    },
+    {
+      "id": "n4",
+      "depth": 4,
+      "state": [
+        "empty",
+        "exists(BP_Book_19_C_1)",
+        "exists(BP_Desk_001_C_1)",
+        "exists(BP_TableLamp_03_C_1)",
+        "in_view(BP_TableLamp_03_C_1)",
+        "on(BP_Book_19_C_1, BP_Desk_001_C_1)",
+        "open(BP_Desk_001_C_1)",
+        "powered_on(BP_TableLamp_03_C_1)",
+        "with_reach(BP_TableLamp_03_C_1)"
+      ],
+      "is_goal": true,
+      "prefix_count": 1
+    },
+    {
+      "id": "n5",
+      "depth": 2,
+      "state": [
+        "closed(BP_Desk_001_C_1)",
+        "exists(BP_Book_19_C_1)",
+        "exists(BP_Desk_001_C_1)",
+        "exists(BP_TableLamp_03_C_1)",
+        "holding(BP_Book_19_C_1)",
+        "in_view(BP_TableLamp_03_C_1)",
+        "powered_on(BP_TableLamp_03_C_1)",
+        "with_reach(BP_TableLamp_03_C_1)"
+      ],
+      "is_goal": false,
+      "prefix_count": 1
+    },
+    {
+      "id": "n6",
+      "depth": 3,
+      "state": [
+        "exists(BP_Book_19_C_1)",
+        "exists(BP_Desk_001_C_1)",
+        "exists(BP_TableLamp_03_C_1)",
+        "holding(BP_Book_19_C_1)",
+        "in_view(BP_Desk_001_C_1)",
+        "open(BP_Desk_001_C_1)",
+        "powered_on(BP_TableLamp_03_C_1)",
+        "with_reach(BP_Desk_001_C_1)"
+      ],
+      "is_goal": false,
+      "prefix_count": 1
+    },
+    {
+      "id": "n7",
+      "depth": 4,
+      "state": [
+        "empty",
+        "exists(BP_Book_19_C_1)",
+        "exists(BP_Desk_001_C_1)",
+        "exists(BP_TableLamp_03_C_1)",
+        "in_view(BP_Desk_001_C_1)",
+        "on(BP_Book_19_C_1, BP_Desk_001_C_1)",
+        "open(BP_Desk_001_C_1)",
+        "powered_on(BP_TableLamp_03_C_1)",
+        "with_reach(BP_Desk_001_C_1)"
+      ],
+      "is_goal": true,
+      "prefix_count": 1
+    },
+    {
+      "id": "n8",
+      "depth": 1,
+      "state": [
+        "closed(BP_Desk_001_C_1)",
+        "empty",
+        "exists(BP_Book_19_C_1)",
+        "exists(BP_Desk_001_C_1)",
+        "exists(BP_TableLamp_03_C_1)",
+        "in_view(BP_TableLamp_03_C_1)",
+        "powered_on(BP_TableLamp_03_C_1)",
+        "with_reach(BP_TableLamp_03_C_1)"
+      ],
+      "is_goal": false,
+      "prefix_count": 1
+    },
+    {
+      "id": "n9",
+      "depth": 2,
+      "state": [
+        "closed(BP_Desk_001_C_1)",
+        "exists(BP_Book_19_C_1)",
+        "exists(BP_Desk_001_C_1)",
+        "exists(BP_TableLamp_03_C_1)",
+        "holding(BP_Book_19_C_1)",
+        "in_view(BP_Book_19_C_1)",
+        "powered_on(BP_TableLamp_03_C_1)",
+        "with_reach(BP_Book_19_C_1)"
+      ],
+      "is_goal": false,
+      "prefix_count": 1
+    },
+    {
+      "id": "n10",
+      "depth": 3,
+      "state": [
+        "exists(BP_Book_19_C_1)",
+        "exists(BP_Desk_001_C_1)",
+        "exists(BP_TableLamp_03_C_1)",
+        "holding(BP_Book_19_C_1)",
+        "in_view(BP_Desk_001_C_1)",
+        "open(BP_Desk_001_C_1)",
+        "powered_on(BP_TableLamp_03_C_1)",
+        "with_reach(BP_Desk_001_C_1)"
+      ],
+      "is_goal": false,
+      "prefix_count": 1
+    },
+    {
+      "id": "n11",
+      "depth": 4,
+      "state": [
+        "empty",
+        "exists(BP_Book_19_C_1)",
+        "exists(BP_Desk_001_C_1)",
+        "exists(BP_TableLamp_03_C_1)",
+        "in_view(BP_Desk_001_C_1)",
+        "on(BP_Book_19_C_1, BP_Desk_001_C_1)",
+        "open(BP_Desk_001_C_1)",
+        "powered_on(BP_TableLamp_03_C_1)",
+        "with_reach(BP_Desk_001_C_1)"
+      ],
+      "is_goal": true,
+      "prefix_count": 1
+    }
+  ],
+  "dag_edges": [
+    {
+      "from": "n0",
+      "to": "n1",
+      "action": "acquire_{object}__BP_Book_19_C_1",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n1",
+      "to": "n2",
+      "action": "open_container_{object}__BP_Desk_001_C_1",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n2",
+      "to": "n3",
+      "action": "place_BP_Book_19_C_1_on_BP_Desk_001_C_1",
+      "source": "primitive",
+      "type": "transition"
+    },
+    {
+      "from": "n3",
+      "to": "n4",
+      "action": "power_on_{object}__BP_TableLamp_03_C_1",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n1",
+      "to": "n5",
+      "action": "power_on_{object}__BP_TableLamp_03_C_1",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n5",
+      "to": "n6",
+      "action": "open_container_{object}__BP_Desk_001_C_1",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n6",
+      "to": "n7",
+      "action": "place_BP_Book_19_C_1_on_BP_Desk_001_C_1",
+      "source": "primitive",
+      "type": "transition"
+    },
+    {
+      "from": "n0",
+      "to": "n8",
+      "action": "power_on_{object}__BP_TableLamp_03_C_1",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n8",
+      "to": "n9",
+      "action": "acquire_{object}__BP_Book_19_C_1",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n9",
+      "to": "n10",
+      "action": "open_container_{object}__BP_Desk_001_C_1",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n10",
+      "to": "n11",
+      "action": "place_BP_Book_19_C_1_on_BP_Desk_001_C_1",
+      "source": "primitive",
+      "type": "transition"
+    }
+  ],
+  "equivalence_edges": [],
+  "goal_nodes": [
+    "n4",
+    "n7",
+    "n11"
+  ],
+  "goal_paths": [
+    [
+      {
+        "from": "n0",
+        "to": "n1",
+        "action": "acquire_{object}__BP_Book_19_C_1",
+        "source": "subtask"
+      },
+      {
+        "from": "n1",
+        "to": "n2",
+        "action": "open_container_{object}__BP_Desk_001_C_1",
+        "source": "subtask"
+      },
+      {
+        "from": "n2",
+        "to": "n3",
+        "action": "place_BP_Book_19_C_1_on_BP_Desk_001_C_1",
+        "source": "primitive"
+      },
+      {
+        "from": "n3",
+        "to": "n4",
+        "action": "power_on_{object}__BP_TableLamp_03_C_1",
+        "source": "subtask"
+      }
+    ],
+    [
+      {
+        "from": "n0",
+        "to": "n1",
+        "action": "acquire_{object}__BP_Book_19_C_1",
+        "source": "subtask"
+      },
+      {
+        "from": "n1",
+        "to": "n5",
+        "action": "power_on_{object}__BP_TableLamp_03_C_1",
+        "source": "subtask"
+      },
+      {
+        "from": "n5",
+        "to": "n6",
+        "action": "open_container_{object}__BP_Desk_001_C_1",
+        "source": "subtask"
+      },
+      {
+        "from": "n6",
+        "to": "n7",
+        "action": "place_BP_Book_19_C_1_on_BP_Desk_001_C_1",
+        "source": "primitive"
+      }
+    ],
+    [
+      {
+        "from": "n0",
+        "to": "n8",
+        "action": "power_on_{object}__BP_TableLamp_03_C_1",
+        "source": "subtask"
+      },
+      {
+        "from": "n8",
+        "to": "n9",
+        "action": "acquire_{object}__BP_Book_19_C_1",
+        "source": "subtask"
+      },
+      {
+        "from": "n9",
+        "to": "n10",
+        "action": "open_container_{object}__BP_Desk_001_C_1",
+        "source": "subtask"
+      },
+      {
+        "from": "n10",
+        "to": "n11",
+        "action": "place_BP_Book_19_C_1_on_BP_Desk_001_C_1",
+        "source": "primitive"
+      }
+    ]
+  ],
+  "success_traces": [
+    [
+      "acquire_{object}__BP_Book_19_C_1",
+      "open_container_{object}__BP_Desk_001_C_1",
+      "place_BP_Book_19_C_1_on_BP_Desk_001_C_1",
+      "power_on_{object}__BP_TableLamp_03_C_1"
+    ],
+    [
+      "acquire_{object}__BP_Book_19_C_1",
+      "power_on_{object}__BP_TableLamp_03_C_1",
+      "open_container_{object}__BP_Desk_001_C_1",
+      "place_BP_Book_19_C_1_on_BP_Desk_001_C_1"
+    ],
+    [
+      "power_on_{object}__BP_TableLamp_03_C_1",
+      "acquire_{object}__BP_Book_19_C_1",
+      "open_container_{object}__BP_Desk_001_C_1",
+      "place_BP_Book_19_C_1_on_BP_Desk_001_C_1"
+    ]
+  ],
+  "detailed_success_traces": [
+    [
+      {
+        "action": "acquire_{object}__BP_Book_19_C_1",
+        "template_id": "subtask_0002",
+        "source": "subtask",
+        "action_type": "acquire",
+        "before_state": [
+          "closed(BP_Desk_001_C_1)",
+          "empty",
+          "exists(BP_Book_19_C_1)",
+          "exists(BP_Desk_001_C_1)",
+          "exists(BP_TableLamp_03_C_1)",
+          "powered_off(BP_TableLamp_03_C_1)"
+        ],
+        "after_state": [
+          "closed(BP_Desk_001_C_1)",
+          "exists(BP_Book_19_C_1)",
+          "exists(BP_Desk_001_C_1)",
+          "exists(BP_TableLamp_03_C_1)",
+          "holding(BP_Book_19_C_1)",
+          "in_view(BP_Book_19_C_1)",
+          "powered_off(BP_TableLamp_03_C_1)",
+          "with_reach(BP_Book_19_C_1)"
+        ],
+        "atomic_steps": [
+          {
+            "action": "look_at_BP_Book_19_C_1",
+            "template_id": "look_at_{object}",
+            "action_type": "look_at",
+            "before_state": [
+              "closed(BP_Desk_001_C_1)",
+              "empty",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)"
+            ],
+            "after_state": [
+              "closed(BP_Desk_001_C_1)",
+              "empty",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "in_view(BP_Book_19_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)"
+            ]
+          },
+          {
+            "action": "walk_to_BP_Book_19_C_1",
+            "template_id": "walk_to_{object}",
+            "action_type": "walk_to",
+            "before_state": [
+              "closed(BP_Desk_001_C_1)",
+              "empty",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "in_view(BP_Book_19_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)"
+            ],
+            "after_state": [
+              "closed(BP_Desk_001_C_1)",
+              "empty",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "in_view(BP_Book_19_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Book_19_C_1)"
+            ]
+          },
+          {
+            "action": "pick_up_BP_Book_19_C_1",
+            "template_id": "pick_up_{object}",
+            "action_type": "pick_up",
+            "before_state": [
+              "closed(BP_Desk_001_C_1)",
+              "empty",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "in_view(BP_Book_19_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Book_19_C_1)"
+            ],
+            "after_state": [
+              "closed(BP_Desk_001_C_1)",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "holding(BP_Book_19_C_1)",
+              "in_view(BP_Book_19_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Book_19_C_1)"
+            ]
+          }
+        ]
+      },
+      {
+        "action": "open_container_{object}__BP_Desk_001_C_1",
+        "template_id": "subtask_0004",
+        "source": "subtask",
+        "action_type": "open_container",
+        "before_state": [
+          "closed(BP_Desk_001_C_1)",
+          "exists(BP_Book_19_C_1)",
+          "exists(BP_Desk_001_C_1)",
+          "exists(BP_TableLamp_03_C_1)",
+          "holding(BP_Book_19_C_1)",
+          "in_view(BP_Book_19_C_1)",
+          "powered_off(BP_TableLamp_03_C_1)",
+          "with_reach(BP_Book_19_C_1)"
+        ],
+        "after_state": [
+          "exists(BP_Book_19_C_1)",
+          "exists(BP_Desk_001_C_1)",
+          "exists(BP_TableLamp_03_C_1)",
+          "holding(BP_Book_19_C_1)",
+          "in_view(BP_Desk_001_C_1)",
+          "open(BP_Desk_001_C_1)",
+          "powered_off(BP_TableLamp_03_C_1)",
+          "with_reach(BP_Desk_001_C_1)"
+        ],
+        "atomic_steps": [
+          {
+            "action": "look_at_BP_Desk_001_C_1",
+            "template_id": "look_at_{object}",
+            "action_type": "look_at",
+            "before_state": [
+              "closed(BP_Desk_001_C_1)",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "holding(BP_Book_19_C_1)",
+              "in_view(BP_Book_19_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Book_19_C_1)"
+            ],
+            "after_state": [
+              "closed(BP_Desk_001_C_1)",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "holding(BP_Book_19_C_1)",
+              "in_view(BP_Desk_001_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Book_19_C_1)"
+            ]
+          },
+          {
+            "action": "walk_to_BP_Desk_001_C_1",
+            "template_id": "walk_to_{object}",
+            "action_type": "walk_to",
+            "before_state": [
+              "closed(BP_Desk_001_C_1)",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "holding(BP_Book_19_C_1)",
+              "in_view(BP_Desk_001_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Book_19_C_1)"
+            ],
+            "after_state": [
+              "closed(BP_Desk_001_C_1)",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "holding(BP_Book_19_C_1)",
+              "in_view(BP_Desk_001_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Desk_001_C_1)"
+            ]
+          },
+          {
+            "action": "open_BP_Desk_001_C_1",
+            "template_id": "open_{object}",
+            "action_type": "open",
+            "before_state": [
+              "closed(BP_Desk_001_C_1)",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "holding(BP_Book_19_C_1)",
+              "in_view(BP_Desk_001_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Desk_001_C_1)"
+            ],
+            "after_state": [
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "holding(BP_Book_19_C_1)",
+              "in_view(BP_Desk_001_C_1)",
+              "open(BP_Desk_001_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Desk_001_C_1)"
+            ]
+          }
+        ]
+      },
+      {
+        "action": "place_BP_Book_19_C_1_on_BP_Desk_001_C_1",
+        "template_id": "place_{object1}_on_{object2}",
+        "source": "primitive",
+        "action_type": "place",
+        "before_state": [
+          "exists(BP_Book_19_C_1)",
+          "exists(BP_Desk_001_C_1)",
+          "exists(BP_TableLamp_03_C_1)",
+          "holding(BP_Book_19_C_1)",
+          "in_view(BP_Desk_001_C_1)",
+          "open(BP_Desk_001_C_1)",
+          "powered_off(BP_TableLamp_03_C_1)",
+          "with_reach(BP_Desk_001_C_1)"
+        ],
+        "after_state": [
+          "empty",
+          "exists(BP_Book_19_C_1)",
+          "exists(BP_Desk_001_C_1)",
+          "exists(BP_TableLamp_03_C_1)",
+          "in_view(BP_Desk_001_C_1)",
+          "on(BP_Book_19_C_1, BP_Desk_001_C_1)",
+          "open(BP_Desk_001_C_1)",
+          "powered_off(BP_TableLamp_03_C_1)",
+          "with_reach(BP_Desk_001_C_1)"
+        ],
+        "atomic_steps": [
+          {
+            "action": "place_BP_Book_19_C_1_on_BP_Desk_001_C_1",
+            "template_id": "place_{object1}_on_{object2}",
+            "action_type": "place",
+            "before_state": [
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "holding(BP_Book_19_C_1)",
+              "in_view(BP_Desk_001_C_1)",
+              "open(BP_Desk_001_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Desk_001_C_1)"
+            ],
+            "after_state": [
+              "empty",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "in_view(BP_Desk_001_C_1)",
+              "on(BP_Book_19_C_1, BP_Desk_001_C_1)",
+              "open(BP_Desk_001_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Desk_001_C_1)"
+            ]
+          }
+        ]
+      },
+      {
+        "action": "power_on_{object}__BP_TableLamp_03_C_1",
+        "template_id": "subtask_0006",
+        "source": "subtask",
+        "action_type": "power_on",
+        "before_state": [
+          "empty",
+          "exists(BP_Book_19_C_1)",
+          "exists(BP_Desk_001_C_1)",
+          "exists(BP_TableLamp_03_C_1)",
+          "in_view(BP_Desk_001_C_1)",
+          "on(BP_Book_19_C_1, BP_Desk_001_C_1)",
+          "open(BP_Desk_001_C_1)",
+          "powered_off(BP_TableLamp_03_C_1)",
+          "with_reach(BP_Desk_001_C_1)"
+        ],
+        "after_state": [
+          "empty",
+          "exists(BP_Book_19_C_1)",
+          "exists(BP_Desk_001_C_1)",
+          "exists(BP_TableLamp_03_C_1)",
+          "in_view(BP_TableLamp_03_C_1)",
+          "on(BP_Book_19_C_1, BP_Desk_001_C_1)",
+          "open(BP_Desk_001_C_1)",
+          "powered_on(BP_TableLamp_03_C_1)",
+          "with_reach(BP_TableLamp_03_C_1)"
+        ],
+        "atomic_steps": [
+          {
+            "action": "look_at_BP_TableLamp_03_C_1",
+            "template_id": "look_at_{object}",
+            "action_type": "look_at",
+            "before_state": [
+              "empty",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "in_view(BP_Desk_001_C_1)",
+              "on(BP_Book_19_C_1, BP_Desk_001_C_1)",
+              "open(BP_Desk_001_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Desk_001_C_1)"
+            ],
+            "after_state": [
+              "empty",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "in_view(BP_TableLamp_03_C_1)",
+              "on(BP_Book_19_C_1, BP_Desk_001_C_1)",
+              "open(BP_Desk_001_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Desk_001_C_1)"
+            ]
+          },
+          {
+            "action": "walk_to_BP_TableLamp_03_C_1",
+            "template_id": "walk_to_{object}",
+            "action_type": "walk_to",
+            "before_state": [
+              "empty",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "in_view(BP_TableLamp_03_C_1)",
+              "on(BP_Book_19_C_1, BP_Desk_001_C_1)",
+              "open(BP_Desk_001_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Desk_001_C_1)"
+            ],
+            "after_state": [
+              "empty",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "in_view(BP_TableLamp_03_C_1)",
+              "on(BP_Book_19_C_1, BP_Desk_001_C_1)",
+              "open(BP_Desk_001_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)",
+              "with_reach(BP_TableLamp_03_C_1)"
+            ]
+          },
+          {
+            "action": "switch_on_BP_TableLamp_03_C_1",
+            "template_id": "switch_on_{object}",
+            "action_type": "switch_on",
+            "before_state": [
+              "empty",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "in_view(BP_TableLamp_03_C_1)",
+              "on(BP_Book_19_C_1, BP_Desk_001_C_1)",
+              "open(BP_Desk_001_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)",
+              "with_reach(BP_TableLamp_03_C_1)"
+            ],
+            "after_state": [
+              "empty",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "in_view(BP_TableLamp_03_C_1)",
+              "on(BP_Book_19_C_1, BP_Desk_001_C_1)",
+              "open(BP_Desk_001_C_1)",
+              "powered_on(BP_TableLamp_03_C_1)",
+              "with_reach(BP_TableLamp_03_C_1)"
+            ]
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "action": "acquire_{object}__BP_Book_19_C_1",
+        "template_id": "subtask_0002",
+        "source": "subtask",
+        "action_type": "acquire",
+        "before_state": [
+          "closed(BP_Desk_001_C_1)",
+          "empty",
+          "exists(BP_Book_19_C_1)",
+          "exists(BP_Desk_001_C_1)",
+          "exists(BP_TableLamp_03_C_1)",
+          "powered_off(BP_TableLamp_03_C_1)"
+        ],
+        "after_state": [
+          "closed(BP_Desk_001_C_1)",
+          "exists(BP_Book_19_C_1)",
+          "exists(BP_Desk_001_C_1)",
+          "exists(BP_TableLamp_03_C_1)",
+          "holding(BP_Book_19_C_1)",
+          "in_view(BP_Book_19_C_1)",
+          "powered_off(BP_TableLamp_03_C_1)",
+          "with_reach(BP_Book_19_C_1)"
+        ],
+        "atomic_steps": [
+          {
+            "action": "look_at_BP_Book_19_C_1",
+            "template_id": "look_at_{object}",
+            "action_type": "look_at",
+            "before_state": [
+              "closed(BP_Desk_001_C_1)",
+              "empty",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)"
+            ],
+            "after_state": [
+              "closed(BP_Desk_001_C_1)",
+              "empty",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "in_view(BP_Book_19_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)"
+            ]
+          },
+          {
+            "action": "walk_to_BP_Book_19_C_1",
+            "template_id": "walk_to_{object}",
+            "action_type": "walk_to",
+            "before_state": [
+              "closed(BP_Desk_001_C_1)",
+              "empty",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "in_view(BP_Book_19_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)"
+            ],
+            "after_state": [
+              "closed(BP_Desk_001_C_1)",
+              "empty",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "in_view(BP_Book_19_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Book_19_C_1)"
+            ]
+          },
+          {
+            "action": "pick_up_BP_Book_19_C_1",
+            "template_id": "pick_up_{object}",
+            "action_type": "pick_up",
+            "before_state": [
+              "closed(BP_Desk_001_C_1)",
+              "empty",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "in_view(BP_Book_19_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Book_19_C_1)"
+            ],
+            "after_state": [
+              "closed(BP_Desk_001_C_1)",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "holding(BP_Book_19_C_1)",
+              "in_view(BP_Book_19_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Book_19_C_1)"
+            ]
+          }
+        ]
+      },
+      {
+        "action": "power_on_{object}__BP_TableLamp_03_C_1",
+        "template_id": "subtask_0006",
+        "source": "subtask",
+        "action_type": "power_on",
+        "before_state": [
+          "closed(BP_Desk_001_C_1)",
+          "exists(BP_Book_19_C_1)",
+          "exists(BP_Desk_001_C_1)",
+          "exists(BP_TableLamp_03_C_1)",
+          "holding(BP_Book_19_C_1)",
+          "in_view(BP_Book_19_C_1)",
+          "powered_off(BP_TableLamp_03_C_1)",
+          "with_reach(BP_Book_19_C_1)"
+        ],
+        "after_state": [
+          "closed(BP_Desk_001_C_1)",
+          "exists(BP_Book_19_C_1)",
+          "exists(BP_Desk_001_C_1)",
+          "exists(BP_TableLamp_03_C_1)",
+          "holding(BP_Book_19_C_1)",
+          "in_view(BP_TableLamp_03_C_1)",
+          "powered_on(BP_TableLamp_03_C_1)",
+          "with_reach(BP_TableLamp_03_C_1)"
+        ],
+        "atomic_steps": [
+          {
+            "action": "look_at_BP_TableLamp_03_C_1",
+            "template_id": "look_at_{object}",
+            "action_type": "look_at",
+            "before_state": [
+              "closed(BP_Desk_001_C_1)",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "holding(BP_Book_19_C_1)",
+              "in_view(BP_Book_19_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Book_19_C_1)"
+            ],
+            "after_state": [
+              "closed(BP_Desk_001_C_1)",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "holding(BP_Book_19_C_1)",
+              "in_view(BP_TableLamp_03_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Book_19_C_1)"
+            ]
+          },
+          {
+            "action": "walk_to_BP_TableLamp_03_C_1",
+            "template_id": "walk_to_{object}",
+            "action_type": "walk_to",
+            "before_state": [
+              "closed(BP_Desk_001_C_1)",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "holding(BP_Book_19_C_1)",
+              "in_view(BP_TableLamp_03_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Book_19_C_1)"
+            ],
+            "after_state": [
+              "closed(BP_Desk_001_C_1)",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "holding(BP_Book_19_C_1)",
+              "in_view(BP_TableLamp_03_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)",
+              "with_reach(BP_TableLamp_03_C_1)"
+            ]
+          },
+          {
+            "action": "switch_on_BP_TableLamp_03_C_1",
+            "template_id": "switch_on_{object}",
+            "action_type": "switch_on",
+            "before_state": [
+              "closed(BP_Desk_001_C_1)",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "holding(BP_Book_19_C_1)",
+              "in_view(BP_TableLamp_03_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)",
+              "with_reach(BP_TableLamp_03_C_1)"
+            ],
+            "after_state": [
+              "closed(BP_Desk_001_C_1)",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "holding(BP_Book_19_C_1)",
+              "in_view(BP_TableLamp_03_C_1)",
+              "powered_on(BP_TableLamp_03_C_1)",
+              "with_reach(BP_TableLamp_03_C_1)"
+            ]
+          }
+        ]
+      },
+      {
+        "action": "open_container_{object}__BP_Desk_001_C_1",
+        "template_id": "subtask_0004",
+        "source": "subtask",
+        "action_type": "open_container",
+        "before_state": [
+          "closed(BP_Desk_001_C_1)",
+          "exists(BP_Book_19_C_1)",
+          "exists(BP_Desk_001_C_1)",
+          "exists(BP_TableLamp_03_C_1)",
+          "holding(BP_Book_19_C_1)",
+          "in_view(BP_TableLamp_03_C_1)",
+          "powered_on(BP_TableLamp_03_C_1)",
+          "with_reach(BP_TableLamp_03_C_1)"
+        ],
+        "after_state": [
+          "exists(BP_Book_19_C_1)",
+          "exists(BP_Desk_001_C_1)",
+          "exists(BP_TableLamp_03_C_1)",
+          "holding(BP_Book_19_C_1)",
+          "in_view(BP_Desk_001_C_1)",
+          "open(BP_Desk_001_C_1)",
+          "powered_on(BP_TableLamp_03_C_1)",
+          "with_reach(BP_Desk_001_C_1)"
+        ],
+        "atomic_steps": [
+          {
+            "action": "look_at_BP_Desk_001_C_1",
+            "template_id": "look_at_{object}",
+            "action_type": "look_at",
+            "before_state": [
+              "closed(BP_Desk_001_C_1)",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "holding(BP_Book_19_C_1)",
+              "in_view(BP_TableLamp_03_C_1)",
+              "powered_on(BP_TableLamp_03_C_1)",
+              "with_reach(BP_TableLamp_03_C_1)"
+            ],
+            "after_state": [
+              "closed(BP_Desk_001_C_1)",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "holding(BP_Book_19_C_1)",
+              "in_view(BP_Desk_001_C_1)",
+              "powered_on(BP_TableLamp_03_C_1)",
+              "with_reach(BP_TableLamp_03_C_1)"
+            ]
+          },
+          {
+            "action": "walk_to_BP_Desk_001_C_1",
+            "template_id": "walk_to_{object}",
+            "action_type": "walk_to",
+            "before_state": [
+              "closed(BP_Desk_001_C_1)",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "holding(BP_Book_19_C_1)",
+              "in_view(BP_Desk_001_C_1)",
+              "powered_on(BP_TableLamp_03_C_1)",
+              "with_reach(BP_TableLamp_03_C_1)"
+            ],
+            "after_state": [
+              "closed(BP_Desk_001_C_1)",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "holding(BP_Book_19_C_1)",
+              "in_view(BP_Desk_001_C_1)",
+              "powered_on(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Desk_001_C_1)"
+            ]
+          },
+          {
+            "action": "open_BP_Desk_001_C_1",
+            "template_id": "open_{object}",
+            "action_type": "open",
+            "before_state": [
+              "closed(BP_Desk_001_C_1)",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "holding(BP_Book_19_C_1)",
+              "in_view(BP_Desk_001_C_1)",
+              "powered_on(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Desk_001_C_1)"
+            ],
+            "after_state": [
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "holding(BP_Book_19_C_1)",
+              "in_view(BP_Desk_001_C_1)",
+              "open(BP_Desk_001_C_1)",
+              "powered_on(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Desk_001_C_1)"
+            ]
+          }
+        ]
+      },
+      {
+        "action": "place_BP_Book_19_C_1_on_BP_Desk_001_C_1",
+        "template_id": "place_{object1}_on_{object2}",
+        "source": "primitive",
+        "action_type": "place",
+        "before_state": [
+          "exists(BP_Book_19_C_1)",
+          "exists(BP_Desk_001_C_1)",
+          "exists(BP_TableLamp_03_C_1)",
+          "holding(BP_Book_19_C_1)",
+          "in_view(BP_Desk_001_C_1)",
+          "open(BP_Desk_001_C_1)",
+          "powered_on(BP_TableLamp_03_C_1)",
+          "with_reach(BP_Desk_001_C_1)"
+        ],
+        "after_state": [
+          "empty",
+          "exists(BP_Book_19_C_1)",
+          "exists(BP_Desk_001_C_1)",
+          "exists(BP_TableLamp_03_C_1)",
+          "in_view(BP_Desk_001_C_1)",
+          "on(BP_Book_19_C_1, BP_Desk_001_C_1)",
+          "open(BP_Desk_001_C_1)",
+          "powered_on(BP_TableLamp_03_C_1)",
+          "with_reach(BP_Desk_001_C_1)"
+        ],
+        "atomic_steps": [
+          {
+            "action": "place_BP_Book_19_C_1_on_BP_Desk_001_C_1",
+            "template_id": "place_{object1}_on_{object2}",
+            "action_type": "place",
+            "before_state": [
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "holding(BP_Book_19_C_1)",
+              "in_view(BP_Desk_001_C_1)",
+              "open(BP_Desk_001_C_1)",
+              "powered_on(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Desk_001_C_1)"
+            ],
+            "after_state": [
+              "empty",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "in_view(BP_Desk_001_C_1)",
+              "on(BP_Book_19_C_1, BP_Desk_001_C_1)",
+              "open(BP_Desk_001_C_1)",
+              "powered_on(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Desk_001_C_1)"
+            ]
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "action": "power_on_{object}__BP_TableLamp_03_C_1",
+        "template_id": "subtask_0006",
+        "source": "subtask",
+        "action_type": "power_on",
+        "before_state": [
+          "closed(BP_Desk_001_C_1)",
+          "empty",
+          "exists(BP_Book_19_C_1)",
+          "exists(BP_Desk_001_C_1)",
+          "exists(BP_TableLamp_03_C_1)",
+          "powered_off(BP_TableLamp_03_C_1)"
+        ],
+        "after_state": [
+          "closed(BP_Desk_001_C_1)",
+          "empty",
+          "exists(BP_Book_19_C_1)",
+          "exists(BP_Desk_001_C_1)",
+          "exists(BP_TableLamp_03_C_1)",
+          "in_view(BP_TableLamp_03_C_1)",
+          "powered_on(BP_TableLamp_03_C_1)",
+          "with_reach(BP_TableLamp_03_C_1)"
+        ],
+        "atomic_steps": [
+          {
+            "action": "look_at_BP_TableLamp_03_C_1",
+            "template_id": "look_at_{object}",
+            "action_type": "look_at",
+            "before_state": [
+              "closed(BP_Desk_001_C_1)",
+              "empty",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)"
+            ],
+            "after_state": [
+              "closed(BP_Desk_001_C_1)",
+              "empty",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "in_view(BP_TableLamp_03_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)"
+            ]
+          },
+          {
+            "action": "walk_to_BP_TableLamp_03_C_1",
+            "template_id": "walk_to_{object}",
+            "action_type": "walk_to",
+            "before_state": [
+              "closed(BP_Desk_001_C_1)",
+              "empty",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "in_view(BP_TableLamp_03_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)"
+            ],
+            "after_state": [
+              "closed(BP_Desk_001_C_1)",
+              "empty",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "in_view(BP_TableLamp_03_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)",
+              "with_reach(BP_TableLamp_03_C_1)"
+            ]
+          },
+          {
+            "action": "switch_on_BP_TableLamp_03_C_1",
+            "template_id": "switch_on_{object}",
+            "action_type": "switch_on",
+            "before_state": [
+              "closed(BP_Desk_001_C_1)",
+              "empty",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "in_view(BP_TableLamp_03_C_1)",
+              "powered_off(BP_TableLamp_03_C_1)",
+              "with_reach(BP_TableLamp_03_C_1)"
+            ],
+            "after_state": [
+              "closed(BP_Desk_001_C_1)",
+              "empty",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "in_view(BP_TableLamp_03_C_1)",
+              "powered_on(BP_TableLamp_03_C_1)",
+              "with_reach(BP_TableLamp_03_C_1)"
+            ]
+          }
+        ]
+      },
+      {
+        "action": "acquire_{object}__BP_Book_19_C_1",
+        "template_id": "subtask_0002",
+        "source": "subtask",
+        "action_type": "acquire",
+        "before_state": [
+          "closed(BP_Desk_001_C_1)",
+          "empty",
+          "exists(BP_Book_19_C_1)",
+          "exists(BP_Desk_001_C_1)",
+          "exists(BP_TableLamp_03_C_1)",
+          "in_view(BP_TableLamp_03_C_1)",
+          "powered_on(BP_TableLamp_03_C_1)",
+          "with_reach(BP_TableLamp_03_C_1)"
+        ],
+        "after_state": [
+          "closed(BP_Desk_001_C_1)",
+          "exists(BP_Book_19_C_1)",
+          "exists(BP_Desk_001_C_1)",
+          "exists(BP_TableLamp_03_C_1)",
+          "holding(BP_Book_19_C_1)",
+          "in_view(BP_Book_19_C_1)",
+          "powered_on(BP_TableLamp_03_C_1)",
+          "with_reach(BP_Book_19_C_1)"
+        ],
+        "atomic_steps": [
+          {
+            "action": "look_at_BP_Book_19_C_1",
+            "template_id": "look_at_{object}",
+            "action_type": "look_at",
+            "before_state": [
+              "closed(BP_Desk_001_C_1)",
+              "empty",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "in_view(BP_TableLamp_03_C_1)",
+              "powered_on(BP_TableLamp_03_C_1)",
+              "with_reach(BP_TableLamp_03_C_1)"
+            ],
+            "after_state": [
+              "closed(BP_Desk_001_C_1)",
+              "empty",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "in_view(BP_Book_19_C_1)",
+              "powered_on(BP_TableLamp_03_C_1)",
+              "with_reach(BP_TableLamp_03_C_1)"
+            ]
+          },
+          {
+            "action": "walk_to_BP_Book_19_C_1",
+            "template_id": "walk_to_{object}",
+            "action_type": "walk_to",
+            "before_state": [
+              "closed(BP_Desk_001_C_1)",
+              "empty",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "in_view(BP_Book_19_C_1)",
+              "powered_on(BP_TableLamp_03_C_1)",
+              "with_reach(BP_TableLamp_03_C_1)"
+            ],
+            "after_state": [
+              "closed(BP_Desk_001_C_1)",
+              "empty",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "in_view(BP_Book_19_C_1)",
+              "powered_on(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Book_19_C_1)"
+            ]
+          },
+          {
+            "action": "pick_up_BP_Book_19_C_1",
+            "template_id": "pick_up_{object}",
+            "action_type": "pick_up",
+            "before_state": [
+              "closed(BP_Desk_001_C_1)",
+              "empty",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "in_view(BP_Book_19_C_1)",
+              "powered_on(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Book_19_C_1)"
+            ],
+            "after_state": [
+              "closed(BP_Desk_001_C_1)",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "holding(BP_Book_19_C_1)",
+              "in_view(BP_Book_19_C_1)",
+              "powered_on(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Book_19_C_1)"
+            ]
+          }
+        ]
+      },
+      {
+        "action": "open_container_{object}__BP_Desk_001_C_1",
+        "template_id": "subtask_0004",
+        "source": "subtask",
+        "action_type": "open_container",
+        "before_state": [
+          "closed(BP_Desk_001_C_1)",
+          "exists(BP_Book_19_C_1)",
+          "exists(BP_Desk_001_C_1)",
+          "exists(BP_TableLamp_03_C_1)",
+          "holding(BP_Book_19_C_1)",
+          "in_view(BP_Book_19_C_1)",
+          "powered_on(BP_TableLamp_03_C_1)",
+          "with_reach(BP_Book_19_C_1)"
+        ],
+        "after_state": [
+          "exists(BP_Book_19_C_1)",
+          "exists(BP_Desk_001_C_1)",
+          "exists(BP_TableLamp_03_C_1)",
+          "holding(BP_Book_19_C_1)",
+          "in_view(BP_Desk_001_C_1)",
+          "open(BP_Desk_001_C_1)",
+          "powered_on(BP_TableLamp_03_C_1)",
+          "with_reach(BP_Desk_001_C_1)"
+        ],
+        "atomic_steps": [
+          {
+            "action": "look_at_BP_Desk_001_C_1",
+            "template_id": "look_at_{object}",
+            "action_type": "look_at",
+            "before_state": [
+              "closed(BP_Desk_001_C_1)",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "holding(BP_Book_19_C_1)",
+              "in_view(BP_Book_19_C_1)",
+              "powered_on(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Book_19_C_1)"
+            ],
+            "after_state": [
+              "closed(BP_Desk_001_C_1)",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "holding(BP_Book_19_C_1)",
+              "in_view(BP_Desk_001_C_1)",
+              "powered_on(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Book_19_C_1)"
+            ]
+          },
+          {
+            "action": "walk_to_BP_Desk_001_C_1",
+            "template_id": "walk_to_{object}",
+            "action_type": "walk_to",
+            "before_state": [
+              "closed(BP_Desk_001_C_1)",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "holding(BP_Book_19_C_1)",
+              "in_view(BP_Desk_001_C_1)",
+              "powered_on(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Book_19_C_1)"
+            ],
+            "after_state": [
+              "closed(BP_Desk_001_C_1)",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "holding(BP_Book_19_C_1)",
+              "in_view(BP_Desk_001_C_1)",
+              "powered_on(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Desk_001_C_1)"
+            ]
+          },
+          {
+            "action": "open_BP_Desk_001_C_1",
+            "template_id": "open_{object}",
+            "action_type": "open",
+            "before_state": [
+              "closed(BP_Desk_001_C_1)",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "holding(BP_Book_19_C_1)",
+              "in_view(BP_Desk_001_C_1)",
+              "powered_on(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Desk_001_C_1)"
+            ],
+            "after_state": [
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "holding(BP_Book_19_C_1)",
+              "in_view(BP_Desk_001_C_1)",
+              "open(BP_Desk_001_C_1)",
+              "powered_on(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Desk_001_C_1)"
+            ]
+          }
+        ]
+      },
+      {
+        "action": "place_BP_Book_19_C_1_on_BP_Desk_001_C_1",
+        "template_id": "place_{object1}_on_{object2}",
+        "source": "primitive",
+        "action_type": "place",
+        "before_state": [
+          "exists(BP_Book_19_C_1)",
+          "exists(BP_Desk_001_C_1)",
+          "exists(BP_TableLamp_03_C_1)",
+          "holding(BP_Book_19_C_1)",
+          "in_view(BP_Desk_001_C_1)",
+          "open(BP_Desk_001_C_1)",
+          "powered_on(BP_TableLamp_03_C_1)",
+          "with_reach(BP_Desk_001_C_1)"
+        ],
+        "after_state": [
+          "empty",
+          "exists(BP_Book_19_C_1)",
+          "exists(BP_Desk_001_C_1)",
+          "exists(BP_TableLamp_03_C_1)",
+          "in_view(BP_Desk_001_C_1)",
+          "on(BP_Book_19_C_1, BP_Desk_001_C_1)",
+          "open(BP_Desk_001_C_1)",
+          "powered_on(BP_TableLamp_03_C_1)",
+          "with_reach(BP_Desk_001_C_1)"
+        ],
+        "atomic_steps": [
+          {
+            "action": "place_BP_Book_19_C_1_on_BP_Desk_001_C_1",
+            "template_id": "place_{object1}_on_{object2}",
+            "action_type": "place",
+            "before_state": [
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "holding(BP_Book_19_C_1)",
+              "in_view(BP_Desk_001_C_1)",
+              "open(BP_Desk_001_C_1)",
+              "powered_on(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Desk_001_C_1)"
+            ],
+            "after_state": [
+              "empty",
+              "exists(BP_Book_19_C_1)",
+              "exists(BP_Desk_001_C_1)",
+              "exists(BP_TableLamp_03_C_1)",
+              "in_view(BP_Desk_001_C_1)",
+              "on(BP_Book_19_C_1, BP_Desk_001_C_1)",
+              "open(BP_Desk_001_C_1)",
+              "powered_on(BP_TableLamp_03_C_1)",
+              "with_reach(BP_Desk_001_C_1)"
+            ]
+          }
+        ]
+      }
+    ]
+  ],
+  "has_solution": true,
+  "node_count": 12,
+  "transition_edge_count": 11,
+  "equivalence_edge_count": 0,
+  "grounded_action_count": 11,
+  "grounded_subtask_count": 10,
+  "grounded_place_primitive_count": 1,
+  "success_trace_count": 3,
+  "max_success_traces": 100,
+  "max_path_nodes": 5,
+  "auto_search": {
+    "enabled": true,
+    "min_path_nodes": 2,
+    "max_path_nodes": 13,
+    "step": 1,
+    "selected_max_path_nodes": 5,
+    "trials": [
+      {
+        "max_path_nodes": 2,
+        "has_solution": false,
+        "success_trace_count": 0,
+        "node_count": 1
+      },
+      {
+        "max_path_nodes": 3,
+        "has_solution": false,
+        "success_trace_count": 0,
+        "node_count": 1
+      },
+      {
+        "max_path_nodes": 4,
+        "has_solution": false,
+        "success_trace_count": 0,
+        "node_count": 1
+      },
+      {
+        "max_path_nodes": 5,
+        "has_solution": true,
+        "success_trace_count": 3,
+        "node_count": 12
+      }
+    ]
+  }
+}
