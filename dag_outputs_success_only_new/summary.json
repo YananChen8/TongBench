@@ -5,19 +5,13 @@
     "node_count": 1,
     "transition_edge_count": 0,
     "equivalence_edge_count": 0,
-    "grounded_action_count": 3,
+    "grounded_action_count": 10,
     "goal_path_count": 0,
     "success_trace_count": 0,
     "static_unsatisfied_constraints": [
-      "Unsatisfied movable-goal predicate on(BP_Fruit_Apple_02_FB_C_1, BP_CoffeeTable_29_C_3): BP_Fruit_Apple_02_FB_C_1 is not pickable.",
-      "Unsatisfied movable-goal predicate on(BP_Fruit_Apple_02_FB_C_2, BP_CoffeeTable_29_C_3): BP_Fruit_Apple_02_FB_C_2 is not pickable.",
-      "Unsatisfied movable-goal predicate on(BP_Bowl_blue_C_0, BP_CoffeeTable_29_C_3): BP_Bowl_blue_C_0 is not pickable.",
-      "Unsatisfied movable-goal predicate on(BP_Cup_Kitchen_003_C_0, BP_CoffeeTable_29_C_3): BP_Cup_Kitchen_003_C_0 is not pickable."
+      "Unsatisfied movable-goal predicate on(BP_Bowl_blue_C_0, BP_CoffeeTable_29_C_3): BP_Bowl_blue_C_0 is not pickable."
     ],
-    "dropped_predicates": [
-      "Dropped powered_on(BP_CeilingLamp_2_C_1) because BP_CeilingLamp_2_C_1 is not powerable.",
-      "Dropped powered_on(BP_CeilingLamp_04_C_0_8182FBFC4089BF20D7F615A99BC7CF0A_8) because BP_CeilingLamp_04_C_0_8182FBFC4089BF20D7F615A99BC7CF0A_8 is not powerable."
-    ]
+    "dropped_predicates": []
   },
   {
     "task_id": "task_02",
@@ -25,7 +19,7 @@
     "node_count": 1,
     "transition_edge_count": 0,
     "equivalence_edge_count": 0,
-    "grounded_action_count": 6,
+    "grounded_action_count": 7,
     "goal_path_count": 0,
     "success_trace_count": 0,
     "static_unsatisfied_constraints": [
@@ -42,17 +36,14 @@
     "node_count": 1,
     "transition_edge_count": 0,
     "equivalence_edge_count": 0,
-    "grounded_action_count": 4,
+    "grounded_action_count": 10,
     "goal_path_count": 0,
     "success_trace_count": 0,
     "static_unsatisfied_constraints": [
       "Unsatisfied movable-goal predicate on(BP_Laptop_1_C_1, BP_Desk_001_C_1): BP_Laptop_1_C_1 is not pickable.",
-      "Unsatisfied movable-goal predicate on(BP_Book_18_C_1, BP_Desk_001_C_1): BP_Book_18_C_1 is not pickable.",
       "Unsatisfied movable-goal predicate on(BP_TableLamp_03_C_1, BP_Desk_001_C_1): BP_TableLamp_03_C_1 is not pickable."
     ],
-    "dropped_predicates": [
-      "Dropped powered_on(BP_TableLamp_03_C_1) because BP_TableLamp_03_C_1 is not powerable."
-    ]
+    "dropped_predicates": []
   },
   {
     "task_id": "task_04",
@@ -60,11 +51,10 @@
     "node_count": 1,
     "transition_edge_count": 0,
     "equivalence_edge_count": 0,
-    "grounded_action_count": 3,
+    "grounded_action_count": 6,
     "goal_path_count": 0,
     "success_trace_count": 0,
     "static_unsatisfied_constraints": [
-      "Unsatisfied movable-goal predicate in(BP_Plate_03_C_1, BP_TrashCan_Ashcan_02_C_1): BP_Plate_03_C_1 is not pickable.",
       "Unsatisfied movable-goal predicate in(BP_Bowl_blue_C_0, BP_TrashCan_Ashcan_02_C_1): BP_Bowl_blue_C_0 is not pickable."
     ],
     "dropped_predicates": []
@@ -75,11 +65,10 @@
     "node_count": 1,
     "transition_edge_count": 0,
     "equivalence_edge_count": 0,
-    "grounded_action_count": 2,
+    "grounded_action_count": 5,
     "goal_path_count": 0,
     "success_trace_count": 0,
     "static_unsatisfied_constraints": [
-      "Unsatisfied movable-goal predicate on(BP_Cup_Kitchen_003_C_0, BP_CoffeeTable_29_C_3): BP_Cup_Kitchen_003_C_0 is not pickable.",
       "Unsatisfied movable-goal predicate on(BP_Biscuit_Cookies_C_1, BP_CoffeeTable_29_C_3): BP_Biscuit_Cookies_C_1 is not pickable.",
       "Unsatisfied movable-goal predicate on(BP_Biscuit_Cookies_C_3, BP_CoffeeTable_29_C_3): BP_Biscuit_Cookies_C_3 is not pickable.",
       "Unsatisfied movable-goal predicate on(BP_Biscuit_Cookies_C_8, BP_CoffeeTable_29_C_3): BP_Biscuit_Cookies_C_8 is not pickable."
@@ -106,15 +95,13 @@
     "node_count": 1,
     "transition_edge_count": 0,
     "equivalence_edge_count": 0,
-    "grounded_action_count": 1,
+    "grounded_action_count": 3,
     "goal_path_count": 0,
     "success_trace_count": 0,
     "static_unsatisfied_constraints": [],
     "dropped_predicates": [
       "Dropped closed(BP_Curtains_02_C_0_D02FFE9E437B2A6E45DFB795FB923987_7) because BP_Curtains_02_C_0_D02FFE9E437B2A6E45DFB795FB923987_7 is not openable.",
-      "Dropped powered_off(BP_CeilingLamp_2_C_1) because BP_CeilingLamp_2_C_1 is not powerable.",
-      "Dropped open(BP_Curtains_02_C_0_D02FFE9E437B2A6E45DFB795FB923987_7) because BP_Curtains_02_C_0_D02FFE9E437B2A6E45DFB795FB923987_7 is not openable.",
-      "Dropped powered_on(BP_CeilingLamp_2_C_1) because BP_CeilingLamp_2_C_1 is not powerable."
+      "Dropped open(BP_Curtains_02_C_0_D02FFE9E437B2A6E45DFB795FB923987_7) because BP_Curtains_02_C_0_D02FFE9E437B2A6E45DFB795FB923987_7 is not openable."
     ]
   },
   {
@@ -123,13 +110,10 @@
     "node_count": 1,
     "transition_edge_count": 0,
     "equivalence_edge_count": 0,
-    "grounded_action_count": 2,
+    "grounded_action_count": 4,
     "goal_path_count": 0,
     "success_trace_count": 0,
-    "static_unsatisfied_constraints": [
-      "Unsatisfied movable-goal predicate in(BP_BooksStack_02_C_1, BP_BookShelves_05_C_1): BP_BooksStack_02_C_1 is not pickable.",
-      "Unsatisfied movable-goal predicate in(BP_BooksStack_02_C_2, BP_BookShelves_05_C_1): BP_BooksStack_02_C_2 is not pickable."
-    ],
+    "static_unsatisfied_constraints": [],
     "dropped_predicates": []
   }
 ]

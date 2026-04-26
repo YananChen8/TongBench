@@ -50,8 +50,7 @@ class Planner:
         self.tasks = json.loads((out_dir / 'tasks.json').read_text())
         self.templates = json.loads((out_dir / 'atomic_templates.json').read_text())['templates']
         self.subtasks = json.loads(subtasks_path.read_text())
-        self.scene = json.loads((base_dir / 'touchdata.json').read_text())
-        self.affordances = json.loads((base_dir / 'touchdata_objects.json').read_text())['objects']
+        self.scene, self.affordances, self.object_actions = self.load_scene_and_affordances()
 
         self.obj_alias = self.rules['normalization'].get('object_id_aliases', {})
         self.label_alias = self.rules['normalization'].get('label_aliases', {})
@@ -71,6 +70,83 @@ class Planner:
             for obj_id, meta in self.scene.items()
         }
         self.by_task = {t['task_id']: t for t in self.tasks}
+
+    def normalize_action_name(self, action: str) -> str:
+        a = action.strip().lower().replace('-', '_').replace(' ', '_')
+        alias = {
+            'pickup': 'pick_up',
+            'pick': 'pick_up',
+            'grab': 'pick_up',
+            'take': 'pick_up',
+            'putdown': 'drop',
+            'put_down': 'drop',
+            'turn_on': 'switch_on',
+            'turn_off': 'switch_off',
+            'power_on': 'switch_on',
+            'power_off': 'switch_off',
+            'wash': 'wash_object',
+            'wash_obj': 'wash_object',
+            'hang': 'hang_object',
+        }
+        return alias.get(a, a)
+
+    def _load_existing_interactable_objects(self) -> Tuple[Dict[str, dict], Dict[str, dict], Dict[str, Set[str]]]:
+        path = self.base_dir / 'existing_interactable_objects.json'
+        if not path.exists():
+            return {}, {}, {}
+        raw = json.loads(path.read_text())
+        objects = raw.get('objects', [])
+        if not isinstance(objects, list):
+            return {}, {}, {}
+
+        scene: Dict[str, dict] = {}
+        affordances: Dict[str, dict] = {}
+        object_actions: Dict[str, Set[str]] = {}
+        for obj in objects:
+            if not isinstance(obj, dict):
+                continue
+            obj_id = str(obj.get('object_id', '')).strip()
+            if not obj_id:
+                continue
+            label = str(obj.get('rdf') or obj.get('object_name') or '').strip()
+            candidate_actions = {self.normalize_action_name(str(a)) for a in obj.get('candidate_actions', []) if str(a).strip()}
+
+            scene[obj_id] = {
+                'label': label,
+                'raw': obj,
+            }
+            object_actions[obj_id] = candidate_actions
+            affordances[obj_id] = {
+                'openable': bool({'open', 'close'} & candidate_actions),
+                'pickable': bool({'pick_up', 'drop'} & candidate_actions),
+                'powerable': bool({'switch_on', 'switch_off', 'plug_in', 'unplug'} & candidate_actions),
+            }
+        return scene, affordances, object_actions
+
+    def _load_touchdata_legacy(self) -> Tuple[Dict[str, dict], Dict[str, dict], Dict[str, Set[str]]]:
+        scene_path = self.base_dir / 'touchdata.json'
+        afford_path = self.base_dir / 'touchdata_objects.json'
+        if not (scene_path.exists() and afford_path.exists()):
+            return {}, {}, {}
+        scene = json.loads(scene_path.read_text())
+        affordances = json.loads(afford_path.read_text()).get('objects', {})
+        object_actions: Dict[str, Set[str]] = {}
+        for obj_id, meta in affordances.items():
+            acts = {'look_at', 'walk_to'}
+            if meta.get('pickable', False):
+                acts.update({'pick_up', 'drop'})
+            if meta.get('openable', False):
+                acts.update({'open', 'close'})
+            if meta.get('powerable', False):
+                acts.update({'switch_on', 'switch_off', 'plug_in', 'unplug'})
+            object_actions[obj_id] = acts
+        return scene, affordances, object_actions
+
+    def load_scene_and_affordances(self) -> Tuple[Dict[str, dict], Dict[str, dict], Dict[str, Set[str]]]:
+        scene, affordances, object_actions = self._load_existing_interactable_objects()
+        if scene and affordances:
+            return scene, affordances, object_actions
+        return self._load_touchdata_legacy()
 
     def normalize_token(self, text: str) -> str:
         x = text.strip()
@@ -172,6 +248,13 @@ class Planner:
     def full_state_key(self, state: Iterable[Pred]) -> Tuple[str, ...]:
         return tuple(sorted(p.to_string() for p in state))
 
+    def object_has_action(self, obj_id: str, *actions: str) -> bool:
+        available = self.object_actions.get(obj_id, set())
+        if not available:
+            return False
+        needed = {self.normalize_action_name(a) for a in actions}
+        return bool(available & needed)
+
     def obj_label(self, obj_id: str) -> str:
         label = self.object_labels.get(obj_id, '')
         if label:
@@ -199,13 +282,13 @@ class Planner:
         return ''
 
     def is_pickable(self, obj_id: str) -> bool:
-        return bool(self.affordances.get(obj_id, {}).get('pickable', False))
+        return self.object_has_action(obj_id, 'pick_up') or bool(self.affordances.get(obj_id, {}).get('pickable', False))
 
     def is_openable(self, obj_id: str) -> bool:
-        return bool(self.affordances.get(obj_id, {}).get('openable', False))
+        return self.object_has_action(obj_id, 'open', 'close') or bool(self.affordances.get(obj_id, {}).get('openable', False))
 
     def is_powerable(self, obj_id: str) -> bool:
-        return bool(self.affordances.get(obj_id, {}).get('powerable', False))
+        return self.object_has_action(obj_id, 'switch_on', 'switch_off', 'plug_in', 'unplug') or bool(self.affordances.get(obj_id, {}).get('powerable', False))
 
     def object_matches_category(self, obj_id: str, category: str) -> bool:
         c = self.norm_label(category)
@@ -299,15 +382,23 @@ class Planner:
 
     def subtask_candidate_allowed(self, subtask: dict, role: str, obj_id: str) -> bool:
         stype = subtask.get('subtask_type', '')
-        if 'acquire' in stype and not self.is_pickable(obj_id):
+        if 'acquire' in stype and not self.object_has_action(obj_id, 'pick_up'):
             return False
-        if ('clean' in stype or 'wash' in stype) and role == 'r1' and not self.is_pickable(obj_id):
+        if ('clean' in stype or 'wash' in stype) and role == 'r1' and not (self.object_has_action(obj_id, 'pick_up') and self.object_has_action(obj_id, 'wash_object')):
             return False
-        if 'open_container' in stype and not self.is_openable(obj_id):
+        if 'open_container' in stype and not self.object_has_action(obj_id, 'open'):
             return False
-        if 'close_container' in stype and not self.is_openable(obj_id):
+        if 'close_container' in stype and not self.object_has_action(obj_id, 'close'):
             return False
-        if ('power_on' in stype or 'power_off' in stype or 'plug_in' in stype or 'unplug' in stype) and not self.is_powerable(obj_id):
+        if 'power_on' in stype and not self.object_has_action(obj_id, 'switch_on'):
+            return False
+        if 'power_off' in stype and not self.object_has_action(obj_id, 'switch_off'):
+            return False
+        if 'plug_in' in stype and not self.object_has_action(obj_id, 'plug_in'):
+            return False
+        if 'unplug' in stype and not self.object_has_action(obj_id, 'unplug'):
+            return False
+        if 'reach' in stype and not self.object_has_action(obj_id, 'look_at', 'walk_to'):
             return False
         return True
 
@@ -395,6 +486,10 @@ class Planner:
         for obj1 in sorted(set(cands1)):
             for obj2 in sorted(set(cands2)):
                 if obj1 == obj2:
+                    continue
+                if not self.object_has_action(obj1, 'drop'):
+                    continue
+                if not self.object_has_action(obj2, 'walk_to'):
                     continue
                 binding = {k1: obj1, k2: obj2}
                 pre = tuple(self.instantiate_atom(x, binding) for x in template['pre_state'])
@@ -760,7 +855,7 @@ def main() -> None:
     ap.add_argument('--rules', default='./prompts/planner_rules.yaml')
     ap.add_argument('--subtasks', default='./outputs/subtask_templates_compressed.json')
     ap.add_argument('--task-id', default=None)
-    ap.add_argument('--output-dir', default='./dag_outputs_success_only_autopath')
+    ap.add_argument('--output-dir', default='./dag_outputs_success_only_autopath_new')
     ap.add_argument('--max-success-traces', type=int, default=100)
     ap.add_argument('--max-path-nodes', type=int, default=12, help='Upper bound for max-path-nodes. Used directly unless --auto-max-path-nodes is set.')
     ap.add_argument('--min-path-nodes', type=int, default=3, help='Lower bound when auto searching max-path-nodes.')

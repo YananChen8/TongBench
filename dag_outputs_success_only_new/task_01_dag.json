@@ -1,0 +1,78 @@
+{
+  "task_id": "task_01",
+  "description": "Prepare the living room for a guest by arranging seating, lighting, and refreshments.",
+  "output_language": "English",
+  "is_dag": true,
+  "graph_mode": "success_prefix_graph_no_state_merge",
+  "task_scope": [
+    "BP_Bowl_blue_C_0",
+    "BP_CeilingLamp_04_C_0_8182FBFC4089BF20D7F615A99BC7CF0A_8",
+    "BP_CeilingLamp_2_C_1",
+    "BP_CoffeeTable_29_C_3",
+    "BP_Cup_Kitchen_003_C_0",
+    "BP_Fruit_Apple_02_FB_C_1",
+    "BP_Fruit_Apple_02_FB_C_2",
+    "BP_Sofa_09_C_2"
+  ],
+  "preprocess": {
+    "dropped_predicates": [],
+    "static_unsatisfied_constraints": [
+      "Unsatisfied movable-goal predicate on(BP_Bowl_blue_C_0, BP_CoffeeTable_29_C_3): BP_Bowl_blue_C_0 is not pickable."
+    ]
+  },
+  "initial_state": [
+    "empty",
+    "exists(BP_Bowl_blue_C_0)",
+    "exists(BP_CeilingLamp_04_C_0_8182FBFC4089BF20D7F615A99BC7CF0A_8)",
+    "exists(BP_CeilingLamp_2_C_1)",
+    "exists(BP_CoffeeTable_29_C_3)",
+    "exists(BP_Cup_Kitchen_003_C_0)",
+    "exists(BP_Fruit_Apple_02_FB_C_1)",
+    "exists(BP_Fruit_Apple_02_FB_C_2)",
+    "exists(BP_Sofa_09_C_2)"
+  ],
+  "goal_state": [
+    "in_view(BP_CoffeeTable_29_C_3)",
+    "on(BP_Bowl_blue_C_0, BP_CoffeeTable_29_C_3)",
+    "on(BP_Cup_Kitchen_003_C_0, BP_CoffeeTable_29_C_3)",
+    "on(BP_Fruit_Apple_02_FB_C_1, BP_CoffeeTable_29_C_3)",
+    "on(BP_Fruit_Apple_02_FB_C_2, BP_CoffeeTable_29_C_3)",
+    "powered_on(BP_CeilingLamp_04_C_0_8182FBFC4089BF20D7F615A99BC7CF0A_8)",
+    "powered_on(BP_CeilingLamp_2_C_1)",
+    "with_reach(BP_CoffeeTable_29_C_3)"
+  ],
+  "nodes": [
+    {
+      "id": "n0",
+      "depth": 0,
+      "state": [
+        "empty",
+        "exists(BP_Bowl_blue_C_0)",
+        "exists(BP_CeilingLamp_04_C_0_8182FBFC4089BF20D7F615A99BC7CF0A_8)",
+        "exists(BP_CeilingLamp_2_C_1)",
+        "exists(BP_CoffeeTable_29_C_3)",
+        "exists(BP_Cup_Kitchen_003_C_0)",
+        "exists(BP_Fruit_Apple_02_FB_C_1)",
+        "exists(BP_Fruit_Apple_02_FB_C_2)",
+        "exists(BP_Sofa_09_C_2)"
+      ],
+      "is_goal": false,
+      "prefix_count": 0
+    }
+  ],
+  "dag_edges": [],
+  "equivalence_edges": [],
+  "goal_nodes": [],
+  "goal_paths": [],
+  "success_traces": [],
+  "has_solution": false,
+  "node_count": 1,
+  "transition_edge_count": 0,
+  "equivalence_edge_count": 0,
+  "grounded_action_count": 10,
+  "grounded_subtask_count": 9,
+  "grounded_place_primitive_count": 1,
+  "success_trace_count": 0,
+  "max_success_traces": 100,
+  "max_path_nodes": 13
+}

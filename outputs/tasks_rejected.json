@@ -1,0 +1,153 @@
+[
+  {
+    "task_id": "task_03",
+    "description": "Clean and organize the kitchen counter after use by placing dirty dishes in the dishwasher and wiping the surface.",
+    "intention": "Restore the kitchen to a hygienic and orderly state following meal preparation or cleanup.",
+    "initial_state": {
+      "predicates": [
+        "empty",
+        "dirty(BP_CoffeeTable_27_C_1)",
+        "dirty(BP_Plate_06_C_2)",
+        "dirty(BP_Cup_Kitchen_003_C_0)",
+        "exists(BP_CoffeeTable_27_C_1)",
+        "exists(BP_Plate_06_C_2)",
+        "exists(BP_Cup_Kitchen_003_C_0)",
+        "exists(BP_Dishwasher_005_C_1)"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "clean(BP_CoffeeTable_27_C_1)",
+        "in(BP_Plate_06_C_2, BP_Dishwasher_005_C_1)",
+        "in(BP_Cup_Kitchen_003_C_0, BP_Dishwasher_005_C_1)",
+        "powered_off(BP_Dishwasher_005_C_1)"
+      ],
+      "bindings": {}
+    },
+    "_validation_errors": [
+      "powered_off(BP_Dishwasher_005_C_1): object BP_Dishwasher_005_C_1 not found in scene."
+    ]
+  },
+  {
+    "task_id": "task_04",
+    "description": "Prepare a workspace on the desk for studying by opening the desk, placing books and a pen, and turning on the lamp.",
+    "intention": "Create a functional and distraction-free study environment with all necessary tools within reach.",
+    "initial_state": {
+      "predicates": [
+        "empty",
+        "closed(BP_Desk_001_C_1)",
+        "powered_off(BP_TableLamp_03_C_1)",
+        "exists(BP_Desk_001_C_1)",
+        "exists(BP_Book_19_C_1)",
+        "exists(BP_Pencil_05_C_1)"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "open(BP_Desk_001_C_1)",
+        "on(BP_Book_19_C_1, BP_Desk_001_C_1)",
+        "on(BP_Pencil_05_C_1, BP_Desk_001_C_1)",
+        "powered_on(BP_TableLamp_03_C_1)"
+      ],
+      "bindings": {}
+    },
+    "_validation_errors": [
+      "on(BP_Pencil_05_C_1, BP_Desk_001_C_1): BP_Pencil_05_C_1 is not pickable from supported actions ['look_at', 'walk_to']."
+    ]
+  },
+  {
+    "task_id": "task_05",
+    "description": "Tidy up scattered toys in the child’s play area by gathering them into the toy desk and closing its lid.",
+    "intention": "Reduce clutter and restore order in a children's space by consolidating toys into a designated storage area.",
+    "initial_state": {
+      "predicates": [
+        "empty",
+        "closed(BP_ToyDesk_Pink_C_1)",
+        "exists(BP_ToyDesk_Pink_C_1)",
+        "exists(BP_Toy_Horse_C_2)",
+        "exists(BP_Toy_Lego_C_2)",
+        "exists(BP_Toy_SpaceManA_C_2)",
+        "exists(BP_Toy_XYY_C_2)"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "open(BP_ToyDesk_Pink_C_1)",
+        "in(BP_Toy_Horse_C_2, BP_ToyDesk_Pink_C_1)",
+        "in(BP_Toy_Lego_C_2, BP_ToyDesk_Pink_C_1)",
+        "in(BP_Toy_SpaceManA_C_2, BP_ToyDesk_Pink_C_1)",
+        "in(BP_Toy_XYY_C_2, BP_ToyDesk_Pink_C_1)",
+        "closed(BP_ToyDesk_Pink_C_1)"
+      ],
+      "bindings": {}
+    },
+    "_validation_errors": [
+      "open(BP_ToyDesk_Pink_C_1): BP_ToyDesk_Pink_C_1 is not openable from supported actions ['look_at', 'walk_to'].",
+      "in(BP_Toy_Horse_C_2, BP_ToyDesk_Pink_C_1): BP_Toy_Horse_C_2 is not pickable from supported actions ['look_at', 'walk_to'].",
+      "in(BP_Toy_Lego_C_2, BP_ToyDesk_Pink_C_1): BP_Toy_Lego_C_2 is not pickable from supported actions ['look_at', 'walk_to'].",
+      "in(BP_Toy_SpaceManA_C_2, BP_ToyDesk_Pink_C_1): BP_Toy_SpaceManA_C_2 is not pickable from supported actions ['look_at', 'walk_to'].",
+      "in(BP_Toy_XYY_C_2, BP_ToyDesk_Pink_C_1): BP_Toy_XYY_C_2 is not pickable from supported actions ['look_at', 'walk_to'].",
+      "closed(BP_ToyDesk_Pink_C_1): BP_ToyDesk_Pink_C_1 is not openable from supported actions ['look_at', 'walk_to']."
+    ]
+  },
+  {
+    "task_id": "task_07",
+    "description": "Prepare a simple breakfast tray with fruit and a bowl by picking up an apple and banana from the counter and placing them on a tray.",
+    "intention": "Assemble a basic breakfast set for consumption, ensuring all components are arranged neatly on a serving tray.",
+    "initial_state": {
+      "predicates": [
+        "empty",
+        "exists(BP_Fruit_Apple_02_FB_C_2)",
+        "exists(BP_Fruit_Banana_C_2)",
+        "exists(BP_Tray)",
+        "exists(BP_Plate_Bowl01_C_2)"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "on(BP_Fruit_Apple_02_FB_C_2, BP_Tray)",
+        "on(BP_Fruit_Banana_C_2, BP_Tray)",
+        "on(BP_Plate_Bowl01_C_2, BP_Tray)"
+      ],
+      "bindings": {}
+    },
+    "_validation_errors": [
+      "on(BP_Bowl_Decor_4_C_0, BP_Tray): BP_Bowl_Decor_4_C_0 is not pickable from supported actions ['look_at', 'walk_to']."
+    ]
+  },
+  {
+    "task_id": "task_08",
+    "description": "Restore the living room to a calm state by turning off lights, closing curtains, and placing the remote on the sofa.",
+    "intention": "Create a peaceful and uncluttered atmosphere by deactivating electronics and securing furnishings.",
+    "initial_state": {
+      "predicates": [
+        "empty",
+        "powered_on(BP_CeilingLamp_04_C_0_8182FBFC4089BF20D7F615A99BC7CF0A_8)",
+        "powered_on(BP_TV_Hanged_C_1)",
+        "open(BP_Curtains_02_C_0_D02FFE9E437B2A6E45DFB795FB923987_7)",
+        "exists(BP_CeilingLamp_04_C_0_8182FBFC4089BF20D7F615A99BC7CF0A_8)",
+        "exists(BP_TV_Hanged_C_1)",
+        "exists(BP_Curtains_02_C_0_D02FFE9E437B2A6E45DFB795FB923987_7)",
+        "exists(BP_Sofa_09_C_2)",
+        "exists(BP_RemoteController_Air_C_2)"
+      ],
+      "bindings": {}
+    },
+    "final_state": {
+      "predicates": [
+        "powered_off(BP_CeilingLamp_04_C_0_8182FBFC4089BF20D7F615A99BC7CF0A_8)",
+        "powered_off(BP_TV_Hanged_C_1)",
+        "closed(BP_Curtains_02_C_0_D02FFE9E437B2A6E45DFB795FB923987_7)",
+        "on(BP_RemoteController_Air_C_2, BP_Sofa_09_C_2)"
+      ],
+      "bindings": {}
+    },
+    "_validation_errors": [
+      "closed(BP_Curtains_02_C_0_D02FFE9E437B2A6E45DFB795FB923987_7): BP_Curtains_02_C_0_D02FFE9E437B2A6E45DFB795FB923987_7 is not openable from supported actions ['look_at', 'walk_to']."
+    ]
+  }
+]

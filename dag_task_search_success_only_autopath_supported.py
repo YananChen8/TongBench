@@ -8,13 +8,6 @@ from pathlib import Path
 from typing import Dict, Iterable, List, Optional, Set, Tuple
 
 import yaml
-# import debugpy
-# try:
-#     debugpy.configure({"subProcess": False})
-# except Exception:
-#     pass
-
-# 下面再放原来的 import
 
 PRED_RE = re.compile(r'^\s*([A-Za-z_][A-Za-z0-9_]*)\((.*)\)\s*$')
 
@@ -48,10 +41,9 @@ class Planner:
         self.out_dir = out_dir
         self.rules = yaml.safe_load(rules_path.read_text())
         self.tasks = json.loads((out_dir / 'tasks.json').read_text())
-        self.templates = json.loads((out_dir / 'atomic_templates.json').read_text())['templates']
+        self.templates = json.loads((out_dir / 'atomic_templates_updated_env_v2.json').read_text())['templates']
         self.subtasks = json.loads(subtasks_path.read_text())
-        self.scene = json.loads((base_dir / 'touchdata.json').read_text())
-        self.affordances = json.loads((base_dir / 'touchdata_objects.json').read_text())['objects']
+        self.scene, self.affordances = self.load_scene_and_affordances()
 
         self.obj_alias = self.rules['normalization'].get('object_id_aliases', {})
         self.label_alias = self.rules['normalization'].get('label_aliases', {})
@@ -71,6 +63,64 @@ class Planner:
             for obj_id, meta in self.scene.items()
         }
         self.by_task = {t['task_id']: t for t in self.tasks}
+
+    def _load_existing_interactable_objects(self) -> Tuple[Dict[str, dict], Dict[str, dict]]:
+        path = self.base_dir / 'existing_interactable_objects.json'
+        if not path.exists():
+            return {}, {}
+        raw = json.loads(path.read_text())
+        objects = raw.get('objects', [])
+        if not isinstance(objects, list):
+            return {}, {}
+
+        scene: Dict[str, dict] = {}
+        affordances: Dict[str, dict] = {}
+        for obj in objects:
+            if not isinstance(obj, dict):
+                continue
+            obj_id = str(obj.get('object_id', '')).strip()
+            if not obj_id:
+                continue
+            label = str(obj.get('rdf') or obj.get('object_name') or '').strip()
+
+            actions_raw: List[str] = []
+            supported = obj.get('supported_actions', [])
+            candidate = obj.get('candidate_actions', [])
+            if isinstance(supported, list):
+                actions_raw.extend(supported)
+            if isinstance(candidate, list):
+                actions_raw.extend(candidate)
+            object_actions = {str(a).strip().lower() for a in actions_raw if str(a).strip()}
+
+            scene[obj_id] = {
+                'label': label,
+                'raw': obj,
+            }
+            affordances[obj_id] = {
+                'openable': bool({'open', 'close'} & object_actions),
+                'pickable': bool({
+                    'pick_up', 'pickup', 'pick', 'grab', 'take', 'hold', 'put_down', 'drop'
+                } & object_actions),
+                'powerable': bool({
+                    'power_on', 'power_off', 'turn_on', 'turn_off', 'switch_on', 'switch_off', 'plug_in', 'unplug'
+                } & object_actions),
+            }
+        return scene, affordances
+
+    def _load_touchdata_legacy(self) -> Tuple[Dict[str, dict], Dict[str, dict]]:
+        scene_path = self.base_dir / 'touchdata.json'
+        afford_path = self.base_dir / 'touchdata_objects.json'
+        if not (scene_path.exists() and afford_path.exists()):
+            return {}, {}
+        scene = json.loads(scene_path.read_text())
+        affordances = json.loads(afford_path.read_text()).get('objects', {})
+        return scene, affordances
+
+    def load_scene_and_affordances(self) -> Tuple[Dict[str, dict], Dict[str, dict]]:
+        scene, affordances = self._load_existing_interactable_objects()
+        if scene and affordances:
+            return scene, affordances
+        return self._load_touchdata_legacy()
 
     def normalize_token(self, text: str) -> str:
         x = text.strip()
@@ -758,14 +808,14 @@ def main() -> None:
     ap.add_argument('--base-dir', default='./env_data')
     ap.add_argument('--out-dir', default='./outputs')
     ap.add_argument('--rules', default='./prompts/planner_rules.yaml')
-    ap.add_argument('--subtasks', default='./outputs/subtask_templates_compressed.json')
+    ap.add_argument('--subtasks', default='./outputs/subtask_templates_compressed_updated_env_v2.json')
     ap.add_argument('--task-id', default=None)
-    ap.add_argument('--output-dir', default='./dag_outputs_success_only_autopath')
+    ap.add_argument('--output-dir', default='./dag_outputs_success_only_new')
     ap.add_argument('--max-success-traces', type=int, default=100)
-    ap.add_argument('--max-path-nodes', type=int, default=12, help='Upper bound for max-path-nodes. Used directly unless --auto-max-path-nodes is set.')
-    ap.add_argument('--min-path-nodes', type=int, default=3, help='Lower bound when auto searching max-path-nodes.')
+    ap.add_argument('--max-path-nodes', type=int, default=13, help='Upper bound for max-path-nodes. Used directly unless --auto-max-path-nodes is set.')
+    ap.add_argument('--min-path-nodes', type=int, default=2, help='Lower bound when auto searching max-path-nodes.')
     ap.add_argument('--path-nodes-step', type=int, default=1, help='Step size when auto searching max-path-nodes.')
-    ap.add_argument('--auto-max-path-nodes', action='store_true', default=True, help='Try max-path-nodes from small to large and stop at the first successful result.')
+    ap.add_argument('--auto-max-path-nodes', action='store_true', help='Try max-path-nodes from small to large and stop at the first successful result.')
     args = ap.parse_args()
 
     planner = Planner(Path(args.base_dir), Path(args.out_dir), Path(args.rules), Path(args.subtasks))

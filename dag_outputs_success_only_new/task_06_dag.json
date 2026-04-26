@@ -1,0 +1,207 @@
+{
+  "task_id": "task_06",
+  "description": "Adjust room comfort by turning on the air conditioner and opening the window for ventilation.",
+  "output_language": "English",
+  "is_dag": true,
+  "graph_mode": "success_prefix_graph_no_state_merge",
+  "task_scope": [
+    "BP_AirCondition_4_C_2",
+    "BP_Window_1st_3_C_0_362D0085458192C1F593BC9AED285041_11"
+  ],
+  "preprocess": {
+    "dropped_predicates": [],
+    "static_unsatisfied_constraints": []
+  },
+  "initial_state": [
+    "closed(BP_Window_1st_3_C_0_362D0085458192C1F593BC9AED285041_11)",
+    "empty",
+    "exists(BP_AirCondition_4_C_2)",
+    "exists(BP_Window_1st_3_C_0_362D0085458192C1F593BC9AED285041_11)",
+    "powered_off(BP_AirCondition_4_C_2)"
+  ],
+  "goal_state": [
+    "open(BP_Window_1st_3_C_0_362D0085458192C1F593BC9AED285041_11)",
+    "powered_on(BP_AirCondition_4_C_2)"
+  ],
+  "nodes": [
+    {
+      "id": "n0",
+      "depth": 0,
+      "state": [
+        "closed(BP_Window_1st_3_C_0_362D0085458192C1F593BC9AED285041_11)",
+        "empty",
+        "exists(BP_AirCondition_4_C_2)",
+        "exists(BP_Window_1st_3_C_0_362D0085458192C1F593BC9AED285041_11)",
+        "powered_off(BP_AirCondition_4_C_2)"
+      ],
+      "is_goal": false,
+      "prefix_count": 2
+    },
+    {
+      "id": "n1",
+      "depth": 1,
+      "state": [
+        "empty",
+        "exists(BP_AirCondition_4_C_2)",
+        "exists(BP_Window_1st_3_C_0_362D0085458192C1F593BC9AED285041_11)",
+        "in_view(BP_Window_1st_3_C_0_362D0085458192C1F593BC9AED285041_11)",
+        "open(BP_Window_1st_3_C_0_362D0085458192C1F593BC9AED285041_11)",
+        "powered_off(BP_AirCondition_4_C_2)",
+        "with_reach(BP_Window_1st_3_C_0_362D0085458192C1F593BC9AED285041_11)"
+      ],
+      "is_goal": false,
+      "prefix_count": 1
+    },
+    {
+      "id": "n2",
+      "depth": 2,
+      "state": [
+        "empty",
+        "exists(BP_AirCondition_4_C_2)",
+        "exists(BP_Window_1st_3_C_0_362D0085458192C1F593BC9AED285041_11)",
+        "in_view(BP_AirCondition_4_C_2)",
+        "open(BP_Window_1st_3_C_0_362D0085458192C1F593BC9AED285041_11)",
+        "powered_on(BP_AirCondition_4_C_2)",
+        "with_reach(BP_AirCondition_4_C_2)"
+      ],
+      "is_goal": true,
+      "prefix_count": 1
+    },
+    {
+      "id": "n3",
+      "depth": 1,
+      "state": [
+        "closed(BP_Window_1st_3_C_0_362D0085458192C1F593BC9AED285041_11)",
+        "empty",
+        "exists(BP_AirCondition_4_C_2)",
+        "exists(BP_Window_1st_3_C_0_362D0085458192C1F593BC9AED285041_11)",
+        "in_view(BP_AirCondition_4_C_2)",
+        "powered_on(BP_AirCondition_4_C_2)",
+        "with_reach(BP_AirCondition_4_C_2)"
+      ],
+      "is_goal": false,
+      "prefix_count": 1
+    },
+    {
+      "id": "n4",
+      "depth": 2,
+      "state": [
+        "empty",
+        "exists(BP_AirCondition_4_C_2)",
+        "exists(BP_Window_1st_3_C_0_362D0085458192C1F593BC9AED285041_11)",
+        "in_view(BP_Window_1st_3_C_0_362D0085458192C1F593BC9AED285041_11)",
+        "open(BP_Window_1st_3_C_0_362D0085458192C1F593BC9AED285041_11)",
+        "powered_on(BP_AirCondition_4_C_2)",
+        "with_reach(BP_Window_1st_3_C_0_362D0085458192C1F593BC9AED285041_11)"
+      ],
+      "is_goal": true,
+      "prefix_count": 1
+    }
+  ],
+  "dag_edges": [
+    {
+      "from": "n0",
+      "to": "n1",
+      "action": "open_container_{object}__BP_Window_1st_3_C_0_362D0085458192C1F593BC9AED285041_11",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n1",
+      "to": "n2",
+      "action": "power_on_{object}__BP_AirCondition_4_C_2",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n0",
+      "to": "n3",
+      "action": "power_on_{object}__BP_AirCondition_4_C_2",
+      "source": "subtask",
+      "type": "transition"
+    },
+    {
+      "from": "n3",
+      "to": "n4",
+      "action": "open_container_{object}__BP_Window_1st_3_C_0_362D0085458192C1F593BC9AED285041_11",
+      "source": "subtask",
+      "type": "transition"
+    }
+  ],
+  "equivalence_edges": [],
+  "goal_nodes": [
+    "n2",
+    "n4"
+  ],
+  "goal_paths": [
+    [
+      {
+        "from": "n0",
+        "to": "n1",
+        "action": "open_container_{object}__BP_Window_1st_3_C_0_362D0085458192C1F593BC9AED285041_11",
+        "source": "subtask"
+      },
+      {
+        "from": "n1",
+        "to": "n2",
+        "action": "power_on_{object}__BP_AirCondition_4_C_2",
+        "source": "subtask"
+      }
+    ],
+    [
+      {
+        "from": "n0",
+        "to": "n3",
+        "action": "power_on_{object}__BP_AirCondition_4_C_2",
+        "source": "subtask"
+      },
+      {
+        "from": "n3",
+        "to": "n4",
+        "action": "open_container_{object}__BP_Window_1st_3_C_0_362D0085458192C1F593BC9AED285041_11",
+        "source": "subtask"
+      }
+    ]
+  ],
+  "success_traces": [
+    [
+      "open_container_{object}__BP_Window_1st_3_C_0_362D0085458192C1F593BC9AED285041_11",
+      "power_on_{object}__BP_AirCondition_4_C_2"
+    ],
+    [
+      "power_on_{object}__BP_AirCondition_4_C_2",
+      "open_container_{object}__BP_Window_1st_3_C_0_362D0085458192C1F593BC9AED285041_11"
+    ]
+  ],
+  "has_solution": true,
+  "node_count": 5,
+  "transition_edge_count": 4,
+  "equivalence_edge_count": 0,
+  "grounded_action_count": 8,
+  "grounded_subtask_count": 8,
+  "grounded_place_primitive_count": 0,
+  "success_trace_count": 2,
+  "max_success_traces": 100,
+  "max_path_nodes": 3,
+  "auto_search": {
+    "enabled": true,
+    "min_path_nodes": 2,
+    "max_path_nodes": 13,
+    "step": 1,
+    "selected_max_path_nodes": 3,
+    "trials": [
+      {
+        "max_path_nodes": 2,
+        "has_solution": false,
+        "success_trace_count": 0,
+        "node_count": 1
+      },
+      {
+        "max_path_nodes": 3,
+        "has_solution": true,
+        "success_trace_count": 2,
+        "node_count": 5
+      }
+    ]
+  }
+}

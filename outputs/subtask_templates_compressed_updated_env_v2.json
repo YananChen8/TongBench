@@ -58,7 +58,9 @@
         "tomato",
         "toy",
         "tray",
-        "vase"
+        "vase",
+        "apple",
+        "basket"
       ]
     },
     "pre_state": [
@@ -170,8 +172,13 @@
         "refrigerator",
         "wardrobe",
         "window",
-        "shoescabinet",
-        "shoesbox"
+        "bookcase",
+        "faucet",
+        "microwave",
+        "nightstand",
+        "table",
+        "vanitycounter",
+        "desk"
       ]
     },
     "pre_state": [
@@ -224,8 +231,12 @@
         "refrigerator",
         "wardrobe",
         "window",
-        "shoescabinet",
-        "shoesbox",
+        "bookcase",
+        "faucet",
+        "microwave",
+        "nightstand",
+        "table",
+        "vanitycounter",
         "desk"
       ]
     },
@@ -276,8 +287,7 @@
         "laptop",
         "plug",
         "radio",
-        "tv",
-        "kettle"
+        "tv"
       ]
     },
     "pre_state": [
@@ -288,8 +298,7 @@
       "exists(r1)",
       "in_view(r1)",
       "plugged_in(r1)",
-      "with_reach(r1)",
-      "powered_off({r1})"
+      "with_reach(r1)"
     ]
   },
   {
@@ -335,7 +344,9 @@
         "radio",
         "refrigerator",
         "tablelamp",
-        "ceilinglamp"
+        "ceilinglamp",
+        "microwave",
+        "tv"
       ]
     },
     "pre_state": [
@@ -392,7 +403,9 @@
         "radio",
         "refrigerator",
         "tablelamp",
-        "ceilinglamp"
+        "ceilinglamp",
+        "microwave",
+        "tv"
       ]
     },
     "pre_state": [
@@ -497,7 +510,43 @@
         "tv",
         "vase",
         "wardrobe",
-        "window"
+        "window",
+        "accessory",
+        "apple",
+        "basket",
+        "biscuit",
+        "bookcase",
+        "buildingblock",
+        "carrot",
+        "ceiling",
+        "clothes",
+        "eggbeater",
+        "faucet",
+        "floor",
+        "food",
+        "foodcontainer",
+        "guitar",
+        "hanger",
+        "longbackrestsofa",
+        "microwave",
+        "mop",
+        "nightstand",
+        "onoff",
+        "peach",
+        "pear",
+        "pen",
+        "pot",
+        "pumpkin",
+        "shortbackrestsofa",
+        "shower",
+        "statue",
+        "stool",
+        "table",
+        "towelrail",
+        "toydesk",
+        "vanitycounter",
+        "wall",
+        "waterdispenser"
       ]
     },
     "pre_state": [
@@ -545,8 +594,7 @@
         "laptop",
         "plug",
         "radio",
-        "tv",
-        "kettle"
+        "tv"
       ]
     },
     "pre_state": [

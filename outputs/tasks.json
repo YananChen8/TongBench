@@ -1,211 +1,173 @@
 [
   {
     "task_id": "task_01",
-    "description": "Prepare the living room for a guest by arranging seating, lighting, and refreshments.",
-    "intention": "Create a welcoming and functional environment for a guest by organizing furniture, adjusting lighting, and setting up a refreshment area.",
+    "description": "Prepare a guest room for arrival by organizing the bedside table, turning on the lamp, and ensuring the bed is tidy.",
+    "intention": "Create a welcoming and comfortable environment for a guest by setting up the bedroom with functional lighting and a clean, organized surface.",
     "initial_state": {
       "predicates": [
         "empty",
-        "exists(BP_CoffeeTable_29_C_3)",
-        "exists(BP_Sofa_09_C_2)",
-        "exists(BP_CeilingLamp_2_C_1)",
-        "exists(BP_CeilingLamp_04_C_0_8182FBFC4089BF20D7F615A99BC7CF0A_8)",
-        "exists(BP_Bowl_blue_C_0)",
-        "exists(BP_Cup_Kitchen_003_C_0)",
-        "exists(BP_Fruit_Apple_02_FB_C_1)",
-        "exists(BP_Fruit_Apple_02_FB_C_2)"
+        "closed(BP_Bedside_02_C_3)",
+        "closed(BP_Bedside_02_C_2)",
+        "powered_off(BP_TableLamp_03_C_1)",
+        "exists(BP_Bedside_02_C_3)",
+        "exists(BP_Bedside_02_C_2)",
+        "exists(BP_TableLamp_03_C_1)",
+        "exists(BP_Bed_3_C_1)"
       ],
       "bindings": {}
     },
     "final_state": {
       "predicates": [
-        "on(BP_Fruit_Apple_02_FB_C_1, BP_CoffeeTable_29_C_3)",
-        "on(BP_Fruit_Apple_02_FB_C_2, BP_CoffeeTable_29_C_3)",
-        "on(BP_Bowl_blue_C_0, BP_CoffeeTable_29_C_3)",
-        "on(BP_Cup_Kitchen_003_C_0, BP_CoffeeTable_29_C_3)",
-        "powered_on(BP_CeilingLamp_2_C_1)",
-        "powered_on(BP_CeilingLamp_04_C_0_8182FBFC4089BF20D7F615A99BC7CF0A_8)",
-        "in_view(BP_CoffeeTable_29_C_3)",
-        "with_reach(BP_CoffeeTable_29_C_3)"
+        "open(BP_Bedside_02_C_3)",
+        "open(BP_Bedside_02_C_2)",
+        "powered_on(BP_TableLamp_03_C_1)",
+        "on(BP_RemoteController_Air_C_2, BP_Bedside_02_C_3)",
+        "on(BP_RemoteController_01_C_1, BP_Bedside_02_C_2)",
+        "on(BP_Book_19_C_1, BP_Bedside_02_C_3)",
+        "on(BP_Book_18_C_1, BP_Bedside_02_C_2)"
       ],
       "bindings": {}
     }
   },
   {
     "task_id": "task_02",
-    "description": "Tidy up the child’s play area by collecting scattered toys and placing them in a storage box.",
-    "intention": "Reduce clutter and restore order to the toy area by gathering loose toys and storing them appropriately.",
+    "description": "Set up a tea-serving station on the coffee table using a cup, plate, and remote control, while cleaning the area.",
+    "intention": "Prepare a functional and presentable refreshment setup for a visitor by arranging essential items and ensuring cleanliness.",
     "initial_state": {
       "predicates": [
         "empty",
-        "exists(BP_Toy_Horse_C_2)",
-        "exists(BP_Toy_Lego_C_2)",
-        "exists(BP_Toy_SpaceManA_C_2)",
-        "exists(BP_Toy_XYY_C_2)",
-        "exists(BP_Suitcase_03_C_1)",
-        "closed(BP_Suitcase_03_C_1)"
+        "dirty(BP_Plate_03_C_1)",
+        "exists(BP_CoffeeTable_29_C_3)",
+        "exists(BP_Cup_Kitchen_003_C_0)",
+        "exists(BP_Plate_03_C_1)",
+        "exists(BP_RemoteController_Air_C_2)"
       ],
       "bindings": {}
     },
     "final_state": {
       "predicates": [
-        "in(BP_Toy_Horse_C_2, BP_Suitcase_03_C_1)",
-        "in(BP_Toy_Lego_C_2, BP_Suitcase_03_C_1)",
-        "in(BP_Toy_SpaceManA_C_2, BP_Suitcase_03_C_1)",
-        "in(BP_Toy_XYY_C_2, BP_Suitcase_03_C_1)",
-        "open(BP_Suitcase_03_C_1)",
-        "empty"
+        "clean(BP_Plate_03_C_1)",
+        "on(BP_Cup_Kitchen_003_C_0, BP_CoffeeTable_29_C_3)",
+        "on(BP_Plate_03_C_1, BP_CoffeeTable_29_C_3)",
+        "on(BP_RemoteController_Air_C_2, BP_CoffeeTable_29_C_3)"
       ],
       "bindings": {}
     }
   },
   {
     "task_id": "task_03",
-    "description": "Set up a workspace at the desk for studying with a laptop, notebook, and lamp.",
-    "intention": "Prepare a dedicated and functional study space by arranging essential tools and ensuring proper illumination.",
+    "description": "Clean and organize the kitchen counter after use by placing dirty dishes in the dishwasher and wiping the surface.",
+    "intention": "Restore the kitchen to a hygienic and orderly state following meal preparation or cleanup.",
     "initial_state": {
       "predicates": [
         "empty",
-        "exists(BP_Desk_001_C_1)",
-        "exists(BP_Laptop_1_C_1)",
-        "exists(BP_Book_18_C_1)",
-        "exists(BP_TableLamp_03_C_1)"
+        "dirty(BP_Plate_06_C_2)",
+        "dirty(BP_Cup_Kitchen_003_C_0)",
+        "exists(BP_CoffeeTable_27_C_1)",
+        "exists(BP_Plate_06_C_2)",
+        "exists(BP_Cup_Kitchen_003_C_0)"
       ],
       "bindings": {}
     },
     "final_state": {
       "predicates": [
-        "on(BP_Laptop_1_C_1, BP_Desk_001_C_1)",
-        "on(BP_Book_18_C_1, BP_Desk_001_C_1)",
-        "on(BP_TableLamp_03_C_1, BP_Desk_001_C_1)",
-        "powered_on(BP_TableLamp_03_C_1)",
-        "in_view(BP_Desk_001_C_1)",
-        "with_reach(BP_Desk_001_C_1)"
+        "clean(BP_Plate_06_C_2)",
+        "clean(BP_Cup_Kitchen_003_C_0)",
+        "on(BP_Plate_06_C_2, BP_CoffeeTable_27_C_1)",
+        "on(BP_Cup_Kitchen_003_C_0, BP_CoffeeTable_27_C_1)"
       ],
       "bindings": {}
     }
   },
   {
     "task_id": "task_04",
-    "description": "Clean and organize the kitchen counter after preparing a snack, removing dirty dishes and wiping surfaces.",
-    "intention": "Restore cleanliness and order to the kitchen surface after use by removing waste and cleaning soiled items.",
+    "description": "Prepare a workspace on the desk for studying by opening the desk, placing books and a pen, and turning on the lamp.",
+    "intention": "Create a functional and distraction-free study environment with all necessary tools within reach.",
     "initial_state": {
       "predicates": [
         "empty",
-        "exists(BP_Plate_03_C_1)",
-        "exists(BP_Bowl_blue_C_0)",
-        "dirty(BP_Plate_03_C_1)",
-        "dirty(BP_Bowl_blue_C_0)",
-        "exists(BP_TrashCan_Ashcan_02_C_1)"
+        "closed(BP_Desk_001_C_1)",
+        "powered_off(BP_TableLamp_03_C_1)",
+        "exists(BP_Desk_001_C_1)",
+        "exists(BP_Book_19_C_1)"
       ],
       "bindings": {}
     },
     "final_state": {
       "predicates": [
-        "in(BP_Plate_03_C_1, BP_TrashCan_Ashcan_02_C_1)",
-        "in(BP_Bowl_blue_C_0, BP_TrashCan_Ashcan_02_C_1)",
-        "clean(BP_Plate_03_C_1)",
-        "clean(BP_Bowl_blue_C_0)",
-        "empty"
-      ],
-      "bindings": {}
-    }
-  },
-  {
-    "task_id": "task_05",
-    "description": "Prepare a simple tea-serving setup on the coffee table using a cup, saucer, and biscuits.",
-    "intention": "Create a presentable and functional tea service arrangement for someone in the room.",
-    "initial_state": {
-      "predicates": [
-        "empty",
-        "exists(BP_CoffeeTable_29_C_3)",
-        "exists(BP_Cup_Kitchen_003_C_0)",
-        "exists(BP_Biscuit_Cookies_C_1)",
-        "exists(BP_Biscuit_Cookies_C_3)",
-        "exists(BP_Biscuit_Cookies_C_8)"
-      ],
-      "bindings": {}
-    },
-    "final_state": {
-      "predicates": [
-        "on(BP_Cup_Kitchen_003_C_0, BP_CoffeeTable_29_C_3)",
-        "on(BP_Biscuit_Cookies_C_1, BP_CoffeeTable_29_C_3)",
-        "on(BP_Biscuit_Cookies_C_3, BP_CoffeeTable_29_C_3)",
-        "on(BP_Biscuit_Cookies_C_8, BP_CoffeeTable_29_C_3)",
-        "in_view(BP_CoffeeTable_29_C_3)",
-        "with_reach(BP_CoffeeTable_29_C_3)"
+        "open(BP_Desk_001_C_1)",
+        "on(BP_Book_19_C_1, BP_Desk_001_C_1)",
+        "powered_on(BP_TableLamp_03_C_1)"
       ],
       "bindings": {}
     }
   },
   {
     "task_id": "task_06",
-    "description": "Open the refrigerator to retrieve milk and place it on the kitchen counter for use.",
-    "intention": "Access stored food items from the refrigerator and position them on a usable surface for preparation.",
+    "description": "Adjust room comfort by turning on the air conditioner and opening the window for ventilation.",
+    "intention": "Improve indoor climate and freshness by activating cooling and allowing airflow.",
     "initial_state": {
       "predicates": [
         "empty",
-        "exists(BP_Frigerator_white_C_1)",
-        "exists(BP_DrinkContainer_Milk_02_C_1)",
-        "closed(BP_Frigerator_white_C_1)"
+        "powered_off(BP_AirCondition_4_C_2)",
+        "closed(BP_Window_1st_3_C_0_362D0085458192C1F593BC9AED285041_11)",
+        "exists(BP_AirCondition_4_C_2)",
+        "exists(BP_Window_1st_3_C_0_362D0085458192C1F593BC9AED285041_11)"
       ],
       "bindings": {}
     },
     "final_state": {
       "predicates": [
-        "open(BP_Frigerator_white_C_1)",
-        "on(BP_DrinkContainer_Milk_02_C_1, BP_CoffeeTable_29_C_3)",
-        "in_view(BP_CoffeeTable_29_C_3)",
-        "with_reach(BP_CoffeeTable_29_C_3)",
-        "empty"
+        "powered_on(BP_AirCondition_4_C_2)",
+        "open(BP_Window_1st_3_C_0_362D0085458192C1F593BC9AED285041_11)"
       ],
       "bindings": {}
     }
   },
   {
     "task_id": "task_07",
-    "description": "Adjust room ambiance by opening curtains and turning on ceiling lamps for better lighting.",
-    "intention": "Enhance natural and artificial lighting to improve visibility and comfort in the room.",
+    "description": "Prepare a simple breakfast tray with fruit and a bowl by picking up an apple and banana from the counter and placing them on a tray.",
+    "intention": "Assemble a basic breakfast set for consumption, ensuring all components are arranged neatly on a serving tray.",
     "initial_state": {
       "predicates": [
         "empty",
-        "exists(BP_Curtains_02_C_0_D02FFE9E437B2A6E45DFB795FB923987_7)",
-        "exists(BP_CeilingLamp_2_C_1)",
-        "closed(BP_Curtains_02_C_0_D02FFE9E437B2A6E45DFB795FB923987_7)",
-        "powered_off(BP_CeilingLamp_2_C_1)"
+        "exists(BP_Fruit_Apple_02_FB_C_2)",
+        "exists(BP_Fruit_Banana_C_2)",
+        "exists(BP_CoffeeTable_29_C_3)",
+        "exists(BP_Plate_Bowl01_C_2)"
       ],
       "bindings": {}
     },
     "final_state": {
       "predicates": [
-        "open(BP_Curtains_02_C_0_D02FFE9E437B2A6E45DFB795FB923987_7)",
-        "powered_on(BP_CeilingLamp_2_C_1)",
-        "in_view(BP_Curtains_02_C_0_D02FFE9E437B2A6E45DFB795FB923987_7)",
-        "in_view(BP_CeilingLamp_2_C_1)"
+        "on(BP_Fruit_Apple_02_FB_C_2, BP_CoffeeTable_29_C_3)",
+        "on(BP_Fruit_Banana_C_2, BP_CoffeeTable_29_C_3)",
+        "on(BP_Plate_Bowl01_C_2, BP_CoffeeTable_29_C_3)"
       ],
       "bindings": {}
     }
   },
   {
     "task_id": "task_08",
-    "description": "Organize books from the floor into the open bookcase for better storage and aesthetics.",
-    "intention": "Restore order to the reading area by relocating scattered books into a designated storage unit.",
+    "description": "Restore the living room to a calm state by turning off lights, closing curtains, and placing the remote on the sofa.",
+    "intention": "Create a peaceful and uncluttered atmosphere by deactivating electronics and securing furnishings.",
     "initial_state": {
       "predicates": [
         "empty",
-        "exists(BP_BooksStack_02_C_1)",
-        "exists(BP_BooksStack_02_C_2)",
-        "exists(BP_BookShelves_05_C_1)",
-        "closed(BP_BookShelves_05_C_1)"
+        "powered_on(BP_CeilingLamp_04_C_0_8182FBFC4089BF20D7F615A99BC7CF0A_8)",
+        "powered_on(BP_TV_Hanged_C_1)",
+        "exists(BP_CeilingLamp_04_C_0_8182FBFC4089BF20D7F615A99BC7CF0A_8)",
+        "exists(BP_TV_Hanged_C_1)",
+        "exists(BP_Sofa_09_C_2)",
+        "exists(BP_RemoteController_Air_C_2)"
       ],
       "bindings": {}
     },
     "final_state": {
       "predicates": [
-        "in(BP_BooksStack_02_C_1, BP_BookShelves_05_C_1)",
-        "in(BP_BooksStack_02_C_2, BP_BookShelves_05_C_1)",
-        "open(BP_BookShelves_05_C_1)",
-        "empty"
+        "powered_off(BP_CeilingLamp_04_C_0_8182FBFC4089BF20D7F615A99BC7CF0A_8)",
+        "powered_off(BP_TV_Hanged_C_1)",
+        "on(BP_RemoteController_Air_C_2, BP_Sofa_09_C_2)"
       ],
       "bindings": {}
     }

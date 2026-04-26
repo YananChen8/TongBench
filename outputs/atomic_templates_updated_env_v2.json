@@ -100,7 +100,43 @@
         "tv",
         "vase",
         "wardrobe",
-        "window"
+        "window",
+        "accessory",
+        "apple",
+        "basket",
+        "biscuit",
+        "bookcase",
+        "buildingblock",
+        "carrot",
+        "ceiling",
+        "clothes",
+        "eggbeater",
+        "faucet",
+        "floor",
+        "food",
+        "foodcontainer",
+        "guitar",
+        "hanger",
+        "longbackrestsofa",
+        "microwave",
+        "mop",
+        "nightstand",
+        "onoff",
+        "peach",
+        "pear",
+        "pen",
+        "pot",
+        "pumpkin",
+        "shortbackrestsofa",
+        "shower",
+        "statue",
+        "stool",
+        "table",
+        "towelrail",
+        "toydesk",
+        "vanitycounter",
+        "wall",
+        "waterdispenser"
       ],
       "pre_state": [
         "exists({object})"
@@ -186,7 +222,43 @@
         "tv",
         "vase",
         "wardrobe",
-        "window"
+        "window",
+        "accessory",
+        "apple",
+        "basket",
+        "biscuit",
+        "bookcase",
+        "buildingblock",
+        "carrot",
+        "ceiling",
+        "clothes",
+        "eggbeater",
+        "faucet",
+        "floor",
+        "food",
+        "foodcontainer",
+        "guitar",
+        "hanger",
+        "longbackrestsofa",
+        "microwave",
+        "mop",
+        "nightstand",
+        "onoff",
+        "peach",
+        "pear",
+        "pen",
+        "pot",
+        "pumpkin",
+        "shortbackrestsofa",
+        "shower",
+        "statue",
+        "stool",
+        "table",
+        "towelrail",
+        "toydesk",
+        "vanitycounter",
+        "wall",
+        "waterdispenser"
       ],
       "pre_state": [
         "in_view({object})"
@@ -272,7 +344,43 @@
         "tv",
         "vase",
         "wardrobe",
-        "window"
+        "window",
+        "accessory",
+        "apple",
+        "basket",
+        "biscuit",
+        "bookcase",
+        "buildingblock",
+        "carrot",
+        "ceiling",
+        "clothes",
+        "eggbeater",
+        "faucet",
+        "floor",
+        "food",
+        "foodcontainer",
+        "guitar",
+        "hanger",
+        "longbackrestsofa",
+        "microwave",
+        "mop",
+        "nightstand",
+        "onoff",
+        "peach",
+        "pear",
+        "pen",
+        "pot",
+        "pumpkin",
+        "shortbackrestsofa",
+        "shower",
+        "statue",
+        "stool",
+        "table",
+        "towelrail",
+        "toydesk",
+        "vanitycounter",
+        "wall",
+        "waterdispenser"
       ],
       "pre_state": [
         "in_view({object})"
@@ -319,7 +427,9 @@
         "tomato",
         "toy",
         "tray",
-        "vase"
+        "vase",
+        "apple",
+        "basket"
       ],
       "pre_state": [
         "with_reach({object})",
@@ -367,7 +477,9 @@
         "tomato",
         "toy",
         "tray",
-        "vase"
+        "vase",
+        "apple",
+        "basket"
       ],
       "pre_state": [
         "holding({object})"
@@ -415,7 +527,9 @@
           "tomato",
           "toy",
           "tray",
-          "vase"
+          "vase",
+          "apple",
+          "basket"
         ],
         "object2": [
           "bath_shelf",
@@ -425,7 +539,11 @@
           "desk",
           "diningtable",
           "tray",
-          "sofa"
+          "sofa",
+          "nightstand",
+          "table",
+          "vanitycounter",
+          "longbackrestsofa"
         ]
       },
       "pre_state": [
@@ -476,7 +594,9 @@
           "tomato",
           "toy",
           "tray",
-          "vase"
+          "vase",
+          "apple",
+          "basket"
         ],
         "object2": [
           "bathcabinet",
@@ -486,7 +606,10 @@
           "refrigerator",
           "trash_can",
           "wardrobe",
-          "suitcase"
+          "suitcase",
+          "bookcase",
+          "nightstand",
+          "microwave"
         ]
       },
       "pre_state": [
@@ -536,7 +659,9 @@
         "tomato",
         "toy",
         "tray",
-        "vase"
+        "vase",
+        "apple",
+        "basket"
       ],
       "pre_state": [
         "holding({object})"
@@ -563,8 +688,12 @@
         "refrigerator",
         "wardrobe",
         "window",
-        "shoescabinet",
-        "shoesbox",
+        "bookcase",
+        "faucet",
+        "microwave",
+        "nightstand",
+        "table",
+        "vanitycounter",
         "desk"
       ],
       "pre_state": [
@@ -593,7 +722,13 @@
         "refrigerator",
         "wardrobe",
         "window",
-        "shoescabinet"
+        "bookcase",
+        "faucet",
+        "microwave",
+        "nightstand",
+        "table",
+        "vanitycounter",
+        "desk"
       ],
       "pre_state": [
         "with_reach({object})",
@@ -625,7 +760,9 @@
         "radio",
         "refrigerator",
         "table_lamp",
-        "ceilinglamp"
+        "ceilinglamp",
+        "microwave",
+        "tv"
       ],
       "pre_state": [
         "with_reach({object})",
@@ -657,7 +794,9 @@
         "radio",
         "refrigerator",
         "table_lamp",
-        "ceilinglamp"
+        "ceilinglamp",
+        "microwave",
+        "tv"
       ],
       "pre_state": [
         "with_reach({object})",
@@ -746,7 +885,9 @@
         "tomato",
         "toy",
         "tray",
-        "vase"
+        "vase",
+        "apple",
+        "basket"
       ],
       "pre_state": [
         "holding({object})"
@@ -800,8 +941,7 @@
         "unplugged({object})"
       ],
       "post_state": [
-        "plugged_in({object})",
-        "powered_off({object})"
+        "plugged_in({object})"
       ]
     },
     {
